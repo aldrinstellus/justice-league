@@ -1,0 +1,17 @@
+{
+  "api_configuration": {
+    "default_url": "https://design.penpot.app",
+    "timeout": 30,
+    "retry_attempts": 3,
+    "verify_ssl": true
+  },
+  "features": {
+    "auto_download": false,
+    "cache_responses": true,
+    "cache_duration_hours": 24
+  },
+  "output_preferences": {
+    "save_api_response": true,
+    "include_api_metadata": true
+  }
+}

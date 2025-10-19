@@ -1,0 +1,237 @@
+{
+  "personas": {
+    "product_manager": {
+      "name": "Product Manager",
+      "description": "Analyzes business requirements, user journeys, and strategic alignment",
+      "priority": 1,
+      "enabled": true,
+      "focus_areas": [
+        "business_requirements",
+        "user_journey_mapping",
+        "feature_prioritization",
+        "stakeholder_impact",
+        "roi_analysis"
+      ],
+      "output_formats": [
+        "user_stories",
+        "acceptance_criteria",
+        "business_requirements",
+        "feature_specs"
+      ],
+      "analysis_weight": 1.0
+    },
+    "product_designer": {
+      "name": "Product Designer",
+      "description": "Analyzes UX patterns, design rationale, and user experience",
+      "priority": 1,
+      "enabled": true,
+      "focus_areas": [
+        "ux_patterns",
+        "design_rationale",
+        "user_experience",
+        "interaction_design",
+        "visual_hierarchy"
+      ],
+      "output_formats": [
+        "design_specs",
+        "ux_recommendations",
+        "interaction_patterns",
+        "visual_guidelines"
+      ],
+      "analysis_weight": 1.0
+    },
+    "ai_developer": {
+      "name": "AI Developer",
+      "description": "Analyzes technical patterns and AI/automation opportunities",
+      "priority": 1,
+      "enabled": true,
+      "focus_areas": [
+        "technical_patterns",
+        "automation_opportunities",
+        "ai_integration",
+        "data_structures",
+        "scalability_assessment"
+      ],
+      "output_formats": [
+        "technical_specs",
+        "ai_recommendations",
+        "automation_suggestions",
+        "data_architecture"
+      ],
+      "analysis_weight": 1.0
+    },
+    "file_analyzer": {
+      "name": "Core File Analyzer",
+      "description": "Analyzes technical architecture and file structure",
+      "priority": 1,
+      "enabled": true,
+      "focus_areas": [
+        "file_structure",
+        "technical_architecture",
+        "performance_analysis",
+        "data_integrity",
+        "security_assessment"
+      ],
+      "output_formats": [
+        "technical_analysis",
+        "performance_metrics",
+        "architecture_docs",
+        "security_report"
+      ],
+      "analysis_weight": 1.0
+    },
+    "design_systems_designer": {
+      "name": "Design Systems Designer",
+      "description": "Analyzes component library architecture and design language consistency",
+      "priority": 2,
+      "enabled": true,
+      "focus_areas": [
+        "component_consistency",
+        "design_language",
+        "scalability",
+        "reusability",
+        "visual_coherence"
+      ],
+      "output_formats": [
+        "component_audit",
+        "design_system_specs",
+        "consistency_report",
+        "scalability_assessment"
+      ],
+      "analysis_weight": 0.9
+    },
+    "design_systems_engineer": {
+      "name": "Design Systems Engineer",
+      "description": "Analyzes technical implementation and component architecture",
+      "priority": 2,
+      "enabled": true,
+      "focus_areas": [
+        "technical_implementation",
+        "component_architecture",
+        "api_design",
+        "performance_optimization",
+        "build_systems"
+      ],
+      "output_formats": [
+        "implementation_specs",
+        "api_documentation",
+        "performance_analysis",
+        "build_requirements"
+      ],
+      "analysis_weight": 0.9
+    },
+    "accessibility_specialist": {
+      "name": "Accessibility Specialist",
+      "description": "Analyzes WCAG compliance and inclusive design patterns",
+      "priority": 2,
+      "enabled": true,
+      "focus_areas": [
+        "wcag_compliance",
+        "inclusive_design",
+        "keyboard_navigation",
+        "screen_reader_compatibility",
+        "color_contrast"
+      ],
+      "output_formats": [
+        "accessibility_audit",
+        "wcag_compliance_report",
+        "inclusive_design_recommendations",
+        "accessibility_testing_guide"
+      ],
+      "analysis_weight": 0.8
+    },
+    "content_strategist": {
+      "name": "Content Strategist",
+      "description": "Analyzes information architecture and content design",
+      "priority": 3,
+      "enabled": true,
+      "focus_areas": [
+        "information_architecture",
+        "content_strategy",
+        "microcopy_analysis",
+        "localization_readiness",
+        "voice_and_tone"
+      ],
+      "output_formats": [
+        "content_audit",
+        "information_architecture",
+        "content_guidelines",
+        "localization_requirements"
+      ],
+      "analysis_weight": 0.7
+    },
+    "qa_engineer": {
+      "name": "QA/Test Engineer",
+      "description": "Analyzes testing strategy and quality assurance requirements",
+      "priority": 3,
+      "enabled": true,
+      "focus_areas": [
+        "testing_strategy",
+        "quality_assurance",
+        "test_coverage",
+        "automation_opportunities",
+        "quality_gates"
+      ],
+      "output_formats": [
+        "test_strategy",
+        "quality_metrics",
+        "test_scenarios",
+        "automation_recommendations"
+      ],
+      "analysis_weight": 0.7
+    },
+    "security_analyst": {
+      "name": "Security Analyst",
+      "description": "Analyzes security and privacy considerations",
+      "priority": 3,
+      "enabled": true,
+      "focus_areas": [
+        "security_patterns",
+        "privacy_by_design",
+        "data_protection",
+        "input_validation",
+        "threat_modeling"
+      ],
+      "output_formats": [
+        "security_assessment",
+        "privacy_analysis",
+        "security_recommendations",
+        "threat_model"
+      ],
+      "analysis_weight": 0.6
+    },
+    "visual_reporter": {
+      "name": "Visual Report Generator",
+      "description": "Generates interactive documentation and visual communication",
+      "priority": 1,
+      "enabled": true,
+      "focus_areas": [
+        "visual_documentation",
+        "interactive_reporting",
+        "screenshot_generation",
+        "annotation_systems",
+        "cross_referencing"
+      ],
+      "output_formats": [
+        "interactive_html",
+        "pdf_reports",
+        "visual_documentation",
+        "component_gallery"
+      ],
+      "analysis_weight": 1.0
+    }
+  },
+  "analysis_settings": {
+    "run_all_personas": true,
+    "parallel_processing": true,
+    "cross_persona_insights": true,
+    "priority_threshold": 3,
+    "minimum_analysis_weight": 0.5
+  },
+  "output_preferences": {
+    "include_visual_evidence": true,
+    "generate_cross_references": true,
+    "create_executive_summary": true,
+    "include_technical_details": true
+  }
+}

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ report_title }} - Aldo Vision Analysis Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.125rem;
+            opacity: 0.9;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .meta-card h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .navigation {
+            position: sticky;
+            top: 0;
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .section h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        .section-icon {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-color);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .card h4 {
+            margin: 0 0 1rem 0;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-primary { background: #dbeafe; color: #1d4ed8; }
+        .badge-success { background: #d1fae5; color: #059669; }
+        .badge-warning { background: #fef3c7; color: #d97706; }
+        .badge-danger { background: #fee2e2; color: #dc2626; }
+        .badge-secondary { background: #f1f5f9; color: #475569; }
+
+        .progress-bar {
+            width: 100%;
+            height: 0.75rem;
+            background: var(--border);
+            border-radius: 9999px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 1.5rem 0;
+        }
+
+        .code-block {
+            background: #f6f8fa;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .tabs {
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .tab-links {
+            display: flex;
+            gap: 0;
+        }
+
+        .tab-link {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab-link.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .accordion {
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem 1rem;
+            display: none;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .tooltip {
+            position: relative;
+            cursor: help;
+            text-decoration: underline dotted;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-info {
+            background: #eff6ff;
+            border-left-color: var(--primary-color);
+            color: #1e40af;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            border-left-color: var(--success-color);
+            color: #166534;
+        }
+
+        .alert-warning {
+            background: #fffbeb;
+            border-left-color: var(--warning-color);
+            color: #92400e;
+        }
+
+        .alert-danger {
+            background: #fef2f2;
+            border-left-color: var(--danger-color);
+            color: #991b1b;
+        }
+
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .persona-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .persona-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .persona-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .persona-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .persona-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .insight-count {
+            background: var(--surface);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .component-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .component-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .component-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .component-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .component-type {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .component-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>{{ report_title }}</h1>
+            <p class="subtitle">{{ report_subtitle }}</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Report Metadata -->
+        <div class="meta-info">
+            <div class="meta-card">
+                <h3>Analysis Date</h3>
+                <div class="value">{{ analysis_date }}</div>
+            </div>
+            <div class="meta-card">
+                <h3>Components Detected</h3>
+                <div class="value">{{ total_components }}</div>
+            </div>
+            <div class="meta-card">
+                <h3>Personas Analyzed</h3>
+                <div class="value">{{ total_personas }}</div>
+            </div>
+            <div class="meta-card">
+                <h3>Overall Confidence</h3>
+                <div class="value">{{ confidence_score }}%</div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <div class="nav-links">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#components" class="nav-link">Components</a>
+                <a href="#personas" class="nav-link">Persona Analysis</a>
+                <a href="#insights" class="nav-link">Cross-Insights</a>
+                <a href="#recommendations" class="nav-link">Recommendations</a>
+                <a href="#implementation" class="nav-link">Implementation</a>
+                <a href="#quality" class="nav-link">Quality Assessment</a>
+            </div>
+        </div>
+
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <h2>
+                <div class="section-icon">📊</div>
+                Analysis Overview
+            </h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h4>Project Summary</h4>
+                    <p>{{ project_description }}</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{ analysis_completeness }}%"></div>
+                    </div>
+                    <small>Analysis Completeness: {{ analysis_completeness }}%</small>
+                </div>
+
+                <div class="card">
+                    <h4>Key Findings</h4>
+                    <ul class="list">
+                        {% for finding in key_findings %}
+                        <li class="list-item">
+                            <span>{{ finding.title }}</span>
+                            <span class="badge badge-{{ finding.type }}">{{ finding.impact }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>Design System Maturity</h4>
+                    <div class="chart-container">
+                        <canvas id="maturityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section id="components" class="section">
+            <h2>
+                <div class="section-icon">🧩</div>
+                Component Analysis
+            </h2>
+
+            <div class="tabs">
+                <div class="tab-links">
+                    <button class="tab-link active" data-tab="detected-components">Detected Components</button>
+                    <button class="tab-link" data-tab="component-patterns">Patterns</button>
+                    <button class="tab-link" data-tab="design-tokens">Design Tokens</button>
+                </div>
+            </div>
+
+            <div id="detected-components" class="tab-content active">
+                <div class="component-list">
+                    {% for component in components %}
+                    <div class="component-item">
+                        <div class="component-header">
+                            <div>
+                                <div class="component-name">{{ component.name }}</div>
+                                <div class="component-type">{{ component.type }}</div>
+                            </div>
+                            <div class="badge badge-{{ component.priority }}">{{ component.priority }} Priority</div>
+                        </div>
+                        <p>{{ component.description }}</p>
+                        <div class="component-stats">
+                            <div class="stat">
+                                <div class="stat-value">{{ component.instances }}</div>
+                                <div class="stat-label">Instances</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">{{ component.reusability_score }}</div>
+                                <div class="stat-label">Reusability</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">{{ component.complexity_score }}</div>
+                                <div class="stat-label">Complexity</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="component-patterns" class="tab-content">
+                <div class="grid">
+                    {% for pattern in component_patterns %}
+                    <div class="card">
+                        <h4>{{ pattern.name }}</h4>
+                        <p>{{ pattern.description }}</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ pattern.usage_percentage }}%"></div>
+                        </div>
+                        <small>Usage: {{ pattern.usage_percentage }}%</small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="design-tokens" class="tab-content">
+                <div class="accordion">
+                    {% for token_category in design_tokens %}
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>{{ token_category.name }} ({{ token_category.count }} tokens)</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content">
+                            <ul class="list">
+                                {% for token in token_category.tokens %}
+                                <li class="list-item">
+                                    <span>{{ token.name }}</span>
+                                    <span class="badge badge-secondary">{{ token.usage_count }} uses</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Persona Analysis Section -->
+        <section id="personas" class="section">
+            <h2>
+                <div class="section-icon">👥</div>
+                Multi-Persona Analysis
+            </h2>
+
+            <div class="persona-grid">
+                {% for persona in persona_analyses %}
+                <div class="persona-card">
+                    <div class="persona-avatar">{{ persona.avatar }}</div>
+                    <div class="persona-title">{{ persona.name }}</div>
+                    <div class="persona-description">{{ persona.description }}</div>
+
+                    <div class="insight-count">
+                        <span>Key Insights</span>
+                        <span class="badge badge-primary">{{ persona.insight_count }}</span>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <strong>Primary Focus:</strong> {{ persona.primary_focus }}
+                    </div>
+
+                    <h5>Top Recommendations:</h5>
+                    <ul>
+                        {% for rec in persona.top_recommendations %}
+                        <li>{{ rec }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Cross-Insights Section -->
+        <section id="insights" class="section">
+            <h2>
+                <div class="section-icon">🔗</div>
+                Cross-Persona Insights
+            </h2>
+
+            <div class="alert alert-success">
+                <strong>{{ consensus_themes_count }} Common Themes</strong> identified across multiple persona analyses, indicating strong alignment in design direction.
+            </div>
+
+            <h3>Consensus Patterns</h3>
+            <div class="grid">
+                {% for theme in consensus_themes %}
+                <div class="card">
+                    <h4>{{ theme.name }}</h4>
+                    <p>{{ theme.description }}</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{ theme.agreement_percentage }}%"></div>
+                    </div>
+                    <small>{{ theme.supporting_personas_count }} personas agree ({{ theme.agreement_percentage }}%)</small>
+                </div>
+                {% endfor %}
+            </div>
+
+            <h3>Identified Conflicts & Resolutions</h3>
+            {% if conflicts %}
+            <div class="accordion">
+                {% for conflict in conflicts %}
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>{{ conflict.title }}</span>
+                        <span class="badge badge-warning">Conflict</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>Issue:</strong> {{ conflict.description }}</p>
+                        <p><strong>Affected Personas:</strong> {{ conflict.affected_personas | join(', ') }}</p>
+                        <div class="alert alert-info">
+                            <strong>Recommended Resolution:</strong> {{ conflict.resolution }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="alert alert-success">
+                No significant conflicts detected between persona analyses. Strong alignment indicates a coherent design direction.
+            </div>
+            {% endif %}
+        </section>
+
+        <!-- Recommendations Section -->
+        <section id="recommendations" class="section">
+            <h2>
+                <div class="section-icon">💡</div>
+                Strategic Recommendations
+            </h2>
+
+            <div class="tabs">
+                <div class="tab-links">
+                    <button class="tab-link active" data-tab="high-priority">High Priority</button>
+                    <button class="tab-link" data-tab="medium-priority">Medium Priority</button>
+                    <button class="tab-link" data-tab="long-term">Long Term</button>
+                </div>
+            </div>
+
+            <div id="high-priority" class="tab-content active">
+                {% for rec in high_priority_recommendations %}
+                <div class="alert alert-danger">
+                    <strong>{{ rec.title }}</strong><br>
+                    {{ rec.description }}
+                    <div style="margin-top: 1rem;">
+                        <span class="badge badge-danger">Impact: {{ rec.impact }}</span>
+                        <span class="badge badge-secondary">Effort: {{ rec.effort }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="medium-priority" class="tab-content">
+                {% for rec in medium_priority_recommendations %}
+                <div class="alert alert-warning">
+                    <strong>{{ rec.title }}</strong><br>
+                    {{ rec.description }}
+                    <div style="margin-top: 1rem;">
+                        <span class="badge badge-warning">Impact: {{ rec.impact }}</span>
+                        <span class="badge badge-secondary">Effort: {{ rec.effort }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="long-term" class="tab-content">
+                {% for rec in long_term_recommendations %}
+                <div class="alert alert-info">
+                    <strong>{{ rec.title }}</strong><br>
+                    {{ rec.description }}
+                    <div style="margin-top: 1rem;">
+                        <span class="badge badge-primary">Impact: {{ rec.impact }}</span>
+                        <span class="badge badge-secondary">Effort: {{ rec.effort }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Implementation Roadmap -->
+        <section id="implementation" class="section">
+            <h2>
+                <div class="section-icon">🚀</div>
+                Implementation Roadmap
+            </h2>
+
+            <div class="grid">
+                {% for phase in implementation_phases %}
+                <div class="card">
+                    <h4>{{ phase.name }}</h4>
+                    <p><strong>Duration:</strong> {{ phase.duration }}</p>
+                    <p><strong>Focus:</strong> {{ phase.focus }}</p>
+
+                    <h5>Key Deliverables:</h5>
+                    <ul>
+                        {% for deliverable in phase.deliverables %}
+                        <li>{{ deliverable }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <h5>Success Criteria:</h5>
+                    <ul>
+                        {% for criteria in phase.success_criteria %}
+                        <li>{{ criteria }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="alert alert-info">
+                <strong>Total Estimated Timeline:</strong> {{ total_timeline }}<br>
+                <strong>Resource Requirements:</strong> {{ resource_requirements }}
+            </div>
+        </section>
+
+        <!-- Quality Assessment -->
+        <section id="quality" class="section">
+            <h2>
+                <div class="section-icon">✅</div>
+                Quality Assessment
+            </h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h4>Overall Quality Score</h4>
+                    <div class="chart-container">
+                        <canvas id="qualityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Quality Breakdown</h4>
+                    <ul class="list">
+                        {% for metric in quality_metrics %}
+                        <li class="list-item">
+                            <span>{{ metric.name }}</span>
+                            <div>
+                                <span class="badge badge-{{ metric.grade_class }}">{{ metric.grade }}</span>
+                                <small>({{ metric.score }}%)</small>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>Areas for Improvement</h4>
+                    <ul>
+                        {% for improvement in improvement_areas %}
+                        <li>{{ improvement }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>Generated by Aldo Vision Agent v{{ version }} on {{ generation_date }}</p>
+            <p>For questions or support, visit the <a href="https://github.com/aldo-agents">Aldo Agents repository</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // Remove active class from all tabs and contents
+                    tabLinks.forEach(l => l.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = content.classList.contains('active');
+
+                    // Close all accordion items
+                    document.querySelectorAll('.accordion-content').forEach(c => {
+                        c.classList.remove('active');
+                    });
+
+                    // Toggle current item
+                    if (!isActive) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Initialize charts if data is available
+            if (typeof Chart !== 'undefined') {
+                initializeCharts();
+            }
+
+            // Initialize code highlighting
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            }
+        });
+
+        function initializeCharts() {
+            // Maturity Chart
+            const maturityCtx = document.getElementById('maturityChart');
+            if (maturityCtx) {
+                new Chart(maturityCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Components', 'Consistency', 'Reusability', 'Documentation', 'Testing', 'Accessibility'],
+                        datasets: [{
+                            label: 'Current Maturity',
+                            data: [{{ maturity_scores.components }}, {{ maturity_scores.consistency }}, {{ maturity_scores.reusability }}, {{ maturity_scores.documentation }}, {{ maturity_scores.testing }}, {{ maturity_scores.accessibility }}],
+                            backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                            borderColor: 'rgba(37, 99, 235, 1)',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Quality Chart
+            const qualityCtx = document.getElementById('qualityChart');
+            if (qualityCtx) {
+                new Chart(qualityCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Excellent', 'Good', 'Needs Improvement'],
+                        datasets: [{
+                            data: [{{ quality_distribution.excellent }}, {{ quality_distribution.good }}, {{ quality_distribution.needs_improvement }}],
+                            backgroundColor: ['#10b981', '#f59e0b', '#ef4444']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

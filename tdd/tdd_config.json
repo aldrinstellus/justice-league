@@ -1,0 +1,265 @@
+{
+  "tdd_framework_configuration": {
+    "enabled": true,
+    "version": "1.0.0",
+    "last_updated": "2024-01-01",
+    "maturity_level": "advanced"
+  },
+
+  "tdd_methodology": {
+    "primary_approach": "outside_in_tdd",
+    "secondary_approaches": ["inside_out_tdd", "component_driven_tdd"],
+    "cycle_discipline": {
+      "strict_red_green_refactor": true,
+      "maximum_red_phase_duration": "5 minutes",
+      "maximum_green_phase_duration": "15 minutes",
+      "refactor_after_every_cycle": true
+    }
+  },
+
+  "testing_frameworks": {
+    "javascript": {
+      "unit_testing": {
+        "primary": "jest",
+        "alternative": "vitest",
+        "configuration": {
+          "coverage_threshold": {
+            "global": {
+              "branches": 90,
+              "functions": 95,
+              "lines": 95,
+              "statements": 95
+            }
+          },
+          "test_environment": "jsdom",
+          "setup_files": ["<rootDir>/src/test-setup.js"],
+          "watch_mode": true,
+          "verbose": true
+        }
+      },
+      "component_testing": {
+        "framework": "testing-library/react",
+        "approach": "behavior_driven",
+        "accessibility_testing": true
+      },
+      "e2e_testing": {
+        "framework": "playwright",
+        "cross_browser": true,
+        "parallel_execution": true
+      }
+    },
+    "python": {
+      "unit_testing": {
+        "primary": "pytest",
+        "configuration": {
+          "coverage_threshold": 95,
+          "parallel_execution": true,
+          "watch_mode": "pytest-watch"
+        }
+      },
+      "bdd_testing": {
+        "framework": "pytest-bdd",
+        "gherkin_scenarios": true
+      }
+    }
+  },
+
+  "tdd_practices": {
+    "test_doubles": {
+      "mock_strategy": "behavior_verification",
+      "stub_strategy": "state_based_testing",
+      "fake_strategy": "integration_testing",
+      "spy_strategy": "interaction_verification"
+    },
+    "refactoring": {
+      "automated_refactoring": true,
+      "safety_net": "comprehensive_test_coverage",
+      "frequency": "after_every_green_phase",
+      "patterns": [
+        "extract_method",
+        "extract_class",
+        "rename_variables",
+        "simplify_conditionals"
+      ]
+    },
+    "test_organization": {
+      "structure": "arrange_act_assert",
+      "naming_convention": "should_when_given",
+      "test_data": "factory_pattern",
+      "setup_teardown": "automatic_cleanup"
+    }
+  },
+
+  "quality_gates": {
+    "commit_level": {
+      "pre_commit_hooks": {
+        "run_unit_tests": true,
+        "check_coverage": true,
+        "lint_code": true,
+        "format_code": true
+      },
+      "coverage_requirements": {
+        "minimum_coverage": 95,
+        "no_coverage_decrease": true,
+        "branch_coverage": 90
+      }
+    },
+    "pull_request_level": {
+      "full_test_suite": true,
+      "integration_tests": true,
+      "visual_regression": true,
+      "performance_tests": true,
+      "tdd_adherence_review": true
+    },
+    "release_level": {
+      "mutation_testing": true,
+      "property_based_testing": true,
+      "acceptance_test_validation": true,
+      "performance_budgets": true
+    }
+  },
+
+  "team_practices": {
+    "pair_programming": {
+      "enabled": true,
+      "frequency": "daily",
+      "tdd_focused_sessions": true,
+      "rotation_schedule": "every_30_minutes"
+    },
+    "code_review": {
+      "tdd_checklist": true,
+      "focus_areas": [
+        "test_first_development",
+        "refactoring_opportunities",
+        "test_quality",
+        "design_emergence"
+      ]
+    },
+    "retrospectives": {
+      "tdd_specific": true,
+      "frequency": "weekly",
+      "metrics_review": true,
+      "improvement_actions": true
+    }
+  },
+
+  "coaching_program": {
+    "skill_assessment": {
+      "initial_evaluation": true,
+      "regular_assessments": "monthly",
+      "competency_framework": {
+        "novice": "0-3 months",
+        "advanced_beginner": "3-8 months",
+        "competent": "8-18 months",
+        "proficient": "18+ months"
+      }
+    },
+    "training_curriculum": {
+      "week_1": "TDD Foundations",
+      "week_2": "Unit Testing Mastery",
+      "week_3": "Integration and E2E",
+      "week_4": "Advanced Techniques"
+    },
+    "practice_sessions": {
+      "code_katas": {
+        "frequency": "daily",
+        "duration": "30 minutes",
+        "examples": [
+          "bowling_game",
+          "roman_numerals",
+          "mars_rover",
+          "gilded_rose"
+        ]
+      },
+      "mob_programming": {
+        "frequency": "weekly",
+        "duration": "2 hours",
+        "focus": "collective_learning"
+      }
+    }
+  },
+
+  "tooling_stack": {
+    "ide_integration": {
+      "test_runners": {
+        "watch_mode": true,
+        "automatic_execution": true,
+        "coverage_display": true
+      },
+      "refactoring_tools": {
+        "automated_refactoring": true,
+        "safety_verification": true,
+        "undo_support": true
+      }
+    },
+    "ci_cd_integration": {
+      "test_execution": {
+        "parallel_execution": true,
+        "fast_feedback": "under_2_minutes",
+        "comprehensive_suite": "under_10_minutes"
+      },
+      "quality_reporting": {
+        "coverage_reports": true,
+        "mutation_testing": "weekly",
+        "trend_analysis": true
+      }
+    },
+    "monitoring": {
+      "tdd_metrics": {
+        "cycle_time_tracking": true,
+        "test_coverage_trends": true,
+        "refactoring_frequency": true,
+        "defect_rate_monitoring": true
+      },
+      "team_productivity": {
+        "velocity_tracking": true,
+        "confidence_surveys": "monthly",
+        "skill_progression": true
+      }
+    }
+  },
+
+  "advanced_techniques": {
+    "property_based_testing": {
+      "enabled": true,
+      "libraries": ["fast-check", "hypothesis"],
+      "integration_strategy": "after_example_based_tdd"
+    },
+    "mutation_testing": {
+      "enabled": true,
+      "tools": ["stryker", "mutmut"],
+      "frequency": "weekly",
+      "threshold": 85
+    },
+    "contract_testing": {
+      "enabled": true,
+      "framework": "pact",
+      "consumer_driven": true
+    },
+    "visual_tdd": {
+      "enabled": true,
+      "storybook_integration": true,
+      "component_driven_development": true,
+      "visual_regression": true
+    }
+  },
+
+  "continuous_improvement": {
+    "metrics_tracking": {
+      "automated_collection": true,
+      "dashboard_reporting": true,
+      "trend_analysis": true,
+      "benchmarking": "industry_standards"
+    },
+    "feedback_loops": {
+      "daily_standups": "tdd_focused_discussion",
+      "weekly_retrospectives": "practice_improvement",
+      "monthly_reviews": "metrics_and_goals"
+    },
+    "knowledge_management": {
+      "tdd_playbook": "team_specific_guidelines",
+      "pattern_library": "reusable_solutions",
+      "anti_pattern_documentation": "lessons_learned"
+    }
+  }
+}
