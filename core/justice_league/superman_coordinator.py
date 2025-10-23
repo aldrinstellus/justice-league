@@ -15,7 +15,7 @@ Powers:
 
 "Together, we are the Justice League! No design flaw escapes us!"
 
-Justice League Roster (13 Heroes):
+Justice League Roster (16 Heroes):
 - 🦇 Batman (Interactive Testing)
 - 💚 Green Lantern (Visual Regression)
 - ⚡ Wonder Woman (Accessibility)
@@ -23,11 +23,13 @@ Justice League Roster (13 Heroes):
 - 🌊 Aquaman (Network)
 - 🤖 Cyborg (Integrations)
 - 🔬 The Atom (Component Analysis)
-- 🏹 Green Arrow (QA Testing)
+- 🎯 Green Arrow (Visual Validation - Pixel-Perfect WYSIWYG)
 - 🧠 Martian Manhunter (Security)
 - 🤸 Plastic Man (Responsive Design)
 - 🎩 Zatanna (SEO & Metadata)
 - 🪔 Litty (User Empathy & Ethics)
+- 🎨 Artemis (Figma-to-Code Expert)
+- 🔮 Oracle (Pattern Tracking & Learning)
 - 🦸 Superman (Coordinator)
 """
 
@@ -88,11 +90,11 @@ except ImportError:
     logging.warning("The Atom not available")
 
 try:
-    from .green_arrow_testing import GreenArrowTesting
-    GREEN_ARROW_AVAILABLE = True
+    from .green_arrow_visual_validator import GreenArrowVisualValidator
+    GREEN_ARROW_VISUAL_AVAILABLE = True
 except ImportError:
-    GREEN_ARROW_AVAILABLE = False
-    logging.warning("Green Arrow not available")
+    GREEN_ARROW_VISUAL_AVAILABLE = False
+    logging.warning("Green Arrow Visual Validator not available")
 
 try:
     from .martian_manhunter_security import MartianManhunterSecurity
@@ -121,6 +123,20 @@ try:
 except ImportError:
     LITTY_AVAILABLE = False
     logging.warning("Litty not available")
+
+try:
+    from .artemis_codesmith import ArtemisCodeSmith
+    ARTEMIS_AVAILABLE = True
+except ImportError:
+    ARTEMIS_AVAILABLE = False
+    logging.warning("Artemis not available")
+
+try:
+    from .oracle_meta_agent import OracleMeta
+    ORACLE_AVAILABLE = True
+except ImportError:
+    ORACLE_AVAILABLE = False
+    logging.warning("Oracle not available")
 
 logger = logging.getLogger(__name__)
 
@@ -160,11 +176,13 @@ class SupermanCoordinator:
         self.aquaman = AquamanNetwork() if AQUAMAN_AVAILABLE else None
         self.cyborg = CyborgIntegrations(str(self.baseline_dir / 'integrations')) if CYBORG_AVAILABLE else None
         self.atom = AtomComponentAnalysis() if ATOM_AVAILABLE else None
-        self.green_arrow = GreenArrowTesting() if GREEN_ARROW_AVAILABLE else None
+        self.green_arrow = GreenArrowVisualValidator(str(self.baseline_dir / 'validation')) if GREEN_ARROW_VISUAL_AVAILABLE else None
         self.martian_manhunter = MartianManhunterSecurity(str(self.baseline_dir / 'security')) if MARTIAN_MANHUNTER_AVAILABLE else None
         self.plastic_man = PlasticManResponsive() if PLASTIC_MAN_AVAILABLE else None
         self.zatanna = ZatannaSEO(str(self.baseline_dir / 'seo')) if ZATANNA_AVAILABLE else None
         self.litty = LittyEthics() if LITTY_AVAILABLE else None
+        self.artemis = ArtemisCodeSmith(expert_mode=True) if ARTEMIS_AVAILABLE else None
+        self.oracle = OracleMeta() if ORACLE_AVAILABLE else None
 
         # Count available heroes
         self.heroes_available = sum([
@@ -175,15 +193,17 @@ class SupermanCoordinator:
             AQUAMAN_AVAILABLE,
             CYBORG_AVAILABLE,
             ATOM_AVAILABLE,
-            GREEN_ARROW_AVAILABLE,
+            GREEN_ARROW_VISUAL_AVAILABLE,
             MARTIAN_MANHUNTER_AVAILABLE,
             PLASTIC_MAN_AVAILABLE,
             ZATANNA_AVAILABLE,
-            LITTY_AVAILABLE
+            LITTY_AVAILABLE,
+            ARTEMIS_AVAILABLE,
+            ORACLE_AVAILABLE
         ])
 
         logger.info(f"🦸 SUPERMAN - Justice League Coordinator initialized")
-        logger.info(f"🦸 Heroes available: {self.heroes_available}/13")
+        logger.info(f"🦸 Heroes available: {self.heroes_available}/15")
         logger.info(f"  🦇 Batman: {'✅' if BATMAN_AVAILABLE else '❌'}")
         logger.info(f"  💚 Green Lantern: {'✅' if GREEN_LANTERN_AVAILABLE else '❌'}")
         logger.info(f"  ⚡ Wonder Woman: {'✅' if WONDER_WOMAN_AVAILABLE else '❌'}")
@@ -191,11 +211,13 @@ class SupermanCoordinator:
         logger.info(f"  🌊 Aquaman: {'✅' if AQUAMAN_AVAILABLE else '❌'}")
         logger.info(f"  🤖 Cyborg: {'✅' if CYBORG_AVAILABLE else '❌'}")
         logger.info(f"  🔬 The Atom: {'✅' if ATOM_AVAILABLE else '❌'}")
-        logger.info(f"  🏹 Green Arrow: {'✅' if GREEN_ARROW_AVAILABLE else '❌'}")
+        logger.info(f"  🎯 Green Arrow: {'✅' if GREEN_ARROW_VISUAL_AVAILABLE else '❌'}")
         logger.info(f"  🧠 Martian Manhunter: {'✅' if MARTIAN_MANHUNTER_AVAILABLE else '❌'}")
         logger.info(f"  🤸 Plastic Man: {'✅' if PLASTIC_MAN_AVAILABLE else '❌'}")
         logger.info(f"  🎩 Zatanna: {'✅' if ZATANNA_AVAILABLE else '❌'}")
         logger.info(f"  🪔 Litty: {'✅' if LITTY_AVAILABLE else '❌'}")
+        logger.info(f"  🎨 Artemis: {'✅' if ARTEMIS_AVAILABLE else '❌'}")
+        logger.info(f"  🔮 Oracle: {'✅' if ORACLE_AVAILABLE else '❌'}")
 
     def assemble_justice_league(self, mission: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -649,6 +671,159 @@ class SupermanCoordinator:
         result = self.litty.validate_ethics(target_url, mcp_tools)
         logger.info("  ✓ Litty's guilt trips delivered (think about your ammachi!)")
         return result
+
+    def _deploy_artemis(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        🎨 Deploy Artemis - The Figma-to-Code Expert (Oracle & Green Arrow Enhanced)
+
+        Args:
+            mission: Mission parameters including:
+                - figma_url: Figma design URL
+                - component_name: Name for the component
+                - framework: 'next' or 'react' (default: 'next')
+                - language: 'typescript' or 'javascript' (default: 'typescript')
+                - expert_mode: Enable expert workflow (default: True)
+                - rendered_url: URL of rendered component (for Green Arrow validation)
+
+        Returns:
+            Figma-to-Code conversion results with learning data, Oracle tracking, and Green Arrow validation
+        """
+        if not self.artemis:
+            return None
+
+        figma_url = mission.get('figma_url')
+        if not figma_url:
+            logger.warning("  ⚠️ No Figma URL provided for Artemis")
+            return None
+
+        component_name = mission.get('component_name', 'Component')
+        framework = mission.get('framework', 'next')
+        language = mission.get('language', 'typescript')
+        expert_mode = mission.get('expert_mode', True)
+
+        logger.info("🦸 Deploying 🎨 ARTEMIS - Expert Figma-to-Code Converter...")
+        logger.info(f"  📋 Component: {component_name}")
+        logger.info(f"  🎯 Expert Mode: {'ENABLED' if expert_mode else 'DISABLED'}")
+
+        # STEP 1: Query Oracle for project context
+        project_context = None
+        if self.oracle:
+            try:
+                # Extract file_key from Figma URL
+                import re
+                match = re.search(r'figma\.com/(?:design|file)/([a-zA-Z0-9]+)', figma_url)
+                if match:
+                    file_key = match.group(1)
+                    logger.info(f"🦸 Querying 🔮 ORACLE for project context...")
+                    project_context = self.oracle.get_project_context(file_key)
+
+                    if project_context.get('project_known'):
+                        logger.info(f"  🔮 Oracle: Project known! {project_context.get('conversions_count', 0)} conversions tracked")
+                        logger.info(f"  🔮 Shared components available: {len(project_context.get('shared_components', []))}")
+                        logger.info(f"  🔮 Common patterns: {', '.join(project_context.get('common_patterns', [])[:5])}")
+                    else:
+                        logger.info(f"  🔮 Oracle: New project - will learn and track patterns")
+            except Exception as e:
+                logger.warning(f"  ⚠️ Oracle query error: {str(e)}")
+
+        try:
+            # STEP 2: Deploy Artemis with Oracle context
+            if expert_mode:
+                result = self.artemis.generate_component_code_expert(
+                    figma_url=figma_url,
+                    component_name=component_name,
+                    framework=framework,
+                    language=language,
+                    options=mission.get('options', {}),
+                    max_iterations=mission.get('max_iterations', 3),
+                    target_accuracy=mission.get('target_accuracy', 98.0),
+                    project_context=project_context  # Pass Oracle context to Artemis
+                )
+            else:
+                result = self.artemis.generate_component_code(
+                    figma_url=figma_url,
+                    component_name=component_name,
+                    framework=framework,
+                    language=language,
+                    options=mission.get('options', {}),
+                    project_context=project_context  # Pass Oracle context to Artemis
+                )
+
+            if result.get('success'):
+                logger.info(f"  ✓ Artemis conversion complete!")
+                logger.info(f"    Expert Rating: {result.get('expert_rating', 'N/A')}")
+                logger.info(f"    Accuracy: {result.get('accuracy_score', result.get('artemis_score', 0))}%")
+                logger.info(f"    Files Generated: {len(result.get('files', {}))}")
+                if 'iterations' in result:
+                    logger.info(f"    Iterations: {result['iterations']}")
+
+                # STEP 3: Deploy Green Arrow for visual validation
+                green_arrow_result = None
+                if self.green_arrow and mission.get('rendered_url'):
+                    try:
+                        logger.info(f"🦸 Deploying 🎯 GREEN ARROW for pixel-perfect validation...")
+
+                        component_code = result.get('code', result.get('files', {}).get(f'{component_name}.tsx', ''))
+
+                        green_arrow_result = self.green_arrow.validate_component(
+                            figma_url=figma_url,
+                            rendered_url=mission.get('rendered_url'),
+                            component_name=component_name,
+                            component_code=component_code
+                        )
+
+                        accuracy_score = green_arrow_result.get('accuracy_score', 0)
+                        status = green_arrow_result.get('status', 'UNKNOWN')
+
+                        logger.info(f"  🎯 Green Arrow Verdict: {status} ({accuracy_score}% accuracy)")
+
+                        if accuracy_score < 90:
+                            logger.warning(f"  ⚠️ Accuracy below 90% - consider refinement")
+                            logger.warning(f"  🎯 Discrepancies found: {len(green_arrow_result.get('discrepancies', []))}")
+                        else:
+                            logger.info(f"  ✓ Green Arrow approved! Pixel-perfect conversion achieved")
+
+                        # Add Green Arrow results to Artemis result
+                        result['green_arrow_validation'] = green_arrow_result
+
+                    except Exception as e:
+                        logger.error(f"  ❌ Green Arrow validation error: {str(e)}")
+                        result['green_arrow_validation'] = {'error': str(e)}
+
+                # STEP 4: Update Oracle with new patterns
+                if self.oracle and project_context and match:
+                    try:
+                        logger.info(f"🦸 Updating 🔮 ORACLE with new patterns...")
+
+                        # Extract node_id from Figma URL
+                        node_match = re.search(r'node-id=([^&]+)', figma_url)
+                        node_id = node_match.group(1) if node_match else None
+
+                        # Update Oracle with conversion results
+                        self.oracle.update_project_patterns(
+                            file_key=file_key,
+                            component_name=component_name,
+                            node_id=node_id or 'unknown',
+                            new_shared_elements=result.get('shared_elements'),
+                            new_patterns=result.get('patterns_detected')
+                        )
+
+                        logger.info(f"  🔮 Oracle updated with {component_name} patterns")
+
+                    except Exception as e:
+                        logger.warning(f"  ⚠️ Oracle update error: {str(e)}")
+            else:
+                logger.warning(f"  ⚠️ Artemis conversion failed: {result.get('errors', ['Unknown error'])}")
+
+            return result
+
+        except Exception as e:
+            logger.error(f"  ❌ Artemis deployment error: {str(e)}")
+            return {
+                'success': False,
+                'errors': [str(e)],
+                'hero': 'Artemis'
+            }
 
     def _combine_hero_results(self, hero_reports: Dict) -> Dict[str, Any]:
         """

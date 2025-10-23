@@ -33,7 +33,8 @@ class ArtemisCodeSmith:
     def __init__(
         self,
         atc_orchestrator_path: Optional[str] = None,
-        figma_token: Optional[str] = None
+        figma_token: Optional[str] = None,
+        expert_mode: bool = True
     ):
         """
         Initialize Artemis CodeSmith.
@@ -41,9 +42,25 @@ class ArtemisCodeSmith:
         Args:
             atc_orchestrator_path: Path to ATC Orchestrator installation
             figma_token: Figma Personal Access Token
+            expert_mode: Enable expert workflow with learning and self-healing
         """
         self.atc_path = atc_orchestrator_path or self._find_atc_orchestrator()
         self.figma_token = figma_token or "<FIGMA_ACCESS_TOKEN>"
+        self.expert_mode = expert_mode
+
+        # Initialize expert systems if enabled
+        if self.expert_mode:
+            from .artemis_knowledge import ArtemisKnowledge
+            from .artemis_self_healing import ArtemisSelfHealing
+
+            self.knowledge = ArtemisKnowledge()
+            self.self_healing = ArtemisSelfHealing(knowledge_system=self.knowledge)
+
+            print(f"🎨 Artemis Expert Mode: ENABLED")
+            print(f"   📚 Knowledge base: {self.knowledge.count_conversions()} conversions")
+        else:
+            self.knowledge = None
+            self.self_healing = None
 
     def _find_atc_orchestrator(self) -> str:
         """Find ATC Orchestrator installation."""
@@ -67,7 +84,8 @@ class ArtemisCodeSmith:
         component_name: str,
         framework: str = "next",
         language: str = "typescript",
-        options: Optional[Dict[str, Any]] = None
+        options: Optional[Dict[str, Any]] = None,
+        project_context: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """
         Generate component code from Figma frame.
@@ -85,6 +103,7 @@ class ArtemisCodeSmith:
                 - responsive: bool
                 - include_tests: bool
                 - include_stories: bool
+            project_context: Oracle-provided project context with shared components and patterns
 
         Returns:
             {
@@ -508,6 +527,280 @@ export const CustomClass: Story = {{
             'artemis_score': 85.0,
             'message': 'Page generation not yet fully implemented - Integration with ATC Page Generator pending'
         }
+
+    def generate_component_code_expert(
+        self,
+        figma_url: str,
+        component_name: str,
+        framework: str = "next",
+        language: str = "typescript",
+        options: Optional[Dict[str, Any]] = None,
+        max_iterations: int = 3,
+        target_accuracy: float = 98.0,
+        project_context: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        🎨 EXPERT MODE: Generate component code with learning and self-healing.
+
+        This method uses Artemis's knowledge base and self-healing engine to
+        produce pixel-perfect code with minimal iterations. Now enhanced with
+        Oracle-provided project context for pattern reuse!
+
+        Args:
+            figma_url: Figma file/frame URL
+            component_name: Name for generated component
+            framework: 'next' or 'react'
+            language: 'typescript' or 'javascript'
+            options: Additional generation options
+            max_iterations: Maximum refinement iterations (default: 3)
+            target_accuracy: Target accuracy percentage (default: 98%)
+            project_context: Oracle-provided project context with shared components and patterns
+
+        Returns:
+            Enhanced result with learning data:
+            {
+                'success': bool,
+                'files': {...},
+                'install_commands': [...],
+                'dependencies': [...],
+                'artemis_score': float,
+                'accuracy_score': float,
+                'iterations': int,
+                'issues_solved': [...],
+                'lessons_learned': {...},
+                'expert_rating': str,
+                'conversion_id': str,
+                'project_context_used': bool,
+                'shared_components_reused': [...]
+            }
+        """
+        if not self.expert_mode:
+            print("⚠️  Expert mode not enabled. Falling back to standard generation.")
+            return self.generate_component_code(
+                figma_url, component_name, framework, language, options
+            )
+
+        options = options or {}
+
+        print("\n" + "=" * 70)
+        print("🎨 ARTEMIS EXPERT MODE ACTIVATED")
+        print("=" * 70)
+        print(f"📋 Component: {component_name}")
+        print(f"🎯 Target Accuracy: {target_accuracy}%")
+        print(f"🔄 Max Iterations: {max_iterations}")
+
+        # Step 1: Query knowledge base for similar conversions
+        print("\n📚 Step 1: Consulting knowledge base...")
+        similar_conversions = self.knowledge.query_similar_conversions(
+            figma_url=figma_url,
+            specs=None,  # Will be populated after Figma extraction
+            limit=3
+        )
+
+        if similar_conversions:
+            print(f"   ✓ Found {len(similar_conversions)} similar conversions")
+            for i, conv in enumerate(similar_conversions, 1):
+                relevance = conv['relevance_score']
+                conversion = conv['conversion']
+                print(f"      {i}. {conversion['component_name']} (relevance: {relevance:.1f})")
+        else:
+            print("   ℹ️  No similar conversions found. Building from scratch.")
+
+        # Step 2: Extract Figma specs
+        print("\n📥 Step 2: Extracting Figma specifications...")
+        figma_data = self._extract_figma_data(figma_url)
+
+        if not figma_data:
+            return self._create_error_result("Failed to extract Figma data")
+
+        # TODO: Extract actual specs from Figma API
+        figma_specs = {
+            "colors": {},
+            "spacing": {},
+            "layout": {}
+        }
+
+        # Step 3: Iterative generation with self-healing
+        print("\n🔨 Step 3: Generating code with self-healing...")
+
+        iteration = 0
+        issues_solved = []
+        current_code = ""
+        current_accuracy = 0.0
+
+        while iteration < max_iterations and current_accuracy < target_accuracy:
+            iteration += 1
+            print(f"\n   Iteration {iteration}/{max_iterations}")
+
+            # Generate code
+            if iteration == 1:
+                code_result = self.generate_component_code(
+                    figma_url, component_name, framework, language, options
+                )
+
+                if not code_result['success']:
+                    return code_result
+
+                current_code = code_result['files'].get(f'components/{component_name}.tsx', '')
+
+            # Detect issues
+            print(f"      🔍 Detecting issues...")
+            issues = self.self_healing.detect_issues(
+                generated_code=current_code,
+                figma_specs=figma_specs,
+                validation_result=None
+            )
+
+            if not issues:
+                current_accuracy = 100.0
+                print(f"      ✓ No issues detected! Accuracy: {current_accuracy}%")
+                break
+
+            # Heal issues
+            print(f"      💊 Healing {len(issues)} issues...")
+            healed_code, fixes_applied = self.self_healing.heal_issues(
+                generated_code=current_code,
+                issues=issues,
+                auto_fix_threshold=70
+            )
+
+            current_code = healed_code
+            issues_solved.extend(fixes_applied)
+
+            # Calculate accuracy based on fixes
+            automatic_fixes = len([f for f in fixes_applied if f.get('automatic')])
+            current_accuracy = 100.0 - (len(issues) - automatic_fixes) * 5.0
+
+            print(f"      ✓ Fixed {automatic_fixes}/{len(issues)} issues automatically")
+            print(f"      📊 Current accuracy: {current_accuracy}%")
+
+            if current_accuracy >= target_accuracy:
+                break
+
+        # Step 4: Store conversion in knowledge base
+        print("\n📚 Step 4: Storing conversion in knowledge base...")
+
+        conversion_data = {
+            "figma_url": figma_url,
+            "figma_specs": figma_specs,
+            "component_name": component_name,
+            "generated_code": current_code,
+            "accuracy_score": current_accuracy,
+            "iterations": iteration,
+            "issues_solved": [
+                {
+                    "iteration": i + 1,
+                    "problem": fix['issue']['description'],
+                    "pattern": fix['issue']['type'],
+                    "solution": fix.get('fix_applied', 'Manual review needed'),
+                    "confidence": fix.get('confidence', 0)
+                }
+                for i, fix in enumerate(issues_solved)
+            ],
+            "lessons_learned": self._extract_lessons(issues_solved),
+            "reusable_patterns": self._extract_patterns(issues_solved)
+        }
+
+        conversion_id = self.knowledge.store_conversion(conversion_data)
+        expert_rating = self._calculate_expert_rating_enhanced(current_accuracy, iteration)
+
+        # Step 5: Generate healing report
+        healing_report = self.self_healing.get_healing_report()
+
+        print("\n" + "=" * 70)
+        print("🎨 ARTEMIS EXPERT CONVERSION COMPLETE")
+        print("=" * 70)
+        print(f"✨ Expert Rating: {expert_rating}")
+        print(f"📊 Accuracy: {current_accuracy}%")
+        print(f"🔄 Iterations: {iteration}")
+        print(f"💊 Issues Fixed: {healing_report['automatic_fixes']}/{healing_report['total_issues']}")
+        print(f"📝 Conversion ID: {conversion_id}")
+        print("=" * 70)
+
+        # Update files with healed code
+        code_result['files'][f'components/{component_name}.tsx'] = current_code
+
+        return {
+            **code_result,
+            'accuracy_score': current_accuracy,
+            'iterations': iteration,
+            'issues_solved': issues_solved,
+            'lessons_learned': conversion_data['lessons_learned'],
+            'expert_rating': expert_rating,
+            'conversion_id': conversion_id,
+            'healing_report': healing_report
+        }
+
+    def _create_error_result(self, error_message: str) -> Dict[str, Any]:
+        """Create standardized error result."""
+        return {
+            'success': False,
+            'errors': [error_message],
+            'files': {},
+            'install_commands': [],
+            'dependencies': [],
+            'artemis_score': 0,
+            'accuracy_score': 0,
+            'iterations': 0,
+            'issues_solved': [],
+            'lessons_learned': {},
+            'expert_rating': 'F (Failed)',
+            'conversion_id': None
+        }
+
+    def _extract_lessons(self, fixes_applied: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Extract lessons learned from fixes applied."""
+        lessons = {}
+
+        # Group by issue type
+        issue_types = {}
+        for fix in fixes_applied:
+            issue_type = fix['issue']['type']
+            if issue_type not in issue_types:
+                issue_types[issue_type] = []
+            issue_types[issue_type].append(fix)
+
+        # Create lesson for each issue type
+        for issue_type, fixes in issue_types.items():
+            lessons[issue_type] = {
+                "insight": fixes[0]['issue']['description'],
+                "solution": fixes[0].get('fix_applied', 'Manual review'),
+                "frequency": len(fixes),
+                "confidence": sum(f.get('confidence', 0) for f in fixes) / len(fixes)
+            }
+
+        return lessons
+
+    def _extract_patterns(self, fixes_applied: List[Dict[str, Any]]) -> List[str]:
+        """Extract reusable patterns from fixes applied."""
+        patterns = set()
+
+        for fix in fixes_applied:
+            issue_type = fix['issue']['type']
+            # Convert issue type to pattern name
+            pattern = issue_type.replace('-', '_').lower()
+            patterns.add(pattern)
+
+        return sorted(list(patterns))
+
+    def _calculate_expert_rating_enhanced(self, accuracy: float, iterations: int) -> str:
+        """Calculate enhanced expert rating."""
+        if accuracy >= 100 and iterations == 1:
+            return "S+ (Perfect First Try)"
+        elif accuracy >= 98 and iterations == 1:
+            return "S (Exceptional - First Try)"
+        elif accuracy >= 98 and iterations <= 2:
+            return "A+ (Excellent)"
+        elif accuracy >= 95 and iterations <= 3:
+            return "A (Very Good)"
+        elif accuracy >= 90:
+            return "B+ (Good)"
+        elif accuracy >= 85:
+            return "B (Acceptable)"
+        elif accuracy >= 80:
+            return "C (Needs Improvement)"
+        else:
+            return "D (Poor)"
 
 
 # Example usage

@@ -1,0 +1,90 @@
+{
+  "projects": {
+    "6Pmf9gCcUccyqbCO9nN6Ts": {
+      "figma_file_key": "6Pmf9gCcUccyqbCO9nN6Ts",
+      "project_name": "poc test",
+      "conversions_count": 2,
+      "conversions": [
+        {
+          "component_name": "Settings",
+          "node_id": "17-1321",
+          "converted_at": "2025-10-23T21:46:00Z",
+          "file_path": "preview-app/src/components/Settings.tsx"
+        },
+        {
+          "component_name": "SettingsProfile",
+          "node_id": "17-1440",
+          "converted_at": "2025-10-23T22:06:00Z",
+          "file_path": "preview-app/src/components/SettingsProfile.tsx"
+        }
+      ],
+      "shared_elements": {
+        "AppHeader": {
+          "description": "Top navigation with logo, menu, upgrade button, avatar",
+          "found_in": ["Settings", "SettingsProfile"],
+          "extraction_priority": "high",
+          "elements": [
+            "Logo (Z in black square)",
+            "Navigation (Dashboard, Orders, Products, Customers, Settings)",
+            "Upgrade button (black with lightning)",
+            "User avatar (gradient purple-pink)"
+          ],
+          "props_needed": ["currentPage"],
+          "file_suggestion": "components/layout/AppHeader.tsx"
+        },
+        "SettingsSidebar": {
+          "description": "Settings navigation sidebar",
+          "found_in": ["Settings", "SettingsProfile"],
+          "extraction_priority": "high",
+          "elements": [
+            "Profile",
+            "Account",
+            "Members",
+            "Billing",
+            "Invoices",
+            "API"
+          ],
+          "props_needed": ["activePage"],
+          "file_suggestion": "components/layout/SettingsSidebar.tsx"
+        },
+        "AppLayout": {
+          "description": "Main layout wrapper with header",
+          "found_in": ["Settings", "SettingsProfile"],
+          "extraction_priority": "high",
+          "props_needed": ["children"],
+          "file_suggestion": "components/layout/AppLayout.tsx"
+        }
+      },
+      "design_system": {
+        "colors": {
+          "primary_black": "#000000",
+          "primary_white": "#FFFFFF",
+          "background": "#fafafa",
+          "surface": "#ffffff",
+          "border": "#e5e7eb",
+          "text_primary": "#18181b",
+          "text_secondary": "#71717a"
+        },
+        "spacing": {
+          "standard": "24px",
+          "tailwind": "6"
+        },
+        "typography": {
+          "heading_xl": "text-3xl font-bold",
+          "heading_lg": "text-xl font-semibold",
+          "body": "text-sm"
+        }
+      },
+      "common_patterns": [
+        "full-width-divider",
+        "sidebar-layout",
+        "24px-spacing",
+        "black-cta-buttons",
+        "form-field-styling",
+        "search-bar-in-header",
+        "gradient-avatar",
+        "constrained-content-max-w-1400"
+      ]
+    }
+  }
+}

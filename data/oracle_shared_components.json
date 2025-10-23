@@ -1,0 +1,117 @@
+{
+  "shared_components": {
+    "AppHeader": {
+      "status": "extracted",
+      "component_name": "AppHeader",
+      "file_path": "preview-app/src/components/layout/AppHeader.tsx",
+      "extracted_at": "2025-10-23T22:45:00Z",
+      "description": "Top navigation with logo, menu, upgrade button, and user avatar",
+      "used_in_projects": ["6Pmf9gCcUccyqbCO9nN6Ts"],
+      "used_in_components": ["Settings", "SettingsProfile"],
+      "props": [
+        {
+          "name": "currentPage",
+          "type": "string",
+          "description": "Current active page for navigation highlighting"
+        }
+      ],
+      "elements": [
+        {
+          "type": "logo",
+          "description": "Z in black square",
+          "styles": "w-10 h-10 bg-black rounded flex items-center justify-center text-white font-bold"
+        },
+        {
+          "type": "navigation",
+          "items": ["Dashboard", "Orders", "Products", "Customers", "Settings"],
+          "styles": "flex items-center gap-6"
+        },
+        {
+          "type": "button",
+          "description": "Upgrade button with lightning icon",
+          "styles": "px-4 py-2 bg-black text-white text-sm rounded-md hover:bg-zinc-800"
+        },
+        {
+          "type": "avatar",
+          "description": "User avatar with gradient",
+          "styles": "w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"
+        }
+      ],
+      "patterns_applied": ["full-width-divider", "constrained-content-max-w-1400"]
+    },
+    "SettingsSidebar": {
+      "status": "extracted",
+      "component_name": "SettingsSidebar",
+      "file_path": "preview-app/src/components/layout/SettingsSidebar.tsx",
+      "extracted_at": "2025-10-23T22:45:00Z",
+      "description": "Settings navigation sidebar with 6 menu items",
+      "used_in_projects": ["6Pmf9gCcUccyqbCO9nN6Ts"],
+      "used_in_components": ["Settings", "SettingsProfile"],
+      "props": [
+        {
+          "name": "activePage",
+          "type": "string",
+          "description": "Currently active settings page"
+        }
+      ],
+      "menu_items": [
+        "Profile",
+        "Account",
+        "Members",
+        "Billing",
+        "Invoices",
+        "API"
+      ],
+      "styles": {
+        "container": "w-[224px] flex-shrink-0",
+        "nav": "space-y-1",
+        "active_item": "block px-4 py-2 text-sm font-medium bg-zinc-100 text-zinc-900 rounded-md",
+        "inactive_item": "block px-4 py-2 text-sm text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 rounded-md"
+      }
+    },
+    "AppLayout": {
+      "status": "extracted",
+      "component_name": "AppLayout",
+      "file_path": "preview-app/src/components/layout/AppLayout.tsx",
+      "extracted_at": "2025-10-23T22:45:00Z",
+      "description": "Main layout wrapper with header and content area",
+      "used_in_projects": ["6Pmf9gCcUccyqbCO9nN6Ts"],
+      "used_in_components": ["Settings", "SettingsProfile"],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "description": "Page content to render"
+        },
+        {
+          "name": "currentPage",
+          "type": "string",
+          "optional": true,
+          "description": "Current page for header navigation"
+        }
+      ],
+      "structure": {
+        "header": "AppHeader component",
+        "main": "Main content area with max-w-[1400px] mx-auto px-6 py-6",
+        "background": "min-h-screen bg-[#fafafa]"
+      }
+    }
+  },
+  "extraction_log": [
+    {
+      "component_name": "AppHeader",
+      "file_path": "preview-app/src/components/layout/AppHeader.tsx",
+      "extracted_at": "2025-10-23T22:45:00Z"
+    },
+    {
+      "component_name": "SettingsSidebar",
+      "file_path": "preview-app/src/components/layout/SettingsSidebar.tsx",
+      "extracted_at": "2025-10-23T22:45:00Z"
+    },
+    {
+      "component_name": "AppLayout",
+      "file_path": "preview-app/src/components/layout/AppLayout.tsx",
+      "extracted_at": "2025-10-23T22:45:00Z"
+    }
+  ]
+}

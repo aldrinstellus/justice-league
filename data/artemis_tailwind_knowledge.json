@@ -1,0 +1,116 @@
+{
+  "framework": "Tailwind CSS",
+  "version": "3.x+",
+  "last_updated": "2025-10-23T00:00:00.000Z",
+  "utilities": {
+    "spacing": {
+      "scale": "4px base (0.25rem)",
+      "enterprise_standard": "6 (24px)",
+      "common_values": {
+        "p-6": "padding: 24px",
+        "py-6": "padding-top: 24px; padding-bottom: 24px",
+        "px-6": "padding-left: 24px; padding-right: 24px",
+        "space-y-6": "gap between children: 24px (vertical)",
+        "gap-6": "grid/flex gap: 24px"
+      }
+    },
+    "colors": {
+      "semantic": {
+        "black": "#000000",
+        "white": "#FFFFFF"
+      },
+      "zinc_scale": {
+        "50": "#fafafa",
+        "100": "#f4f4f5",
+        "200": "#e4e4e7",
+        "300": "#d4d4d8",
+        "400": "#a1a1aa",
+        "500": "#71717a",
+        "600": "#52525b",
+        "700": "#3f3f46",
+        "800": "#27272a",
+        "900": "#18181b"
+      },
+      "usage_notes": {
+        "exact_colors": "Always use exact Figma hex values, never approximate",
+        "bg_vs_color": "bg-* for backgrounds, text-* for text color"
+      }
+    },
+    "layout": {
+      "max_width": {
+        "max-w-7xl": "1280px",
+        "max-w-[1400px]": "1400px (custom)",
+        "usage": "Constrain content width, center with mx-auto"
+      },
+      "full_width": {
+        "w-full": "100% width",
+        "usage": "For dividers/borders that span viewport"
+      }
+    },
+    "class_merging": {
+      "problem": "Later Tailwind classes don't override earlier ones with string concatenation",
+      "solution": "Use cn() utility (clsx + tailwind-merge)",
+      "example_wrong": "'bg-white ' + className // bg-black won't override bg-white",
+      "example_correct": "cn('bg-white', className) // bg-black properly overrides"
+    }
+  },
+  "patterns": {
+    "full_width_with_constrained_content": {
+      "description": "Border/divider spans full viewport, content constrained",
+      "structure": [
+        "<div className='w-full border-b'>  <!-- Full-width divider -->",
+        "  <div className='max-w-[1400px] mx-auto'>  <!-- Constrained content -->",
+        "    Content here",
+        "  </div>",
+        "</div>"
+      ],
+      "used_in": ["Settings header", "Navigation bars", "Footers"]
+    },
+    "enterprise_spacing": {
+      "description": "24px spacing system for enterprise dashboards",
+      "values": ["py-6", "px-6", "space-y-6", "gap-6"],
+      "rationale": "More breathing room than default 16px (py-4, gap-4)"
+    }
+  },
+  "jit_mode": {
+    "enabled": true,
+    "arbitrary_values": {
+      "syntax": "[value]",
+      "examples": [
+        "max-w-[1400px] - Custom max width",
+        "bg-[#000000] - Custom hex color",
+        "text-[32px] - Custom font size"
+      ],
+      "usage_notes": "Use for exact Figma values not in default scale"
+    }
+  },
+  "responsive_design": {
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px"
+    },
+    "mobile_first": true,
+    "usage": "Base styles = mobile, md: = tablet, lg: = desktop"
+  },
+  "best_practices_learned": [
+    "Use cn() utility for all className merging",
+    "Enterprise dashboards: 24px spacing (py-6, gap-6)",
+    "Exact colors from Figma - no approximations",
+    "Full-width patterns: separate container levels",
+    "Arbitrary values for precise Figma specs",
+    "Mobile-first responsive approach"
+  ],
+  "mcp_integration": {
+    "server": "tailwindcss-mcp",
+    "capabilities": [
+      "class_suggestions",
+      "utility_lookup",
+      "color_palette",
+      "spacing_system"
+    ],
+    "usage": "Consult Tailwind MCP for class suggestions and utility lookups"
+  }
+}
