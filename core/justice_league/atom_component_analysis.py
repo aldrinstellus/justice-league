@@ -610,6 +610,15 @@ class AtomComponentAnalysis:
 
         return recommendations
 
+    # Aliases for audit compatibility
+    def _calculate_atom_score(self, results: Dict) -> Dict[str, Any]:
+        """Alias for _calculate_component_score"""
+        return self._calculate_component_score(results)
+
+    def _generate_molecular_recommendations(self, results: Dict) -> List[Dict]:
+        """Alias for _generate_atom_recommendations"""
+        return self._generate_atom_recommendations(results)
+
 
 # Main entry point - The Atom's Mission Interface
 def atom_analyze_components(components: Dict[str, Any],

@@ -11,11 +11,17 @@ Members:
 - 🌊 Aquaman (Network) - Network traffic commander
 - 🤖 Cyborg (Integrations) - External API integration master
 - 🔬 The Atom (Components) - Component library analyzer
+- 🏹 Green Arrow (QA) - Quality assurance and testing specialist
+- 🧠 Martian Manhunter (Security) - Security vulnerability detection specialist
+- 🤸 Plastic Man (Responsive) - Responsive design and mobile testing specialist
+- 🎩 Zatanna (SEO) - SEO and metadata magic specialist
+- 🪔 Litty (Ethics) - User empathy and ethical design validator
 
-"Together, we make designs perfect!"
+"Together, we make designs perfect, secure, responsive, discoverable, and ethical!"
 
-Architecture: Each hero is a specialized module (~300-500 lines) with focused responsibility.
+Architecture: Each hero is a specialized module (~300-600 lines) with focused responsibility.
 Superman coordinates all heroes for complete analysis.
+Green Arrow tests that everything works!
 """
 
 # Import all Justice League heroes
@@ -42,6 +48,11 @@ from .cyborg_integrations import (
 )
 from .atom_component_analysis import atom_analyze_components, AtomComponentAnalysis
 from .superman_coordinator import assemble_justice_league, SupermanCoordinator
+from .green_arrow_testing import green_arrow_test_league, GreenArrowTesting
+from .martian_manhunter_security import martian_manhunter_security_scan, MartianManhunterSecurity
+from .plastic_man_responsive import plastic_man_responsive_test, PlasticManResponsive
+from .zatanna_seo import zatanna_seo_analysis, ZatannaSEO
+from .litty_ethics import litty_validate_ethics, LittyEthics
 
 __all__ = [
     # Batman (Interactive Testing)
@@ -81,8 +92,28 @@ __all__ = [
     # Superman (Coordinator)
     'assemble_justice_league',
     'SupermanCoordinator',
+
+    # Green Arrow (QA Testing)
+    'green_arrow_test_league',
+    'GreenArrowTesting',
+
+    # Martian Manhunter (Security)
+    'martian_manhunter_security_scan',
+    'MartianManhunterSecurity',
+
+    # Plastic Man (Responsive Design)
+    'plastic_man_responsive_test',
+    'PlasticManResponsive',
+
+    # Zatanna (SEO & Metadata)
+    'zatanna_seo_analysis',
+    'ZatannaSEO',
+
+    # Litty (User Empathy & Ethics)
+    'litty_validate_ethics',
+    'LittyEthics',
 ]
 
-__version__ = '1.0.0'
+__version__ = '1.4.0'
 __league__ = 'Justice League of Aldo Vision'
-__heroes__ = 8
+__heroes__ = 13

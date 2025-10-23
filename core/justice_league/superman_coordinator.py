@@ -15,7 +15,7 @@ Powers:
 
 "Together, we are the Justice League! No design flaw escapes us!"
 
-Justice League Roster:
+Justice League Roster (13 Heroes):
 - 🦇 Batman (Interactive Testing)
 - 💚 Green Lantern (Visual Regression)
 - ⚡ Wonder Woman (Accessibility)
@@ -23,6 +23,11 @@ Justice League Roster:
 - 🌊 Aquaman (Network)
 - 🤖 Cyborg (Integrations)
 - 🔬 The Atom (Component Analysis)
+- 🏹 Green Arrow (QA Testing)
+- 🧠 Martian Manhunter (Security)
+- 🤸 Plastic Man (Responsive Design)
+- 🎩 Zatanna (SEO & Metadata)
+- 🪔 Litty (User Empathy & Ethics)
 - 🦸 Superman (Coordinator)
 """
 
@@ -82,6 +87,41 @@ except ImportError:
     ATOM_AVAILABLE = False
     logging.warning("The Atom not available")
 
+try:
+    from .green_arrow_testing import GreenArrowTesting
+    GREEN_ARROW_AVAILABLE = True
+except ImportError:
+    GREEN_ARROW_AVAILABLE = False
+    logging.warning("Green Arrow not available")
+
+try:
+    from .martian_manhunter_security import MartianManhunterSecurity
+    MARTIAN_MANHUNTER_AVAILABLE = True
+except ImportError:
+    MARTIAN_MANHUNTER_AVAILABLE = False
+    logging.warning("Martian Manhunter not available")
+
+try:
+    from .plastic_man_responsive import PlasticManResponsive
+    PLASTIC_MAN_AVAILABLE = True
+except ImportError:
+    PLASTIC_MAN_AVAILABLE = False
+    logging.warning("Plastic Man not available")
+
+try:
+    from .zatanna_seo import ZatannaSEO
+    ZATANNA_AVAILABLE = True
+except ImportError:
+    ZATANNA_AVAILABLE = False
+    logging.warning("Zatanna not available")
+
+try:
+    from .litty_ethics import LittyEthics
+    LITTY_AVAILABLE = True
+except ImportError:
+    LITTY_AVAILABLE = False
+    logging.warning("Litty not available")
+
 logger = logging.getLogger(__name__)
 
 
@@ -120,6 +160,11 @@ class SupermanCoordinator:
         self.aquaman = AquamanNetwork() if AQUAMAN_AVAILABLE else None
         self.cyborg = CyborgIntegrations(str(self.baseline_dir / 'integrations')) if CYBORG_AVAILABLE else None
         self.atom = AtomComponentAnalysis() if ATOM_AVAILABLE else None
+        self.green_arrow = GreenArrowTesting() if GREEN_ARROW_AVAILABLE else None
+        self.martian_manhunter = MartianManhunterSecurity(str(self.baseline_dir / 'security')) if MARTIAN_MANHUNTER_AVAILABLE else None
+        self.plastic_man = PlasticManResponsive() if PLASTIC_MAN_AVAILABLE else None
+        self.zatanna = ZatannaSEO(str(self.baseline_dir / 'seo')) if ZATANNA_AVAILABLE else None
+        self.litty = LittyEthics() if LITTY_AVAILABLE else None
 
         # Count available heroes
         self.heroes_available = sum([
@@ -129,11 +174,16 @@ class SupermanCoordinator:
             FLASH_AVAILABLE,
             AQUAMAN_AVAILABLE,
             CYBORG_AVAILABLE,
-            ATOM_AVAILABLE
+            ATOM_AVAILABLE,
+            GREEN_ARROW_AVAILABLE,
+            MARTIAN_MANHUNTER_AVAILABLE,
+            PLASTIC_MAN_AVAILABLE,
+            ZATANNA_AVAILABLE,
+            LITTY_AVAILABLE
         ])
 
         logger.info(f"🦸 SUPERMAN - Justice League Coordinator initialized")
-        logger.info(f"🦸 Heroes available: {self.heroes_available}/7")
+        logger.info(f"🦸 Heroes available: {self.heroes_available}/13")
         logger.info(f"  🦇 Batman: {'✅' if BATMAN_AVAILABLE else '❌'}")
         logger.info(f"  💚 Green Lantern: {'✅' if GREEN_LANTERN_AVAILABLE else '❌'}")
         logger.info(f"  ⚡ Wonder Woman: {'✅' if WONDER_WOMAN_AVAILABLE else '❌'}")
@@ -141,6 +191,11 @@ class SupermanCoordinator:
         logger.info(f"  🌊 Aquaman: {'✅' if AQUAMAN_AVAILABLE else '❌'}")
         logger.info(f"  🤖 Cyborg: {'✅' if CYBORG_AVAILABLE else '❌'}")
         logger.info(f"  🔬 The Atom: {'✅' if ATOM_AVAILABLE else '❌'}")
+        logger.info(f"  🏹 Green Arrow: {'✅' if GREEN_ARROW_AVAILABLE else '❌'}")
+        logger.info(f"  🧠 Martian Manhunter: {'✅' if MARTIAN_MANHUNTER_AVAILABLE else '❌'}")
+        logger.info(f"  🤸 Plastic Man: {'✅' if PLASTIC_MAN_AVAILABLE else '❌'}")
+        logger.info(f"  🎩 Zatanna: {'✅' if ZATANNA_AVAILABLE else '❌'}")
+        logger.info(f"  🪔 Litty: {'✅' if LITTY_AVAILABLE else '❌'}")
 
     def assemble_justice_league(self, mission: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -165,6 +220,10 @@ class SupermanCoordinator:
                         'test_network': bool,  # Deploy Aquaman?
                         'test_integrations': bool,  # Deploy Cyborg?
                         'test_components': bool,  # Deploy The Atom?
+                        'test_security': bool,  # Deploy Martian Manhunter?
+                        'test_responsive': bool,  # Deploy Plastic Man?
+                        'test_seo': bool,  # Deploy Zatanna?
+                        'validate_ethics': bool,  # Deploy Litty?
                     }
                 }
 
@@ -191,74 +250,81 @@ class SupermanCoordinator:
         screenshot_path = mission.get('screenshot_path', '')
 
         # Deploy Batman (Interactive Testing)
-        if options.get('test_interactive', True) and self.batman and page_snapshot:
-            logger.info("🦸 Deploying 🦇 BATMAN for interactive testing...")
-            batman_result = self.batman.test_all_interactive_elements(page_snapshot, mcp_tools)
-            results['hero_reports']['batman'] = batman_result
-            results['heroes_deployed'].append('🦇 Batman')
-            logger.info("  ✓ Batman mission complete")
+        if options.get('test_interactive', True):
+            batman_result = self._deploy_batman(mission)
+            if batman_result:
+                results['hero_reports']['batman'] = batman_result
+                results['heroes_deployed'].append('🦇 Batman')
 
         # Deploy Green Lantern (Visual Regression)
-        if options.get('test_visual', True) and self.green_lantern and screenshot_path:
-            logger.info("🦸 Deploying 💚 GREEN LANTERN for visual testing...")
-            test_name = f"test_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-
-            # Store baseline if first run
-            gl_baseline = self.green_lantern.store_baseline(screenshot_path, test_name, {
-                'url': mission.get('url'),
-                'timestamp': datetime.now().isoformat()
-            })
-
-            # Compare if baseline exists
-            gl_compare = self.green_lantern.compare_to_baseline(screenshot_path, test_name)
-
-            results['hero_reports']['green_lantern'] = {
-                'baseline': gl_baseline,
-                'comparison': gl_compare
-            }
-            results['heroes_deployed'].append('💚 Green Lantern')
-            logger.info("  ✓ Green Lantern mission complete")
+        if options.get('test_visual', True):
+            gl_result = self._deploy_green_lantern(mission)
+            if gl_result:
+                results['hero_reports']['green_lantern'] = gl_result
+                results['heroes_deployed'].append('💚 Green Lantern')
 
         # Deploy Wonder Woman (Accessibility)
-        if options.get('test_accessibility', True) and self.wonder_woman and design_data:
-            logger.info("🦸 Deploying ⚡ WONDER WOMAN for accessibility analysis...")
-            ww_result = self.wonder_woman.champion_accessibility_analysis(design_data)
-            results['hero_reports']['wonder_woman'] = ww_result
-            results['heroes_deployed'].append('⚡ Wonder Woman')
-            logger.info("  ✓ Wonder Woman mission complete")
+        if options.get('test_accessibility', True):
+            ww_result = self._deploy_wonder_woman(mission)
+            if ww_result:
+                results['hero_reports']['wonder_woman'] = ww_result
+                results['heroes_deployed'].append('⚡ Wonder Woman')
 
         # Deploy Flash (Performance)
-        if options.get('test_performance', True) and self.flash and mcp_tools:
-            logger.info("🦸 Deploying ⚡ FLASH for performance analysis...")
-            test_name = f"perf_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-            flash_result = self.flash.profile_performance(mcp_tools, test_name, mission.get('url'))
-            results['hero_reports']['flash'] = flash_result
-            results['heroes_deployed'].append('⚡ Flash')
-            logger.info("  ✓ Flash mission complete")
+        if options.get('test_performance', True):
+            flash_result = self._deploy_flash(mission)
+            if flash_result:
+                results['hero_reports']['flash'] = flash_result
+                results['heroes_deployed'].append('⚡ Flash')
 
         # Deploy Aquaman (Network)
-        if options.get('test_network', True) and self.aquaman and mcp_tools:
-            logger.info("🦸 Deploying 🌊 AQUAMAN for network analysis...")
-            aquaman_result = self.aquaman.analyze_network_traffic(mcp_tools)
-            results['hero_reports']['aquaman'] = aquaman_result
-            results['heroes_deployed'].append('🌊 Aquaman')
-            logger.info("  ✓ Aquaman mission complete")
+        if options.get('test_network', True):
+            aquaman_result = self._deploy_aquaman(mission)
+            if aquaman_result:
+                results['hero_reports']['aquaman'] = aquaman_result
+                results['heroes_deployed'].append('🌊 Aquaman')
 
         # Deploy Cyborg (Integrations)
-        if options.get('test_integrations', True) and self.cyborg:
-            logger.info("🦸 Deploying 🤖 CYBORG for integration check...")
-            cyborg_result = self.cyborg.generate_integration_report()
-            results['hero_reports']['cyborg'] = cyborg_result
-            results['heroes_deployed'].append('🤖 Cyborg')
-            logger.info("  ✓ Cyborg mission complete")
+        if options.get('test_integrations', True):
+            cyborg_result = self._deploy_cyborg(mission)
+            if cyborg_result:
+                results['hero_reports']['cyborg'] = cyborg_result
+                results['heroes_deployed'].append('🤖 Cyborg')
 
         # Deploy The Atom (Component Analysis)
-        if options.get('test_components', True) and self.atom and components:
-            logger.info("🦸 Deploying 🔬 THE ATOM for component analysis...")
-            atom_result = self.atom.analyze_component_library(components)
-            results['hero_reports']['atom'] = atom_result
-            results['heroes_deployed'].append('🔬 The Atom')
-            logger.info("  ✓ The Atom mission complete")
+        if options.get('test_components', True):
+            atom_result = self._deploy_atom(mission)
+            if atom_result:
+                results['hero_reports']['atom'] = atom_result
+                results['heroes_deployed'].append('🔬 The Atom')
+
+        # Deploy Martian Manhunter (Security)
+        if options.get('test_security', True):
+            mm_result = self._deploy_martian_manhunter(mission)
+            if mm_result:
+                results['hero_reports']['martian_manhunter'] = mm_result
+                results['heroes_deployed'].append('🧠 Martian Manhunter')
+
+        # Deploy Plastic Man (Responsive Design)
+        if options.get('test_responsive', True):
+            pm_result = self._deploy_plastic_man(mission)
+            if pm_result:
+                results['hero_reports']['plastic_man'] = pm_result
+                results['heroes_deployed'].append('🤸 Plastic Man')
+
+        # Deploy Zatanna (SEO & Metadata)
+        if options.get('test_seo', True):
+            zatanna_result = self._deploy_zatanna(mission)
+            if zatanna_result:
+                results['hero_reports']['zatanna'] = zatanna_result
+                results['heroes_deployed'].append('🎩 Zatanna')
+
+        # Deploy Litty (Ethics & User Empathy)
+        if options.get('validate_ethics', True):
+            litty_result = self._deploy_litty(mission)
+            if litty_result:
+                results['hero_reports']['litty'] = litty_result
+                results['heroes_deployed'].append('🪔 Litty')
 
         # Superman combines all results
         logger.info("🦸 Superman analyzing combined results...")
@@ -283,6 +349,306 @@ class SupermanCoordinator:
         logger.info("🦸 ========================================")
 
         return results
+
+    def _deploy_batman(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """🦇 Deploy Batman for interactive testing"""
+        if not self.batman:
+            return None
+
+        page_snapshot = mission.get('page_snapshot', '')
+        mcp_tools = mission.get('mcp_tools', {})
+
+        if not page_snapshot:
+            logger.warning("No page snapshot available for Batman")
+            return None
+
+        logger.info("🦸 Deploying 🦇 BATMAN for interactive testing...")
+        result = self.batman.test_all_interactive_elements(page_snapshot, mcp_tools)
+        logger.info("  ✓ Batman mission complete")
+        return result
+
+    def _deploy_green_lantern(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """💚 Deploy Green Lantern for visual regression testing"""
+        if not self.green_lantern:
+            return None
+
+        screenshot_path = mission.get('screenshot_path', '')
+        if not screenshot_path:
+            logger.warning("No screenshot available for Green Lantern")
+            return None
+
+        logger.info("🦸 Deploying 💚 GREEN LANTERN for visual testing...")
+        test_name = f"test_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+        # Store baseline if first run
+        gl_baseline = self.green_lantern.store_baseline(screenshot_path, test_name, {
+            'url': mission.get('url'),
+            'timestamp': datetime.now().isoformat()
+        })
+
+        # Compare if baseline exists
+        gl_compare = self.green_lantern.compare_to_baseline(screenshot_path, test_name)
+
+        result = {
+            'baseline': gl_baseline,
+            'comparison': gl_compare
+        }
+        logger.info("  ✓ Green Lantern mission complete")
+        return result
+
+    def _deploy_wonder_woman(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """⚡ Deploy Wonder Woman for accessibility analysis (Superman-Enhanced!)"""
+        if not self.wonder_woman:
+            return None
+
+        design_data = mission.get('design_data', {})
+        mcp_tools = mission.get('mcp_tools', {})
+        page_snapshot = mission.get('page_snapshot', '')
+
+        logger.info("🦸 Deploying ⚡ WONDER WOMAN for accessibility analysis...")
+        logger.info("  🦸📋 Using Superman's Enhanced WCAG 2.2 Coverage")
+
+        # Run standard Wonder Woman accessibility analysis
+        if design_data:
+            ww_result = self.wonder_woman.champion_accessibility_analysis(design_data)
+        else:
+            logger.warning("No design data available for Wonder Woman")
+            ww_result = {}
+
+        # Enhance with Superman's WCAG 2.2 tests if MCP tools available
+        if mcp_tools:
+            try:
+                from ..superman_wcag22_tests import test_wcag22_complete
+
+                # Prepare MCP tools
+                mcp_tools_dict = {
+                    'take_snapshot': mcp_tools.get('take_snapshot'),
+                    'click': mcp_tools.get('click'),
+                    'evaluate_script': mcp_tools.get('evaluate_script'),
+                    'take_screenshot': mcp_tools.get('take_screenshot')
+                }
+
+                wcag22_result = test_wcag22_complete(
+                    mcp_tools=mcp_tools_dict,
+                    url=mission.get('url', ''),
+                    page_snapshot=page_snapshot,
+                    baseline_dir=str(self.baseline_dir / 'wcag22')
+                )
+
+                # Combine results
+                result = {
+                    **ww_result,
+                    'superman_wcag22_enhancement': wcag22_result,
+                    'enhanced_by_superman': True
+                }
+
+                logger.info("  ✓ Wonder Woman mission complete (Superman-enhanced with WCAG 2.2)")
+                return result
+
+            except ImportError:
+                logger.info("  ⚠️  Superman WCAG 2.2 not available, using standard Wonder Woman")
+                logger.info("  ✓ Wonder Woman mission complete (standard)")
+                return ww_result
+        else:
+            logger.info("  ✓ Wonder Woman mission complete (standard)")
+            return ww_result
+
+    def _deploy_flash(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """⚡ Deploy Flash for performance profiling (Enhanced by Superman)"""
+        if not self.flash:
+            return None
+
+        mcp_tools = mission.get('mcp_tools', {})
+        if not mcp_tools:
+            logger.warning("No MCP tools available for Flash")
+            return None
+
+        logger.info("🦸 Deploying ⚡ FLASH for performance analysis...")
+        logger.info("  🦸⚡ Using Superman's Enhanced Performance Profiler")
+
+        test_name = f"perf_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+        # Use Superman's enhanced performance profiler if available
+        try:
+            from ..superman_performance_profiler import profile_performance_complete
+
+            # Prepare MCP tools in expected format
+            mcp_tools_dict = {
+                'start_trace': mcp_tools.get('start_trace'),
+                'stop_trace': mcp_tools.get('stop_trace'),
+                'analyze_insight': mcp_tools.get('analyze_insight')
+            }
+
+            result = profile_performance_complete(
+                mcp_tools=mcp_tools_dict,
+                test_name=test_name,
+                url=mission.get('url', ''),
+                reload_page=True,
+                store_baseline=True,
+                baseline_dir=str(self.baseline_dir / 'performance')
+            )
+            logger.info("  ✓ Flash mission complete (Superman-enhanced)")
+            return result
+
+        except ImportError:
+            # Fallback to standard Flash profiler
+            logger.info("  ⚠️  Superman profiler not available, using standard Flash")
+            result = self.flash.profile_performance(mcp_tools, test_name, mission.get('url'))
+            logger.info("  ✓ Flash mission complete (standard)")
+            return result
+
+    def _deploy_aquaman(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """🌊 Deploy Aquaman for network analysis (Enhanced by Superman)"""
+        if not self.aquaman:
+            return None
+
+        mcp_tools = mission.get('mcp_tools', {})
+        if not mcp_tools:
+            logger.warning("No MCP tools available for Aquaman")
+            return None
+
+        logger.info("🦸 Deploying 🌊 AQUAMAN for network analysis...")
+
+        # Run standard Aquaman analysis first
+        aquaman_result = self.aquaman.analyze_network_traffic(mcp_tools)
+
+        # Enhance with Superman's network timing analysis if requested
+        if mission.get('test_network_timing', False):
+            logger.info("  🦸🌊 Using Superman's Enhanced Network Timing Analysis")
+
+            test_name = f"network_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+            try:
+                from ..superman_network_analysis import analyze_network_timing_complete
+
+                # Prepare MCP tools in expected format
+                mcp_tools_dict = {
+                    'list_network_requests': mcp_tools.get('list_network_requests'),
+                    'get_network_request': mcp_tools.get('get_network_request')
+                }
+
+                # Get performance budget if specified
+                performance_budget = mission.get('performance_budget')
+
+                # Run Superman's network timing analysis
+                superman_result = analyze_network_timing_complete(
+                    mcp_tools=mcp_tools_dict,
+                    url=mission.get('url', ''),
+                    test_name=test_name,
+                    store_baseline=True,
+                    performance_budget=performance_budget
+                )
+
+                # Combine results
+                result = {
+                    **aquaman_result,
+                    'superman_network_enhancement': superman_result
+                }
+
+                logger.info("  ✓ Aquaman mission complete (Superman-enhanced)")
+                return result
+
+            except ImportError:
+                # Fallback to standard Aquaman
+                logger.info("  ⚠️  Superman network timing not available, using standard Aquaman")
+                logger.info("  ✓ Aquaman mission complete (standard)")
+                return aquaman_result
+        else:
+            logger.info("  ✓ Aquaman mission complete (standard)")
+            return aquaman_result
+
+    def _deploy_cyborg(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """🤖 Deploy Cyborg for integration checking"""
+        if not self.cyborg:
+            return None
+
+        logger.info("🦸 Deploying 🤖 CYBORG for integration check...")
+        result = self.cyborg.generate_integration_report()
+        logger.info("  ✓ Cyborg mission complete")
+        return result
+
+    def _deploy_atom(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """🔬 Deploy The Atom for component analysis"""
+        if not self.atom:
+            return None
+
+        components = mission.get('components', {})
+        if not components:
+            logger.warning("No components available for The Atom")
+            return None
+
+        logger.info("🦸 Deploying 🔬 THE ATOM for component analysis...")
+        result = self.atom.analyze_component_library(components)
+        logger.info("  ✓ The Atom mission complete")
+        return result
+
+    def _deploy_martian_manhunter(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """🧠 Deploy Martian Manhunter for security scanning"""
+        if not self.martian_manhunter:
+            return None
+
+        target_data = mission.get('security_scan_data', {})
+        if not target_data:
+            # Build basic target data from mission
+            target_data = {
+                'url': mission.get('url'),
+                'html_content': mission.get('page_snapshot', ''),
+                'headers': mission.get('headers', {}),
+                'source_code_path': mission.get('source_code_path'),
+                'package_json_path': mission.get('package_json_path')
+            }
+
+        logger.info("🦸 Deploying 🧠 MARTIAN MANHUNTER for security scan...")
+        result = self.martian_manhunter.scan_all_vulnerabilities(target_data)
+        logger.info("  ✓ Martian Manhunter mission complete")
+        return result
+
+    def _deploy_plastic_man(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """🤸 Deploy Plastic Man for responsive design testing"""
+        if not self.plastic_man:
+            return None
+
+        mcp_tools = mission.get('mcp_tools', {})
+        test_scenarios = mission.get('responsive_scenarios', None)  # Optional: specific breakpoints to test
+
+        logger.info("🦸 Deploying 🤸 PLASTIC MAN for responsive design testing...")
+        result = self.plastic_man.test_all_breakpoints(mcp_tools, test_scenarios)
+        logger.info("  ✓ Plastic Man mission complete")
+        return result
+
+    def _deploy_zatanna(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """🎩 Deploy Zatanna for SEO & metadata analysis"""
+        if not self.zatanna:
+            return None
+
+        mcp_tools = mission.get('mcp_tools', {})
+        target_url = mission.get('url')
+
+        logger.info("🦸 Deploying 🎩 ZATANNA for SEO magic...")
+        result = self.zatanna.analyze_seo_magic(mcp_tools, target_url)
+        logger.info("  ✓ Zatanna magic complete")
+        return result
+
+    def _deploy_litty(self, mission: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        🪔 Deploy Litty - The Conscience Keeper
+
+        Args:
+            mission: Mission parameters
+
+        Returns:
+            Ethics validation results
+        """
+        if not self.litty:
+            return None
+
+        mcp_tools = mission.get('mcp_tools', {})
+        target_url = mission.get('url')
+
+        logger.info("🦸 Deploying 🪔 LITTY to guilt-trip you about ethics...")
+        result = self.litty.validate_ethics(target_url, mcp_tools)
+        logger.info("  ✓ Litty's guilt trips delivered (think about your ammachi!)")
+        return result
 
     def _combine_hero_results(self, hero_reports: Dict) -> Dict[str, Any]:
         """

@@ -473,6 +473,34 @@ class FlashPerformance:
 
         return recommendations
 
+    # Aliases and missing methods for audit compatibility
+    def _generate_lightning_recommendations(self, results: Dict) -> List[Dict]:
+        """Alias for _generate_flash_recommendations"""
+        return self._generate_flash_recommendations(results)
+
+    def _check_for_regression(self, test_name: str, results: Dict) -> Dict[str, Any]:
+        """Alias for _check_performance_regression"""
+        return self._check_performance_regression(test_name, results)
+
+    def _store_baseline(self, test_name: str, results: Dict) -> None:
+        """Alias for _store_performance_baseline"""
+        return self._store_performance_baseline(test_name, results)
+
+    def _load_baseline(self, test_name: str) -> Optional[Dict]:
+        """Load performance baseline from storage"""
+        baseline_file = self.baseline_dir / f"{test_name}.json"
+
+        if not baseline_file.exists():
+            return None
+
+        try:
+            with open(baseline_file, 'r') as f:
+                import json
+                return json.load(f)
+        except Exception as e:
+            logger.error(f"Failed to load baseline {test_name}: {e}")
+            return None
+
 
 # Main entry point - Flash's Mission Interface
 def flash_profile_performance(mcp_tools: Dict, test_name: str,

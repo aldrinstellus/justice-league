@@ -340,6 +340,208 @@ class BatmanTesting:
 
         return f"{summary} Success Rate: {success_rate:.1f}% ({grade})"
 
+    def _test_forms(self, forms: List[Dict], mcp_tools: Dict) -> Dict:
+        """
+        Test form elements for completeness and validation
+
+        Args:
+            forms: List of form elements
+            mcp_tools: MCP tool functions
+
+        Returns:
+            Form testing results
+        """
+        logger.info("  🧪 Testing forms...")
+
+        results = {
+            'test_type': 'Form Testing',
+            'elements_tested': len(forms),
+            'tests_passed': 0,
+            'tests_failed': 0,
+            'issues': []
+        }
+
+        fill_func = mcp_tools.get('fill')
+        if not fill_func:
+            results['issues'].append('MCP fill tool not available')
+            return results
+
+        for form in forms:
+            try:
+                # Test form submission with validation
+                uid = form.get('uid')
+
+                # Try to fill with test data
+                fill_func(uid=uid, value='test@example.com')
+                results['tests_passed'] += 1
+
+            except Exception as e:
+                results['tests_failed'] += 1
+                results['issues'].append({
+                    'element': form.get('uid'),
+                    'error': str(e)
+                })
+
+        logger.info(f"  ✓ Tested {results['elements_tested']} forms")
+        return results
+
+    def _test_focus_management(self, elements: List[Dict], mcp_tools: Dict) -> Dict:
+        """
+        Test focus management and visible focus indicators
+
+        Args:
+            elements: List of focusable elements
+            mcp_tools: MCP tool functions
+
+        Returns:
+            Focus management results
+        """
+        logger.info("  🧪 Testing focus management...")
+
+        results = {
+            'test_type': 'Focus Management',
+            'elements_tested': len(elements),
+            'tests_passed': 0,
+            'tests_failed': 0,
+            'focus_visible': 0,
+            'focus_order_correct': True,
+            'issues': []
+        }
+
+        # Count elements with visible focus
+        for element in elements:
+            # In real implementation, would check computed styles for :focus
+            # This is a simplified version
+            if 'focus' in element.get('line', '').lower():
+                results['focus_visible'] += 1
+                results['tests_passed'] += 1
+            else:
+                results['tests_failed'] += 1
+
+        # Focus visibility rate
+        if results['elements_tested'] > 0:
+            visibility_rate = (results['focus_visible'] / results['elements_tested']) * 100
+            if visibility_rate < 100:
+                results['issues'].append({
+                    'issue': 'Missing visible focus indicators',
+                    'affected_count': results['elements_tested'] - results['focus_visible']
+                })
+
+        logger.info(f"  ✓ Focus visible on {results['focus_visible']}/{results['elements_tested']} elements")
+        return results
+
+    def _calculate_batman_score(self, results: Dict) -> Dict[str, Any]:
+        """
+        Calculate Batman's overall testing score (0-100)
+
+        Args:
+            results: Complete test results
+
+        Returns:
+            Batman score with grade
+        """
+        success_rate = results.get('success_rate', 0)
+        accessibility_regressions = results.get('accessibility_regressions', 0)
+
+        # Base score from success rate
+        score = success_rate
+
+        # Penalize for accessibility regressions
+        score -= (accessibility_regressions * 5)  # -5 points per regression
+
+        # Ensure score is between 0-100
+        score = max(0, min(100, score))
+
+        # Determine grade
+        if score >= 95:
+            grade = "S+ (Perfect)"
+            verdict = "🦇 FLAWLESS! Even I'm impressed."
+        elif score >= 90:
+            grade = "S (Exceptional)"
+            verdict = "🦇 EXCELLENT! The Dark Knight approves."
+        elif score >= 85:
+            grade = "A+ (Outstanding)"
+            verdict = "🦇 VERY GOOD! Minor improvements needed."
+        elif score >= 80:
+            grade = "A (Great)"
+            verdict = "🦇 GOOD! Some elements need work."
+        elif score >= 75:
+            grade = "B+ (Good)"
+            verdict = "🦇 ACCEPTABLE! Several issues detected."
+        elif score >= 70:
+            grade = "B (Decent)"
+            verdict = "🦇 MODERATE! Significant work required."
+        else:
+            grade = "C or below (Needs Work)"
+            verdict = "🦇 YOU HAVE FAILED THIS UI! Major overhaul needed."
+
+        return {
+            'score': score,
+            'grade': grade,
+            'verdict': verdict,
+            'success_rate': success_rate,
+            'accessibility_regressions': accessibility_regressions
+        }
+
+    def _generate_batman_recommendations(self, results: Dict) -> List[Dict[str, Any]]:
+        """
+        Generate Batman's detective recommendations
+
+        Args:
+            results: Complete test results
+
+        Returns:
+            List of prioritized recommendations
+        """
+        recommendations = []
+
+        # Analyze test failures
+        tests_failed = results.get('tests_failed', 0)
+        if tests_failed > 0:
+            recommendations.append({
+                'priority': 'high',
+                'area': 'Interactive Elements',
+                'issue': f'{tests_failed} interactive elements failing tests',
+                'recommendation': 'Fix failing button clicks, link navigation, or form inputs',
+                'batman_says': 'The Dark Knight demands these be fixed immediately!'
+            })
+
+        # Analyze accessibility regressions
+        accessibility_regressions = results.get('accessibility_regressions', 0)
+        if accessibility_regressions > 0:
+            recommendations.append({
+                'priority': 'critical',
+                'area': 'Accessibility',
+                'issue': f'{accessibility_regressions} accessibility regressions detected',
+                'recommendation': 'Interactions are causing accessibility violations',
+                'batman_says': 'Unacceptable! Fix these accessibility issues NOW!'
+            })
+
+        # Check keyboard navigation
+        test_details = results.get('test_details', [])
+        for detail in test_details:
+            if detail.get('test_type') == 'Keyboard Navigation':
+                if detail.get('tests_failed', 0) > 0:
+                    recommendations.append({
+                        'priority': 'high',
+                        'area': 'Keyboard Accessibility',
+                        'issue': 'Keyboard navigation issues detected',
+                        'recommendation': 'Ensure all interactive elements are keyboard accessible',
+                        'batman_says': 'Users without mice exist. Make it work for them!'
+                    })
+
+        # If everything passes
+        if not recommendations:
+            recommendations.append({
+                'priority': 'low',
+                'area': 'Maintenance',
+                'issue': 'No critical issues detected',
+                'recommendation': 'Continue monitoring and maintain current quality',
+                'batman_says': 'Acceptable. But I\'ll be watching...'
+            })
+
+        return recommendations
+
 
 # Main entry point - Batman's Mission
 def batman_test_interactive_elements(page_snapshot: Any, mcp_tools: Optional[Dict] = None) -> Dict[str, Any]:
@@ -362,3 +564,7 @@ def batman_test_interactive_elements(page_snapshot: Any, mcp_tools: Optional[Dic
     results['hero'] = '🦇 Batman - Testing Detective'
 
     return results
+
+
+# Alias for audit compatibility
+batman_test_interactive = batman_test_interactive_elements

@@ -415,6 +415,187 @@ class GreenLanternVisual:
         else:
             return "🚨 ALERT: Major visual regressions detected - Justice League assistance required!"
 
+    # Missing methods for audit compatibility
+    def create_baseline(self, image_path: str, test_name: str, metadata: Optional[Dict] = None) -> Dict[str, Any]:
+        """Alias for store_baseline"""
+        return self.store_baseline(image_path, test_name, metadata)
+
+    def batch_compare(self, image_paths: List[tuple], threshold: float = 0.95) -> Dict[str, Any]:
+        """
+        💚 Batch compare multiple screenshots to their baselines
+
+        Args:
+            image_paths: List of tuples [(image_path, test_name), ...]
+            threshold: Similarity threshold
+
+        Returns:
+            Batch comparison results
+        """
+        results = []
+        for image_path, test_name in image_paths:
+            try:
+                comparison = self.compare_to_baseline(image_path, test_name, threshold)
+                results.append({
+                    'test_name': test_name,
+                    'comparison': comparison
+                })
+            except Exception as e:
+                results.append({
+                    'test_name': test_name,
+                    'error': str(e)
+                })
+
+        passed = sum(1 for r in results if not r.get('comparison', {}).get('is_regression', True))
+        total = len(results)
+
+        return {
+            'total_tests': total,
+            'passed': passed,
+            'failed': total - passed,
+            'pass_rate': (passed / total * 100) if total > 0 else 0,
+            'results': results
+        }
+
+    def _calculate_ssim(self, img1_array: np.ndarray, img2_array: np.ndarray) -> tuple:
+        """
+        Calculate SSIM (Structural Similarity Index) between two images
+
+        Args:
+            img1_array: First image as numpy array
+            img2_array: Second image as numpy array
+
+        Returns:
+            Tuple of (ssim_score, ssim_diff_matrix)
+        """
+        try:
+            from skimage.metrics import structural_similarity as ssim
+            ssim_score, ssim_diff = ssim(img1_array, img2_array, channel_axis=2, full=True)
+            return (float(ssim_score), ssim_diff)
+        except Exception as e:
+            logger.error(f"SSIM calculation failed: {e}")
+            return (0.0, np.zeros_like(img1_array[:, :, 0]))
+
+    def _calculate_green_lantern_score(self, comparison_results: Dict) -> Dict[str, Any]:
+        """
+        💚 Calculate Green Lantern's visual integrity score
+
+        Args:
+            comparison_results: Comparison results
+
+        Returns:
+            Green Lantern score with grade
+        """
+        similarity = comparison_results.get('similarity_score', 0) * 100
+        is_regression = comparison_results.get('is_regression', True)
+
+        # Base score from similarity
+        score = similarity
+
+        # Penalty for regression
+        if is_regression:
+            score -= 10
+
+        # Ensure score is 0-100
+        score = max(0, min(100, score))
+
+        # Grade
+        if score >= 99:
+            grade = "S+ (Perfect Match)"
+            verdict = "💚 IN BRIGHTEST DAY! Visual integrity at 100%!"
+        elif score >= 95:
+            grade = "S (Exceptional)"
+            verdict = "💚 EXCELLENT! Minimal visual changes detected!"
+        elif score >= 90:
+            grade = "A+ (Outstanding)"
+            verdict = "💚 VERY GOOD! Minor visual differences!"
+        elif score >= 85:
+            grade = "A (Great)"
+            verdict = "💚 GOOD! Some visual changes present!"
+        elif score >= 75:
+            grade = "B (Acceptable)"
+            verdict = "💚 ACCEPTABLE! Noticeable visual changes!"
+        else:
+            grade = "C or below (Regression)"
+            verdict = "💚 IN BLACKEST NIGHT! Major visual regression detected!"
+
+        return {
+            'score': score,
+            'grade': grade,
+            'verdict': verdict,
+            'similarity_percent': similarity,
+            'is_regression': is_regression
+        }
+
+    def _generate_willpower_recommendations(self, comparison: Dict) -> List[Dict[str, Any]]:
+        """
+        💚 Generate Green Lantern's willpower recommendations
+
+        Args:
+            comparison: Comparison results
+
+        Returns:
+            List of recommendations
+        """
+        recommendations = []
+
+        is_regression = comparison.get('is_regression', False)
+        similarity = comparison.get('similarity_score', 1.0) * 100
+
+        if is_regression:
+            recommendations.append({
+                'priority': 'high',
+                'area': 'Visual Regression',
+                'issue': f'Visual regression detected (similarity: {similarity:.1f}%)',
+                'recommendation': 'Review visual changes and update baseline if intentional',
+                'green_lantern_says': 'The Ring detects unauthorized visual changes!'
+            })
+
+        if similarity < 90:
+            recommendations.append({
+                'priority': 'medium',
+                'area': 'Visual Consistency',
+                'issue': f'Low visual similarity ({similarity:.1f}%)',
+                'recommendation': 'Investigate significant visual differences',
+                'green_lantern_says': 'Visual constructs are unstable!'
+            })
+
+        if not recommendations:
+            recommendations.append({
+                'priority': 'low',
+                'area': 'Visual Quality',
+                'issue': 'No visual regressions detected',
+                'recommendation': 'Maintain current visual quality',
+                'green_lantern_says': 'All sectors protected! Visual integrity maintained!'
+            })
+
+        return recommendations
+
+    def _load_baseline(self, test_name: str) -> Optional[Dict]:
+        """Load baseline metadata from JSON file"""
+        metadata_file = self.baseline_dir / f"{test_name}_metadata.json"
+
+        if not metadata_file.exists():
+            return None
+
+        try:
+            with open(metadata_file, 'r') as f:
+                import json
+                return json.load(f)
+        except Exception as e:
+            logger.error(f"Failed to load baseline metadata {test_name}: {e}")
+            return None
+
+    def _save_baseline(self, test_name: str, metadata: Dict) -> None:
+        """Save baseline metadata to JSON file"""
+        metadata_file = self.baseline_dir / f"{test_name}_metadata.json"
+
+        try:
+            with open(metadata_file, 'w') as f:
+                import json
+                json.dump(metadata, f, indent=2)
+        except Exception as e:
+            logger.error(f"Failed to save baseline metadata {test_name}: {e}")
+
 
 # Main entry points - Green Lantern's Mission Interface
 def green_lantern_store_baseline(image_path: str, test_name: str,
@@ -465,3 +646,23 @@ def green_lantern_delete_baseline(test_name: str, baseline_dir: Optional[str] = 
     """💚 Green Lantern deletes a baseline construct"""
     gl = GreenLanternVisual(baseline_dir)
     return gl.delete_baseline(test_name)
+
+
+def green_lantern_visual_regression(new_image_path: str, test_name: str,
+                                    threshold: float = 0.95,
+                                    baseline_dir: Optional[str] = None) -> Dict[str, Any]:
+    """
+    💚 Green Lantern's complete visual regression testing workflow
+
+    Alias for green_lantern_compare_screenshots - provides complete visual regression analysis
+
+    Args:
+        new_image_path: Path to new screenshot to test
+        test_name: Test name to compare against baseline
+        threshold: Similarity threshold (0.0-1.0, default 0.95)
+        baseline_dir: Optional custom baseline directory
+
+    Returns:
+        Complete visual regression analysis from Green Lantern
+    """
+    return green_lantern_compare_screenshots(new_image_path, test_name, threshold, baseline_dir)

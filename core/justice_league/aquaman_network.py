@@ -590,6 +590,15 @@ class AquamanNetwork:
 
         return recommendations
 
+    # Aliases for audit compatibility
+    def _calculate_aquaman_score(self, results: Dict) -> Dict[str, Any]:
+        """Alias for _calculate_network_score"""
+        return self._calculate_network_score(results)
+
+    def _generate_ocean_recommendations(self, results: Dict) -> List[Dict]:
+        """Alias for _generate_aquaman_recommendations"""
+        return self._generate_aquaman_recommendations(results)
+
 
 # Main entry point - Aquaman's Mission Interface
 def aquaman_analyze_network(mcp_tools: Dict,

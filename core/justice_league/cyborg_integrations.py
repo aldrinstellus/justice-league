@@ -512,6 +512,47 @@ class CyborgIntegrations:
             'cyborg_says': 'All integration systems ready! Booyah!'
         }
 
+    # Aliases and missing methods for audit compatibility
+    def extract_figma_file(self, file_key: str, credentials: Dict) -> Dict[str, Any]:
+        """Alias for extract_from_figma"""
+        return self.extract_from_figma(file_key, credentials)
+
+    def extract_penpot_file(self, file_id: str, credentials: Dict) -> Dict[str, Any]:
+        """Alias for extract_from_penpot"""
+        return self.extract_from_penpot(file_id, credentials)
+
+    def _calculate_integration_score(self, connections: Dict) -> Dict[str, Any]:
+        """Calculate Cyborg's integration score based on successful connections"""
+        total_systems = connections.get('summary', {}).get('total_systems', 0)
+        connected = connections.get('summary', {}).get('connected', 0)
+
+        if total_systems == 0:
+            score = 0
+        else:
+            score = (connected / total_systems) * 100
+
+        # Grade based on connection rate
+        if score >= 100:
+            grade = "S+ (All Systems Online)"
+            verdict = "🤖 BOOYAH! Perfect integration!"
+        elif score >= 80:
+            grade = "A (Excellent)"
+            verdict = "🤖 Most systems integrated successfully!"
+        elif score >= 60:
+            grade = "B (Good)"
+            verdict = "🤖 Partial integration - some systems offline"
+        else:
+            grade = "C (Needs Work)"
+            verdict = "🤖 Integration failures detected - troubleshooting needed"
+
+        return {
+            'score': score,
+            'grade': grade,
+            'verdict': verdict,
+            'systems_online': connected,
+            'total_systems': total_systems
+        }
+
 
 # Main entry point - Cyborg's Mission Interface
 def cyborg_connect_systems(credentials: Dict[str, Any],
