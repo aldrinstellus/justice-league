@@ -1,13 +1,13 @@
 # 🦸 Justice League - Autonomous AI Agent System
 
-> **Version 1.5.0** | Production-Ready | 13 Specialized Heroes + Artemis CodeSmith | Superman-Coordinated
+> **Version 1.6.0** | Production-Ready | 14 Specialized Heroes | Bidirectional Design↔Code | Superman-Coordinated
 
-The Justice League is a sophisticated autonomous AI agent system for comprehensive website and design analysis. Deploy 13 specialized heroes coordinated by Superman to validate accessibility, performance, security, design systems, ethical UX patterns, **and now generate production-ready code from Figma!** ⭐
+The Justice League is a sophisticated autonomous AI agent system for comprehensive website and design analysis. Deploy 14 specialized heroes coordinated by Superman to validate accessibility, performance, security, design systems, ethical UX patterns, **and bidirectionally convert between Figma designs and React code!** ⭐
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Test Coverage](https://img.shields.io/badge/tests-100%25%20passing-brightgreen.svg)](./test_production_ready.py)
-[![Heroes](https://img.shields.io/badge/heroes-13%2F13-blue.svg)](#-justice-league-roster)
+[![Heroes](https://img.shields.io/badge/heroes-14%2F14-blue.svg)](#-justice-league-roster)
 
 ---
 
@@ -154,7 +154,7 @@ print(f"Grade: {results['justice_league_score']['grade']}")
 
 ### Design & Component Heroes
 
-#### 🎨 Artemis CodeSmith (Figma-to-Code Generator) ⭐ NEW!
+#### 🎨 Artemis CodeSmith (Figma-to-Code Generator)
 **Specialization**: Figma → shadcn/ui code generation, React/TypeScript output
 **Lines of Code**: 600+ (CodeSmith module)
 **Status**: ✅ Production-ready (v1.5.0)
@@ -164,6 +164,18 @@ print(f"Grade: {results['justice_league_score']['grade']}")
 - **Generates**: Component + Tests + Storybook stories
 - **Install commands**: Automatic shadcn CLI generation
 - **Artemis Score**: 0-100 quality rating
+- **Test Coverage**: 7/7 tests passing ✅
+
+#### 🔨 Hephaestus (Code-to-Design Forger) ⭐ NEW!
+**Specialization**: React/TypeScript → Figma design conversion
+**Lines of Code**: 700+ (Code-to-Design module)
+**Status**: ✅ Production-ready (v1.6.0)
+**Features**:
+- **React/JSX/TSX to Figma node conversion**
+- **Tailwind CSS to Figma style mapping**
+- **shadcn/ui component detection** (444 components)
+- **Bidirectional workflow** with Artemis CodeSmith
+- **Hephaestus Score**: 0-100 design quality rating
 - **Test Coverage**: 7/7 tests passing ✅
 
 #### 🔬 The Atom (Component Analysis)
@@ -226,15 +238,16 @@ Full integration with Chrome DevTools MCP for:
 
 ## 📊 Statistics
 
-- **Total Heroes**: 13 + Artemis CodeSmith (NEW!)
-- **Total Lines of Code**: 340,600+
+- **Total Heroes**: 14 (Bidirectional Design↔Code!)
+- **Total Lines of Code**: 341,300+
 - **Core Superman Logic**: 868 lines
-- **Artemis CodeSmith**: 600+ lines
-- **Test Files**: 11 comprehensive suites
+- **Artemis CodeSmith**: 600+ lines (Figma→Code)
+- **Hephaestus**: 700+ lines (Code→Figma) ⭐ NEW!
+- **Test Files**: 12 comprehensive suites
 - **Test Pass Rate**: 100% ✅ (All tests passing!)
 - **Critical Features Complete**: 6/6 (100%) ✨
-- **Important Features**: 1/5 (20%) - **Figma-to-Code COMPLETE!**
-- **Overall Progress**: 33% (6/18 planned features)
+- **Important Features**: 2/5 (40%) - **Bidirectional Workflow COMPLETE!**
+- **Overall Progress**: 38% (7/18 planned features)
 
 ---
 
@@ -263,7 +276,7 @@ Full integration with Chrome DevTools MCP for:
 
 ## 🎓 Use Cases
 
-### 1. Figma Frame to Production Code ⭐ NEW!
+### 1. Figma Frame to Production Code
 ```python
 from core.justice_league import ArtemisCodeSmith
 
@@ -286,39 +299,59 @@ result = codesmith.generate_component_code(
 **Deploys**: Artemis CodeSmith
 **Output**: Production-ready React/TypeScript code + tests + Storybook
 
-### 2. Website Accessibility Audit
+### 2. React Component to Figma Design ⭐ NEW!
+```python
+from core.justice_league import HephaestusCodeToDesign
+
+hephaestus = HephaestusCodeToDesign()
+result = hephaestus.convert_to_figma(
+    component_path="./components/LoginForm.tsx",
+    options={'figma_file_id': 'abc123', 'create_frame': True}
+)
+
+# Output:
+# 🔨 Hephaestus forging design from code...
+# ✅ Parsed component: LoginForm
+# 🎨 Generated 6 Figma nodes
+# Hephaestus Score: 85.0/100
+# Figma URL: https://www.figma.com/file/abc123/LoginForm
+```
+**Deploys**: Hephaestus Code-to-Design Forger
+**Output**: Figma design with proper layout, styles, and component structure
+
+### 3. Website Accessibility Audit
 ```bash
 /superman check accessibility of https://example.com
 ```
 **Deploys**: Wonder Woman, Batman, Zatanna
 **Output**: WCAG 2.1 + 2.2 compliance report with actionable recommendations
 
-### 3. Design System Validation
+### 4. Design System Validation
 ```bash
 /superman validate my Figma design system for shadcn/ui compliance
 ```
 **Deploys**: Artemis, Zatanna, Wonder Woman
 **Output**: Coverage report with CLI commands for missing components
 
-### 4. Performance Optimization
+### 5. Performance Optimization
 ```bash
 /superman improve performance of https://example.com
 ```
 **Deploys**: Flash, Aquaman, Batman
 **Output**: Core Web Vitals analysis with optimization recommendations
 
-### 5. Security Audit
+### 6. Security Audit
 ```bash
 /superman scan https://myapp.com for vulnerabilities
 ```
 **Deploys**: Martian Manhunter, Cyborg, Aquaman
 **Output**: OWASP Top 10 scan with security recommendations
 
-### 6. Complete Quality Audit
+### 7. Complete Quality Audit
 ```bash
 /superman run full quality audit on https://example.com
 ```
-**Deploys**: All 13 heroes
+**Deploys**: All 14 heroes
 **Output**: Comprehensive Justice League score (0-100) with prioritized action plan
 
 ---
@@ -333,8 +366,11 @@ python test_superman_performance.py    # Flash enhancement (4 tests)
 python test_superman_wcag22.py        # Wonder Woman enhancement (6 tests)
 python test_superman_network.py       # Aquaman enhancement (9 tests)
 
-# Test Artemis CodeSmith (NEW!)
-python test_artemis_codesmith.py      # Figma-to-Code generation (7 tests) ⭐
+# Test Artemis CodeSmith
+python test_artemis_codesmith.py      # Figma-to-Code generation (7 tests)
+
+# Test Hephaestus Code-to-Design (NEW!)
+python test_hephaestus_code_to_design.py  # Code-to-Figma conversion (7 tests) ⭐
 
 # Test Justice League coordination
 python test_justice_league.py         # Full team integration
@@ -347,7 +383,9 @@ python test_production_ready.py       # Production validation
 ```
 
 **Expected Output**: All tests passing ✅
-**New Tests**: Artemis CodeSmith - 7/7 passing!
+**New Tests**:
+- Artemis CodeSmith - 7/7 passing!
+- Hephaestus Code-to-Design - 7/7 passing! ⭐
 
 ---
 
@@ -361,8 +399,9 @@ python test_production_ready.py       # Production validation
 - ✅ Network Timing Analysis
 - ✅ **Figma-to-Code Generation** ⭐ NEW!
 
-### Phase 2: Important Features (In Progress - 20% Complete)
+### Phase 2: Important Features (In Progress - 40% Complete)
 - ✅ **Figma Frame to Code** - COMPLETE! (Artemis CodeSmith)
+- ✅ **Code to Figma Design** - COMPLETE! (Hephaestus) ⭐ NEW!
 - ⏳ Report Generation System (HTML/PDF)
 - ⏳ Auto-Fix Suggestions with AI
 - ⏳ Component Library Validator
@@ -439,7 +478,8 @@ If you find the Justice League useful, please consider starring the repository!
 
 ---
 
-**Version**: 1.5.0 ⭐
-**Status**: Production-Ready + Figma-to-Code
-**New Feature**: Artemis CodeSmith - Figma → React/TypeScript
+**Version**: 1.6.0 ⭐
+**Status**: Production-Ready + Bidirectional Design↔Code
+**New Feature**: Hephaestus - React/TypeScript → Figma Design
+**Bidirectional Workflow**: Artemis CodeSmith (Figma→Code) + Hephaestus (Code→Figma)
 **Last Updated**: October 23, 2025

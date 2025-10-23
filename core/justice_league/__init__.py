@@ -54,6 +54,7 @@ from .plastic_man_responsive import plastic_man_responsive_test, PlasticManRespo
 from .zatanna_seo import zatanna_seo_analysis, ZatannaSEO
 from .litty_ethics import litty_validate_ethics, LittyEthics
 from .artemis_codesmith import ArtemisCodeSmith
+from .hephaestus_code_to_design import HephaestusCodeToDesign
 
 __all__ = [
     # Batman (Interactive Testing)
@@ -116,8 +117,11 @@ __all__ = [
 
     # Artemis CodeSmith (Figma-to-Code Generator)
     'ArtemisCodeSmith',
+
+    # Hephaestus (Code-to-Design Forger)
+    'HephaestusCodeToDesign',
 ]
 
-__version__ = '1.5.0'
+__version__ = '1.6.0'
 __league__ = 'Justice League of Aldo Vision'
-__heroes__ = 13
+__heroes__ = 14
