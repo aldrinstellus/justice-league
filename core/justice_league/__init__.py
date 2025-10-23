@@ -53,6 +53,7 @@ from .martian_manhunter_security import martian_manhunter_security_scan, Martian
 from .plastic_man_responsive import plastic_man_responsive_test, PlasticManResponsive
 from .zatanna_seo import zatanna_seo_analysis, ZatannaSEO
 from .litty_ethics import litty_validate_ethics, LittyEthics
+from .artemis_codesmith import ArtemisCodeSmith
 
 __all__ = [
     # Batman (Interactive Testing)
@@ -112,8 +113,11 @@ __all__ = [
     # Litty (User Empathy & Ethics)
     'litty_validate_ethics',
     'LittyEthics',
+
+    # Artemis CodeSmith (Figma-to-Code Generator)
+    'ArtemisCodeSmith',
 ]
 
-__version__ = '1.4.0'
+__version__ = '1.5.0'
 __league__ = 'Justice League of Aldo Vision'
 __heroes__ = 13

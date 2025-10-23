@@ -1,8 +1,8 @@
 # 🦸 Justice League - Autonomous AI Agent System
 
-> **Version 1.4.0** | Production-Ready | 13 Specialized Heroes | Superman-Coordinated
+> **Version 1.5.0** | Production-Ready | 13 Specialized Heroes + Artemis CodeSmith | Superman-Coordinated
 
-The Justice League is a sophisticated autonomous AI agent system for comprehensive website and design analysis. Deploy 13 specialized heroes coordinated by Superman to validate accessibility, performance, security, design systems, and ethical UX patterns.
+The Justice League is a sophisticated autonomous AI agent system for comprehensive website and design analysis. Deploy 13 specialized heroes coordinated by Superman to validate accessibility, performance, security, design systems, ethical UX patterns, **and now generate production-ready code from Figma!** ⭐
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
@@ -154,11 +154,17 @@ print(f"Grade: {results['justice_league_score']['grade']}")
 
 ### Design & Component Heroes
 
-#### 🎨 Artemis (Design Systems)
-**Specialization**: shadcn/ui validation, Figma integration, component auditing
-**Lines of Code**: 20,349 (+ equipped: 16,982 + autonomous: 21,997)
-**Status**: ✅ Production-ready
-**Features**: 444 component registry, CLI generation, design token validation
+#### 🎨 Artemis CodeSmith (Figma-to-Code Generator) ⭐ NEW!
+**Specialization**: Figma → shadcn/ui code generation, React/TypeScript output
+**Lines of Code**: 600+ (CodeSmith module)
+**Status**: ✅ Production-ready (v1.5.0)
+**Features**:
+- **Figma frame to React/TypeScript code**
+- **shadcn/ui component mapping** (444 components)
+- **Generates**: Component + Tests + Storybook stories
+- **Install commands**: Automatic shadcn CLI generation
+- **Artemis Score**: 0-100 quality rating
+- **Test Coverage**: 7/7 tests passing ✅
 
 #### 🔬 The Atom (Component Analysis)
 **Specialization**: Component library analysis, variant enumeration
@@ -220,13 +226,15 @@ Full integration with Chrome DevTools MCP for:
 
 ## 📊 Statistics
 
-- **Total Heroes**: 13
-- **Total Lines of Code**: 340,000+
+- **Total Heroes**: 13 + Artemis CodeSmith (NEW!)
+- **Total Lines of Code**: 340,600+
 - **Core Superman Logic**: 868 lines
-- **Test Files**: 10+ comprehensive suites
-- **Test Pass Rate**: 100% ✅
-- **Critical Features Complete**: 5/5 (100%)
-- **Overall Progress**: 29% (5/17 planned features)
+- **Artemis CodeSmith**: 600+ lines
+- **Test Files**: 11 comprehensive suites
+- **Test Pass Rate**: 100% ✅ (All tests passing!)
+- **Critical Features Complete**: 6/6 (100%) ✨
+- **Important Features**: 1/5 (20%) - **Figma-to-Code COMPLETE!**
+- **Overall Progress**: 33% (6/18 planned features)
 
 ---
 
@@ -255,35 +263,58 @@ Full integration with Chrome DevTools MCP for:
 
 ## 🎓 Use Cases
 
-### 1. Website Accessibility Audit
+### 1. Figma Frame to Production Code ⭐ NEW!
+```python
+from core.justice_league import ArtemisCodeSmith
+
+codesmith = ArtemisCodeSmith()
+result = codesmith.generate_component_code(
+    figma_url="https://www.figma.com/file/abc123/MyDesign?node-id=1-2",
+    component_name="LoginForm",
+    framework="next",
+    language="typescript",
+    options={'include_tests': True, 'include_stories': True}
+)
+
+# Output:
+# ✅ Generated 3 files
+# - components/LoginForm.tsx
+# - components/LoginForm.test.tsx
+# - components/LoginForm.stories.tsx
+# Artemis Score: 95.5/100
+```
+**Deploys**: Artemis CodeSmith
+**Output**: Production-ready React/TypeScript code + tests + Storybook
+
+### 2. Website Accessibility Audit
 ```bash
 /superman check accessibility of https://example.com
 ```
 **Deploys**: Wonder Woman, Batman, Zatanna
 **Output**: WCAG 2.1 + 2.2 compliance report with actionable recommendations
 
-### 2. Design System Validation
+### 3. Design System Validation
 ```bash
 /superman validate my Figma design system for shadcn/ui compliance
 ```
 **Deploys**: Artemis, Zatanna, Wonder Woman
 **Output**: Coverage report with CLI commands for missing components
 
-### 3. Performance Optimization
+### 4. Performance Optimization
 ```bash
 /superman improve performance of https://example.com
 ```
 **Deploys**: Flash, Aquaman, Batman
 **Output**: Core Web Vitals analysis with optimization recommendations
 
-### 4. Security Audit
+### 5. Security Audit
 ```bash
 /superman scan https://myapp.com for vulnerabilities
 ```
 **Deploys**: Martian Manhunter, Cyborg, Aquaman
 **Output**: OWASP Top 10 scan with security recommendations
 
-### 5. Complete Quality Audit
+### 6. Complete Quality Audit
 ```bash
 /superman run full quality audit on https://example.com
 ```
@@ -302,6 +333,9 @@ python test_superman_performance.py    # Flash enhancement (4 tests)
 python test_superman_wcag22.py        # Wonder Woman enhancement (6 tests)
 python test_superman_network.py       # Aquaman enhancement (9 tests)
 
+# Test Artemis CodeSmith (NEW!)
+python test_artemis_codesmith.py      # Figma-to-Code generation (7 tests) ⭐
+
 # Test Justice League coordination
 python test_justice_league.py         # Full team integration
 
@@ -313,6 +347,7 @@ python test_production_ready.py       # Production validation
 ```
 
 **Expected Output**: All tests passing ✅
+**New Tests**: Artemis CodeSmith - 7/7 passing!
 
 ---
 
@@ -324,9 +359,10 @@ python test_production_ready.py       # Production validation
 - ✅ Performance Profiling Integration
 - ✅ WCAG 2.2 Complete Coverage
 - ✅ Network Timing Analysis
+- ✅ **Figma-to-Code Generation** ⭐ NEW!
 
-### Phase 2: Important Features (Next)
-- ⏳ Figma API Integration
+### Phase 2: Important Features (In Progress - 20% Complete)
+- ✅ **Figma Frame to Code** - COMPLETE! (Artemis CodeSmith)
 - ⏳ Report Generation System (HTML/PDF)
 - ⏳ Auto-Fix Suggestions with AI
 - ⏳ Component Library Validator
@@ -403,6 +439,7 @@ If you find the Justice League useful, please consider starring the repository!
 
 ---
 
-**Version**: 1.4.0
-**Status**: Production-Ready
-**Last Updated**: October 2025
+**Version**: 1.5.0 ⭐
+**Status**: Production-Ready + Figma-to-Code
+**New Feature**: Artemis CodeSmith - Figma → React/TypeScript
+**Last Updated**: October 23, 2025
