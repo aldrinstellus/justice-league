@@ -86,6 +86,10 @@ class OracleMeta:
         self.knowledge_base_dir = Path(knowledge_base_dir) if knowledge_base_dir else Path('/tmp/aldo-vision-justice-league/oracle')
         self.knowledge_base_dir.mkdir(parents=True, exist_ok=True)
 
+        # Hero identity for narrator integration
+        self.hero_name = "Oracle"
+        self.hero_emoji = "🔮"
+
         # Mission Control Narrator (v2.0)
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
@@ -103,6 +107,15 @@ class OracleMeta:
 
         # Initialize databases
         self._init_databases()
+
+        # Self-Learning Extension (v1.9.3)
+        try:
+            from .oracle_self_learning import OracleSelfLearning
+            self.learning = OracleSelfLearning(self)
+            logger.info("🔮 ORACLE - Self-Learning: Enabled")
+        except ImportError as e:
+            self.learning = None
+            logger.warning(f"🔮 ORACLE - Self-Learning: Disabled ({e})")
 
         # Current agent versions
         self.agent_versions = self._load_agent_versions()
@@ -392,6 +405,22 @@ class OracleMeta:
     # NARRATIVE INTERFACE (v2.0)
     # ===========================================
 
+    def say(self, message: str, style: str = "friendly", technical_info: Optional[str] = None):
+        """
+        Oracle dialogue - Analytical, strategic thinker
+
+        Personality traits:
+        - Mentor and guide for all heroes
+        - Strategic pattern recognition
+        - Knowledge-focused language
+        - Analytical but approachable
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                message, style, technical_info
+            )
+
     def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = None):
         """
         Convenience method for Oracle's sequential thinking display.
@@ -406,6 +435,73 @@ class OracleMeta:
         """
         if self.narrator:
             self.narrator.hero_thinks("🔮 Oracle", thought, step, category)
+
+    def contribute_to_strategy(
+        self,
+        topic: str,
+        context: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        Oracle's contribution to team strategy session
+
+        Provides pattern-based recommendations from knowledge base
+
+        Args:
+            topic: Strategy session topic
+            context: Optional context data
+
+        Returns:
+            Dictionary with perspective, reasoning, and recommendation
+        """
+        # Load patterns from knowledge base
+        try:
+            with open(self.project_patterns_db, 'r') as f:
+                patterns_data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            patterns_data = {"methodologies": {}}
+
+        reasoning = []
+        perspective = ""
+        recommendation = None
+        key_insight = None
+
+        # Check for methodology recommendations
+        if "methodology" in topic.lower() or "conversion" in topic.lower():
+            reasoning.append("Scanning knowledge base for similar projects")
+
+            # Check decision matrix
+            methodologies = patterns_data.get('methodologies', {})
+
+            if methodologies:
+                # Count successful methodologies
+                method_names = list(methodologies.keys())
+                reasoning.append(f"Found {len(method_names)} documented methodologies in knowledge base")
+
+                # Check for Image-to-HTML methodology
+                if 'image-to-html-sequential-analysis' in methodologies:
+                    image_to_html = methodologies['image-to-html-sequential-analysis']
+                    accuracy = image_to_html.get('accuracy_range', 'N/A')
+                    reasoning.append(f"Image-to-HTML methodology: {accuracy} accuracy on complex layouts")
+                    recommendation = "Use Image-to-HTML methodology for complex dashboards"
+                    key_insight = f"Oracle data: {accuracy} accuracy with Image-to-HTML"
+
+                # Check for Figma API methodology
+                if 'figma-api-conversion' in methodologies:
+                    figma_api = methodologies['figma-api-conversion']
+                    accuracy = figma_api.get('accuracy_range', 'N/A')
+                    reasoning.append(f"Figma API methodology: {accuracy} accuracy for simple components")
+
+            perspective = f"Found {len(method_names)} methodologies in knowledge base"
+        else:
+            reasoning.append("Scanning knowledge base for relevant patterns")
+            perspective = "Knowledge base ready for pattern matching"
+
+        return {
+            "perspective": perspective,
+            "reasoning": reasoning,
+            "recommendation": recommendation,
+            "key_insight": key_insight
+        }
 
     # ===========================================
     # KNOWLEDGE BASE OPERATIONS
@@ -2489,6 +2585,273 @@ class OracleMeta:
         except Exception as e:
             logger.error(f"🔮 Error generating training plan: {e}")
             return {}
+
+    # ================================================================
+    # ORACLE'S COACHING SYSTEM - New Hero Onboarding & Mentorship
+    # ================================================================
+
+    def welcome_new_hero(self, hero_name: str, hero_emoji: str, specialization: str) -> Dict[str, Any]:
+        """
+        🔮 Oracle welcomes a new Justice League member
+
+        Provides:
+        - Welcome message with personality-based greeting
+        - Initial orientation on Justice League operations
+        - First mission recommendations
+        - Mentorship pairing suggestions
+
+        Args:
+            hero_name: Name of the new hero (e.g., "Quicksilver")
+            hero_emoji: Hero's emoji (e.g., "💨")
+            specialization: Hero's core skill (e.g., "speed-optimization")
+
+        Returns:
+            Welcome package with orientation info
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                f"Welcome to the Justice League, {hero_emoji} {hero_name}! I'm Oracle, your guide and mentor.",
+                "friendly",
+                f"Specialization: {specialization}"
+            )
+
+        # Find a mentor hero with complementary skills
+        mentor = self._suggest_mentor_for_specialization(specialization)
+
+        # Generate first mission recommendations
+        first_missions = self._generate_first_missions(hero_name, specialization)
+
+        welcome_package = {
+            'hero_name': hero_name,
+            'hero_emoji': hero_emoji,
+            'specialization': specialization,
+            'welcome_message': f"🔮 Welcome to the Justice League, {hero_name}! Your {specialization} skills will be invaluable to our team.",
+            'mentor_hero': mentor,
+            'first_missions': first_missions,
+            'orientation_topics': [
+                'Justice League Coordination Protocol',
+                'Narrator Integration & Team Communication',
+                'Mission Reporting Standards',
+                'Pattern Learning with Oracle',
+                'Collaboration with Complementary Heroes'
+            ],
+            'success_criteria': self._define_success_criteria(specialization),
+            'onboarded_at': datetime.now().isoformat()
+        }
+
+        # Log to patterns database
+        self._log_hero_onboarding(welcome_package)
+
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                f"I've paired you with {mentor['emoji']} {mentor['name']} as your mentor. They'll guide you through your first missions!",
+                "friendly"
+            )
+
+        return welcome_package
+
+    def _suggest_mentor_for_specialization(self, specialization: str) -> Dict[str, str]:
+        """Suggest a mentor hero based on specialization"""
+        mentor_pairings = {
+            'speed-optimization': {'name': 'Hawkman', 'emoji': '🦅', 'reason': 'Hawkman can teach you structural parsing and reliability best practices'},
+            'visual-analysis': {'name': 'Green Arrow', 'emoji': '🎯', 'reason': 'Green Arrow excels at pixel-perfect visual validation'},
+            'code-generation': {'name': 'Artemis', 'emoji': '🎨', 'reason': 'Artemis is the master of Figma-to-Code conversion'},
+            'testing': {'name': 'Green Arrow', 'emoji': '🎯', 'reason': 'Green Arrow leads our QA and testing operations'},
+            'security': {'name': 'Martian Manhunter', 'emoji': '🧠', 'reason': 'Martian Manhunter is our security specialist'}
+        }
+
+        return mentor_pairings.get(specialization, {
+            'name': 'Superman',
+            'emoji': '🦸',
+            'reason': 'Superman will coordinate your integration into the team'
+        })
+
+    def _generate_first_missions(self, hero_name: str, specialization: str) -> List[Dict[str, Any]]:
+        """Generate recommended first missions for a new hero"""
+        mission_templates = {
+            'speed-optimization': [
+                {
+                    'mission_id': f'{hero_name.lower()}_first_01',
+                    'title': 'High-Speed Frame Export Validation',
+                    'description': 'Export a medium-sized Figma file (50-100 frames) and compare performance with baseline',
+                    'difficulty': 'beginner',
+                    'expected_duration': '15 minutes',
+                    'success_metric': '100% export success rate with measurable speedup'
+                },
+                {
+                    'mission_id': f'{hero_name.lower()}_first_02',
+                    'title': 'Parallel Processing Stress Test',
+                    'description': 'Test concurrent worker scaling (4, 8, 16 workers) on large file (200+ frames)',
+                    'difficulty': 'intermediate',
+                    'expected_duration': '30 minutes',
+                    'success_metric': 'Optimal worker count identified with linear speedup'
+                }
+            ]
+        }
+
+        return mission_templates.get(specialization, [
+            {
+                'mission_id': f'{hero_name.lower()}_first_01',
+                'title': 'Team Integration Mission',
+                'description': 'Complete a collaborative mission with your mentor hero',
+                'difficulty': 'beginner',
+                'expected_duration': '20 minutes',
+                'success_metric': 'Successful mission completion with positive team feedback'
+            }
+        ])
+
+    def _define_success_criteria(self, specialization: str) -> List[str]:
+        """Define success criteria for new hero"""
+        base_criteria = [
+            'Complete 3 missions with 100% success rate',
+            'Demonstrate narrator integration with unique personality',
+            'Collaborate successfully with 2+ other heroes',
+            'Learn 1+ patterns from Oracle knowledge base'
+        ]
+
+        specialization_criteria = {
+            'speed-optimization': [
+                'Achieve 2.5x+ speedup over baseline implementation',
+                'Maintain 100% reliability under parallel processing',
+                'Handle rate limiting gracefully with auto-adjustment'
+            ]
+        }
+
+        return base_criteria + specialization_criteria.get(specialization, [])
+
+    def _log_hero_onboarding(self, welcome_package: Dict[str, Any]):
+        """Log new hero onboarding to patterns database"""
+        try:
+            patterns = self._load_patterns()
+
+            if 'hero_onboarding' not in patterns:
+                patterns['hero_onboarding'] = []
+
+            patterns['hero_onboarding'].append({
+                'hero_name': welcome_package['hero_name'],
+                'specialization': welcome_package['specialization'],
+                'mentor_assigned': welcome_package['mentor_hero']['name'],
+                'onboarded_at': welcome_package['onboarded_at'],
+                'first_missions_count': len(welcome_package['first_missions'])
+            })
+
+            self._save_patterns(patterns)
+
+            logger.info(f"🔮 Oracle: Logged onboarding for {welcome_package['hero_name']}")
+
+        except Exception as e:
+            logger.warning(f"🔮 Oracle: Could not log onboarding: {e}")
+
+    def coach_hero_performance(self, hero_name: str, mission_result: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        🔮 Oracle provides coaching feedback after a mission
+
+        Analyzes mission performance and provides:
+        - What went well (celebrate successes)
+        - Areas for improvement (constructive feedback)
+        - Next challenge recommendations
+        - Pattern learning opportunities
+
+        Args:
+            hero_name: Name of hero to coach
+            mission_result: Mission results dictionary
+
+        Returns:
+            Coaching feedback with actionable recommendations
+        """
+        success = mission_result.get('success', False)
+        performance_score = mission_result.get('score', 0)
+
+        # Celebrate successes
+        strengths = []
+        if success:
+            strengths.append("✅ Mission completed successfully!")
+        if performance_score >= 90:
+            strengths.append(f"🌟 Exceptional performance ({performance_score}/100)")
+        if mission_result.get('speedup', 1.0) > 2.0:
+            strengths.append(f"⚡ Outstanding speed: {mission_result.get('speedup')}x faster!")
+
+        # Identify improvement areas
+        improvements = []
+        if performance_score < 90:
+            improvements.append(f"📈 Room to grow: Current score {performance_score}/100, target 90+")
+        if not success:
+            errors = mission_result.get('errors', [])
+            improvements.append(f"🔧 Focus on error handling: {len(errors)} errors encountered")
+
+        # Next challenges
+        next_challenges = self._suggest_next_challenges(hero_name, mission_result)
+
+        coaching_feedback = {
+            'hero_name': hero_name,
+            'mission_success': success,
+            'performance_score': performance_score,
+            'strengths_identified': strengths,
+            'improvement_areas': improvements,
+            'next_challenges': next_challenges,
+            'oracle_tip': self._generate_oracle_tip(hero_name, mission_result),
+            'coached_at': datetime.now().isoformat()
+        }
+
+        # Deliver feedback via narrator
+        if self.narrator:
+            if strengths:
+                self.narrator.hero_speaks(
+                    f"{self.hero_emoji} {self.hero_name}",
+                    f"{hero_name}, excellent work! " + strengths[0],
+                    "friendly",
+                    f"Performance: {performance_score}/100"
+                )
+
+            if improvements and len(improvements) > 0:
+                self.narrator.hero_speaks(
+                    f"{self.hero_emoji} {self.hero_name}",
+                    f"For your next mission, focus on: {improvements[0]}",
+                    "friendly"
+                )
+
+        return coaching_feedback
+
+    def _suggest_next_challenges(self, hero_name: str, mission_result: Dict[str, Any]) -> List[Dict[str, str]]:
+        """Suggest progressively harder challenges based on performance"""
+        performance_score = mission_result.get('score', 0)
+
+        if performance_score >= 90:
+            difficulty = 'advanced'
+        elif performance_score >= 75:
+            difficulty = 'intermediate'
+        else:
+            difficulty = 'beginner'
+
+        return [
+            {
+                'challenge_id': f'next_challenge_{difficulty}_01',
+                'difficulty': difficulty,
+                'title': f'Level Up: {difficulty.capitalize()} Challenge',
+                'description': 'Ready for the next level? This challenge will test your skills further.'
+            }
+        ]
+
+    def _generate_oracle_tip(self, hero_name: str, mission_result: Dict[str, Any]) -> str:
+        """Generate a personalized tip from Oracle"""
+        tips_by_hero = {
+            'Quicksilver': [
+                "💡 Oracle Tip: Monitor your worker efficiency - sometimes 10 workers aren't better than 8!",
+                "💡 Oracle Tip: Batch size sweet spot is usually 10-15 frames. Experiment to find yours!",
+                "💡 Oracle Tip: Rate limiting? Your exponential backoff is your friend. Trust the algorithm!"
+            ]
+        }
+
+        hero_tips = tips_by_hero.get(hero_name, [
+            "💡 Oracle Tip: Document your learnings - future missions will benefit!",
+            "💡 Oracle Tip: Collaboration makes us stronger. Reach out to your mentor!",
+            "💡 Oracle Tip: Every mission teaches us something. What did you learn today?"
+        ])
+
+        import random
+        return random.choice(hero_tips)
 
 
 class LearningSession:

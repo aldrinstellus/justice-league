@@ -149,6 +149,13 @@ except ImportError:
     HAWKMAN_AVAILABLE = False
     logging.warning("Hawkman not available")
 
+try:
+    from .quicksilver_speed_export import QuicksilverSpeedExport
+    QUICKSILVER_AVAILABLE = True
+except ImportError:
+    QUICKSILVER_AVAILABLE = False
+    logging.warning("Quicksilver not available")
+
 logger = logging.getLogger(__name__)
 
 
@@ -202,6 +209,11 @@ class SupermanCoordinator:
         self.artemis = ArtemisCodeSmith(expert_mode=True, narrator=self.narrator) if ARTEMIS_AVAILABLE else None
         self.oracle = OracleMeta(narrator=self.narrator) if ORACLE_AVAILABLE else None
         self.hawkman = HawkmanEquipped(narrator=self.narrator) if HAWKMAN_AVAILABLE else None
+        self.quicksilver = QuicksilverSpeedExport(narrator=self.narrator) if QUICKSILVER_AVAILABLE else None
+
+        # Hero identity for narrator integration
+        self.hero_name = "Superman"
+        self.hero_emoji = "🦸"
 
         # Initialize Auto-Fix Orchestrator (v1.9.3) - autonomous error recovery
         from .auto_fix_orchestrator import create_auto_fix_orchestrator
@@ -257,6 +269,268 @@ class SupermanCoordinator:
         logger.debug(f"  🎨 Artemis: {'✅' if ARTEMIS_AVAILABLE else '❌'}")
         logger.debug(f"  🔮 Oracle: {'✅' if ORACLE_AVAILABLE else '❌'}")
         logger.debug(f"  🦅 Hawkman: {'✅' if HAWKMAN_AVAILABLE else '❌'}")
+        logger.debug(f"  💨 Quicksilver: {'✅' if QUICKSILVER_AVAILABLE else '❌'}")
+
+    def say(self, message: str, style: str = "tactical", technical_info: Optional[str] = None):
+        """
+        Superman dialogue - Authoritative, mission-focused leadership
+
+        Personality traits:
+        - Direct tactical commands
+        - Mission-focused language
+        - Authoritative leadership voice
+        - Clear deployment directives
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                message, style, technical_info
+            )
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Commanding"):
+        """
+        Sequential thinking with mission coordination focus
+
+        Common categories for Superman:
+        - Commanding, Deploying, Coordinating, Strategizing
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(
+                f"{self.hero_emoji} {self.hero_name}",
+                thought, step, category
+            )
+
+    def strategy_session(
+        self,
+        topic: str,
+        heroes_dict: Dict[str, Any],
+        context: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        🦸 Superman leads a strategy session where heroes debate and collaborate
+
+        Heroes share their sequential thinking, Superman analyzes, and makes final decision.
+
+        Args:
+            topic: What the team is strategizing about
+            heroes_dict: Dictionary of {hero_name: hero_instance} to consult
+            context: Optional context data for the discussion
+
+        Returns:
+            Strategy session results with decision and next steps
+
+        Example:
+            result = superman.strategy_session(
+                topic="Best methodology for Dashboard 10 conversion",
+                heroes_dict={
+                    "Oracle": self.oracle,
+                    "Artemis": self.artemis,
+                    "Vision Analyst": self.vision_analyst
+                },
+                context={"complexity": "high", "layout": "2-column"}
+            )
+        """
+        if not self.narrator:
+            return {"decision": "No narrator available", "next_steps": {}}
+
+        # Start strategy session
+        hero_names = [f"{hero.hero_emoji} {hero.hero_name}" for hero in heroes_dict.values() if hasattr(hero, 'hero_emoji')]
+        self.narrator.strategy_session_start(
+            f"{self.hero_emoji} {self.hero_name}",
+            topic,
+            hero_names
+        )
+
+        self.say(f"Team, strategy session: {topic}", style="tactical")
+
+        # Collect contributions from each hero
+        contributions = []
+
+        for hero_key, hero in heroes_dict.items():
+            if not hasattr(hero, 'contribute_to_strategy'):
+                continue
+
+            # Hero provides their perspective
+            contribution = hero.contribute_to_strategy(topic, context)
+            contributions.append(contribution)
+
+            # Display contribution through narrator
+            self.narrator.strategy_contribution(
+                f"{hero.hero_emoji} {hero.hero_name}",
+                contribution.get('perspective', ''),
+                reasoning=contribution.get('reasoning', []),
+                recommendation=contribution.get('recommendation')
+            )
+
+        # Superman analyzes all input
+        analysis_steps = [
+            f"Analyzing team input: {len(contributions)} heroes, {sum(1 for c in contributions if c.get('recommendation'))} recommendations"
+        ]
+
+        # Add key insights from each contribution
+        for contrib in contributions:
+            if contrib.get('key_insight'):
+                analysis_steps.append(contrib['key_insight'])
+
+        # Make decision based on contributions
+        decision = self._make_strategy_decision(contributions, context)
+
+        # Determine next steps
+        next_steps = self._assign_next_steps(decision, heroes_dict)
+
+        # Announce decision through narrator
+        self.narrator.strategy_decision(
+            f"{self.hero_emoji} {self.hero_name}",
+            decision['choice'],
+            analysis=analysis_steps,
+            next_steps=next_steps
+        )
+
+        # Log strategy session to Oracle for learning
+        if self.oracle and hasattr(self.oracle, 'learning') and self.oracle.learning:
+            self.oracle.learning.log_strategy_session(
+                topic=topic,
+                heroes=hero_names,
+                contributions=contributions,
+                decision=decision,
+                next_steps=next_steps
+            )
+
+        return {
+            "topic": topic,
+            "contributions": contributions,
+            "decision": decision,
+            "next_steps": next_steps,
+            "success": True
+        }
+
+    def _make_strategy_decision(
+        self,
+        contributions: List[Dict[str, Any]],
+        context: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        Superman analyzes all contributions and makes final decision
+
+        Args:
+            contributions: List of hero contributions
+            context: Optional context data
+
+        Returns:
+            Decision dict with choice and reasoning
+        """
+        # Count recommendations
+        recommendations = {}
+        for contrib in contributions:
+            rec = contrib.get('recommendation')
+            if rec:
+                recommendations[rec] = recommendations.get(rec, 0) + 1
+
+        # Simple decision: pick most recommended approach
+        if recommendations:
+            best_choice = max(recommendations.items(), key=lambda x: x[1])[0]
+            return {
+                "choice": best_choice,
+                "support_count": recommendations[best_choice],
+                "total_heroes": len(contributions)
+            }
+
+        return {
+            "choice": "Proceed with standard approach",
+            "support_count": 0,
+            "total_heroes": len(contributions)
+        }
+
+    def _assign_next_steps(
+        self,
+        decision: Dict[str, Any],
+        heroes_dict: Dict[str, Any]
+    ) -> Dict[str, str]:
+        """
+        Assign next steps to heroes based on decision
+
+        Args:
+            decision: The decision made
+            heroes_dict: Available heroes
+
+        Returns:
+            Dict of {hero_name: task}
+        """
+        next_steps = {}
+
+        # Default assignments based on common workflow
+        for hero_key, hero in heroes_dict.items():
+            if not hasattr(hero, 'hero_emoji'):
+                continue
+
+            hero_full_name = f"{hero.hero_emoji} {hero.hero_name}"
+
+            # Assign based on hero specialty
+            if "Oracle" in hero_key:
+                next_steps[hero_full_name] = "Track project patterns and update knowledge base"
+            elif "Vision Analyst" in hero_key:
+                next_steps[hero_full_name] = "Extract visual measurements from dashboard"
+            elif "Artemis" in hero_key:
+                next_steps[hero_full_name] = "Build component code from specifications"
+            elif "Green Arrow" in hero_key:
+                next_steps[hero_full_name] = "Validate pixel-perfect accuracy"
+
+        return next_steps
+
+    def start_mission_tracking(
+        self,
+        user_request: str,
+        mission_type: str,
+        context: Optional[Dict[str, Any]] = None
+    ) -> str:
+        """
+        Start Oracle mission tracking for self-learning
+
+        Args:
+            user_request: Original user request/input
+            mission_type: Type of mission (conversion, analysis, export, etc.)
+            context: Optional context data
+
+        Returns:
+            Mission ID for tracking
+        """
+        if self.oracle and hasattr(self.oracle, 'learning') and self.oracle.learning:
+            return self.oracle.learning.start_mission(user_request, mission_type, context)
+        return ""
+
+    def complete_mission_with_learning(
+        self,
+        success: bool,
+        outcome_details: Dict[str, Any],
+        issues: Optional[List[str]] = None
+    ) -> Dict[str, Any]:
+        """
+        Complete mission and trigger Oracle's self-learning
+
+        Args:
+            success: Whether mission succeeded
+            outcome_details: Detailed outcome metrics
+            issues: Optional list of issues encountered
+
+        Returns:
+            Learning results with team feedback
+        """
+        if self.oracle and hasattr(self.oracle, 'learning') and self.oracle.learning:
+            result = self.oracle.learning.complete_mission_and_learn(
+                success=success,
+                outcome_details=outcome_details,
+                issues_encountered=issues
+            )
+
+            # Show team feedback through narrator
+            if 'team_feedback' in result and self.narrator:
+                self.oracle.learning.show_team_feedback(
+                    result['team_feedback'],
+                    result.get('learnings', [])
+                )
+
+            return result
+        return {"error": "Oracle learning system not available"}
 
     def assemble_justice_league(self, mission: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -884,9 +1158,10 @@ class SupermanCoordinator:
 
     def _deploy_hawkman_frame_export(self, mission: Dict[str, Any], auto_fix_mode: bool = True) -> Optional[Dict[str, Any]]:
         """
-        🦅 Deploy Hawkman - Figma Frame PNG Export
+        💨 Deploy Quicksilver (or 🦅 Hawkman) - Figma Frame PNG Export
 
         Exports all top-level frames from a Figma file as PNG images
+        Uses Quicksilver (speed-optimized) by default, falls back to Hawkman if unavailable
 
         Args:
             mission: Mission parameters including:
@@ -895,12 +1170,42 @@ class SupermanCoordinator:
                 - scale: Export scale 1.0-4.0 (default: 2.0)
                 - progress_callback: Optional callback(current, total, frame_name) for progress updates
                 - show_count_first: Optional bool to pre-count frames before export (default: False)
+                - agent: Optional 'quicksilver' or 'hawkman' to force specific hero (default: auto)
             auto_fix_mode: Enable autonomous error recovery (default: True)
 
         Returns:
             Export results with list of exported files and total frame count
         """
-        if not self.hawkman:
+        # Determine which hero to use (Quicksilver preferred for speed)
+        requested_agent = mission.get('agent', 'auto')
+
+        if requested_agent == 'hawkman':
+            # User explicitly requested Hawkman
+            export_hero = self.hawkman
+            hero_name = 'Hawkman'
+            hero_emoji = '🦅'
+        elif requested_agent == 'quicksilver':
+            # User explicitly requested Quicksilver
+            export_hero = self.quicksilver
+            hero_name = 'Quicksilver'
+            hero_emoji = '💨'
+        else:
+            # Auto-select: Quicksilver first (speed), fallback to Hawkman (reliability)
+            if self.quicksilver:
+                export_hero = self.quicksilver
+                hero_name = 'Quicksilver'
+                hero_emoji = '💨'
+            elif self.hawkman:
+                export_hero = self.hawkman
+                hero_name = 'Hawkman'
+                hero_emoji = '🦅'
+            else:
+                export_hero = None
+                hero_name = None
+                hero_emoji = None
+
+        if not export_hero:
+            logger.warning(f"  ⚠️ No frame export hero available (Quicksilver: {'✅' if self.quicksilver else '❌'}, Hawkman: {'✅' if self.hawkman else '❌'})")
             return None
 
         # Extract file_key from URL or use directly
@@ -938,17 +1243,17 @@ class SupermanCoordinator:
         total_frames = None
         if show_count_first:
             try:
-                # Narrative UX: Hawkman scanning
+                # Narrative UX: Hero scanning
                 if self.narrator and self.narrator.is_verbose():
-                    self.narrator.hero_speaks("🦸 Superman", "Hawkman, scan the Figma file", style="tactical")
+                    self.narrator.hero_speaks("🦸 Superman", f"{hero_name}, scan the Figma file", style="tactical")
 
-                logger.debug("🦸 Deploying 🦅 HAWKMAN - Scanning frames...")
-                total_frames = self.hawkman.count_frames(file_key)
+                logger.debug(f"🦸 Deploying {hero_emoji} {hero_name.upper()} - Scanning frames...")
+                total_frames = export_hero.count_frames(file_key)
 
-                # Narrative UX: Hawkman reports findings
+                # Narrative UX: Hero reports findings
                 if self.narrator and self.narrator.is_verbose():
                     self.narrator.hero_speaks(
-                        "🦅 Hawkman",
+                        f"{hero_emoji} {hero_name}",
                         f"Scan complete! Found {total_frames} frames ready for export.",
                         style="friendly",
                         technical_info=f"File: {file_key[:8]}..."
@@ -958,38 +1263,38 @@ class SupermanCoordinator:
             except Exception as e:
                 logger.warning(f"  ⚠️ Could not pre-count frames: {e}")
 
-        # Narrative UX: Deploy Hawkman
+        # Narrative UX: Deploy hero
         if self.narrator and self.narrator.is_verbose():
             self.narrator.team_handoff(
                 "🦸 Superman",
-                "🦅 Hawkman",
+                f"{hero_emoji} {hero_name}",
                 "Export all frames as PNG",
                 {"file_key": file_key[:12], "scale": f"{scale}x"}
             )
 
-        logger.debug("🦸 Deploying 🦅 HAWKMAN - Figma Frame Export...")
+        logger.debug(f"🦸 Deploying {hero_emoji} {hero_name.upper()} - Figma Frame Export...")
         logger.debug(f"  📋 File Key: {file_key}")
-        logger.debug(f"  📁 Output Dir: {output_dir or 'default (data/hawkman/figma_exports)'}")
+        logger.debug(f"  📁 Output Dir: {output_dir or 'default (figma_exports_dir)'}")
         logger.debug(f"  📐 Scale: {scale}x")
 
         try:
-            # Export all frames using Hawkman
-            exported_files = self.hawkman.export_all_frames_as_png(
+            # Export all frames using selected hero (Quicksilver or Hawkman)
+            exported_files = export_hero.export_all_frames_as_png(
                 file_key=file_key,
                 output_dir=output_dir,
                 scale=scale,
                 progress_callback=progress_callback
             )
 
-            # Narrative UX: Hawkman completion
+            # Narrative UX: Hero completion
             if self.narrator and self.narrator.is_verbose():
                 self.narrator.hero_speaks(
-                    "🦅 Hawkman",
+                    f"{hero_emoji} {hero_name}",
                     f"Export complete! All {len(exported_files)} frames saved successfully.",
                     style="friendly"
                 )
 
-            logger.debug(f"  ✓ Hawkman export complete!")
+            logger.debug(f"  ✓ {hero_name} export complete!")
             logger.debug(f"    Frames exported: {len(exported_files)}")
 
             # 🦇 BATMAN VERIFICATION: Completeness Check
@@ -1021,7 +1326,7 @@ class SupermanCoordinator:
                     verification_result = self.batman.verify_frame_export_completeness(
                         expected_items=expected_items,
                         exported_files=exported_file_paths,
-                        output_dir=output_dir or 'data/hawkman/figma_exports'
+                        output_dir=output_dir or export_hero.figma_exports_dir
                     )
 
                     # Narrative UX: Batman verdict
@@ -1103,24 +1408,26 @@ class SupermanCoordinator:
 
             return {
                 'success': True,
-                'hero': 'Hawkman',
+                'hero': hero_name,
+                'hero_emoji': hero_emoji,
                 'frames_exported': len(exported_files),
                 'total_frames': total_frames or len(exported_files),
                 'exported_files': exported_files,
                 'file_key': file_key,
-                'output_dir': output_dir or 'data/hawkman/figma_exports',
+                'output_dir': output_dir or export_hero.figma_exports_dir,
                 'scale': scale,
                 'verification': verification_result  # Batman's completeness verification
             }
 
         except Exception as e:
-            logger.error(f"  ❌ Hawkman frame export error: {str(e)}")
+            logger.error(f"  ❌ {hero_name} frame export error: {str(e)}")
 
             # Build error result
             error_result = {
                 'success': False,
                 'errors': [str(e)],
-                'hero': 'Hawkman',
+                'hero': hero_name,
+                'hero_emoji': hero_emoji,
                 'mission_type': 'frame_export'
             }
 
