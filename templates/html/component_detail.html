@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ component_name }} - Component Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --surface-2: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --code-bg: #f6f8fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .component-type {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .header-stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb {
+            background: var(--surface);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .breadcrumb-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-separator {
+            color: var(--text-secondary);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .content-area {
+            min-width: 0; /* Prevents grid overflow */
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: var(--text-primary);
+        }
+
+        .section h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--text-primary);
+        }
+
+        .section-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--primary-color);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .property-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .property-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-value {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .code-section {
+            margin: 2rem 0;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            background: var(--surface-2);
+            padding: 1rem 1.5rem;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+            border: 1px solid var(--border);
+            border-bottom: none;
+        }
+
+        .code-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .code-language {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            background: var(--background);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+            padding: 0;
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: inherit;
+        }
+
+        .tabs {
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .tab-links {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+
+        .tab-link {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab-link:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-link.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-primary { background: #dbeafe; color: #1d4ed8; }
+        .badge-success { background: #d1fae5; color: #059669; }
+        .badge-warning { background: #fef3c7; color: #d97706; }
+        .badge-danger { background: #fee2e2; color: #dc2626; }
+        .badge-secondary { background: #f1f5f9; color: #475569; }
+
+        .usage-example {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .usage-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .usage-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .api-table th,
+        .api-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .api-table th {
+            background: var(--surface);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .api-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .api-table .prop-name {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .api-table .prop-type {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--warning-color);
+            font-size: 0.875rem;
+        }
+
+        .api-table .prop-required {
+            color: var(--danger-color);
+            font-weight: 500;
+        }
+
+        .sidebar-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .quick-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quick-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .quick-nav a:hover {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            transform: translateX(0.25rem);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 0.5rem;
+            background: var(--border);
+            border-radius: 9999px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-info {
+            background: #eff6ff;
+            border-left-color: var(--primary-color);
+            color: #1e40af;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            border-left-color: var(--success-color);
+            color: #166534;
+        }
+
+        .alert-warning {
+            background: #fffbeb;
+            border-left-color: var(--warning-color);
+            color: #92400e;
+        }
+
+        .alert-danger {
+            background: #fef2f2;
+            border-left-color: var(--danger-color);
+            color: #991b1b;
+        }
+
+        .copy-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .copy-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .instances-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .instance-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .instance-title {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .instance-location {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>{{ component_name }}</h1>
+            <div class="component-type">{{ component_type | title }} Component</div>
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="header-stat-value">{{ total_instances }}</div>
+                    <div class="header-stat-label">Instances Found</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value">{{ reusability_score }}%</div>
+                    <div class="header-stat-label">Reusability Score</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value">{{ complexity_score }}%</div>
+                    <div class="header-stat-label">Complexity Score</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value">{{ quality_grade }}</div>
+                    <div class="header-stat-label">Quality Grade</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <div class="breadcrumb-links">
+                <a href="../main_report.html" class="breadcrumb-link">Analysis Report</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="../main_report.html#components" class="breadcrumb-link">Components</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>{{ component_name }}</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-area">
+                <!-- Overview Section -->
+                <section class="section">
+                    <h2>
+                        <div class="section-icon">📋</div>
+                        Component Overview
+                    </h2>
+
+                    <p>{{ component_description }}</p>
+
+                    <div class="property-grid">
+                        <div class="property-item">
+                            <div class="property-label">Category</div>
+                            <div class="property-value">{{ component_category }}</div>
+                        </div>
+                        <div class="property-item">
+                            <div class="property-label">Usage Pattern</div>
+                            <div class="property-value">{{ usage_pattern }}</div>
+                        </div>
+                        <div class="property-item">
+                            <div class="property-label">Implementation Priority</div>
+                            <div class="property-value">
+                                <span class="badge badge-{{ priority_class }}">{{ implementation_priority }}</span>
+                            </div>
+                        </div>
+                        <div class="property-item">
+                            <div class="property-label">Accessibility Features</div>
+                            <div class="property-value">
+                                {% for feature in accessibility_features %}
+                                <span class="badge badge-success">{{ feature }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if recommendations %}
+                    <div class="alert alert-info">
+                        <strong>Key Recommendations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            {% for recommendation in recommendations %}
+                            <li>{{ recommendation }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </section>
+
+                <!-- API Specification -->
+                <section class="section">
+                    <h2>
+                        <div class="section-icon">⚙️</div>
+                        API Specification
+                    </h2>
+
+                    <div class="tabs">
+                        <div class="tab-links">
+                            <button class="tab-link active" data-tab="props">Props Interface</button>
+                            <button class="tab-link" data-tab="styling">Styling API</button>
+                            <button class="tab-link" data-tab="events">Events</button>
+                        </div>
+                    </div>
+
+                    <div id="props" class="tab-content active">
+                        <table class="api-table">
+                            <thead>
+                                <tr>
+                                    <th>Prop</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for prop in props_interface %}
+                                <tr>
+                                    <td class="prop-name">{{ prop.name }}</td>
+                                    <td class="prop-type">{{ prop.type }}</td>
+                                    <td class="prop-required">{{ prop.required | yesno:"Yes,No" }}</td>
+                                    <td>{{ prop.default | default:"-" }}</td>
+                                    <td>{{ prop.description }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="styling" class="tab-content">
+                        <h4>CSS Classes</h4>
+                        <table class="api-table">
+                            <thead>
+                                <tr>
+                                    <th>Class Name</th>
+                                    <th>Purpose</th>
+                                    <th>Customizable</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for css_class in css_classes %}
+                                <tr>
+                                    <td class="prop-name">.{{ css_class.name }}</td>
+                                    <td>{{ css_class.purpose }}</td>
+                                    <td>{{ css_class.customizable | yesno:"Yes,No" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <h4>CSS Custom Properties</h4>
+                        <table class="api-table">
+                            <thead>
+                                <tr>
+                                    <th>Property</th>
+                                    <th>Description</th>
+                                    <th>Default Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for property in css_properties %}
+                                <tr>
+                                    <td class="prop-name">{{ property.name }}</td>
+                                    <td>{{ property.description }}</td>
+                                    <td class="prop-type">{{ property.default_value }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="events" class="tab-content">
+                        <table class="api-table">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for event in events %}
+                                <tr>
+                                    <td class="prop-name">{{ event.name }}</td>
+                                    <td class="prop-type">{{ event.parameters }}</td>
+                                    <td>{{ event.description }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Implementation Guide -->
+                <section class="section">
+                    <h2>
+                        <div class="section-icon">🛠️</div>
+                        Implementation Guide
+                    </h2>
+
+                    <div class="tabs">
+                        <div class="tab-links">
+                            <button class="tab-link active" data-tab="react-impl">React Implementation</button>
+                            <button class="tab-link" data-tab="styles-impl">Styles</button>
+                            <button class="tab-link" data-tab="tests-impl">Tests</button>
+                        </div>
+                    </div>
+
+                    <div id="react-impl" class="tab-content active">
+                        <div class="code-section">
+                            <div class="code-header">
+                                <div class="code-title">{{ component_name }}.tsx</div>
+                                <div class="code-language">TypeScript</div>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="language-typescript">{{ react_implementation }}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="code-section">
+                            <div class="code-header">
+                                <div class="code-title">{{ component_name }}.types.ts</div>
+                                <div class="code-language">TypeScript</div>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="language-typescript">{{ types_definition }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="styles-impl" class="tab-content">
+                        <div class="code-section">
+                            <div class="code-header">
+                                <div class="code-title">{{ component_name }}.module.css</div>
+                                <div class="code-language">CSS</div>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="language-css">{{ css_implementation }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tests-impl" class="tab-content">
+                        <div class="code-section">
+                            <div class="code-header">
+                                <div class="code-title">{{ component_name }}.test.tsx</div>
+                                <div class="code-language">TypeScript</div>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="language-typescript">{{ test_implementation }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Usage Examples -->
+                <section class="section">
+                    <h2>
+                        <div class="section-icon">📝</div>
+                        Usage Examples
+                    </h2>
+
+                    {% for example in usage_examples %}
+                    <div class="usage-example">
+                        <div class="usage-title">{{ example.title }}</div>
+                        <div class="usage-description">{{ example.description }}</div>
+                        <div class="code-section">
+                            <div class="code-header">
+                                <div class="code-title">Example</div>
+                                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="language-typescript">{{ example.code }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </section>
+
+                <!-- Design Tokens -->
+                <section class="section">
+                    <h2>
+                        <div class="section-icon">🎨</div>
+                        Design Tokens
+                    </h2>
+
+                    <div class="property-grid">
+                        {% for token in design_tokens %}
+                        <div class="property-item">
+                            <div class="property-label">{{ token.category }}</div>
+                            <div class="property-value">
+                                {% for value in token.values %}
+                                <span class="badge badge-secondary">{{ value }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if token_recommendations %}
+                    <div class="alert alert-info">
+                        <strong>Token Recommendations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            {% for recommendation in token_recommendations %}
+                            <li>{{ recommendation }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </section>
+
+                <!-- Component Instances -->
+                <section class="section">
+                    <h2>
+                        <div class="section-icon">📍</div>
+                        Component Instances
+                    </h2>
+
+                    <p>This component appears {{ total_instances }} times across the design system:</p>
+
+                    <div class="instances-grid">
+                        {% for instance in instances %}
+                        <div class="instance-card">
+                            <div class="instance-title">{{ instance.context }}</div>
+                            <div class="instance-location">{{ instance.location }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Quick Navigation</h3>
+                    <ul class="quick-nav">
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#api">API Specification</a></li>
+                        <li><a href="#implementation">Implementation</a></li>
+                        <li><a href="#examples">Usage Examples</a></li>
+                        <li><a href="#tokens">Design Tokens</a></li>
+                        <li><a href="#instances">Instances</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Quality Metrics</h3>
+                    <div class="metric-item">
+                        <div class="metric-label">Reusability</div>
+                        <div class="metric-value">{{ reusability_score }}%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{ reusability_score }}%"></div>
+                    </div>
+
+                    <div class="metric-item">
+                        <div class="metric-label">Complexity</div>
+                        <div class="metric-value">{{ complexity_score }}%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{ complexity_score }}%"></div>
+                    </div>
+
+                    <div class="metric-item">
+                        <div class="metric-label">Documentation</div>
+                        <div class="metric-value">{{ documentation_score }}%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{ documentation_score }}%"></div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Related Components</h3>
+                    {% for related in related_components %}
+                    <div class="metric-item">
+                        <div class="metric-label">{{ related.name }}</div>
+                        <div class="metric-value">
+                            <a href="{{ related.link }}" class="badge badge-primary">View</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Implementation Status</h3>
+                    <div class="metric-item">
+                        <div class="metric-label">Status</div>
+                        <div class="metric-value">
+                            <span class="badge badge-{{ status_class }}">{{ implementation_status }}</span>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Priority</div>
+                        <div class="metric-value">
+                            <span class="badge badge-{{ priority_class }}">{{ implementation_priority }}</span>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Estimated Effort</div>
+                        <div class="metric-value">{{ estimated_effort }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    const parentTabs = this.closest('.section');
+
+                    // Remove active class from tabs and contents within this section
+                    parentTabs.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                    parentTabs.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    const targetContent = parentTabs.querySelector(`#${targetTab}`);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scrolling for quick navigation
+            document.querySelectorAll('.quick-nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.querySelector(`[id="${targetId}"], .section h2:contains("${targetId}")`);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Initialize code highlighting
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            }
+        });
+
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-section').querySelector('code');
+            const text = codeBlock.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = '#10b981';
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#2563eb';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

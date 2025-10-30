@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard 10 - Accurate Recreation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #F6F6F6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .badge-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .course-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background: #3B82F6;
+            color: white;
+        }
+        .avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #F9FAFB;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #E5E7EB;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #10B981;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- MAIN CONTENT -->
+        <div>
+            <!-- Header Section -->
+            <div class="card mb-4">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h1 class="text-2xl font-bold mb-1">Good Morning, Georgia 👋</h1>
+                        <p class="text-gray-500 text-sm">Here to have you back!</p>
+                        <p class="text-gray-500 text-sm">Get ready and continue your lesson today</p>
+                    </div>
+
+                    <div class="flex gap-8">
+                        <!-- My Badges -->
+                        <div>
+                            <p class="text-sm font-semibold mb-2">My Badges</p>
+                            <div class="flex gap-2">
+                                <div class="badge-circle" style="background: #FEF3C7;">🏆</div>
+                                <div class="badge-circle" style="background: #DBEAFE;">⭐</div>
+                                <div class="badge-circle" style="background: #FCE7F3;">🎯</div>
+                            </div>
+                        </div>
+
+                        <!-- Announcement Preview -->
+                        <div class="text-sm">
+                            <p class="font-semibold mb-2">Announcement</p>
+                            <div class="flex items-center gap-2">
+                                <div class="avatar-sm" style="width: 30px; height: 30px;"></div>
+                                <div>
+                                    <p class="text-xs text-gray-600">Georgia Wilson</p>
+                                    <p class="text-xs text-gray-400">Heredity and evolution</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Classes -->
+            <div class="card mb-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold">Today's Classes</h2>
+                    <a href="#" class="text-sm text-blue-500">View all</a>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=400&h=300&fit=crop" alt="States" class="course-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm">States and Capitals</p>
+                            <p class="text-xs text-gray-500">04% • 31 to 40 min</p>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400&h=300&fit=crop" alt="Earth" class="course-img" style="background: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm">Earth and Space</p>
+                            <p class="text-xs text-gray-500">04% • 31 to 40 min</p>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop" alt="Numbers" class="course-img" style="background: linear-gradient(135deg, #A770EF 0%, #CF8BF3 50%, #FDB99B 100%);" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm">Number System</p>
+                            <p class="text-xs text-gray-500">04% • 31 to 40 min</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your Courses -->
+            <div class="card">
+                <h2 class="text-lg font-bold mb-4">Your Courses</h2>
+
+                <!-- Tabs -->
+                <div class="flex gap-2 mb-4 flex-wrap">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Language Arts</button>
+                    <button class="tab-btn">Math</button>
+                    <button class="tab-btn">Science</button>
+                    <button class="tab-btn">History & Geography</button>
+                    <button class="tab-btn">Spelling</button>
+                </div>
+
+                <!-- Course Grid -->
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- Reading and Writing Stories -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop" alt="Reading" class="course-img" />
+                        <div class="p-4">
+                            <span class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full mb-2">In Progress</span>
+                            <h3 class="font-bold text-sm mb-2">Reading and Writing Stories</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="avatar-sm" style="width: 24px; height: 24px;"></div>
+                                <p class="text-xs text-gray-600">Jane Watson • Summer 2025</p>
+                            </div>
+                            <div class="progress-bar mb-2">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <p class="text-xs text-gray-500">65% Complete</p>
+                        </div>
+                    </div>
+
+                    <!-- Number System -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1635372722656-389f87a941b7?w=400&h=300&fit=crop" alt="Math" class="course-img" />
+                        <div class="p-4">
+                            <span class="inline-block px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full mb-2">In Progress</span>
+                            <h3 class="font-bold text-sm mb-2">Number System</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="avatar-sm" style="width: 24px; height: 24px;"></div>
+                                <p class="text-xs text-gray-600">Kate Smith • Summer 2025</p>
+                            </div>
+                            <div class="progress-bar mb-2">
+                                <div class="progress-fill" style="width: 58%; background: #8B5CF6;"></div>
+                            </div>
+                            <p class="text-xs text-gray-500">58% Complete</p>
+                        </div>
+                    </div>
+
+                    <!-- Earth and Space -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400&h=300&fit=crop" alt="Earth" class="course-img" />
+                        <div class="p-4">
+                            <span class="inline-block px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full mb-2">In Progress</span>
+                            <h3 class="font-bold text-sm mb-2">Earth and Space</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="avatar-sm" style="width: 24px; height: 24px;"></div>
+                                <p class="text-xs text-gray-600">Kate Smith • Summer 2025</p>
+                            </div>
+                            <div class="progress-bar mb-2">
+                                <div class="progress-fill" style="width: 45%; background: #3B82F6;"></div>
+                            </div>
+                            <p class="text-xs text-gray-500">45% Complete</p>
+                        </div>
+                    </div>
+
+                    <!-- States and Capitals -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=400&h=300&fit=crop" alt="States" class="course-img" />
+                        <div class="p-4">
+                            <span class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full mb-2">In Progress</span>
+                            <h3 class="font-bold text-sm mb-2">States and Capitals</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="avatar-sm" style="width: 24px; height: 24px;"></div>
+                                <p class="text-xs text-gray-600">Jane Watson • Summer 2025</p>
+                            </div>
+                            <div class="progress-bar mb-2">
+                                <div class="progress-fill" style="width: 72%;"></div>
+                            </div>
+                            <p class="text-xs text-gray-500">72% Complete</p>
+                        </div>
+                    </div>
+
+                    <!-- Heredity and evolution -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400&h=300&fit=crop" alt="Biology" class="course-img" />
+                        <div class="p-4">
+                            <span class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full mb-2">In Progress</span>
+                            <h3 class="font-bold text-sm mb-2">Heredity and evolution</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="avatar-sm" style="width: 24px; height: 24px;"></div>
+                                <p class="text-xs text-gray-600">Kate Smith • Summer 2025</p>
+                            </div>
+                            <div class="progress-bar mb-2">
+                                <div class="progress-fill" style="width: 38%;"></div>
+                            </div>
+                            <p class="text-xs text-gray-500">38% Complete</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div>
+            <!-- Announcement Section -->
+            <div class="card mb-4">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-sm">Announcement</h3>
+                    <a href="#" class="text-xs text-blue-500">View all</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex gap-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="avatar-sm"></div>
+                        <div class="flex-1">
+                            <p class="text-xs font-semibold mb-1">Georgia Wilson</p>
+                            <p class="text-xs text-gray-600 mb-1">Heredity and evolution</p>
+                            <p class="text-xs text-gray-400">21 mins ago</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="avatar-sm" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                        <div class="flex-1">
+                            <p class="text-xs font-semibold mb-1">Jane Smith</p>
+                            <p class="text-xs text-gray-600 mb-1">New Assignment Posted</p>
+                            <p class="text-xs text-gray-400">1 hour ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Tests -->
+            <div class="card mb-4">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-sm">Upcoming Tests</h3>
+                    <a href="#" class="text-xs text-blue-500">View all</a>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex gap-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="avatar-sm" style="width: 32px; height: 32px; background: #DBEAFE;"></div>
+                        <div class="flex-1">
+                            <p class="text-xs font-semibold">Math English</p>
+                            <p class="text-xs text-gray-500">Tomorrow, 10:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="avatar-sm" style="width: 32px; height: 32px; background: #FEE2E2;"></div>
+                        <div class="flex-1">
+                            <p class="text-xs font-semibold">Modern Recursive</p>
+                            <p class="text-xs text-gray-500">Friday, 2:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="avatar-sm" style="width: 32px; height: 32px; background: #FEF3C7;"></div>
+                        <div class="flex-1">
+                            <p class="text-xs font-semibold">World War II</p>
+                            <p class="text-xs text-gray-500">Next Monday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- To-Do List -->
+            <div class="card">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-sm">To-Do List</h3>
+                    <a href="#" class="text-xs text-blue-500">View all</a>
+                </div>
+                <div class="space-y-2">
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="mr-3 w-4 h-4" />
+                        <p class="text-xs flex-1">Meet your Mentors</p>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="mr-3 w-4 h-4" checked />
+                        <p class="text-xs flex-1 line-through text-gray-400">Complete Homework</p>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="mr-3 w-4 h-4" />
+                        <p class="text-xs flex-1">Find Assignment</p>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="mr-3 w-4 h-4" />
+                        <p class="text-xs flex-1">Started Assignment</p>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="mr-3 w-4 h-4" />
+                        <p class="text-xs flex-1">Turn in Assessment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Checkbox functionality
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const text = this.nextElementSibling;
+                if (this.checked) {
+                    text.classList.add('line-through', 'text-gray-400');
+                } else {
+                    text.classList.remove('line-through', 'text-gray-400');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

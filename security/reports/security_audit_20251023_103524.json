@@ -1,0 +1,43 @@
+{
+  "timestamp": "2025-10-23T10:35:24.896103",
+  "summary": {
+    "checks_run": 10,
+    "checks_passed": 6,
+    "checks_failed": 4,
+    "total_findings": 4
+  },
+  "findings": {
+    "critical": [],
+    "high": [
+      {
+        "category": "Secrets Management",
+        "title": "Potential hardcoded secrets found",
+        "description": "Found 64 potential hardcoded secrets in code",
+        "remediation": "Move secrets to environment variables or secret management system"
+      },
+      {
+        "category": "SSL/TLS",
+        "title": "SSL certificates not configured",
+        "description": "No SSL certificates found in deployment/nginx/ssl/",
+        "remediation": "Generate SSL certificates and configure Nginx"
+      }
+    ],
+    "medium": [
+      {
+        "category": "Docker Security",
+        "title": "Docker security issue",
+        "description": "docker-compose.yml missing resource limits",
+        "remediation": "Review Docker security best practices"
+      }
+    ],
+    "low": [],
+    "info": [
+      {
+        "category": "Code Security",
+        "title": "Bandit scanner not installed",
+        "description": "Install with: pip install bandit",
+        "remediation": "pip install bandit && bandit -r core/ -ll"
+      }
+    ]
+  }
+}

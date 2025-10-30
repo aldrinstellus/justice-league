@@ -1,0 +1,696 @@
+{
+  "library_name": "token-test",
+  "total_components": 3,
+  "tested_components": 3,
+  "total_variants": 27,
+  "tested_variants": 27,
+  "passed_tests": 27,
+  "failed_tests": 0,
+  "coverage_percentage": 100.0,
+  "consistency_checks": [],
+  "token_usage": [
+    {
+      "token_type": "color",
+      "token_name": "primary-50",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-100",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-200",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-300",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-400",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-500",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-600",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-700",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-800",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "primary-900",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-50",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-100",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-200",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-300",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-400",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-500",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-600",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-700",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-800",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "secondary-900",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "badge",
+        "alert"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-50",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-100",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-200",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-300",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-400",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-500",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-600",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-700",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-800",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "accent-900",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-50",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-100",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-200",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-300",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-400",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-500",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-600",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-700",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-800",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "destructive-900",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-50",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-100",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-200",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-300",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-400",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-500",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-600",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-700",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-800",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "neutral-900",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "color",
+      "token_name": "background",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "foreground",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "muted",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "muted-foreground",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "popover",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "popover-foreground",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "card",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "card-foreground",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "border",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "input",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "color",
+      "token_name": "ring",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "card",
+        "popover",
+        "dialog"
+      ]
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-0",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-px",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-0.5",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-1",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-1.5",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-2",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "card",
+        "input"
+      ]
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-2.5",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-3",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-3.5",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "spacing",
+      "token_name": "spacing-4",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "card",
+        "input"
+      ]
+    },
+    {
+      "token_type": "typography",
+      "token_name": "text-xs",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    },
+    {
+      "token_type": "typography",
+      "token_name": "text-sm",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "input",
+        "text"
+      ]
+    },
+    {
+      "token_type": "typography",
+      "token_name": "text-base",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "input",
+        "text"
+      ]
+    },
+    {
+      "token_type": "typography",
+      "token_name": "text-lg",
+      "used": true,
+      "usage_count": 3,
+      "components_using": [
+        "button",
+        "input",
+        "text"
+      ]
+    },
+    {
+      "token_type": "typography",
+      "token_name": "text-xl",
+      "used": false,
+      "usage_count": 0,
+      "components_using": []
+    }
+  ],
+  "recommendations": [
+    "\ud83d\udca1 30 color tokens are unused - consider removing or documenting them",
+    "\ud83d\udcca Low token usage (47%) - components may be using custom values instead of design tokens",
+    "\u2705 Consider adding more component variants to improve coverage"
+  ],
+  "timestamp": "2025-10-23T11:41:31.453255",
+  "test_duration": 0.0001380443572998047
+}

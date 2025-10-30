@@ -1,0 +1,171 @@
+{
+  "output_formats": {
+    "product_acceptance_criteria": {
+      "enabled": true,
+      "format": "json",
+      "template": "product_acceptance_template.json",
+      "include_sections": [
+        "user_stories",
+        "acceptance_criteria",
+        "definition_of_done",
+        "business_rules",
+        "epic_breakdown"
+      ],
+      "validation_rules": {
+        "require_given_when_then": true,
+        "minimum_acceptance_criteria": 3,
+        "include_edge_cases": true
+      }
+    },
+    "design_acceptance_criteria": {
+      "enabled": true,
+      "format": "json",
+      "template": "design_acceptance_template.json",
+      "include_sections": [
+        "visual_specifications",
+        "interaction_requirements",
+        "responsive_criteria",
+        "accessibility_requirements",
+        "component_specifications"
+      ],
+      "validation_rules": {
+        "color_contrast_standards": "WCAG_AA",
+        "font_size_minimums": true,
+        "touch_target_minimums": true
+      }
+    },
+    "developer_specifications": {
+      "enabled": true,
+      "format": "json",
+      "template": "developer_specs_template.json",
+      "include_sections": [
+        "component_apis",
+        "technical_requirements",
+        "testing_specifications",
+        "performance_requirements",
+        "integration_points"
+      ],
+      "code_examples": {
+        "include_react_examples": true,
+        "include_typescript_definitions": true,
+        "include_css_specifications": true,
+        "include_test_examples": true
+      }
+    },
+    "claude_code_ready_format": {
+      "enabled": true,
+      "format": "json",
+      "template": "claude_code_template.json",
+      "include_sections": [
+        "project_context",
+        "technical_stack",
+        "pixel_perfect_specs",
+        "implementation_prompts",
+        "code_generation_context"
+      ],
+      "optimization": {
+        "ai_friendly_descriptions": true,
+        "include_visual_references": true,
+        "provide_implementation_hints": true,
+        "include_error_scenarios": true
+      }
+    },
+    "contextual_analysis": {
+      "enabled": true,
+      "format": "json",
+      "template": "contextual_analysis_template.json",
+      "include_sections": [
+        "screen_context",
+        "user_scenarios",
+        "business_context",
+        "design_rationale",
+        "success_metrics"
+      ],
+      "depth_levels": {
+        "user_mental_models": true,
+        "emotional_journey": true,
+        "business_alignment": true,
+        "technical_constraints": true
+      }
+    },
+    "interactive_html_report": {
+      "enabled": true,
+      "format": "html",
+      "template": "interactive_report_template.html",
+      "features": {
+        "navigation": {
+          "sticky_navigation": true,
+          "section_progress": true,
+          "search_functionality": true,
+          "bookmark_sections": true
+        },
+        "interactivity": {
+          "expandable_sections": true,
+          "hover_previews": true,
+          "clickable_components": true,
+          "live_code_examples": true
+        },
+        "visual_elements": {
+          "component_gallery": true,
+          "screenshot_annotations": true,
+          "interactive_diagrams": true,
+          "progress_indicators": true
+        }
+      },
+      "styling": {
+        "theme": "professional",
+        "responsive_design": true,
+        "print_optimization": false,
+        "dark_mode_support": true
+      }
+    },
+    "professional_pdf_report": {
+      "enabled": true,
+      "format": "pdf",
+      "template": "professional_pdf_template.html",
+      "specifications": {
+        "page_size": "A4",
+        "margins": {
+          "top": "1in",
+          "bottom": "1in",
+          "left": "0.75in",
+          "right": "0.75in"
+        },
+        "fonts": {
+          "primary": "DM Sans",
+          "secondary": "Inter",
+          "monospace": "Monaco"
+        },
+        "image_quality": 300,
+        "color_profile": "sRGB"
+      },
+      "sections": {
+        "cover_page": true,
+        "executive_summary": true,
+        "table_of_contents": true,
+        "persona_sections": true,
+        "component_gallery": true,
+        "technical_appendices": true
+      },
+      "annotations": {
+        "callout_boxes": true,
+        "highlight_areas": true,
+        "measurement_lines": true,
+        "cross_references": true
+      }
+    }
+  },
+  "generation_settings": {
+    "concurrent_generation": true,
+    "cache_intermediate_results": true,
+    "validate_outputs": true,
+    "include_metadata": true,
+    "generate_thumbnails": true
+  },
+  "quality_settings": {
+    "screenshot_quality": "high",
+    "pdf_compression": "medium",
+    "html_optimization": true,
+    "asset_optimization": true
+  }
+}

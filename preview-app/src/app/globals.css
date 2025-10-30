@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Manrope', sans-serif;
+  }
+}
+
+/* Hide Next.js Dev Tools button */
+button[aria-label*="Next.js"],
+button[title*="Next.js"],
+#__next-build-watcher,
+div[style*="position: fixed"][style*="bottom"][style*="left"] button {
+  display: none !important;
+}

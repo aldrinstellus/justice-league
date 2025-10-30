@@ -1,0 +1,109 @@
+{
+  "description": "Hero capabilities and Oracle's learned recommendations for continuous improvement (v1.9.1)",
+  "last_updated": "2025-10-30T10:35:36.101671",
+  "heroes": {
+    "artemis": {
+      "thresholds": {
+        "target_accuracy": {
+          "value": 99.0,
+          "unit": "percent",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        },
+        "max_iterations": {
+          "value": 3,
+          "unit": "count",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        }
+      },
+      "recommended_techniques": [],
+      "skill_evolution": {
+        "current_accuracy": 0.0,
+        "30_day_trend": "insufficient_data",
+        "areas_to_improve": []
+      },
+      "oracle_notes": "Figma-to-Code specialist - learns optimal accuracy thresholds from mission success patterns"
+    },
+    "batman": {
+      "thresholds": {
+        "test_coverage_target": {
+          "value": 95.0,
+          "unit": "percent",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        }
+      },
+      "recommended_techniques": [],
+      "skill_evolution": {
+        "current_test_success_rate": 0.0,
+        "30_day_trend": "insufficient_data",
+        "areas_to_improve": []
+      },
+      "oracle_notes": "Interactive testing specialist - learns which test patterns find most issues"
+    },
+    "green_arrow": {
+      "thresholds": {
+        "spacing_tolerance": {
+          "value": 3,
+          "unit": "pixels",
+          "learned_from": "oracle_meta_learning",
+          "adjusted_at": "2025-10-30T10:35:36.101669",
+          "adjustment_history": []
+        },
+        "excellent_threshold": {
+          "value": 98,
+          "unit": "percent",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        },
+        "good_threshold": {
+          "value": 95,
+          "unit": "percent",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        },
+        "acceptable_threshold": {
+          "value": 90,
+          "unit": "percent",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        }
+      },
+      "recommended_techniques": [],
+      "skill_evolution": {
+        "current_accuracy": 0.0,
+        "30_day_trend": "insufficient_data",
+        "areas_to_improve": []
+      },
+      "oracle_notes": "Visual validation specialist - learns optimal tolerances from successful validations"
+    },
+    "hawkman": {
+      "thresholds": {
+        "export_scale_default": {
+          "value": 2.0,
+          "unit": "multiplier",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        },
+        "batch_size_optimal": {
+          "value": 50,
+          "unit": "frames",
+          "learned_from": "baseline",
+          "adjusted_at": null
+        }
+      },
+      "recommended_techniques": [],
+      "skill_evolution": {
+        "current_success_rate": 0.0,
+        "30_day_trend": "insufficient_data",
+        "areas_to_improve": []
+      },
+      "oracle_notes": "Structural parsing and frame export specialist - learns optimal export parameters"
+    }
+  },
+  "global_recommendations": {
+    "description": "Cross-hero insights that apply to multiple heroes",
+    "recommendations": []
+  }
+}

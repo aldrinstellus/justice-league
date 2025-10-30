@@ -1,0 +1,223 @@
+# Alertmanager Configuration for Oracle
+# Copy this file to alertmanager.yml and customize for your environment
+
+global:
+  # Time to wait before sending a notification when an alert fires
+  resolve_timeout: 5m
+
+  # SMTP settings (for email notifications)
+  # smtp_smarthost: 'smtp.example.com:587'
+  # smtp_from: 'oracle-alerts@example.com'
+  # smtp_auth_username: 'oracle-alerts@example.com'
+  # smtp_auth_password: 'your-password-here'
+  # smtp_require_tls: true
+
+# Alert routing tree
+route:
+  # Default receiver for alerts that don't match any route
+  receiver: 'default'
+
+  # Group alerts by alert name and affected agent
+  group_by: ['alertname', 'agent']
+
+  # Wait 10s before sending first notification (collect multiple alerts)
+  group_wait: 10s
+
+  # Send updates every 10s if new alerts arrive in the group
+  group_interval: 10s
+
+  # Don't send the same alert more than once per 12 hours
+  repeat_interval: 12h
+
+  # Child routes (more specific routing)
+  routes:
+    # Critical alerts go to PagerDuty and Slack
+    - match:
+        severity: critical
+      receiver: 'critical-pagerduty'
+      continue: true  # Continue to next matching route
+      repeat_interval: 5m  # Repeat critical alerts every 5 minutes
+
+    - match:
+        severity: critical
+      receiver: 'critical-slack'
+      continue: false
+
+    # Warning alerts go to Slack only
+    - match:
+        severity: warning
+      receiver: 'warning-slack'
+      repeat_interval: 1h
+
+    # Info alerts go to email during business hours
+    - match:
+        severity: info
+      receiver: 'info-email'
+      active_time_intervals:
+        - business_hours
+
+# Time intervals for routing
+time_intervals:
+  - name: business_hours
+    time_intervals:
+      - times:
+          - start_time: '09:00'
+            end_time: '18:00'
+        weekdays: ['monday:friday']
+        location: 'America/New_York'  # Adjust to your timezone
+
+# Inhibition rules - suppress alerts when other alerts are firing
+inhibit_rules:
+  # If an agent is critical, suppress warning alerts for the same agent
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['agent']
+
+  # If Oracle service is down, suppress all other alerts
+  - source_match:
+      alertname: 'OracleServiceDown'
+    target_match_re:
+      alertname: '.*'
+
+  # If system health is critical, suppress individual agent warnings
+  - source_match:
+      alertname: 'SystemHealthLow'
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+
+# Notification receivers
+receivers:
+  # Default receiver (catches all unrouted alerts)
+  - name: 'default'
+    # Configure at least one notification method here
+    # Options: email_configs, slack_configs, pagerduty_configs, webhook_configs
+
+  # Critical alerts to PagerDuty
+  - name: 'critical-pagerduty'
+    pagerduty_configs:
+      - service_key: 'YOUR_PAGERDUTY_INTEGRATION_KEY'
+        severity: '{{ .GroupLabels.severity }}'
+        description: '{{ .GroupLabels.alertname }}: {{ .Annotations.summary }}'
+        details:
+          firing: '{{ .Alerts.Firing | len }}'
+          resolved: '{{ .Alerts.Resolved | len }}'
+          description: '{{ .Annotations.description }}'
+          runbook: '{{ .Annotations.runbook }}'
+
+  # Critical alerts to Slack
+  - name: 'critical-slack'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/WEBHOOK/URL'
+        channel: '#oracle-critical'
+        username: 'Oracle Alertmanager'
+        icon_emoji: ':rotating_light:'
+        color: 'danger'
+        title: '🚨 CRITICAL - {{ .GroupLabels.alertname }}'
+        text: |
+          *Severity:* {{ .GroupLabels.severity }}
+          *Component:* {{ .GroupLabels.component }}
+          {{ range .Alerts }}
+          *Description:* {{ .Annotations.description }}
+          *Runbook:* {{ .Annotations.runbook }}
+          {{ end }}
+        send_resolved: true
+
+  # Warning alerts to Slack
+  - name: 'warning-slack'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/WEBHOOK/URL'
+        channel: '#oracle-alerts'
+        username: 'Oracle Alertmanager'
+        icon_emoji: ':warning:'
+        color: 'warning'
+        title: '⚠️ WARNING - {{ .GroupLabels.alertname }}'
+        text: |
+          *Severity:* {{ .GroupLabels.severity }}
+          *Component:* {{ .GroupLabels.component }}
+          {{ range .Alerts }}
+          *Description:* {{ .Annotations.description }}
+          *Runbook:* {{ .Annotations.runbook }}
+          {{ end }}
+        send_resolved: true
+
+  # Info alerts to email
+  - name: 'info-email'
+    email_configs:
+      - to: 'oracle-ops@example.com'
+        from: 'oracle-alerts@example.com'
+        headers:
+          Subject: '📊 [{{ .Status | toUpper }}] Oracle Info: {{ .GroupLabels.alertname }}'
+        html: |
+          <!DOCTYPE html>
+          <html>
+          <body style="font-family: Arial, sans-serif;">
+            <h2 style="color: #2196F3;">Oracle Information Alert</h2>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr>
+                <td style="padding: 8px; font-weight: bold;">Status:</td>
+                <td style="padding: 8px;">{{ .Status }}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; font-weight: bold;">Severity:</td>
+                <td style="padding: 8px;">{{ .GroupLabels.severity }}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; font-weight: bold;">Component:</td>
+                <td style="padding: 8px;">{{ .GroupLabels.component }}</td>
+              </tr>
+            </table>
+            {{ range .Alerts }}
+            <hr>
+            <h3>{{ .Labels.alertname }}</h3>
+            <p><strong>Description:</strong> {{ .Annotations.description }}</p>
+            <p><strong>Runbook:</strong> {{ .Annotations.runbook }}</p>
+            <p><strong>Started:</strong> {{ .StartsAt }}</p>
+            {{ end }}
+          </body>
+          </html>
+        send_resolved: true
+
+# Configuration examples for other notification channels:
+
+# Microsoft Teams (via webhook)
+# - name: 'teams-alerts'
+#   webhook_configs:
+#     - url: 'https://outlook.office.com/webhook/YOUR-WEBHOOK-URL'
+#       send_resolved: true
+
+# Opsgenie
+# - name: 'opsgenie-critical'
+#   opsgenie_configs:
+#     - api_key: 'YOUR_OPSGENIE_API_KEY'
+#       message: '{{ .GroupLabels.alertname }}'
+#       description: '{{ .Annotations.description }}'
+#       priority: 'P1'
+#       tags: 'oracle,production,{{ .GroupLabels.severity }}'
+
+# VictorOps
+# - name: 'victorops-critical'
+#   victorops_configs:
+#     - api_key: 'YOUR_VICTOROPS_API_KEY'
+#       routing_key: 'oracle-production'
+#       message_type: 'CRITICAL'
+#       entity_display_name: '{{ .GroupLabels.alertname }}'
+#       state_message: '{{ .Annotations.description }}'
+
+# Pushover
+# - name: 'pushover-critical'
+#   pushover_configs:
+#     - user_key: 'YOUR_PUSHOVER_USER_KEY'
+#       token: 'YOUR_PUSHOVER_APP_TOKEN'
+#       priority: '1'  # 0=normal, 1=high, 2=emergency
+#       title: 'Oracle: {{ .GroupLabels.alertname }}'
+#       message: '{{ .Annotations.description }}'
+
+# SNS (AWS Simple Notification Service)
+# - name: 'sns-critical'
+#   sns_configs:
+#     - topic_arn: 'arn:aws:sns:region:account-id:oracle-alerts'
+#       subject: 'Oracle Alert: {{ .GroupLabels.alertname }}'
+#       message: '{{ .Annotations.description }}'

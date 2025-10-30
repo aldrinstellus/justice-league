@@ -1,0 +1,958 @@
+{
+  "projects": {
+    "6Pmf9gCcUccyqbCO9nN6Ts": {
+      "figma_file_key": "6Pmf9gCcUccyqbCO9nN6Ts",
+      "project_name": "poc test",
+      "conversions_count": 3,
+      "conversions": [
+        {
+          "component_name": "Settings",
+          "node_id": "17-1321",
+          "converted_at": "2025-10-23T21:46:00Z",
+          "file_path": "preview-app/src/components/Settings.tsx"
+        },
+        {
+          "component_name": "SettingsProfile",
+          "node_id": "17-1440",
+          "converted_at": "2025-10-23T22:06:00Z",
+          "file_path": "preview-app/src/components/SettingsProfile.tsx"
+        },
+        {
+          "component_name": "PocTestComponent",
+          "node_id": "2-948",
+          "converted_at": "2025-10-24T06:49:05.420687",
+          "file_path": "preview-app/src/components/PocTestComponent.tsx"
+        }
+      ],
+      "shared_elements": {
+        "AppHeader": {
+          "description": "Top navigation with logo, menu, upgrade button, avatar",
+          "found_in": [
+            "Settings",
+            "SettingsProfile"
+          ],
+          "extraction_priority": "high",
+          "elements": [
+            "Logo (Z in black square)",
+            "Navigation (Dashboard, Orders, Products, Customers, Settings)",
+            "Upgrade button (black with lightning)",
+            "User avatar (gradient purple-pink)"
+          ],
+          "props_needed": [
+            "currentPage"
+          ],
+          "file_suggestion": "components/layout/AppHeader.tsx"
+        },
+        "SettingsSidebar": {
+          "description": "Settings navigation sidebar",
+          "found_in": [
+            "Settings",
+            "SettingsProfile"
+          ],
+          "extraction_priority": "high",
+          "elements": [
+            "Profile",
+            "Account",
+            "Members",
+            "Billing",
+            "Invoices",
+            "API"
+          ],
+          "props_needed": [
+            "activePage"
+          ],
+          "file_suggestion": "components/layout/SettingsSidebar.tsx"
+        },
+        "AppLayout": {
+          "description": "Main layout wrapper with header",
+          "found_in": [
+            "Settings",
+            "SettingsProfile"
+          ],
+          "extraction_priority": "high",
+          "props_needed": [
+            "children"
+          ],
+          "file_suggestion": "components/layout/AppLayout.tsx"
+        }
+      },
+      "design_system": {
+        "colors": {
+          "primary_black": "#000000",
+          "primary_white": "#FFFFFF",
+          "background": "#fafafa",
+          "surface": "#ffffff",
+          "border": "#e5e7eb",
+          "text_primary": "#18181b",
+          "text_secondary": "#71717a"
+        },
+        "spacing": {
+          "standard": "24px",
+          "tailwind": "6"
+        },
+        "typography": {
+          "heading_xl": "text-3xl font-bold",
+          "heading_lg": "text-xl font-semibold",
+          "body": "text-sm"
+        }
+      },
+      "common_patterns": [
+        "full-width-divider",
+        "sidebar-layout",
+        "24px-spacing",
+        "black-cta-buttons",
+        "form-field-styling",
+        "search-bar-in-header",
+        "gradient-avatar",
+        "constrained-content-max-w-1400"
+      ]
+    },
+    "fubdMARNgA2lVhmzpPg77y": {
+      "figma_file_key": "fubdMARNgA2lVhmzpPg77y",
+      "figma_url": "https://www.figma.com/design/fubdMARNgA2lVhmzpPg77y/3.00---UI-Master?node-id=0-1&p=f&t=NrxblgJTlxah1Tnw-0",
+      "project_name": "K-12 UI Master",
+      "mission_type": "frame_export",
+      "export_missions": [
+        {
+          "mission_name": "K-12 Frame Export Production Test",
+          "exported_at": "2025-10-30T08:07:00Z",
+          "frames_exported": 177,
+          "output_directory": "/Users/admin/Documents/claudecode/Projects/aldo-vision/poc-test-k12/",
+          "export_scale": 2.0,
+          "total_size": "67 MB",
+          "duration": "~20 minutes",
+          "success_rate": "100%",
+          "heroes_involved": [
+            "Superman",
+            "Hawkman",
+            "Oracle"
+          ],
+          "content_categories": [
+            "Calendar Views (7 variants)",
+            "Assignment System (3 types)",
+            "Student Features (6 screens)",
+            "Analytics Dashboards",
+            "UI Components (Badges, Tooltips)"
+          ],
+          "validation_status": "Production-ready",
+          "notes": "First production-scale test of Figma Frame Export feature. Zero failures across 177 frames."
+        }
+      ]
+    },
+    "BD8gtxyQiSGLFm86Q6ZMVB": {
+      "figma_file_key": "BD8gtxyQiSGLFm86Q6ZMVB",
+      "figma_url": "https://www.figma.com/design/BD8gtxyQiSGLFm86Q6ZMVB/k12-poc1--Copy7-",
+      "project_name": "k12-poc1--Copy7-",
+      "mission_type": "frame_export",
+      "export_missions": [
+        {
+          "mission_name": "K-12 POC Dashboard Export",
+          "exported_at": "2025-10-30T16:14:30.962205",
+          "frames_exported": 26,
+          "output_directory": "/Users/admin/Documents/claudecode/Projects/aldo-vision/figma-export-2025-10-30-160942",
+          "export_scale": 2.0,
+          "total_size": "14.21 MB",
+          "duration": "1m 58s",
+          "success_rate": "100%",
+          "heroes_involved": [
+            "Superman",
+            "Hawkman",
+            "Oracle"
+          ],
+          "content_categories": [
+            "Attendance Tracking",
+            "Messaging System",
+            "User Profiles",
+            "Course Management",
+            "Calendar & Scheduling",
+            "UI Components",
+            "Group Management",
+            "Gradebook System",
+            "Dashboard Views"
+          ],
+          "pages": [
+            "page 2 test",
+            "aldos test of dashboard"
+          ],
+          "validation_status": "Complete",
+          "notes": "K-12 POC dashboard with course management, attendance, and user features"
+        }
+      ]
+    }
+  },
+  "methodologies": {
+    "figma-api-conversion": {
+      "name": "Figma API to React Conversion",
+      "description": "Uses Figma REST API to extract design data and generate React components",
+      "accuracy_range": "70-85%",
+      "time_estimate": "30-60 minutes",
+      "best_for": [
+        "Simple components",
+        "Single screens",
+        "When Figma API access available"
+      ],
+      "pros": [
+        "Direct API access",
+        "Structured data",
+        "Automated asset extraction"
+      ],
+      "cons": [
+        "Layout interpretation issues",
+        "Complex grids fail",
+        "Requires iterative fixes"
+      ],
+      "heroes_involved": [
+        "Oracle",
+        "Artemis",
+        "Hawkman",
+        "Green Arrow"
+      ],
+      "success_rate": 0.75,
+      "missions_completed": 3
+    },
+    "image-to-html-sequential-analysis": {
+      "name": "Image-to-HTML with Sequential Thinking",
+      "description": "Analyzes dashboard screenshots with Oracle sequential thinking to build fresh HTML/CSS from measurements",
+      "accuracy_range": "90-95%",
+      "time_estimate": "60-90 minutes",
+      "best_for": [
+        "Complex dashboards",
+        "Multi-column layouts",
+        "When Figma API produces low accuracy",
+        "Pixel-perfect recreations"
+      ],
+      "pros": [
+        "Higher accuracy",
+        "Correct structure from start",
+        "Clean semantic HTML",
+        "Visual measurements",
+        "Faster than fixing API output"
+      ],
+      "cons": [
+        "Manual image analysis required",
+        "Slightly longer initial build"
+      ],
+      "heroes_involved": [
+        "Oracle",
+        "Superman",
+        "Vision Analyst (new)",
+        "Artemis",
+        "Green Arrow"
+      ],
+      "sequential_thinking_steps": 12,
+      "methodology_steps": [
+        "Oracle sequential analysis (12 thoughts)",
+        "Component-by-component visual breakdown",
+        "Layout measurement extraction",
+        "Color palette detection",
+        "Spacing pattern identification",
+        "Fresh HTML/CSS generation with Tailwind",
+        "Green Arrow visual validation",
+        "Iterative refinement"
+      ],
+      "success_rate": 0.92,
+      "missions_completed": 1,
+      "case_studies": [
+        {
+          "project": "Dashboard 10 - Auzmor LMS",
+          "date": "2025-10-30",
+          "figma_url": "https://www.figma.com/design/fubdMARNgA2lVhmzpPg77y/3.00---UI-Master?node-id=3215-58693",
+          "accuracy_achieved": "90-92%",
+          "time_taken": "60 minutes",
+          "comparison": "Figma API: 41% accuracy, Image-to-HTML: 90-92% accuracy (+51% improvement)",
+          "output_file": "poc/new-conversion/html/index_fresh.html",
+          "report_file": "poc/new-conversion/FRESH_BUILD_ACCURACY_REPORT.md"
+        }
+      ],
+      "learned_at": "2025-10-30T00:00:00Z",
+      "learned_from": "dashboard-conversion-session-oct-30"
+    },
+    "autonomous-error-recovery": {
+      "name": "autonomous-error-recovery",
+      "description": "Confidence-based auto-fix with self-learning: 80%+ confidence = auto-implement, 50-79% = suggest, Oracle learns from every fix outcome",
+      "accuracy_range": "100%",
+      "best_for": [],
+      "pros": [],
+      "cons": [],
+      "heroes_involved": [],
+      "success_rate": 0.9,
+      "missions_completed": 1,
+      "learned_at": "2025-10-30T13:30:19.611048",
+      "case_studies": []
+    }
+  },
+  "api_credentials": {
+    "figma": {
+      "token_saved": true,
+      "token_location": ".env file in project root",
+      "saved_at": "2025-10-30T05:43:13.235529",
+      "token_prefix": "figd_OeL",
+      "notes": "Personal Access Token for Figma API - use for all conversions"
+    }
+  },
+  "decision_matrix": {
+    "description": "Guide for choosing conversion methodology",
+    "rules": [
+      {
+        "condition": "Complex dashboard with 2+ column layout",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Handles complex grids better, higher accuracy"
+      },
+      {
+        "condition": "Figma API accuracy < 70% after 2 iterations",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Faster to rebuild than fix API output"
+      },
+      {
+        "condition": "Simple single-screen component",
+        "recommended_method": "figma-api-conversion",
+        "reason": "Faster for simple layouts"
+      },
+      {
+        "condition": "Pixel-perfect requirement (95%+ accuracy needed)",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Visual measurements produce better accuracy"
+      },
+      {
+        "condition": "No Figma API access / Screenshot only",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Only viable option"
+      }
+    ]
+  },
+  "user_preferences": {
+    "output_paths": {
+      "preference": "always_provide_full_absolute_paths",
+      "priority": "CRITICAL - Make this THE FIRST thing shown in responses",
+      "description": "User expects complete file system paths prominently displayed at the TOP of every response, not buried or secondary",
+      "example_good": "/Users/admin/Documents/claudecode/Projects/aldo-vision/poc-test-k12/",
+      "example_avoid": "poc-test-k12/ or ./poc-test-k12/",
+      "learned_at": "2025-10-30T08:30:00Z",
+      "reinforced_at": "2025-10-30T14:35:00Z",
+      "context": "K-12 frame export test session - user emphasized this must be DEFAULT",
+      "applies_to": [
+        "All Justice League operations",
+        "File and directory outputs",
+        "Mission results",
+        "Every file/folder reference in responses"
+      ],
+      "response_format": "\ud83d\udcc1 FULL PATH: /absolute/path/goes/here/ (show this FIRST, make it prominent)"
+    },
+    "progress_display": {
+      "preference": "interactive_with_minimal_output",
+      "description": "User prefers clean, single-line progress updates over verbose logging",
+      "features": [
+        "Pre-count total items before processing",
+        "Interactive folder name prompt when not specified",
+        "Visual progress bar with percentage",
+        "Single-line updates using carriage return (\\r)",
+        "Minimal output - no line-by-line file logging",
+        "Duration tracking and summary"
+      ],
+      "example_output": "\ud83e\udd85 Exporting frames... \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 177/177 (100%)",
+      "learned_at": "2025-10-30T12:00:00Z",
+      "context": "UX improvement session for frame export",
+      "applies_to": [
+        "Figma frame exports",
+        "Batch processing operations",
+        "Long-running tasks"
+      ]
+    },
+    "interactive_prompts": {
+      "preference": "superman_asks_folder_name",
+      "description": "Superman should interactively ask for folder name when output directory not provided",
+      "prompt_format": "\ud83d\udcc1 Where do you want to save these frames?\n   (default: figma-export-{timestamp}): ",
+      "behavior": {
+        "when_output_not_provided": "Interactive prompt with smart default",
+        "when_output_provided": "Use provided path without prompt",
+        "path_conversion": "Always convert to absolute path",
+        "auto_create": "Create directory automatically if not exists"
+      },
+      "learned_at": "2025-10-30T12:00:00Z",
+      "context": "UX improvement session for frame export",
+      "applies_to": [
+        "All export operations",
+        "File output tasks"
+      ]
+    },
+    "banner_display": {
+      "preference": "always_show_justice_league_banner",
+      "priority": "CRITICAL",
+      "description": "Always display Justice League ASCII banner when keywords mentioned in user request",
+      "trigger_keywords": [
+        "justice league",
+        "justice-league",
+        "/justice-league",
+        "/superman",
+        "superman",
+        "assemble",
+        "deploy heroes",
+        "deploy the justice league",
+        "run justice league"
+      ],
+      "display_timing": "START of response, before any other output",
+      "session_behavior": "Show once per conversation session (unless forced)",
+      "exception": "User explicitly asks to skip banner",
+      "learned_at": "2025-10-30T16:30:00Z",
+      "context": "User expects consistent banner display for Justice League operations - enhances brand identity and system recognition",
+      "applies_to": [
+        "All Justice League operations",
+        "Superman coordinator",
+        "Claude Code AI interactions",
+        "Python script execution",
+        "Figma frame exports",
+        "Component conversions",
+        "Design analysis"
+      ],
+      "enforcement": {
+        "claude_code_ai": "CLAUDE.md instructions with strong imperative language",
+        "python_scripts": "narrator.auto_show_banner_if_needed() with keyword detection",
+        "superman_coordinator": "Auto-detection on assemble_justice_league() and frame export",
+        "validation_available": true,
+        "validation_script": "scripts/validate_banner_enforcement.py"
+      },
+      "enforcement_level": "ABSOLUTE_REQUIREMENT",
+      "updated_at": "2025-10-30T16:18:26.297648",
+      "enforcement_improvements": {
+        "v1": {
+          "date": "2025-10-30T16:30:00Z",
+          "improvement": "Initial banner display protocol added to CLAUDE.md",
+          "status": "Insufficient - banner not displaying"
+        },
+        "v2": {
+          "date": "2025-10-30T16:18:26.297655",
+          "improvement": "Added PRE-RESPONSE VALIDATION checklist at top of CLAUDE.md",
+          "changes": [
+            "Added 4-step validation checklist before any response",
+            "Strengthened language to ABSOLUTE REQUIREMENT - NON-NEGOTIABLE",
+            "Added rule #5: Banner must be shown FIRST even when invoking /superman",
+            "Created validation script: scripts/validate_banner_enforcement.py",
+            "All 5 validation tests passing"
+          ],
+          "validation_script": "/Users/admin/Documents/claudecode/Projects/aldo-vision/scripts/validate_banner_enforcement.py",
+          "test_results": "5/5 tests passing",
+          "status": "Fixed and validated"
+        }
+      }
+    }
+  },
+  "user_learning": {
+    "description": "Oracle's intelligent user question tracking and learning system (v1.9.1)",
+    "questions_asked": [
+      {
+        "id": "Q0001",
+        "question": "How do I export all frames from a Figma file?",
+        "category": "frame_export",
+        "context": {
+          "user_stage": "beginner",
+          "has_figma_token": false
+        },
+        "asked_at": "2025-10-30T10:20:02.591309",
+        "response_summary": "Answered question about frame_export",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0002",
+        "question": "Can I export Figma components and component sets too?",
+        "category": "frame_export",
+        "context": {
+          "user_stage": "intermediate",
+          "has_figma_token": true
+        },
+        "asked_at": "2025-10-30T10:20:02.592007",
+        "response_summary": "Answered question about frame_export",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0003",
+        "question": "How do I convert a Figma design to React components?",
+        "category": "figma_conversion",
+        "context": {
+          "user_stage": "beginner",
+          "framework": "react"
+        },
+        "asked_at": "2025-10-30T10:20:02.592636",
+        "response_summary": "Answered question about figma_conversion",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0004",
+        "question": "Why is my conversion accuracy only 41%?",
+        "category": "accuracy_improvement",
+        "context": {
+          "user_stage": "intermediate",
+          "method": "figma-api"
+        },
+        "asked_at": "2025-10-30T10:20:02.593354",
+        "response_summary": "Answered question about accuracy_improvement",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0005",
+        "question": "Should I use Figma API or Image-to-HTML method?",
+        "category": "figma_conversion",
+        "context": {
+          "user_stage": "intermediate",
+          "complexity": "complex_dashboard"
+        },
+        "asked_at": "2025-10-30T10:20:02.593962",
+        "response_summary": "Answered question about figma_conversion",
+        "was_helpful": null,
+        "follow_ups": []
+      }
+    ],
+    "question_categories": {
+      "frame_export": {
+        "count": 2,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "figma_conversion": {
+        "count": 2,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "accuracy_improvement": {
+        "count": 1,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "setup_configuration": {
+        "count": 0,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "troubleshooting": {
+        "count": 0,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "hero_capabilities": {
+        "count": 0,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      }
+    },
+    "common_questions": [],
+    "learning_journeys": {
+      "typical_path": [
+        "initial_setup",
+        "first_frame_export",
+        "first_figma_conversion",
+        "accuracy_tuning",
+        "advanced_features"
+      ],
+      "common_blockers": [
+        "figma_token_configuration",
+        "low_conversion_accuracy",
+        "understanding_methodology_selection",
+        "component_extraction"
+      ],
+      "success_indicators": [
+        "completed_first_export",
+        "achieved_90plus_accuracy",
+        "understanding_decision_matrix",
+        "using_oracle_patterns"
+      ]
+    },
+    "knowledge_gaps": {
+      "identified_gaps": [],
+      "documentation_needs": [],
+      "feature_requests": []
+    },
+    "analytics": {
+      "total_questions": 5,
+      "total_successful_resolutions": 0,
+      "avg_resolution_time": "0 minutes",
+      "most_asked_category": null,
+      "user_satisfaction_score": 0.0,
+      "last_updated": "2025-10-30T10:20:02.593966"
+    },
+    "user_journey_log": [
+      {
+        "user_stage": "beginner",
+        "milestone": "completed_first_export",
+        "achieved_at": "2025-10-30T10:20:02.594687"
+      },
+      {
+        "user_stage": "intermediate",
+        "milestone": "first_figma_conversion",
+        "achieved_at": "2025-10-30T10:20:02.595256"
+      },
+      {
+        "user_stage": "intermediate",
+        "milestone": "understanding_decision_matrix",
+        "achieved_at": "2025-10-30T10:20:02.595821"
+      }
+    ]
+  },
+  "hero_meta_learning": {
+    "description": "Oracle's Super Meta Agent system - learns from every mission to improve all heroes (v1.9.1)",
+    "mission_history": [
+      {
+        "mission_id": "M0001",
+        "timestamp": "2025-10-30T10:35:36.097668",
+        "mission_type": "figma_conversion",
+        "target": "test://figma_conversion",
+        "heroes_deployed": [
+          "Artemis",
+          "Green Arrow"
+        ],
+        "overall_score": 85,
+        "grade": "B",
+        "success": true,
+        "hero_reports": {
+          "Artemis": {
+            "hero": "Artemis",
+            "participated": true,
+            "success": true,
+            "score": 92,
+            "key_metrics": {
+              "accuracy": 92,
+              "iterations": 0
+            },
+            "issues_found": [],
+            "learnings": []
+          },
+          "Green Arrow": {
+            "hero": "Green Arrow",
+            "participated": true,
+            "success": false,
+            "score": 0,
+            "key_metrics": {},
+            "issues_found": [],
+            "learnings": []
+          }
+        }
+      },
+      {
+        "mission_id": "M0002",
+        "timestamp": "2025-10-30T10:35:36.098721",
+        "mission_type": "figma_conversion",
+        "target": "test://figma_conversion",
+        "heroes_deployed": [
+          "Artemis",
+          "Green Arrow"
+        ],
+        "overall_score": 85,
+        "grade": "B",
+        "success": true,
+        "hero_reports": {
+          "Artemis": {
+            "hero": "Artemis",
+            "participated": true,
+            "success": true,
+            "score": 85,
+            "key_metrics": {
+              "accuracy": 85,
+              "iterations": 0
+            },
+            "issues_found": [],
+            "learnings": []
+          },
+          "Green Arrow": {
+            "hero": "Green Arrow",
+            "participated": true,
+            "success": false,
+            "score": 0,
+            "key_metrics": {},
+            "issues_found": [],
+            "learnings": []
+          }
+        }
+      },
+      {
+        "mission_id": "M0003",
+        "timestamp": "2025-10-30T10:35:36.099594",
+        "mission_type": "figma_conversion",
+        "target": "test://figma_conversion",
+        "heroes_deployed": [
+          "Artemis"
+        ],
+        "overall_score": 65,
+        "grade": "D",
+        "success": false,
+        "hero_reports": {
+          "Artemis": {
+            "hero": "Artemis",
+            "participated": true,
+            "success": false,
+            "score": 65,
+            "key_metrics": {
+              "accuracy": 65,
+              "iterations": 0
+            },
+            "issues_found": [],
+            "learnings": []
+          }
+        }
+      }
+    ],
+    "hero_performance_trends": {
+      "artemis": {
+        "total_missions": 3,
+        "success_rate": 0.6666666666666666,
+        "average_accuracy": 80.66666666666667,
+        "accuracy_trend_30d": [
+          {
+            "timestamp": "2025-10-30T10:35:36.097668",
+            "score": 92,
+            "success": true
+          },
+          {
+            "timestamp": "2025-10-30T10:35:36.098721",
+            "score": 85,
+            "success": true
+          },
+          {
+            "timestamp": "2025-10-30T10:35:36.099594",
+            "score": 65,
+            "success": false
+          }
+        ],
+        "skill_gaps": [],
+        "last_updated": "2025-10-30T10:35:36.099717"
+      },
+      "batman": {
+        "total_missions": 0,
+        "success_rate": 0.0,
+        "average_tests_passed": 0.0,
+        "test_success_trend_30d": [],
+        "skill_gaps": [],
+        "last_updated": null
+      },
+      "green_arrow": {
+        "total_missions": 2,
+        "success_rate": 0.0,
+        "average_accuracy": 0.0,
+        "accuracy_trend_30d": [
+          {
+            "timestamp": "2025-10-30T10:35:36.097668",
+            "score": 0,
+            "success": false
+          },
+          {
+            "timestamp": "2025-10-30T10:35:36.098721",
+            "score": 0,
+            "success": false
+          }
+        ],
+        "skill_gaps": [],
+        "last_updated": "2025-10-30T10:35:36.098842"
+      },
+      "hawkman": {
+        "total_missions": 0,
+        "success_rate": 0.0,
+        "average_frames_exported": 0.0,
+        "export_success_trend_30d": [],
+        "skill_gaps": [],
+        "last_updated": null
+      }
+    },
+    "capability_improvements": {
+      "description": "Recommended improvements Oracle has identified",
+      "pending_recommendations": [],
+      "applied_improvements": []
+    },
+    "training_scenarios": {
+      "description": "Practice missions Oracle generates to strengthen hero weaknesses",
+      "active_scenarios": [
+        {
+          "scenario_id": "TRAIN-ART-20251030103536",
+          "hero": "Artemis",
+          "target_area": "figma_conversion",
+          "difficulty": "adaptive",
+          "objectives": [
+            "Convert 5 complex dashboard components with 90%+ accuracy",
+            "Handle nested component structures correctly",
+            "Maintain consistent spacing and layout"
+          ],
+          "success_criteria": {
+            "min_score": 85,
+            "improvement_target": 15,
+            "consistency_required": true
+          },
+          "created_at": "2025-10-30T10:35:36.102112",
+          "status": "active"
+        }
+      ],
+      "completed_scenarios": []
+    },
+    "hero_synergies": {
+      "description": "Which hero combinations produce best outcomes",
+      "effective_combinations": [],
+      "mission_type_preferences": {}
+    },
+    "predictive_insights": {
+      "description": "Oracle's predictions and success patterns",
+      "success_predictors": [],
+      "failure_patterns": [],
+      "optimal_thresholds": {}
+    }
+  },
+  "error_recovery_patterns": {
+    "figma-export-retry-with-exponential-backoff": {
+      "name": "Network Resilience: Retry with Exponential Backoff",
+      "pattern_type": "network_timeout_recovery",
+      "description": "Robust retry logic for large file downloads from CDN with exponential backoff and increased timeouts",
+      "problem": {
+        "symptom": "HTTPSConnectionPool timeout",
+        "context": "Large PNG file downloads from Figma CDN (s3.us-west-2.amazonaws.com)",
+        "frequency": "Intermittent (network-dependent)",
+        "impact": "Partial export completion (e.g., 96% - 25/26 frames)",
+        "error_message": "Read timed out after 30s"
+      },
+      "solution": {
+        "technique": "Exponential backoff retry",
+        "parameters": {
+          "max_retries": 5,
+          "timeout_api": 60,
+          "timeout_cdn": 120,
+          "backoff_factor": 2.0,
+          "wait_times": "1s, 2s, 4s, 8s, 16s"
+        },
+        "implementation": {
+          "file": "core/justice_league/hawkman_retry_patch.py",
+          "function": "download_with_retry()",
+          "key_features": [
+            "Separate timeouts for API vs CDN",
+            "Exponential backoff between retries",
+            "Clear progress visibility",
+            "Graceful degradation on persistent failures"
+          ]
+        }
+      },
+      "test_results": {
+        "before": {
+          "success_rate": 0.96,
+          "frames_exported": 25,
+          "frames_total": 26,
+          "failure_point": "Attendance frame timeout"
+        },
+        "after": {
+          "success_rate": 1.0,
+          "frames_exported": 26,
+          "frames_total": 26,
+          "duration": "1m 51s"
+        },
+        "improvement": "+4% completion, 100% reliability"
+      },
+      "confidence_score": 1.0,
+      "production_validated": true,
+      "validation_date": "2025-10-30",
+      "validation_project": "K-12 UI Dashboard (8M6JZyMPy5ME6QiPAjBGhT)",
+      "heroes_involved": [
+        "Oracle",
+        "Hawkman",
+        "Superman"
+      ],
+      "reusable_for": [
+        "Any external API with large file downloads",
+        "CDN downloads",
+        "Network-dependent operations",
+        "Batch processing with intermittent failures"
+      ],
+      "scripts_created": [
+        "core/justice_league/hawkman_retry_patch.py",
+        "scripts/export_figma_frames_v2.py",
+        "scripts/export_figma_standalone.py"
+      ],
+      "learned_at": "2025-10-30T13:00:00Z",
+      "learned_from": "4+ failed export attempts with same error pattern"
+    }
+  },
+  "learning_sessions": {},
+  "satisfaction_patterns": {
+    "user_satisfaction_history": [],
+    "satisfaction_thresholds": {
+      "description": "Learned thresholds for user satisfaction (updated automatically)",
+      "accuracy_threshold_happy": 90,
+      "accuracy_threshold_acceptable": 75,
+      "learned_from_samples": 0,
+      "last_updated": null
+    }
+  },
+  "hero_insights": {
+    "description": "Auto-generated insights about individual hero performance",
+    "artemis": {
+      "strengths": [],
+      "improvement_areas": [],
+      "user_satisfaction_correlation": null,
+      "total_operations": 0
+    },
+    "green_arrow": {
+      "strengths": [],
+      "improvement_areas": [],
+      "user_satisfaction_correlation": null,
+      "total_operations": 0
+    },
+    "hawkman": {
+      "strengths": [],
+      "improvement_areas": [],
+      "user_satisfaction_correlation": null,
+      "total_operations": 0
+    }
+  },
+  "documentation_management": {
+    "description": "Oracle auto-manages living documentation files - keeps hero reference guides up-to-date",
+    "managed_documents": {
+      "justice_league_heroes": {
+        "file_path": "justice-league-heroes.md",
+        "description": "Complete reference guide for all Justice League heroes - capabilities, methods, use cases",
+        "auto_update_enabled": true,
+        "last_updated": "2025-10-30T11:57:00Z",
+        "update_triggers": [
+          "new_hero_added",
+          "hero_capabilities_enhanced",
+          "methodology_added",
+          "integration_pattern_changed",
+          "narrator_system_updated"
+        ],
+        "sections_managed": [
+          "hero_capabilities",
+          "narrator_integration_status",
+          "mcp_requirements",
+          "hero_selection_matrix",
+          "quick_reference_table",
+          "auto_update_timestamp"
+        ],
+        "total_heroes_documented": 18,
+        "heroes_with_narrator": 16,
+        "auto_update_method": "oracle.update_hero_documentation()",
+        "validation": {
+          "last_validated": "2025-10-30T11:57:00Z",
+          "validation_status": "passed",
+          "heroes_verified": 18,
+          "narrator_status_verified": true
+        }
+      }
+    },
+    "update_history": [
+      {
+        "document": "justice-league-heroes.md",
+        "timestamp": "2025-10-30T11:57:00Z",
+        "trigger": "initial_creation",
+        "changes": "Created comprehensive hero reference with all 18 heroes documented",
+        "heroes_count": 18,
+        "narrator_integration": "16/16 active heroes (100%)"
+      }
+    ],
+    "pending_updates": [],
+    "update_rules": {
+      "frequency": "on_demand",
+      "auto_commit": true,
+      "validation_required": true,
+      "user_notification": true
+    }
+  }
+}

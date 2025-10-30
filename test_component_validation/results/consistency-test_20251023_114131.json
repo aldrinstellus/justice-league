@@ -1,0 +1,59 @@
+{
+  "library_name": "consistency-test",
+  "total_components": 5,
+  "tested_components": 5,
+  "total_variants": 47,
+  "tested_variants": 47,
+  "passed_tests": 47,
+  "failed_tests": 0,
+  "coverage_percentage": 100.0,
+  "consistency_checks": [
+    {
+      "check_type": "spacing",
+      "passed": true,
+      "expected": "Consistent spacing scale (8px base)",
+      "actual": "1 different spacing values found",
+      "components_affected": [],
+      "details": "All components should use the same spacing scale for consistency"
+    },
+    {
+      "check_type": "colors",
+      "passed": true,
+      "expected": "Colors from design system tokens",
+      "actual": "All colors from design system",
+      "components_affected": [],
+      "details": "All components should use design system color tokens"
+    },
+    {
+      "check_type": "typography",
+      "passed": true,
+      "expected": "Typography from design system scale",
+      "actual": "Consistent typography",
+      "components_affected": [],
+      "details": "All components should use typography scale from design system"
+    },
+    {
+      "check_type": "border_radius",
+      "passed": true,
+      "expected": "Consistent border radius values",
+      "actual": "Consistent borders",
+      "components_affected": [],
+      "details": "All components should use the same border radius scale"
+    },
+    {
+      "check_type": "shadows",
+      "passed": true,
+      "expected": "Consistent shadow values from design system",
+      "actual": "Consistent shadows",
+      "components_affected": [],
+      "details": "All components should use shadow scale from design system"
+    }
+  ],
+  "token_usage": [],
+  "recommendations": [
+    "\ud83d\udcca Low token usage (0%) - components may be using custom values instead of design tokens",
+    "\u2705 Consider adding more component variants to improve coverage"
+  ],
+  "timestamp": "2025-10-23T11:41:31.452809",
+  "test_duration": 0.00013494491577148438
+}

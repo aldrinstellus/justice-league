@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-10-23T10:35:56.414199",
+  "results": {
+    "health_checks": {
+      "iterations": 100,
+      "avg": 0.09033918380737305,
+      "median": 0.08571147918701172,
+      "min": 0.08082389831542969,
+      "max": 0.32782554626464844,
+      "p95": 0.11736154556274414,
+      "p99": 0.32782554626464844,
+      "target": 500,
+      "pass": true
+    },
+    "agent_health": {
+      "iterations": 50,
+      "avg": 0.05875587463378906,
+      "median": 0.035762786865234375,
+      "p95": 0.04935264587402344,
+      "target": 500,
+      "pass": true
+    },
+    "version_checks": {
+      "iterations": 50,
+      "avg": 0.47872066497802734,
+      "median": 0.2880096435546875,
+      "p95": 0.31987428665161133,
+      "target": 500,
+      "pass": true
+    },
+    "system_scan": {
+      "iterations": 20,
+      "avg": 0.22248029708862305,
+      "median": 0.19550323486328125,
+      "p95": 0.598907470703125,
+      "target": 2000,
+      "pass": true
+    },
+    "dependency_graph": {
+      "iterations": 50,
+      "avg": 0.1255512237548828,
+      "median": 0.11181831359863281,
+      "p95": 0.12476444244384766,
+      "target": 1000,
+      "pass": true
+    },
+    "concurrent": {
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "pass": false
+    },
+    "database": {
+      "skipped": true,
+      "pass": true
+    },
+    "memory": {
+      "skipped": true,
+      "pass": true
+    }
+  }
+}

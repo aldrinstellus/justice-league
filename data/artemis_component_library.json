@@ -1,0 +1,110 @@
+{
+  "library_name": "shadcn/ui",
+  "version": "latest",
+  "description": "Accessible, customizable component library built with Radix UI and Tailwind CSS",
+  "last_updated": "2025-10-23T00:00:00.000Z",
+  "component_metadata": {
+    "Card": {
+      "file": "card.tsx",
+      "dependencies": ["radix-ui"],
+      "tailwind_utilities": ["bg-white", "border", "rounded-lg", "shadow"],
+      "supports_cn_utility": true,
+      "customization_notes": "Use cn() utility from @/lib/utils for proper class merging",
+      "lessons_learned": [
+        "Never use string concatenation for className - use cn() utility",
+        "cn() properly merges Tailwind classes using clsx + tailwind-merge",
+        "Custom classes passed via className prop will override defaults"
+      ]
+    },
+    "Button": {
+      "file": "button.tsx",
+      "dependencies": ["radix-ui"],
+      "tailwind_utilities": ["bg-zinc-900", "text-white", "hover:bg-zinc-800"],
+      "supports_cn_utility": true,
+      "customization_notes": "For custom backgrounds, use cn() or native <button> element",
+      "lessons_learned": [
+        "Component's default styles can block custom styles without cn()",
+        "Use native <button> when complete style override needed",
+        "cn() utility ensures custom classes properly override defaults"
+      ]
+    },
+    "Input": {
+      "file": "input.tsx",
+      "dependencies": ["radix-ui"],
+      "tailwind_utilities": ["border", "rounded-md", "px-3", "py-2"],
+      "supports_cn_utility": true
+    },
+    "Label": {
+      "file": "label.tsx",
+      "dependencies": ["radix-ui"],
+      "tailwind_utilities": ["text-sm", "font-medium"],
+      "supports_cn_utility": true
+    },
+    "Badge": {
+      "file": "badge.tsx",
+      "dependencies": [],
+      "tailwind_utilities": ["bg-zinc-100", "text-zinc-900", "rounded-full"],
+      "supports_cn_utility": true
+    },
+    "Avatar": {
+      "file": "avatar.tsx",
+      "dependencies": ["radix-ui"],
+      "tailwind_utilities": ["rounded-full", "overflow-hidden"],
+      "supports_cn_utility": true
+    },
+    "Tabs": {
+      "file": "tabs.tsx",
+      "dependencies": ["radix-ui"],
+      "tailwind_utilities": ["border-b", "space-x-2"],
+      "supports_cn_utility": true
+    }
+  },
+  "utilities": {
+    "cn": {
+      "file": "lib/utils.ts",
+      "implementation": "clsx + tailwind-merge",
+      "description": "Merges Tailwind classes properly, resolving conflicts",
+      "usage": "cn('default-classes', customClassName)",
+      "critical_for": [
+        "Component customization",
+        "Tailwind class merging",
+        "Preventing style conflicts"
+      ]
+    }
+  },
+  "design_tokens": {
+    "spacing": {
+      "enterprise_standard": "24px",
+      "tailwind_mapping": {
+        "24px": ["py-6", "px-6", "space-y-6", "gap-6"]
+      }
+    },
+    "colors": {
+      "black": "#000000",
+      "white": "#FFFFFF",
+      "zinc": {
+        "50": "#fafafa",
+        "100": "#f4f4f5",
+        "200": "#e4e4e7",
+        "900": "#18181b"
+      }
+    }
+  },
+  "best_practices": [
+    "Always use cn() utility for className props in custom components",
+    "Install clsx and tailwind-merge as dependencies",
+    "Use exact Figma colors - never approximate",
+    "Enterprise spacing: 24px (py-6, gap-6) not 16px (py-4, gap-4)",
+    "Full-width dividers: separate container from constrained content",
+    "Native HTML elements for complete style control when needed"
+  ],
+  "lessons_from_conversions": [
+    {
+      "conversion_id": "settings_001",
+      "date": "2025-10-23",
+      "lesson": "Component library hardcoded defaults prevent custom styles",
+      "solution": "Update all 7 components to use cn() utility",
+      "impact": "Permanent fix - all future conversions benefit"
+    }
+  ]
+}

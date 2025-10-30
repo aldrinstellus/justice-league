@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auzmor Dashboard - Dashboard 10</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#FF3264',
+                        'social-studies': '#FF6B9D',
+                        'science': '#9061F9',
+                        'math': '#FF943C',
+                        'language-arts': '#31C48D',
+                        'history': '#3F83F8',
+                        'spelling': '#FFAA26',
+                    },
+                    fontFamily: {
+                        'manrope': ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* Custom CSS */
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: #F6F6F6;
+        }
+
+        /* Card styles */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Header shadow */
+        header {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Badge styles */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            color: white;
+        }
+
+        /* Notification badge */
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #FF3264;
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tab active state */
+        .tab-active {
+            color: #FF3264;
+            border-bottom: 3px solid #FF3264;
+            font-weight: 600;
+        }
+
+        /* Sticky elements */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+        }
+
+        .sticky-sidebar {
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        /* Chat widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 50;
+            background: white;
+            border-radius: 26px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Icon sizing */
+        .icon-sm {
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon-md {
+            width: 20px;
+            height: 20px;
+        }
+
+        .icon-lg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header/Navbar -->
+    <header class="sticky-header flex items-center justify-between px-6 py-3">
+        <div class="flex items-center gap-4">
+            <!-- Hamburger Menu -->
+            <button class="text-gray-600 hover:text-gray-900">
+                <i data-feather="menu" class="icon-lg"></i>
+            </button>
+
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-md"></div>
+                <span class="text-xl font-bold text-gray-900">auzmor</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Notification Bell -->
+            <button class="relative text-gray-600 hover:text-gray-900">
+                <i data-feather="bell" class="icon-md"></i>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <!-- User Avatar -->
+            <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png"
+                 alt="Georgia Watson"
+                 class="w-8 h-8 rounded-full object-cover">
+
+            <!-- User Name -->
+            <span class="text-sm font-medium text-gray-900">Georgia Watson</span>
+
+            <!-- Dropdown Icon -->
+            <i data-feather="chevron-down" class="icon-sm text-gray-600"></i>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-[1440px] mx-auto px-6 py-6">
+        <div class="grid grid-cols-[1fr_290px] gap-6 items-start">
+
+            <!-- Main Content Area -->
+            <main class="space-y-8">
+
+                <!-- Greeting + My Badges Section -->
+                <section class="flex justify-between items-start">
+                    <!-- Greeting -->
+                    <div>
+                        <h1 class="text-[32px] font-bold text-gray-900 mb-2">
+                            Good Morning, <span class="text-gray-900">Georgia</span> 👋
+                        </h1>
+                        <p class="text-sm text-gray-600">Nice to have you back!</p>
+                        <p class="text-sm text-gray-600">Get ready and continue your lesson today.</p>
+                    </div>
+
+                    <!-- My Badges -->
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h2 class="text-xl font-bold text-gray-900">My Badges</h2>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Today, April 22</p>
+                        <a href="#" class="text-sm font-medium text-primary hover:underline">View all</a>
+
+                        <div class="flex gap-3 mt-3">
+                            <!-- Badge icons - using placeholders -->
+                            <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">🏆</span>
+                            </div>
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Today's Classes Section -->
+                <section>
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-2xl font-bold text-gray-900">Today's Classes</h2>
+                        <a href="#" class="text-sm font-medium text-primary hover:underline">View all</a>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <!-- Class Card 1 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/170b83c84742414a438e1d5708fbd1319cd815bd.png"
+                                     alt="States and Capitals"
+                                     class="w-full h-32 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #FF6B9D;">Social Studies</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-1">States and Capitals</h3>
+                                <p class="text-xs text-gray-500 mb-2">Oct 01</p>
+                                <p class="text-xs text-gray-600 flex items-center gap-1">
+                                    <i data-feather="clock" class="icon-sm"></i>
+                                    8:30 - 9:20 AM
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Class Card 2 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/6e9d039e5f00f68627262ba51fed8a2bf02ae5e2.png"
+                                     alt="Earth and Space"
+                                     class="w-full h-32 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #9061F9;">Science</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-1">Earth and Space</h3>
+                                <p class="text-xs text-gray-500 mb-2">Oct 01</p>
+                                <p class="text-xs text-gray-600 flex items-center gap-1">
+                                    <i data-feather="clock" class="icon-sm"></i>
+                                    9:20 - 10:15 AM
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Class Card 3 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/09c646f5750ff32528e54bde155883e9eb8fb25b.png"
+                                     alt="Number System"
+                                     class="w-full h-32 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #FF943C;">Math</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-1">Number System</h3>
+                                <p class="text-xs text-gray-500 mb-2">Oct 01</p>
+                                <p class="text-xs text-gray-600 flex items-center gap-1">
+                                    <i data-feather="clock" class="icon-sm"></i>
+                                    10:20 - 11:05
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Your Courses Section -->
+                <section>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Courses</h2>
+
+                    <!-- Tabs -->
+                    <div class="flex gap-6 mb-6 border-b border-gray-200 pb-2">
+                        <button class="tab-active text-sm px-2 py-1">All</button>
+                        <button class="text-sm text-gray-600 hover:text-gray-900 px-2 py-1">Language Arts</button>
+                        <button class="text-sm text-gray-600 hover:text-gray-900 px-2 py-1">Math</button>
+                        <button class="text-sm text-gray-600 hover:text-gray-900 px-2 py-1">Science</button>
+                        <button class="text-sm text-gray-600 hover:text-gray-900 px-2 py-1">History & Geography</button>
+                        <button class="text-sm text-gray-600 hover:text-gray-900 px-2 py-1">Spelling</button>
+                    </div>
+
+                    <!-- Course Cards Grid -->
+                    <div class="grid grid-cols-3 gap-5">
+                        <!-- Course Card 1 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/170b83c84742414a438e1d5708fbd1319cd815bd.png"
+                                     alt="Reading and Writing Stories"
+                                     class="w-full h-40 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #31C48D;">Language Arts</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-2">Reading and Writing Stories</h3>
+                                <div class="flex items-center gap-2 text-xs text-gray-600 mb-4">
+                                    <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png" class="w-5 h-5 rounded-full">
+                                    <span>John Sturges</span>
+                                    <span>•</span>
+                                    <span>Summer 2023</span>
+                                </div>
+                                <div class="flex gap-3 pt-3 border-t border-gray-100">
+                                    <i data-feather="message-circle" class="icon-md text-gray-400"></i>
+                                    <i data-feather="file-text" class="icon-md text-gray-400"></i>
+                                    <i data-feather="folder" class="icon-md text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 2 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/09c646f5750ff32528e54bde155883e9eb8fb25b.png"
+                                     alt="Number System"
+                                     class="w-full h-40 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #FF943C;">Math</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-2">Number System</h3>
+                                <div class="flex items-center gap-2 text-xs text-gray-600 mb-4">
+                                    <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png" class="w-5 h-5 rounded-full">
+                                    <span>John Sturges</span>
+                                    <span>•</span>
+                                    <span>Summer 2023</span>
+                                </div>
+                                <div class="flex gap-3 pt-3 border-t border-gray-100">
+                                    <i data-feather="message-circle" class="icon-md text-gray-400"></i>
+                                    <i data-feather="file-text" class="icon-md text-gray-400"></i>
+                                    <i data-feather="folder" class="icon-md text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 3 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/6e9d039e5f00f68627262ba51fed8a2bf02ae5e2.png"
+                                     alt="Earth and Space"
+                                     class="w-full h-40 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #9061F9;">Science</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-2">Earth and Space</h3>
+                                <div class="flex items-center gap-2 text-xs text-gray-600 mb-4">
+                                    <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png" class="w-5 h-5 rounded-full">
+                                    <span>Jane Austin</span>
+                                    <span>•</span>
+                                    <span>Summer 2023</span>
+                                </div>
+                                <div class="flex gap-3 pt-3 border-t border-gray-100">
+                                    <i data-feather="message-circle" class="icon-md text-gray-400"></i>
+                                    <i data-feather="file-text" class="icon-md text-gray-400"></i>
+                                    <i data-feather="folder" class="icon-md text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 4 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/170b83c84742414a438e1d5708fbd1319cd815bd.png"
+                                     alt="States and Capitals"
+                                     class="w-full h-40 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #3F83F8;">History & Geography</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-2">States and Capitals</h3>
+                                <div class="flex items-center gap-2 text-xs text-gray-600 mb-4">
+                                    <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png" class="w-5 h-5 rounded-full">
+                                    <span>John Sturges</span>
+                                    <span>•</span>
+                                    <span>Summer 2023</span>
+                                </div>
+                                <div class="flex gap-3 pt-3 border-t border-gray-100">
+                                    <i data-feather="message-circle" class="icon-md text-gray-400"></i>
+                                    <i data-feather="file-text" class="icon-md text-gray-400"></i>
+                                    <i data-feather="folder" class="icon-md text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 5 -->
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="assets/images/6e9d039e5f00f68627262ba51fed8a2bf02ae5e2.png"
+                                     alt="Heredity and evolution"
+                                     class="w-full h-40 object-cover">
+                                <span class="badge absolute top-2 left-2" style="background: #9061F9;">Science</span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-900 mb-2">Heredity and evolution</h3>
+                                <div class="flex items-center gap-2 text-xs text-gray-600 mb-4">
+                                    <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png" class="w-5 h-5 rounded-full">
+                                    <span>Jane Austin</span>
+                                    <span>•</span>
+                                    <span>Summer 2023</span>
+                                </div>
+                                <div class="flex gap-3 pt-3 border-t border-gray-100">
+                                    <i data-feather="message-circle" class="icon-md text-gray-400"></i>
+                                    <i data-feather="file-text" class="icon-md text-gray-400"></i>
+                                    <i data-feather="folder" class="icon-md text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 6 (Placeholder for 2x3 grid) -->
+                        <div class="card overflow-hidden opacity-50">
+                            <div class="w-full h-40 bg-gray-200"></div>
+                            <div class="p-4">
+                                <span class="badge mb-2 bg-gray-300">More Courses</span>
+                                <h3 class="font-bold text-gray-400 mb-2">Coming Soon</h3>
+                                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                                    <div class="w-5 h-5 rounded-full bg-gray-200"></div>
+                                    <span>•••</span>
+                                    <span>•</span>
+                                    <span>•••</span>
+                                </div>
+                                <div class="flex gap-3 pt-3 border-t border-gray-100">
+                                    <i data-feather="more-horizontal" class="icon-md text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sticky-sidebar space-y-4">
+
+                <!-- Announcement Card -->
+                <div class="card p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-gray-900">Announcement</h3>
+                        <a href="#" class="text-sm font-medium text-primary hover:underline">View all</a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- Announcement Item 1 -->
+                        <div>
+                            <div class="flex gap-2 items-start mb-1">
+                                <div class="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-lg">🎓</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-xs text-gray-600">
+                                        New lesson has been added to <span class="font-bold text-gray-900">Heredity and evolution</span>
+                                    </p>
+                                </div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-1.5"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 text-right">20 mins ago</p>
+                        </div>
+
+                        <hr class="border-gray-100">
+
+                        <!-- Announcement Item 2 -->
+                        <div>
+                            <div class="flex gap-2 items-start mb-1">
+                                <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png"
+                                     class="w-9 h-9 rounded-full object-cover flex-shrink-0">
+                                <div class="flex-1">
+                                    <p class="text-xs text-gray-600">
+                                        Assignment 2 has been added by <span class="font-bold text-gray-900">Jane Smith</span>
+                                    </p>
+                                </div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-1.5"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 text-right">22 mins ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Tests Card -->
+                <div class="card p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-gray-900">Upcoming Tests</h3>
+                        <a href="#" class="text-sm font-medium text-primary hover:underline">View all</a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- Test Item 1 -->
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/images/6e9d039e5f00f68627262ba51fed8a2bf02ae5e2.png"
+                                 alt="English"
+                                 class="w-16 h-16 rounded object-cover flex-shrink-0">
+                            <div class="flex-1">
+                                <p class="text-xs text-gray-500">English</p>
+                                <h4 class="font-bold text-sm text-gray-900 mb-1">Basic English</h4>
+                                <p class="text-xs text-gray-600">Class test 2</p>
+                            </div>
+                            <span class="text-xs text-gray-500">May 10</span>
+                        </div>
+
+                        <hr class="border-gray-100">
+
+                        <!-- Test Item 2 -->
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/images/09c646f5750ff32528e54bde155883e9eb8fb25b.png"
+                                 alt="Chemistry"
+                                 class="w-16 h-16 rounded object-cover flex-shrink-0">
+                            <div class="flex-1">
+                                <p class="text-xs text-gray-500">Chemistry</p>
+                                <h4 class="font-bold text-sm text-gray-900 mb-1">Atomic Reactions</h4>
+                                <p class="text-xs text-gray-600">Class test 2</p>
+                            </div>
+                            <span class="text-xs text-gray-500">May 12</span>
+                        </div>
+
+                        <hr class="border-gray-100">
+
+                        <!-- Test Item 3 -->
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/images/170b83c84742414a438e1d5708fbd1319cd815bd.png"
+                                 alt="History"
+                                 class="w-16 h-16 rounded object-cover flex-shrink-0">
+                            <div class="flex-1">
+                                <p class="text-xs text-gray-500">History</p>
+                                <h4 class="font-bold text-sm text-gray-900 mb-1">World War II</h4>
+                                <p class="text-xs text-gray-600">Class test 2</p>
+                            </div>
+                            <span class="text-xs text-gray-500">May 15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- To-Do List Card -->
+                <div class="card p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-gray-900">To-Do List</h3>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- Completed Item 1 -->
+                        <div class="flex items-center gap-2">
+                            <div class="w-5 h-5 rounded bg-primary flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm text-gray-600 line-through">Meet your teachers</span>
+                        </div>
+
+                        <!-- Completed Item 2 -->
+                        <div class="flex items-center gap-2">
+                            <div class="w-5 h-5 rounded bg-primary flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm text-gray-600 line-through">Introduction to classmates</span>
+                        </div>
+
+                        <!-- Pending Item 1 -->
+                        <div>
+                            <div class="flex items-start gap-2 mb-1">
+                                <div class="w-5 h-5 rounded border-2 border-gray-300 flex-shrink-0"></div>
+                                <span class="text-sm text-gray-900 font-medium flex-1">First Assignment</span>
+                            </div>
+                            <div class="flex items-center gap-2 ml-7 text-xs text-gray-500">
+                                <i data-feather="calendar" class="icon-sm"></i>
+                                <span>May 1</span>
+                                <span class="text-red-500 font-medium">Due tomorrow</span>
+                            </div>
+                        </div>
+
+                        <!-- Pending Item 2 -->
+                        <div>
+                            <div class="flex items-start gap-2 mb-1">
+                                <div class="w-5 h-5 rounded border-2 border-gray-300 flex-shrink-0"></div>
+                                <span class="text-sm text-gray-900 font-medium flex-1">Second Assignment</span>
+                            </div>
+                            <div class="flex items-center gap-2 ml-7 text-xs text-gray-500">
+                                <i data-feather="calendar" class="icon-sm"></i>
+                                <span>May 2</span>
+                            </div>
+                        </div>
+
+                        <!-- Progress -->
+                        <div class="pt-2">
+                            <button class="w-full flex items-center justify-center gap-2 py-2 px-4 border-2 border-language-arts text-language-arts rounded-lg text-sm font-medium hover:bg-green-50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                2/5 Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <img src="assets/images/0e0425775f8a0796ae15d4fd77ca37b5eea1ee0f.png"
+             alt="Chat"
+             class="w-10 h-10 rounded-full object-cover">
+        <span class="text-sm font-medium text-gray-900">Chat</span>
+        <i data-feather="chevron-up" class="icon-sm text-gray-600 ml-auto"></i>
+    </div>
+
+    <!-- Initialize Feather Icons -->
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
