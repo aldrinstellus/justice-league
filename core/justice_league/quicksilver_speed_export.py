@@ -83,7 +83,7 @@ class QuicksilverSpeedExport(HeroBase):
     - Batch API requests (10-15 frames per call)
     - Connection pooling (reuse HTTP sessions)
     - Rate limit protection with auto-adjustment
-    - Smart timeout tuning (15s API, 30s CDN vs 60s/120s)
+    - Production-tested timeouts (60s API, 120s CDN for reliability)
 
     All Hawkman Capabilities:
     - Figma REST API integration
@@ -96,8 +96,8 @@ class QuicksilverSpeedExport(HeroBase):
     Configuration (Environment Variables):
     - QUICKSILVER_MAX_WORKERS: Concurrent workers (default: 8)
     - QUICKSILVER_BATCH_SIZE: Frames per API batch (default: 15)
-    - QUICKSILVER_API_TIMEOUT: API timeout seconds (default: 15)
-    - QUICKSILVER_CDN_TIMEOUT: CDN timeout seconds (default: 30)
+    - QUICKSILVER_API_TIMEOUT: API timeout seconds (default: 60)
+    - QUICKSILVER_CDN_TIMEOUT: CDN timeout seconds (default: 120)
     """
 
     def __init__(
@@ -174,8 +174,8 @@ class QuicksilverSpeedExport(HeroBase):
         # Speed optimization configuration
         self.max_workers = max_workers or int(os.getenv('QUICKSILVER_MAX_WORKERS', '8'))
         self.batch_size = batch_size or int(os.getenv('QUICKSILVER_BATCH_SIZE', '15'))
-        self.api_timeout = int(os.getenv('QUICKSILVER_API_TIMEOUT', '15'))
-        self.cdn_timeout = int(os.getenv('QUICKSILVER_CDN_TIMEOUT', '30'))
+        self.api_timeout = int(os.getenv('QUICKSILVER_API_TIMEOUT', '60'))
+        self.cdn_timeout = int(os.getenv('QUICKSILVER_CDN_TIMEOUT', '120'))
         self.max_retries = int(os.getenv('QUICKSILVER_MAX_RETRIES', '5'))
 
         # Connection pooling: Create persistent session with adapter

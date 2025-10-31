@@ -94,6 +94,47 @@ User: "Assemble the team to validate this design"
 
 **This is a user preference with HIGH priority** - consistent banner display is critical for user experience.
 
+## 🚀 Automated Command Patterns (Oracle Learned)
+
+### Figma PNG Export Automation
+
+**TRIGGER**: When user says ANY of these phrases followed by a Figma URL/key:
+- "export this figma file to .png"
+- "export this figma file to png"
+- "export figma to .png"
+- "export figma to png"
+- "figma to .png"
+- "export to .png"
+
+**ACTION**: Immediately execute WITHOUT asking for confirmation:
+```bash
+python3 export_figma_png.py <EXTRACTED_URL_OR_KEY>
+```
+
+**Workflow**:
+1. Detect trigger pattern in user message (case-insensitive)
+2. Extract Figma URL or file key from same message
+   - URL pattern: `https://www.figma.com/(file|design)/([A-Za-z0-9]+)`
+   - File key pattern: `[A-Za-z0-9]{22}`
+3. Run export command immediately (no confirmation needed)
+4. Report full absolute output path prominently
+5. Show summary: frame count, duration, success rate
+
+**Example**:
+
+User: "export this figma file to .png https://www.figma.com/design/RSMfJWl2TkykvXWa7JRP8X/..."
+
+Your response:
+1. Run: `python3 export_figma_png.py RSMfJWl2TkykvXWa7JRP8X`
+2. Wait for completion
+3. Report: "✅ Exported 484 frames to `/full/absolute/path/figma-export-TIMESTAMP/`"
+
+**NO questions, NO confirmation** - just execute and report results.
+
+**Hero Used**: Quicksilver (production-tested, 8 workers, 60s/120s timeouts)
+
+**Learned From**: User preference 2025-10-31 - "i want quicksilver running this when i say 'export this figma file to .png' followed by figma link"
+
 ## Essential Commands
 
 ### Python Environment
