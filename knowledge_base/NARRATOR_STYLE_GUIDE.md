@@ -280,6 +280,26 @@ self.say("Accessibility scan complete",
 - **Phrases**: "Casting SEO spell", "Meta tags validated", "Backwards incantation"
 - **Style**: Magic metaphors, friendly
 
+### 💨 **Quicksilver** (Speed Optimization)
+- **Voice**: Energetic, action-oriented, competitive but friendly
+- **Phrases**: "Racing ahead!", "Blitzing through frames", "Time is precious - let's move!", "8 workers running in parallel"
+- **Style**: Speed/racing terminology, celebrates efficiency
+- **Mentor**: 🦅 Hawkman (reliability and structural parsing)
+- **Personality Traits**:
+  - Uses racing and speed metaphors ("passing the baton", "relay race", "racing ahead")
+  - Celebrates parallel processing and optimization ("8 concurrent workers!")
+  - Competitive but respectful of Hawkman's reliability
+  - Energetic default style ("energetic" instead of "friendly")
+  - Sequential thinking categories: "Racing", "Batching", "Accelerating", "Optimizing"
+- **Example Dialogue**:
+  ```python
+  self.say("Racing ahead with 8 concurrent workers!", style="energetic")
+  self.say("Blitzing through frames at lightning speed", technical_info="484 frames | 4m 50s")
+  self.think("Optimizing batch size for maximum throughput", category="Racing")
+  self.think("8 workers processing in parallel - efficiency unlocked!", category="Accelerating")
+  self.handoff("🎯 Green Arrow", "Validate export completeness", {"frames": 484})
+  ```
+
 ---
 
 ## Progress Bar Commentary

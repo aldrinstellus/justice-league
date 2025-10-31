@@ -477,6 +477,139 @@ class MissionControlNarrator:
         self.conversation_log = []
         self.step_counter = {}
 
+    def strategy_session_start(self, leader: str, topic: str, heroes: List[str]):
+        """
+        Start a team strategy session where heroes debate and collaborate
+
+        Args:
+            leader: Hero leading the session (usually Superman)
+            topic: What the team is discussing
+            heroes: List of heroes participating
+
+        Example:
+            narrator.strategy_session_start(
+                "🦸 Superman",
+                "Best methodology for dashboard conversion",
+                ["🔮 Oracle", "🎨 Artemis", "👁️ Vision Analyst"]
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        print()
+        print("=" * 78)
+        print(f"  {leader}: STRATEGY SESSION")
+        print("=" * 78)
+        print(f"  Topic: {topic}")
+        print(f"  Participants: {', '.join(heroes)}")
+        print("=" * 78)
+        print()
+
+    def strategy_contribution(
+        self,
+        hero: str,
+        perspective: str,
+        reasoning: Optional[List[str]] = None,
+        recommendation: Optional[str] = None
+    ):
+        """
+        Record a hero's contribution to the strategy session
+
+        Args:
+            hero: Hero contributing
+            perspective: Their main perspective or finding
+            reasoning: Optional list of sequential thinking steps
+            recommendation: Optional recommendation
+
+        Example:
+            narrator.strategy_contribution(
+                "🔮 Oracle",
+                "Found 2 similar dashboards in knowledge base",
+                reasoning=[
+                    "Scanning knowledge base for similar projects",
+                    "Image-to-HTML achieved 90-95% accuracy on complex dashboards"
+                ],
+                recommendation="Use Image-to-HTML methodology"
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        # Show hero's main perspective
+        print(f"{hero}: {perspective}")
+
+        # Show sequential thinking if provided
+        if reasoning:
+            for i, thought in enumerate(reasoning, 1):
+                category = "Analyzing" if i < len(reasoning) else "Conclusion"
+                print(f"{hero}: [{category}] {thought}")
+
+        # Show recommendation if provided
+        if recommendation:
+            print(f"{hero}: 💡 Recommendation: {recommendation}")
+
+        print()
+
+    def strategy_decision(
+        self,
+        leader: str,
+        decision: str,
+        analysis: Optional[List[str]] = None,
+        next_steps: Optional[Dict[str, str]] = None
+    ):
+        """
+        Leader announces final decision after analyzing team input
+
+        Args:
+            leader: Hero making the decision (usually Superman)
+            decision: The final decision
+            analysis: Optional sequential thinking leading to decision
+            next_steps: Optional dict of {hero: task} assignments
+
+        Example:
+            narrator.strategy_decision(
+                "🦸 Superman",
+                "Using Image-to-HTML methodology",
+                analysis=[
+                    "Analyzing team input: 3 heroes, 2 recommendations",
+                    "Oracle data: 90-95% accuracy with Image-to-HTML",
+                    "Vision Analyst: Complex layout requires measurements"
+                ],
+                next_steps={
+                    "👁️ Vision Analyst": "Extract dashboard measurements",
+                    "🎨 Artemis": "Build fresh HTML/CSS from measurements",
+                    "🎯 Green Arrow": "Validate visual accuracy"
+                }
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        print("─" * 78)
+        print(f"{leader}: DECISION")
+        print("─" * 78)
+
+        # Show sequential thinking if provided
+        if analysis:
+            for i, thought in enumerate(analysis, 1):
+                category = "Strategizing" if i < len(analysis) else "Commanding"
+                print(f"{leader}: [{category}] {thought}")
+            print()
+
+        # Show final decision
+        print(f"{leader}: ✅ {decision}")
+        print()
+
+        # Show next steps if provided
+        if next_steps:
+            print(f"{leader}: 📋 Team Assignments:")
+            for hero, task in next_steps.items():
+                print(f"  • {hero}: {task}")
+            print()
+
+        print("=" * 78)
+        print()
+
     def reset_step_counter(self, hero: Optional[str] = None):
         """
         Reset sequential thinking step counter

@@ -597,6 +597,465 @@ class HawkmanEquipped(HeroBase):
             logger.error(f"❌ Failed to fetch Figma file structure: {e}")
             raise
 
+    # ==================== ENHANCED STRUCTURAL CAPABILITIES ====================
+
+    def get_file_metadata(self, file_key: str) -> Dict[str, Any]:
+        """
+        Get comprehensive metadata about a Figma file without parsing all content
+
+        Args:
+            file_key: Figma file key
+
+        Returns:
+            Dict with file metadata (name, pages, frame count, last modified, etc.)
+        """
+        if not self.figma_token:
+            raise ValueError("Figma token not set")
+
+        try:
+            file_data = self._fetch_figma_structure(file_key)
+
+            # Count pages and frames
+            pages = []
+            total_frames = 0
+
+            if 'children' in file_data:
+                for child in file_data['children']:
+                    if child.get('type') == 'CANVAS':
+                        page_name = child.get('name', 'Unnamed')
+                        page_frame_count = 0
+
+                        # Count frames in this page
+                        if 'children' in child:
+                            exportable_types = {'FRAME', 'COMPONENT', 'COMPONENT_SET'}
+                            for element in child['children']:
+                                if element.get('type') in exportable_types:
+                                    page_frame_count += 1
+                                elif element.get('type') == 'SECTION' and 'children' in element:
+                                    for node in element['children']:
+                                        if node.get('type') in exportable_types:
+                                            page_frame_count += 1
+
+                        pages.append({
+                            'name': page_name,
+                            'frame_count': page_frame_count
+                        })
+                        total_frames += page_frame_count
+
+            return {
+                'file_name': file_data.get('name', 'Unnamed'),
+                'file_key': file_key,
+                'total_pages': len(pages),
+                'total_frames': total_frames,
+                'pages': pages,
+                'document_type': file_data.get('type', 'DOCUMENT')
+            }
+
+        except requests.RequestException as e:
+            logger.error(f"❌ Failed to fetch file metadata: {e}")
+            raise
+
+    def list_pages(self, file_key: str) -> List[Dict[str, str]]:
+        """
+        List all pages in a Figma file
+
+        Args:
+            file_key: Figma file key
+
+        Returns:
+            List of page names and IDs
+        """
+        if not self.figma_token:
+            raise ValueError("Figma token not set")
+
+        try:
+            file_data = self._fetch_figma_structure(file_key)
+
+            pages = []
+            if 'children' in file_data:
+                for child in file_data['children']:
+                    if child.get('type') == 'CANVAS':
+                        pages.append({
+                            'id': child.get('id'),
+                            'name': child.get('name', 'Unnamed'),
+                            'type': 'CANVAS'
+                        })
+
+            return pages
+
+        except requests.RequestException as e:
+            logger.error(f"❌ Failed to list pages: {e}")
+            raise
+
+    def get_page_frames(self, file_key: str, page_name: str) -> List[Dict[str, Any]]:
+        """
+        Get all frames from a specific page
+
+        Args:
+            file_key: Figma file key
+            page_name: Name of the page
+
+        Returns:
+            List of frame metadata (name, id, type, dimensions)
+        """
+        if not self.figma_token:
+            raise ValueError("Figma token not set")
+
+        try:
+            file_data = self._fetch_figma_structure(file_key)
+
+            frames = []
+            exportable_types = {'FRAME', 'COMPONENT', 'COMPONENT_SET'}
+
+            if 'children' in file_data:
+                for child in file_data['children']:
+                    if child.get('type') == 'CANVAS' and child.get('name') == page_name:
+                        if 'children' in child:
+                            for element in child['children']:
+                                if element.get('type') in exportable_types:
+                                    frames.append(self._extract_frame_metadata(element))
+                                elif element.get('type') == 'SECTION' and 'children' in element:
+                                    for node in element['children']:
+                                        if node.get('type') in exportable_types:
+                                            frames.append(self._extract_frame_metadata(node))
+                        break
+
+            return frames
+
+        except requests.RequestException as e:
+            logger.error(f"❌ Failed to get page frames: {e}")
+            raise
+
+    def _extract_frame_metadata(self, frame: Dict[str, Any]) -> Dict[str, Any]:
+        """Extract metadata from a frame node"""
+        metadata = {
+            'id': frame.get('id'),
+            'name': frame.get('name', 'Unnamed'),
+            'type': frame.get('type')
+        }
+
+        if 'absoluteBoundingBox' in frame:
+            bbox = frame['absoluteBoundingBox']
+            metadata['width'] = bbox.get('width', 0)
+            metadata['height'] = bbox.get('height', 0)
+            metadata['x'] = bbox.get('x', 0)
+            metadata['y'] = bbox.get('y', 0)
+
+        return metadata
+
+    def export_frame_by_name(
+        self,
+        file_key: str,
+        frame_name: str,
+        output_dir: Optional[str] = None,
+        scale: float = 2.0
+    ) -> Dict[str, Any]:
+        """
+        Find and export a specific frame by name
+
+        Args:
+            file_key: Figma file key
+            frame_name: Name of the frame to export
+            output_dir: Output directory
+            scale: Export scale
+
+        Returns:
+            Export result with file path
+        """
+        if not self.figma_token:
+            raise ValueError("Figma token not set")
+
+        try:
+            file_data = self._fetch_figma_structure(file_key)
+
+            # Search for frame by name
+            target_node = None
+            exportable_types = {'FRAME', 'COMPONENT', 'COMPONENT_SET'}
+
+            if 'children' in file_data:
+                for child in file_data['children']:
+                    if child.get('type') == 'CANVAS' and 'children' in child:
+                        for element in child['children']:
+                            if element.get('type') in exportable_types and element.get('name') == frame_name:
+                                target_node = element
+                                break
+                            elif element.get('type') == 'SECTION' and 'children' in element:
+                                for node in element['children']:
+                                    if node.get('type') in exportable_types and node.get('name') == frame_name:
+                                        target_node = node
+                                        break
+                            if target_node:
+                                break
+                    if target_node:
+                        break
+
+            if not target_node:
+                raise ValueError(f"Frame '{frame_name}' not found in file")
+
+            # Export the frame
+            node_id = target_node['id']
+            image_url = self._export_figma_image(file_key, node_id, scale)
+
+            # Download and save
+            response = requests.get(image_url, timeout=120)
+            response.raise_for_status()
+
+            export_dir = Path(output_dir) if output_dir else self.figma_exports_dir
+            export_dir.mkdir(parents=True, exist_ok=True)
+
+            sanitized_name = self.sanitize_filename(frame_name)
+            image_path = export_dir / f"{sanitized_name}_{node_id}.png"
+
+            with open(image_path, 'wb') as f:
+                f.write(response.content)
+
+            return {
+                'success': True,
+                'frame_name': frame_name,
+                'node_id': node_id,
+                'file_path': str(image_path),
+                'scale': scale
+            }
+
+        except requests.RequestException as e:
+            logger.error(f"❌ Failed to export frame by name: {e}")
+            raise
+
+    def get_frame_hierarchy(self, file_key: str, frame_name: str) -> Dict[str, Any]:
+        """
+        Get the structural hierarchy of a specific frame
+
+        Args:
+            file_key: Figma file key
+            frame_name: Name of the frame
+
+        Returns:
+            Hierarchical structure of the frame with all child elements
+        """
+        if not self.figma_token:
+            raise ValueError("Figma token not set")
+
+        try:
+            file_data = self._fetch_figma_structure(file_key)
+
+            # Find target frame
+            target_frame = None
+            exportable_types = {'FRAME', 'COMPONENT', 'COMPONENT_SET'}
+
+            if 'children' in file_data:
+                for child in file_data['children']:
+                    if child.get('type') == 'CANVAS' and 'children' in child:
+                        for element in child['children']:
+                            if element.get('type') in exportable_types and element.get('name') == frame_name:
+                                target_frame = element
+                                break
+                            elif element.get('type') == 'SECTION' and 'children' in element:
+                                for node in element['children']:
+                                    if node.get('type') in exportable_types and node.get('name') == frame_name:
+                                        target_frame = node
+                                        break
+                            if target_frame:
+                                break
+                    if target_frame:
+                        break
+
+            if not target_frame:
+                raise ValueError(f"Frame '{frame_name}' not found")
+
+            # Build hierarchy
+            return self._build_hierarchy(target_frame)
+
+        except requests.RequestException as e:
+            logger.error(f"❌ Failed to get frame hierarchy: {e}")
+            raise
+
+    def _build_hierarchy(self, node: Dict[str, Any], depth: int = 0) -> Dict[str, Any]:
+        """Recursively build hierarchy structure"""
+        hierarchy = {
+            'name': node.get('name', 'Unnamed'),
+            'type': node.get('type'),
+            'id': node.get('id'),
+            'depth': depth
+        }
+
+        if 'absoluteBoundingBox' in node:
+            bbox = node['absoluteBoundingBox']
+            hierarchy['dimensions'] = {
+                'width': bbox.get('width'),
+                'height': bbox.get('height')
+            }
+
+        if 'children' in node:
+            hierarchy['children'] = [
+                self._build_hierarchy(child, depth + 1)
+                for child in node['children']
+            ]
+            hierarchy['child_count'] = len(node['children'])
+        else:
+            hierarchy['child_count'] = 0
+
+        return hierarchy
+
+    def export_component_library(
+        self,
+        file_key: str,
+        output_dir: Optional[str] = None,
+        scale: float = 2.0
+    ) -> List[Dict[str, Any]]:
+        """
+        Export all components and component sets from a Figma file
+
+        Args:
+            file_key: Figma file key
+            output_dir: Output directory
+            scale: Export scale
+
+        Returns:
+            List of exported component metadata
+        """
+        if not self.figma_token:
+            raise ValueError("Figma token not set")
+
+        try:
+            file_data = self._fetch_figma_structure(file_key)
+
+            # Find all components and component sets
+            components = []
+            component_types = {'COMPONENT', 'COMPONENT_SET'}
+
+            if 'children' in file_data:
+                for child in file_data['children']:
+                    if child.get('type') == 'CANVAS' and 'children' in child:
+                        for element in child['children']:
+                            if element.get('type') in component_types:
+                                components.append(element)
+                            elif element.get('type') == 'SECTION' and 'children' in element:
+                                for node in element['children']:
+                                    if node.get('type') in component_types:
+                                        components.append(node)
+
+            if not components:
+                logger.warning("⚠️ No components found in file")
+                return []
+
+            logger.info(f"🔧 Found {len(components)} components to export")
+
+            # Export each component
+            export_dir = Path(output_dir) if output_dir else (self.figma_exports_dir / "components")
+            export_dir.mkdir(parents=True, exist_ok=True)
+
+            exported_components = []
+
+            for component in components:
+                try:
+                    node_id = component['id']
+                    component_name = component.get('name', 'Unnamed')
+
+                    image_url = self._export_figma_image(file_key, node_id, scale)
+                    response = requests.get(image_url, timeout=120)
+                    response.raise_for_status()
+
+                    sanitized_name = self.sanitize_filename(component_name)
+                    image_path = export_dir / f"{sanitized_name}_{node_id}.png"
+
+                    with open(image_path, 'wb') as f:
+                        f.write(response.content)
+
+                    exported_components.append({
+                        'component_name': component_name,
+                        'node_id': node_id,
+                        'type': component.get('type'),
+                        'file_path': str(image_path)
+                    })
+
+                    logger.info(f"✅ Exported component: {component_name}")
+
+                except Exception as e:
+                    logger.error(f"❌ Failed to export component {component.get('name')}: {e}")
+
+            return exported_components
+
+        except requests.RequestException as e:
+            logger.error(f"❌ Failed to export component library: {e}")
+            raise
+
+    def analyze_file_structure(self, file_key: str) -> Dict[str, Any]:
+        """
+        Analyze and report on the structural composition of a Figma file
+
+        Args:
+            file_key: Figma file key
+
+        Returns:
+            Comprehensive structure analysis report
+        """
+        if not self.figma_token:
+            raise ValueError("Figma token not set")
+
+        try:
+            file_data = self._fetch_figma_structure(file_key)
+
+            analysis = {
+                'file_name': file_data.get('name', 'Unnamed'),
+                'file_key': file_key,
+                'pages': [],
+                'statistics': {
+                    'total_pages': 0,
+                    'total_frames': 0,
+                    'total_components': 0,
+                    'total_component_sets': 0,
+                    'total_sections': 0
+                }
+            }
+
+            if 'children' in file_data:
+                for child in file_data['children']:
+                    if child.get('type') == 'CANVAS':
+                        page_analysis = {
+                            'name': child.get('name', 'Unnamed'),
+                            'frames': 0,
+                            'components': 0,
+                            'component_sets': 0,
+                            'sections': 0
+                        }
+
+                        if 'children' in child:
+                            for element in child['children']:
+                                element_type = element.get('type')
+
+                                if element_type == 'FRAME':
+                                    page_analysis['frames'] += 1
+                                elif element_type == 'COMPONENT':
+                                    page_analysis['components'] += 1
+                                elif element_type == 'COMPONENT_SET':
+                                    page_analysis['component_sets'] += 1
+                                elif element_type == 'SECTION':
+                                    page_analysis['sections'] += 1
+
+                                    # Count items inside sections
+                                    if 'children' in element:
+                                        for node in element['children']:
+                                            node_type = node.get('type')
+                                            if node_type == 'FRAME':
+                                                page_analysis['frames'] += 1
+                                            elif node_type == 'COMPONENT':
+                                                page_analysis['components'] += 1
+                                            elif node_type == 'COMPONENT_SET':
+                                                page_analysis['component_sets'] += 1
+
+                        analysis['pages'].append(page_analysis)
+                        analysis['statistics']['total_pages'] += 1
+                        analysis['statistics']['total_frames'] += page_analysis['frames']
+                        analysis['statistics']['total_components'] += page_analysis['components']
+                        analysis['statistics']['total_component_sets'] += page_analysis['component_sets']
+                        analysis['statistics']['total_sections'] += page_analysis['sections']
+
+            return analysis
+
+        except requests.RequestException as e:
+            logger.error(f"❌ Failed to analyze file structure: {e}")
+            raise
+
     def _extract_figma_properties(self, layer: Dict[str, Any]) -> Dict[str, Any]:
         """Extract comprehensive properties from Figma layer"""
         props = {

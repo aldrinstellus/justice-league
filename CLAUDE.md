@@ -107,6 +107,31 @@ pip install -r requirements_v2.txt
 playwright install chromium
 ```
 
+### Environment Configuration
+
+Create a `.env` file in the project root:
+
+```bash
+# Copy example environment file
+cp .env.example .env
+```
+
+**Required for Figma Operations:**
+```bash
+# Figma API Access Token
+# Get token from: Figma → Settings → Account → Personal Access Tokens
+FIGMA_ACCESS_TOKEN=figd_your_token_here
+```
+
+**Optional Narrator Configuration:**
+```bash
+# Mission Control Narrator verbosity
+# Options: narrative (default), technical, silent, debug
+NARRATOR_MODE=narrative
+```
+
+**Security Note**: Never commit `.env` files. The `.gitignore` already excludes them.
+
 ### Figma Conversion Methods
 
 ```bash
@@ -194,10 +219,11 @@ python3 test_production_ready.py
 4. **Green Arrow**: Visual validation against original
 5. **Oracle**: Store methodology patterns
 
-**Figma Frame Export Path (v1.9.1)**:
+**Figma Frame Export Path (v1.9.3 - Quicksilver DEFAULT)**:
 1. **Superman**: Coordinate export mission with file_key/URL
-2. **Hawkman**: Discover all frames, export as PNG (configurable scale)
-3. **Oracle**: Track export metadata (optional)
+2. **Quicksilver** (default): High-speed parallel export with 8 workers, batch API (2.5-3x faster)
+   - Falls back to **Hawkman** if Quicksilver unavailable or explicitly requested
+3. **Oracle**: Track export metadata and preferences (optional)
 
 ### Decision Matrix: When to Use Each Method
 
@@ -638,6 +664,28 @@ rm -rf data/oracle_project_patterns.json
 
 **"Failed to export frame"**: Possible Figma API rate limiting, network issues, or insufficient permissions
 
+### GitHub Push Issues
+
+**"Push declined due to repository rule violations" (Secret Scanning)**:
+- Token detected in code or git history
+- **Quick fix**: Use GitHub's bypass URL (one-time)
+- **Proper fix**: Remove token from all files and git history
+- **Prevention**: Always use `.env` for secrets
+
+**"refusing to allow an OAuth App to create or update workflow"**:
+- Workflow files need special GitHub token permissions
+- **Quick fix**: Remove `.github/workflows/` directory temporarily
+- **Proper fix**: Update GitHub personal access token with `workflow` scope
+
+**Large File Errors (>100MB)**:
+- Git backup directories or export folders being committed
+- **Solution**: Add to `.gitignore` and remove from commit:
+  ```bash
+  git rm -r --cached .git-backup
+  echo ".git-backup/" >> .gitignore
+  git commit --amend --no-edit
+  ```
+
 ## Documentation References
 
 ### Core Documentation
@@ -692,6 +740,108 @@ rm -rf data/oracle_project_patterns.json
    - Technical info shown inline without cluttering output
    - Hero-to-hero handoffs demonstrate team coordination
    - NARRATOR_MODE environment variable allows mode switching (narrative/technical/silent/debug)
+
+12. **Figma Export Production Validation** (v1.9.1): K12 POC export successfully processed 26 frames (100% success rate) in under 2 minutes. Export paths automatically use hierarchical structure: `{file_name}/{page_name}/{frame-name}_{node-id}.png`
+
+13. **Security Token Management**: Always use environment variables for API tokens. Oracle preference: tokens should never appear in code, only in `.env` files excluded from git. If exposed, rotate immediately via Figma Settings → Personal Access Tokens.
+
+14. **Git Repository Hygiene**: Large binary directories (figma-export-*/, .git-backup/) should be excluded via `.gitignore`. Fresh git init may be needed if old history contains secrets - creates clean slate faster than history rewriting.
+
+## Quick Reference Commands
+
+### Figma Frame Export
+```bash
+# Export all frames from Figma file
+python3 scripts/export_figma_frames.py --url "https://www.figma.com/design/FILE_KEY/..."
+
+# With custom output and scale
+python3 scripts/export_figma_frames.py \
+  --file-key FILE_KEY \
+  --output my-export/ \
+  --scale 2.0
+```
+
+### Preview Server
+```bash
+cd preview-app && npm run dev
+# Opens on http://localhost:3005
+```
+
+### Test Suite
+```bash
+# Run all tests
+python3 run_all_justice_league_tests.py
+
+# Run specific tests
+python3 test_artemis_codesmith.py      # 7 tests
+python3 test_frame_export.py           # Frame export validation
+python3 test_narrator_integration.py   # Narrator system (v1.9.2)
+```
+
+### Git Operations
+```bash
+# Check status
+git status
+
+# Commit with sign-off
+git add .
+git commit -m "Description
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# Push to GitHub
+git push
+```
+
+## Git Workflow
+
+### Committing Changes
+
+```bash
+# Check status
+git status
+
+# Stage specific files
+git add file1.py file2.py
+
+# Create commit
+git commit -m "Brief description of changes"
+```
+
+### Security Best Practices
+
+**Before Committing:**
+1. Never commit API tokens or secrets
+2. Verify `.env` is in `.gitignore`
+3. Check for hardcoded credentials:
+   ```bash
+   grep -r "figd_" . --exclude-dir=.git --exclude=".env"
+   ```
+
+**If Token Accidentally Committed:**
+1. Remove from code immediately
+2. Rotate the token in Figma settings
+3. Use `git filter-branch` or create fresh repository
+4. Never push until token is removed
+
+### GitHub Push
+
+```bash
+# First time setup
+git remote add origin https://github.com/username/justice-league.git
+
+# Push to GitHub
+git push -u origin main
+
+# Subsequent pushes
+git push
+```
+
+**GitHub Workflow Permissions:**
+- If pushing fails with workflow scope error, temporarily remove `.github/workflows/`
+- Or update GitHub token permissions to include `workflow` scope
 
 ## Production Deployment
 

@@ -106,6 +106,59 @@ class ArtemisCodeSmith:
             self.narrator.team_handoff(f"{self.hero_emoji} {self.hero_name}",
                                       to_hero, task, context)
 
+    def contribute_to_strategy(
+        self,
+        topic: str,
+        context: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        Artemis's contribution to team strategy session
+
+        Provides code generation perspective based on component complexity
+
+        Args:
+            topic: Strategy session topic
+            context: Optional context data (e.g., {"complexity": "high", "layout": "2-column"})
+
+        Returns:
+            Dictionary with perspective, reasoning, and recommendation
+        """
+        reasoning = []
+        perspective = ""
+        recommendation = None
+        key_insight = None
+
+        # Analyze complexity from context
+        complexity = context.get('complexity', 'unknown') if context else 'unknown'
+        layout = context.get('layout', 'unknown') if context else 'unknown'
+
+        reasoning.append(f"Analyzing component complexity: {complexity}")
+
+        if complexity == 'high' or '2-column' in layout or 'multi-column' in layout:
+            reasoning.append("Complex layout detected - Figma API may struggle with accuracy")
+            reasoning.append("Visual measurements would provide better foundation for code generation")
+            recommendation = "Use Image-to-HTML methodology for complex layouts"
+            key_insight = "Artemis: Complex layouts need visual measurements for accurate code generation"
+            perspective = "Complex layout requires visual measurement-based approach"
+
+        elif complexity == 'low' or complexity == 'simple':
+            reasoning.append("Simple component detected - Figma API should work well")
+            reasoning.append("Can generate code directly from Figma data structure")
+            recommendation = "Use Figma API methodology for simple components"
+            key_insight = "Artemis: Simple components work well with Figma API"
+            perspective = "Simple component suitable for direct Figma API conversion"
+
+        else:
+            reasoning.append("Component complexity unclear - needs further analysis")
+            perspective = "Need more information about component complexity"
+
+        return {
+            "perspective": perspective,
+            "reasoning": reasoning,
+            "recommendation": recommendation,
+            "key_insight": key_insight
+        }
+
     def _find_atc_orchestrator(self) -> str:
         """Find ATC Orchestrator installation."""
         possible_paths = [

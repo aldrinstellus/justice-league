@@ -157,6 +157,58 @@ class VisionAnalyst:
             self.narrator.team_handoff(f"{self.hero_emoji} {self.hero_name}",
                                       to_hero, task, context)
 
+    def contribute_to_strategy(
+        self,
+        topic: str,
+        context: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        Vision Analyst's contribution to team strategy session
+
+        Provides visual analysis perspective on component complexity
+
+        Args:
+            topic: Strategy session topic
+            context: Optional context data (e.g., {"layout": "2-column", "components": 6})
+
+        Returns:
+            Dictionary with perspective, reasoning, and recommendation
+        """
+        reasoning = []
+        perspective = ""
+        recommendation = None
+        key_insight = None
+
+        # Analyze visual complexity from context
+        layout = context.get('layout', 'unknown') if context else 'unknown'
+        components = context.get('components', 0) if context else 0
+
+        reasoning.append(f"Analyzing visual structure: {layout} layout")
+
+        if '2-column' in layout or 'multi-column' in layout or components > 4:
+            reasoning.append("Complex visual structure detected")
+            reasoning.append("Multiple columns or components require precise measurements")
+            reasoning.append("Visual measurement extraction will ensure accuracy")
+            recommendation = "Use Image-to-HTML methodology with visual measurements"
+            key_insight = "Vision Analyst: Complex layout requires measurement extraction"
+            perspective = "Complex multi-column layout detected - measurements needed"
+
+        elif 'single' in layout or components <= 2:
+            reasoning.append("Simple visual structure detected")
+            reasoning.append("Basic layout suitable for direct conversion")
+            perspective = "Simple layout suitable for Figma API conversion"
+
+        else:
+            reasoning.append("Visual complexity assessment needed")
+            perspective = "Need to analyze visual structure before deciding methodology"
+
+        return {
+            "perspective": perspective,
+            "reasoning": reasoning,
+            "recommendation": recommendation,
+            "key_insight": key_insight
+        }
+
     def analyze_dashboard_image(
         self,
         image_description: str,
