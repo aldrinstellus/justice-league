@@ -59,6 +59,13 @@ class PDFCompiler:
                 technical_info
             )
 
+    def _draw_white_background(self):
+        """Draw white background on current page to prevent black borders"""
+        c = self.pdf_canvas
+        c.setFillColor(colors.white)
+        c.rect(0, 0, self.page_width, self.page_height, fill=1, stroke=0)
+        c.setFillColor(colors.black)  # Reset to black for text
+
     def compile_pdf(
         self,
         export_dir: Path,
@@ -198,6 +205,9 @@ class PDFCompiler:
         c = self.pdf_canvas
         self.current_page += 1
 
+        # Draw white page background
+        self._draw_white_background()
+
         # Title
         c.setFont("Helvetica-Bold", 24)
         c.drawCentredString(self.page_width / 2, self.page_height - 2*inch, "Figma Frame Export")
@@ -236,6 +246,9 @@ class PDFCompiler:
         c = self.pdf_canvas
         toc_start_page = self.current_page
 
+        # Draw white background for first TOC page
+        self._draw_white_background()
+
         c.setFont("Helvetica-Bold", 18)
         c.drawString(self.margin, self.page_height - self.margin, "Table of Contents")
 
@@ -249,6 +262,7 @@ class PDFCompiler:
             if y < 1.5*inch:
                 c.showPage()
                 self.current_page += 1
+                self._draw_white_background()  # White background for new TOC page
                 y = self.page_height - self.margin
 
             c.setFont("Helvetica-Bold", 12)
@@ -264,6 +278,7 @@ class PDFCompiler:
                 if y < 1.5*inch:
                     c.showPage()
                     self.current_page += 1
+                    self._draw_white_background()  # White background for new TOC page
                     y = self.page_height - self.margin
 
                 frame_name = frame_info['name']
@@ -294,9 +309,7 @@ class PDFCompiler:
         self.current_page += 1
 
         # Draw white page background to prevent black borders
-        c.setFillColor(colors.white)
-        c.rect(0, 0, self.page_width, self.page_height, fill=1, stroke=0)
-        c.setFillColor(colors.black)  # Reset to black for text
+        self._draw_white_background()
 
         # Calculate image dimensions to fit page
         img_width = frame_info['width']
