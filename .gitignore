@@ -12,3 +12,7 @@ preview-app/.next/
 # Figma exports (large binary files)
 figma-export-*/
 .git-backup/
+
+# Figma exports (too large for git)
+figma-*-export/
+benchmark-*/
