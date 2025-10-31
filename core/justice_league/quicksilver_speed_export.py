@@ -816,6 +816,40 @@ class QuicksilverSpeedExport(HeroBase):
             logger.error(f"❌ Failed to fetch Figma file structure: {e}")
             raise
 
+    def compile_pdf_from_export(
+        self,
+        export_dir: Path,
+        figma_file_name: str,
+        export_metadata: Optional[Dict] = None
+    ) -> Dict:
+        """
+        Compile PNG export directory into a PDF document
+
+        Args:
+            export_dir: Directory containing exported PNG files
+            figma_file_name: Name of the Figma file
+            export_metadata: Optional metadata (scale, frame count, etc.)
+
+        Returns:
+            Dict with PDF compilation results
+        """
+        from .pdf_compiler import PDFCompiler
+
+        # PDF output path: same directory as PNGs
+        pdf_filename = f"{export_dir.name}.pdf"
+        pdf_path = export_dir / pdf_filename
+
+        compiler = PDFCompiler(narrator=self.narrator)
+
+        result = compiler.compile_pdf(
+            export_dir=export_dir,
+            output_path=pdf_path,
+            figma_file_name=figma_file_name,
+            export_metadata=export_metadata
+        )
+
+        return result
+
     # ==================== ENHANCED EXPORT CAPABILITIES ====================
 
     def export_single_frame(

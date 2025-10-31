@@ -34,7 +34,7 @@ from datetime import datetime
 # Add parent for imports
 sys.path.append(str(Path(__file__).parent))
 
-from core.justice_league import export_frames_quicksilver
+from core.justice_league import export_frames_quicksilver, QuicksilverSpeedExport
 
 
 def extract_file_key(file_key_or_url: str) -> str:
@@ -162,6 +162,54 @@ def main():
         # Get absolute path
         abs_output = str(Path(output_dir).resolve())
         print(f"Output: {abs_output}")
+
+        # Generate PDF compilation
+        print()
+        print("📄 Generating PDF compilation...")
+        print()
+
+        try:
+            quicksilver = QuicksilverSpeedExport(figma_token=figma_token)
+
+            # Get Figma file name for PDF metadata
+            figma_file_name = f"Figma Export {file_key[:8]}"
+
+            # Prepare export metadata
+            export_metadata = {
+                'scale': args.scale,
+                'workers': args.workers,
+                'total_frames': total_frames,
+                'frames_exported': frames_exported
+            }
+
+            # Compile PDF
+            pdf_result = quicksilver.compile_pdf_from_export(
+                export_dir=Path(abs_output),
+                figma_file_name=figma_file_name,
+                export_metadata=export_metadata
+            )
+
+            if pdf_result.get('success'):
+                pdf_path = pdf_result['pdf_path']
+                pdf_size_mb = pdf_result.get('file_size_mb', 0)
+                total_pdf_pages = pdf_result.get('total_pages', 0)
+
+                print("✅ PDF COMPILATION COMPLETE")
+                print("=" * 80)
+                print(f"PDF File: {pdf_path}")
+                print(f"PDF Size: {pdf_size_mb:.1f} MB")
+                print(f"PDF Pages: {total_pdf_pages}")
+                print("=" * 80)
+            else:
+                print("⚠️  PDF compilation failed (PNG export still successful)")
+                if 'error' in pdf_result:
+                    print(f"   Error: {pdf_result['error']}")
+
+        except Exception as e:
+            print("⚠️  PDF compilation failed (PNG export still successful)")
+            print(f"   Error: {str(e)}")
+
+        print()
         print("=" * 80)
         print()
     else:

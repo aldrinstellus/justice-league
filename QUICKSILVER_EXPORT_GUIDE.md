@@ -44,6 +44,7 @@ Quicksilver now ships with **production-tested settings** that work reliably:
 
 ```
 figma-export-TIMESTAMP/
+├── figma-export-TIMESTAMP.pdf    # 📄 NEW: PDF compilation (automatic)
 └── Document/
     ├── Components/           # All frames from "Components" page
     │   ├── Button_1234.png
@@ -52,9 +53,17 @@ figma-export-TIMESTAMP/
     └── ...
 ```
 
+**PNG Files**:
 - **Organized by page**: Each Figma page becomes a folder
 - **Unique names**: Each frame gets `{name}_{id}.png`
 - **Total files**: Count matches Figma frame count
+
+**PDF Compilation** (v1.0.2 - NEW):
+- ✨ **Automatically generated** alongside PNG export
+- 📄 **One frame per page** at full resolution
+- 📑 **Table of contents** with clickable page numbers
+- 📊 **Export summary** page with metadata
+- 🏷️ **Frame metadata** footer on each page (name, dimensions, page number)
 
 ## Troubleshooting
 
@@ -92,6 +101,13 @@ QUICKSILVER_MAX_RETRIES=5       # Retry attempts per frame
 ```
 
 ## Version History
+
+**v1.0.2** (2025-10-31) - **CURRENT**
+- ✨ **NEW: Automatic PDF compilation** - generates professional PDF alongside PNGs
+- 📄 One frame per page with full resolution
+- 📑 Table of contents with page numbers
+- 📊 Export summary and frame metadata
+- ✅ Production-tested: 484 frames → 497-page PDF (180.7 MB)
 
 **v1.0.1** (2025-10-31)
 - ✅ Updated default timeouts: 60s API / 120s CDN

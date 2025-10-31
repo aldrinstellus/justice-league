@@ -59,6 +59,7 @@ from .artemis_codesmith import ArtemisCodeSmith
 from .hephaestus_code_to_design import HephaestusCodeToDesign
 from .vision_analyst import VisionAnalyst, vision_analyst
 from .quicksilver_speed_export import QuicksilverSpeedExport, export_frames_quicksilver
+from .pdf_compiler import PDFCompiler
 
 __all__ = [
     # Batman (Interactive Testing)
@@ -132,8 +133,11 @@ __all__ = [
     # Quicksilver (Speed Optimizer)
     'QuicksilverSpeedExport',
     'export_frames_quicksilver',
+
+    # PDF Compiler (Quicksilver Extension)
+    'PDFCompiler',
 ]
 
-__version__ = '1.9.3'
+__version__ = '1.9.5'  # Quicksilver v1.0.2 - PDF compilation extension
 __league__ = 'Justice League of Aldo Vision'
 __heroes__ = 19
