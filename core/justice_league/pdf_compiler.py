@@ -293,6 +293,11 @@ class PDFCompiler:
         c = self.pdf_canvas
         self.current_page += 1
 
+        # Draw white page background to prevent black borders
+        c.setFillColor(colors.white)
+        c.rect(0, 0, self.page_width, self.page_height, fill=1, stroke=0)
+        c.setFillColor(colors.black)  # Reset to black for text
+
         # Calculate image dimensions to fit page
         img_width = frame_info['width']
         img_height = frame_info['height']
@@ -324,7 +329,7 @@ class PDFCompiler:
                 x, y,
                 width=display_width,
                 height=display_height,
-                preserveAspectRatio=True
+                preserveAspectRatio=False  # Dimensions already calculated correctly
             )
         except Exception as e:
             # If image fails, draw placeholder
