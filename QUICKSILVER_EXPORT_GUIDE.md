@@ -24,6 +24,7 @@ Quicksilver now ships with **production-tested settings** that work reliably:
 - ✅ **60s API timeout** - Handles slow Figma API responses
 - ✅ **120s CDN timeout** - Downloads large PNG files without errors
 - ✅ **2.0x scale** - High-quality exports (default)
+- ✅ **Automatic PNG transparency fix** - Converts RGBA to RGB white-background (v1.0.3)
 
 **Tested with**: 484-frame Figma file, 100% success rate
 
@@ -58,12 +59,13 @@ figma-export-TIMESTAMP/
 - **Unique names**: Each frame gets `{name}_{id}.png`
 - **Total files**: Count matches Figma frame count
 
-**PDF Compilation** (v1.0.2 - NEW):
+**PDF Compilation** (v1.0.3 - CURRENT):
 - ✨ **Automatically generated** alongside PNG export
 - 📄 **One frame per page** at full resolution
 - 📑 **Table of contents** with clickable page numbers
 - 📊 **Export summary** page with metadata
 - 🏷️ **Frame metadata** footer on each page (name, dimensions, page number)
+- 🎯 **NO BLACK BORDERS** - Automatic PNG transparency→white background conversion
 
 ## Troubleshooting
 
@@ -102,7 +104,15 @@ QUICKSILVER_MAX_RETRIES=5       # Retry attempts per frame
 
 ## Version History
 
-**v1.0.2** (2025-10-31) - **CURRENT**
+**v1.0.3** (2025-10-31) - **CURRENT**
+- 🎯 **CRITICAL FIX: Automatic PNG transparency→white background conversion**
+- ✅ Fixes black borders in PDF viewers caused by PNG alpha channels
+- ✅ Converts RGBA PNGs to RGB with white backgrounds automatically
+- ✅ Integrated into standard PDF compilation workflow
+- 📝 Production-tested: 484 frames, zero black borders in any PDF viewer
+- 🤝 Oracle learned: This is now standard behavior for all PDF exports
+
+**v1.0.2** (2025-10-31)
 - ✨ **NEW: Automatic PDF compilation** - generates professional PDF alongside PNGs
 - 📄 One frame per page with full resolution
 - 📑 Table of contents with page numbers

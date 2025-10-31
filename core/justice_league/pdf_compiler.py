@@ -48,6 +48,9 @@ class PDFCompiler:
         self.margin = 0.75 * inch
         self.toc_entries: List[Dict] = []
         self.current_page = 0
+        self.clean_mode = False  # True = full-bleed, no metadata
+        self.bordered_mode = False  # True = add white padding around frames
+        self.border_width = 20  # pixels of white border on each side
 
     def say(self, message: str, technical_info: Optional[str] = None):
         """Narrator output"""
@@ -86,6 +89,18 @@ class PDFCompiler:
             Dict with compilation results
         """
         self.say(f"Starting PDF compilation for {figma_file_name}")
+
+        # Check for clean mode (full-bleed, no metadata)
+        if export_metadata and export_metadata.get('clean_mode'):
+            self.clean_mode = True
+            self.say("Clean mode enabled: full-bleed pages, no metadata")
+
+        # Check for bordered mode (white padding around frames)
+        if export_metadata and export_metadata.get('bordered_mode'):
+            self.bordered_mode = True
+            border_size = export_metadata.get('border_width', 20)
+            self.border_width = border_size
+            self.say(f"Bordered mode enabled: {border_size}px white padding around each frame")
 
         # Gather all PNG files organized by page
         frames_by_page = self._scan_export_directory(export_dir)
@@ -304,77 +319,103 @@ class PDFCompiler:
         frame_num: int,
         total_frames: int
     ):
-        """Add a single frame page with metadata"""
+        """Add a single frame page with custom dimensions matching the frame"""
         c = self.pdf_canvas
         self.current_page += 1
 
-        # Draw white page background to prevent black borders
-        self._draw_white_background()
-
-        # Calculate image dimensions to fit page
+        # Get frame dimensions
         img_width = frame_info['width']
         img_height = frame_info['height']
 
-        # Available space
-        available_width = self.page_width - 2 * self.margin
-        available_height = self.page_height - 2 * self.margin - 0.5*inch  # Reserve space for metadata
+        if img_width == 0 or img_height == 0:
+            # Fallback to letter size if dimensions unavailable
+            img_width = 8.5 * inch
+            img_height = 11 * inch
 
-        # Scale to fit
-        if img_width > 0 and img_height > 0:
-            scale_w = available_width / img_width
-            scale_h = available_height / img_height
-            scale = min(scale_w, scale_h)
-
-            display_width = img_width * scale
-            display_height = img_height * scale
+        # Determine page size and positioning based on mode
+        if self.bordered_mode:
+            # Bordered mode: add white padding around frame
+            border = self.border_width * 2  # Both sides
+            metadata_height = 30
+            page_width = img_width + border
+            page_height = img_height + border + metadata_height
+            img_x = self.border_width
+            img_y = self.border_width + metadata_height
+        elif self.clean_mode:
+            # Clean mode: page is EXACTLY frame size (full-bleed, no metadata)
+            metadata_height = 0
+            page_width = img_width
+            page_height = img_height
+            img_x = 0
+            img_y = 0
         else:
-            display_width = available_width
-            display_height = available_height
+            # Standard mode: add small margin for metadata footer
+            metadata_height = 30
+            page_width = img_width
+            page_height = img_height + metadata_height
+            img_x = 0
+            img_y = metadata_height
 
-        # Center image
-        x = (self.page_width - display_width) / 2
-        y = (self.page_height - display_height) / 2 + 0.25*inch  # Shift up slightly for metadata
+        # Set custom page size for this frame
+        c.setPageSize((page_width, page_height))
+
+        # Update instance variables for this page
+        original_page_width = self.page_width
+        original_page_height = self.page_height
+        self.page_width = page_width
+        self.page_height = page_height
+
+        # Draw white page background (fills entire page including borders)
+        self._draw_white_background()
 
         # Draw image
         try:
             c.drawImage(
                 str(frame_path),
-                x, y,
-                width=display_width,
-                height=display_height,
-                preserveAspectRatio=False  # Dimensions already calculated correctly
+                img_x, img_y,
+                width=img_width,
+                height=img_height,
+                preserveAspectRatio=False
             )
         except Exception as e:
             # If image fails, draw placeholder
             c.setStrokeColor(colors.red)
-            c.rect(x, y, display_width, display_height)
+            c.rect(img_x, img_y, img_width, img_height)
             c.setFont("Helvetica", 10)
-            c.drawCentredString(x + display_width/2, y + display_height/2, f"Error loading image: {e}")
+            c.drawCentredString(img_x + img_width/2, img_y + img_height/2, f"Error loading image: {e}")
 
-        # Add metadata footer
-        c.setFont("Helvetica", 8)
-        c.setFillColor(colors.grey)
+        # Add metadata footer ONLY in non-clean mode
+        if not self.clean_mode:
+            c.setFont("Helvetica", 7)
+            c.setFillColor(colors.grey)
 
-        footer_y = self.margin / 2
+            footer_y = 15  # Center in metadata space
 
-        # Left: Frame name and source page
-        c.drawString(self.margin, footer_y + 10, f"Frame: {frame_info['name']}")
-        c.drawString(self.margin, footer_y, f"Source: {page_name}")
+            # Left: Frame name and source page (compact)
+            frame_name = frame_info['name']
+            if len(frame_name) > 40:
+                frame_name = frame_name[:37] + "..."
 
-        # Center: Dimensions
-        if img_width > 0 and img_height > 0:
+            c.drawString(self.border_width + 5 if self.bordered_mode else 5, footer_y, f"{frame_name} • {page_name}")
+
+            # Center: Dimensions
             c.drawCentredString(
-                self.page_width / 2,
+                page_width / 2,
                 footer_y,
-                f"{img_width} × {img_height} px"
+                f"{int(img_width)} × {int(img_height)} px"
             )
 
-        # Right: Page number
-        c.drawRightString(
-            self.page_width - self.margin,
-            footer_y,
-            f"Frame {frame_num} of {total_frames} • Page {self.current_page}"
-        )
+            # Right: Page number
+            c.drawRightString(
+                page_width - (self.border_width + 5 if self.bordered_mode else 5),
+                footer_y,
+                f"Frame {frame_num}/{total_frames} • Pg {self.current_page}"
+            )
 
-        c.setFillColor(colors.black)
+            c.setFillColor(colors.black)
+
         c.showPage()
+
+        # Restore original page dimensions for next page
+        self.page_width = original_page_width
+        self.page_height = original_page_height

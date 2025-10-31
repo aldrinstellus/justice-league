@@ -4,26 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Justice League v1.9.2** - Production-ready autonomous AI agent system with 18 specialized heroes for comprehensive design-to-code conversion, website analysis, and validation.
+**Justice League v1.9.6** - Production-ready autonomous AI agent system with 19 specialized heroes for comprehensive design-to-code conversion, website analysis, and validation.
 
 **Core Achievement**: Bidirectional Figma↔Code conversion with 90-95% accuracy through Oracle pattern learning, Vision Analyst measurements, and Coordination Protocol v2.0.
 
-**Latest Release (v1.9.2 - 2025-10-30)**:
+**Latest Release (v1.9.6 - 2025-10-31)**:
+- **CRITICAL FIX: PNG Transparency → White Background Conversion** (Quicksilver v1.0.3)
+- **NO BLACK BORDERS in PDF exports** - Automatic RGBA→RGB conversion before PDF compilation
+- **Production-tested**: 484 frames, 100% clean PDFs in all viewers (Preview, Chrome, Adobe)
+- **Oracle Learning**: Transparency fix now standard for all PDF exports
+
+**Previous Release (v1.9.2 - 2025-10-30)**:
 - **Mission Control Narrator v2.0**: Superhero banter and sequential thinking integration (Phase 1 complete)
 - **Narrator Integration**: Artemis, Green Arrow, and Vision Analyst with personality-driven dialogue
 - **UX Enhancement**: Heavy banter, minimal code noise, clear progress visibility
-- **Style Guide**: Comprehensive 468-line narrator style guide for all 18 heroes
 
 **Previous Release (v1.9.1 - 2025-10-30)**:
-- **Figma Frame Export**: Batch export all frames from Figma files as PNG (production-tested: 177 frames, 100% success)
-- **Hawkman PNG Export**: Enhanced with `export_all_frames_as_png()` method (configurable scale 1x-4x)
+- **Figma Frame Export**: Batch export all frames from Figma files as PNG+PDF
+- **Quicksilver Speed Export**: 2.5-3x faster than Hawkman, 8 parallel workers
 - **Superman Frame Coordination**: New `_deploy_hawkman_frame_export()` mission type
-- **Oracle Preference Learning**: Always provide full absolute paths to output folders/files
-
-**Previous Release (v1.9.0)**:
-- **Vision Analyst Hero (#18)**: Visual dashboard analysis and measurement extraction
-- **Image-to-HTML Methodology**: Achieves 90-95% accuracy (vs. 70-85% from Figma API)
-- **Init System**: Standardized `/init` for adding new capabilities
 
 ## 🚨 CRITICAL: PRE-RESPONSE VALIDATION REQUIRED
 

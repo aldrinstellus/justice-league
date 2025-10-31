@@ -138,6 +138,6 @@ __all__ = [
     'PDFCompiler',
 ]
 
-__version__ = '1.9.5'  # Quicksilver v1.0.2 - PDF compilation extension
+__version__ = '1.9.6'  # Quicksilver v1.0.3 - PNG transparency fix (black borders eliminated)
 __league__ = 'Justice League of Aldo Vision'
 __heroes__ = 19

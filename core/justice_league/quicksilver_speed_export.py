@@ -816,6 +816,40 @@ class QuicksilverSpeedExport(HeroBase):
             logger.error(f"❌ Failed to fetch Figma file structure: {e}")
             raise
 
+    def _convert_transparent_pngs_to_white(self, export_dir: Path) -> int:
+        """
+        Convert transparent PNGs (RGBA) to white-background PNGs (RGB)
+
+        This fixes black borders in PDF viewers caused by PNG alpha channels.
+
+        Args:
+            export_dir: Directory containing PNG files
+
+        Returns:
+            Number of PNGs converted
+        """
+        from PIL import Image
+
+        png_files = list(export_dir.rglob("*.png"))
+        converted = 0
+
+        for png_path in png_files:
+            try:
+                with Image.open(png_path) as img:
+                    if img.mode in ('RGBA', 'LA', 'PA'):
+                        # Create white background
+                        background = Image.new('RGB', img.size, (255, 255, 255))
+                        # Paste image on white using alpha as mask
+                        background.paste(img, mask=img.split()[3])
+                        # Save as RGB (no alpha) - overwrite original
+                        background.save(png_path, 'PNG')
+                        converted += 1
+            except Exception:
+                # Skip files that can't be processed
+                continue
+
+        return converted
+
     def compile_pdf_from_export(
         self,
         export_dir: Path,
@@ -824,6 +858,9 @@ class QuicksilverSpeedExport(HeroBase):
     ) -> Dict:
         """
         Compile PNG export directory into a PDF document
+
+        Automatically converts transparent PNGs to white-background PNGs
+        to prevent black borders in PDF viewers.
 
         Args:
             export_dir: Directory containing exported PNG files
@@ -835,7 +872,13 @@ class QuicksilverSpeedExport(HeroBase):
         """
         from .pdf_compiler import PDFCompiler
 
-        # PDF output path: same directory as PNGs
+        # STEP 1: Convert transparent PNGs to white background (fixes black borders)
+        self.say("Converting transparent PNGs to white backgrounds...")
+        converted = self._convert_transparent_pngs_to_white(export_dir)
+        if converted > 0:
+            self.say(f"Converted {converted} transparent PNGs to RGB (white background)")
+
+        # STEP 2: Compile PDF from converted PNGs
         pdf_filename = f"{export_dir.name}.pdf"
         pdf_path = export_dir / pdf_filename
 
