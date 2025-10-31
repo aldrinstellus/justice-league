@@ -62,7 +62,57 @@ class AquamanNetwork:
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
+        # Hero identity for narrator integration
+        self.hero_name = "Aquaman"
+        self.hero_emoji = "🌊"
+
         logger.info(f"🌊 Aquaman - King of Network Seas initialized")
+
+    def say(self, message: str, style: str = "tactical", technical_info: Optional[str] = None):
+        """
+        Aquaman dialogue - Deep-diver, investigative, fluid
+
+        Personality traits:
+        - Water and ocean metaphors
+        - Deep investigation approach
+        - Fluid tactical language
+        - Network flow focused
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                message, style, technical_info
+            )
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Diving"):
+        """
+        Sequential thinking with network focus
+
+        Common categories for Aquaman:
+        - Diving, Analyzing, Mapping, Investigating
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(
+                f"{self.hero_emoji} {self.hero_name}",
+                thought, step, category
+            )
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff network analysis to another hero
+
+        Args:
+            to_hero: Name of hero receiving the handoff (with emoji)
+            context: What is being handed off
+            details: Optional additional details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
 
     def analyze_network_traffic(self, mcp_tools: Dict,
                                 resource_types: Optional[List[str]] = None) -> Dict[str, Any]:

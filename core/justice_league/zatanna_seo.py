@@ -67,8 +67,27 @@ class ZatannaSEO:
         self.reports_dir = Path(reports_dir) if reports_dir else Path.cwd() / 'reports' / 'seo'
         self.reports_dir.mkdir(parents=True, exist_ok=True)
 
+        # Hero identity for narrator integration
+        self.hero_name = "Zatanna"
+        self.hero_emoji = "🎩"
+
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
+
+    def say(self, message: str, style: str = "mystical", technical_info: Optional[str] = None):
+        """Zatanna dialogue - SEO magic and mystical specialist"""
+        if self.narrator:
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Enchanting"):
+        """Sequential thinking with SEO focus. Categories: Enchanting, Optimizing, Casting"""
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """Handoff SEO analysis to another hero"""
+        if self.narrator:
+            self.narrator.hero_handoff(f"{self.hero_emoji} {self.hero_name}", to_hero, context, details)
 
     def analyze_seo_magic(self, mcp_tools: Dict[str, Any], target_url: Optional[str] = None) -> Dict[str, Any]:
         """

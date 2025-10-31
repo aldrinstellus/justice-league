@@ -49,13 +49,44 @@ class BatmanTesting:
         self.test_results = []
         self.accessibility_issues = []
 
+        # Hero identity for narrator integration
+        self.hero_name = "Batman"
+        self.hero_emoji = "🦇"
+
         # Mission Control Narrator (v2.0)
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
     def say(self, message: str, style: str = "tactical", technical_info: Optional[str] = None):
         """Detective-style narration"""
         if self.narrator:
-            self.narrator.hero_speaks("🦇 Batman", message, style, technical_info)
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Analyzing"):
+        """
+        Sequential thinking with detective focus
+
+        Common categories for Batman:
+        - Analyzing, Investigating, Detecting, Examining
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff investigation to another hero
+
+        Args:
+            to_hero: Name of hero receiving the handoff (with emoji)
+            context: What is being handed off
+            details: Optional additional details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
 
     def test_all_interactive_elements(self, page_snapshot: Dict[str, Any],
                                      mcp_tools: Dict) -> Dict[str, Any]:

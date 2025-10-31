@@ -300,6 +300,23 @@ class SupermanCoordinator:
                 thought, step, category
             )
 
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff mission to another hero
+
+        Args:
+            to_hero: Name of hero receiving the mission (with emoji)
+            context: What mission/task is being assigned
+            details: Optional additional mission details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
+
     def strategy_session(
         self,
         topic: str,

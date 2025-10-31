@@ -49,6 +49,10 @@ class LittyEthics:
         self.emoji = "🪔"  # Kerala's traditional lamp (representing enlightenment)
         self.origin = "Kerala, India"
 
+        # Hero identity for narrator integration
+        self.hero_name = "Litty"
+        self.hero_emoji = "🪔"
+
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
@@ -117,6 +121,21 @@ class LittyEthics:
                 'needs': ['readable fonts', 'good spacing', 'simple sentences', 'visual aids']
             }
         }
+
+    def say(self, message: str, style: str = "empathetic", technical_info: Optional[str] = None):
+        """Litty dialogue - Ethical design and empathy specialist"""
+        if self.narrator:
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Empathizing"):
+        """Sequential thinking with ethics focus. Categories: Empathizing, Validating, Caring"""
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """Handoff ethical validation to another hero"""
+        if self.narrator:
+            self.narrator.hero_handoff(f"{self.hero_emoji} {self.hero_name}", to_hero, context, details)
 
     def validate_ethics(self, url: str, mcp_tools: Dict) -> Dict[str, Any]:
         """

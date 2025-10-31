@@ -62,10 +62,29 @@ class MartianManhunterSecurity:
         self.config_dir.mkdir(parents=True, exist_ok=True)
         self.vulnerability_db = self.config_dir / 'vulnerabilities.json'
 
+        # Hero identity for narrator integration
+        self.hero_name = "Martian Manhunter"
+        self.hero_emoji = "🧠"
+
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
         logger.info("🧠 MARTIAN MANHUNTER - Security Guardian initialized")
+
+    def say(self, message: str, style: str = "telepathic", technical_info: Optional[str] = None):
+        """Martian Manhunter dialogue - Security and telepathic focus"""
+        if self.narrator:
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Scanning"):
+        """Sequential thinking with security focus. Categories: Scanning, Detecting, Protecting"""
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """Handoff security findings to another hero"""
+        if self.narrator:
+            self.narrator.hero_handoff(f"{self.hero_emoji} {self.hero_name}", to_hero, context, details)
 
     def scan_all_vulnerabilities(self, target_data: Dict[str, Any]) -> Dict[str, Any]:
         """

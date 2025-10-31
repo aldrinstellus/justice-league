@@ -84,10 +84,59 @@ class GreenLanternVisual:
         self.metadata_dir = self.baseline_dir / 'metadata'
         self.metadata_dir.mkdir(exist_ok=True)
 
+        # Hero identity for narrator integration
+        self.hero_name = "Green Lantern"
+        self.hero_emoji = "💚"
+
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
         logger.info(f"💚 Green Lantern Visual Guard initialized: {self.baseline_dir}")
+
+    def say(self, message: str, style: str = "protective", technical_info: Optional[str] = None):
+        """
+        Green Lantern dialogue - Protective, guardian-focused
+
+        Personality traits:
+        - Vigilant protector of visual integrity
+        - Constructs shields against regressions
+        - Willpower-driven determination
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                message, style, technical_info
+            )
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Protecting"):
+        """
+        Sequential thinking with visual regression focus
+
+        Common categories for Green Lantern:
+        - Protecting, Guarding, Comparing, Detecting
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(
+                f"{self.hero_emoji} {self.hero_name}",
+                thought, step, category
+            )
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff visual data to another hero
+
+        Args:
+            to_hero: Name of hero receiving the handoff (with emoji)
+            context: What is being handed off
+            details: Optional additional details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
 
     def store_baseline(self, image_path: str, test_name: str,
                       metadata: Optional[Dict] = None) -> Dict[str, Any]:

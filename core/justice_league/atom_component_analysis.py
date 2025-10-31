@@ -65,10 +65,29 @@ class AtomComponentAnalysis:
         Args:
             narrator: Mission Control Narrator for coordinated communication
         """
+        # Hero identity for narrator integration
+        self.hero_name = "The Atom"
+        self.hero_emoji = "🔬"
+
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
         logger.info(f"🔬 The Atom - Component Analyzer initialized")
+
+    def say(self, message: str, style: str = "scientific", technical_info: Optional[str] = None):
+        """The Atom dialogue - Molecular analysis and shrinking specialist"""
+        if self.narrator:
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Analyzing"):
+        """Sequential thinking with component focus. Categories: Analyzing, Shrinking, Examining"""
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """Handoff component analysis to another hero"""
+        if self.narrator:
+            self.narrator.hero_handoff(f"{self.hero_emoji} {self.hero_name}", to_hero, context, details)
 
     def analyze_component_library(self, components: Dict[str, Any],
                                   design_tokens: Optional[Dict] = None) -> Dict[str, Any]:

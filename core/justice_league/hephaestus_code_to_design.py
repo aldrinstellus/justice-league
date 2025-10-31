@@ -19,6 +19,13 @@ from pathlib import Path
 from dataclasses import dataclass, field
 from enum import Enum
 
+# Import Mission Control Narrator
+try:
+    from .mission_control_narrator import get_narrator
+    NARRATOR_AVAILABLE = True
+except ImportError:
+    NARRATOR_AVAILABLE = False
+
 
 class FigmaNodeType(Enum):
     """Figma node types"""
@@ -119,15 +126,23 @@ class HephaestusCodeToDesign:
         'Table': {'type': FigmaNodeType.FRAME, 'autoLayout': 'vertical'},
     }
 
-    def __init__(self, figma_token: Optional[str] = None):
+    def __init__(self, figma_token: Optional[str] = None, narrator: Optional[Any] = None):
         """
         Initialize Hephaestus.
 
         Args:
             figma_token: Figma Personal Access Token (for API operations)
+            narrator: Optional MissionControlNarrator for enhanced UX
         """
         self.figma_token = figma_token or "<FIGMA_ACCESS_TOKEN>"
         self.node_counter = 0
+
+        # Hero identity for narrator integration
+        self.hero_name = "Hephaestus"
+        self.hero_emoji = "🔨"
+
+        # Mission Control Narrator
+        self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
     def parse_react_file(self, file_path: str) -> ReactComponent:
         """
@@ -663,6 +678,51 @@ class HephaestusCodeToDesign:
             score += min(15, len(shadcn_imports) * 5)  # 3+ shadcn components = full points
 
         return min(score, 100.0)
+
+    def say(self, message: str, style: str = "friendly", technical_info: Optional[str] = None):
+        """
+        Hephaestus dialogue - Craftsmanship-focused, methodical, precise
+
+        Common styles for Hephaestus: friendly (default), tactical
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                message,
+                style,
+                technical_info
+            )
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Forging"):
+        """
+        Sequential thinking with code-to-design focus
+
+        Common categories for Hephaestus: Forging, Crafting, Parsing, Mapping, Building
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(
+                f"{self.hero_emoji} {self.hero_name}",
+                thought,
+                step,
+                category
+            )
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff work to another hero
+
+        Args:
+            to_hero: Name of hero receiving the handoff (with emoji)
+            context: What is being handed off
+            details: Optional additional details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
 
 
 # Example usage

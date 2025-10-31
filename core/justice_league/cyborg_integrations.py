@@ -74,10 +74,29 @@ class CyborgIntegrations:
             'slack': False
         }
 
+        # Hero identity for narrator integration
+        self.hero_name = "Cyborg"
+        self.hero_emoji = "🤖"
+
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
         logger.info(f"🤖 Cyborg Integration Systems initialized: {self.config_dir}")
+
+    def say(self, message: str, style: str = "technological", technical_info: Optional[str] = None):
+        """Cyborg dialogue - Technological integration specialist"""
+        if self.narrator:
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Integrating"):
+        """Sequential thinking with integration focus. Categories: Integrating, Connecting, Syncing"""
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """Handoff integration data to another hero"""
+        if self.narrator:
+            self.narrator.hero_handoff(f"{self.hero_emoji} {self.hero_name}", to_hero, context, details)
 
     def connect_all_systems(self, credentials: Dict[str, Any]) -> Dict[str, Any]:
         """

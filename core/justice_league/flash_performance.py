@@ -66,7 +66,57 @@ class FlashPerformance:
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
+        # Hero identity for narrator integration
+        self.hero_name = "Flash"
+        self.hero_emoji = "⚡"
+
         logger.info(f"⚡ Flash Performance Lab initialized: {self.baseline_dir}")
+
+    def say(self, message: str, style: str = "tactical", technical_info: Optional[str] = None):
+        """
+        Flash dialogue - Fast, energetic, metric-focused
+
+        Personality traits:
+        - Speed-oriented language
+        - Performance metrics focus
+        - Energetic but tactical
+        - Quick updates
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                message, style, technical_info
+            )
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Optimizing"):
+        """
+        Sequential thinking with performance focus
+
+        Common categories for Flash:
+        - Optimizing, Racing, Profiling, Accelerating
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(
+                f"{self.hero_emoji} {self.hero_name}",
+                thought, step, category
+            )
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff performance data to another hero
+
+        Args:
+            to_hero: Name of hero receiving the handoff (with emoji)
+            context: What is being handed off
+            details: Optional additional details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
 
     def profile_performance(self, mcp_tools: Dict, test_name: str,
                            url: Optional[str] = None,

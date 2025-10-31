@@ -73,10 +73,29 @@ class PlasticManResponsive:
         """
         self.test_results = []
 
+        # Hero identity for narrator integration
+        self.hero_name = "Plastic Man"
+        self.hero_emoji = "🤸"
+
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
         logger.info("🎨 PLASTIC MAN - Responsive Design Specialist initialized")
+
+    def say(self, message: str, style: str = "flexible", technical_info: Optional[str] = None):
+        """Plastic Man dialogue - Flexible and responsive specialist"""
+        if self.narrator:
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Stretching"):
+        """Sequential thinking with responsive focus. Categories: Stretching, Adapting, Flexing"""
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """Handoff responsive testing to another hero"""
+        if self.narrator:
+            self.narrator.hero_handoff(f"{self.hero_emoji} {self.hero_name}", to_hero, context, details)
 
     def test_all_breakpoints(self, mcp_tools: Dict, test_scenarios: Optional[List[str]] = None) -> Dict[str, Any]:
         """

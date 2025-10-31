@@ -119,6 +119,10 @@ class WonderWomanAccessibility:
         # Initialize narrator for enhanced UX
         self.narrator = narrator if narrator else (get_narrator() if NARRATOR_AVAILABLE else None)
 
+        # Hero identity for narrator integration
+        self.hero_name = "Wonder Woman"
+        self.hero_emoji = "⚡"
+
         logger.info(f"⚡ Wonder Woman - Accessibility Champion Initialized")
         logger.info(f"  Lasso of Truth (axe-core): {'✅ ENABLED' if self.axe_enabled else '❌ Disabled'}")
         logger.info(f"  Bracers of Submission (colormath): {'✅ ENABLED' if self.colormath_enabled else '❌ Disabled'}")
@@ -129,6 +133,52 @@ class WonderWomanAccessibility:
             logger.info(f"    - Lighthouse: ✅ v13.0.0")
             logger.info(f"    - Network Vision: ✅ Active")
             logger.info(f"    - Performance Profiling: ✅ Active")
+
+    def say(self, message: str, style: str = "friendly", technical_info: Optional[str] = None):
+        """
+        Wonder Woman dialogue - Compassionate, inclusive, justice-focused
+
+        Personality traits:
+        - Champions accessibility for all users
+        - Inclusive and empowering language
+        - Justice-oriented approach
+        - Friendly with tactical precision
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(
+                f"{self.hero_emoji} {self.hero_name}",
+                message, style, technical_info
+            )
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Championing"):
+        """
+        Sequential thinking with accessibility focus
+
+        Common categories for Wonder Woman:
+        - Championing, Ensuring, Validating, Empowering
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(
+                f"{self.hero_emoji} {self.hero_name}",
+                thought, step, category
+            )
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff accessibility validation to another hero
+
+        Args:
+            to_hero: Name of hero receiving the handoff (with emoji)
+            context: What is being handed off
+            details: Optional additional details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
 
     def champion_accessibility_analysis(self, design_data: Dict[str, Any],
                                        html_output_path: Optional[str] = None) -> Dict[str, Any]:
