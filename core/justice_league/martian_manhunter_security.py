@@ -532,6 +532,337 @@ class MartianManhunterSecurity:
             }
         }
 
+    def scan_xss_vulnerabilities(self, html_content: str, user_inputs: List[str]) -> Dict[str, Any]:
+        """
+        Scan for Cross-Site Scripting (XSS) vulnerabilities.
+
+        Uses Martian Vision to detect XSS attack vectors including
+        reflected, stored, and DOM-based XSS.
+
+        Args:
+            html_content: HTML content to scan
+            user_inputs: List of user input fields
+
+        Returns:
+            {
+                'xss_vulnerabilities': List[Dict],
+                'risk_level': str,
+                'mitigation_steps': List[str]
+            }
+        """
+        self.say("Scanning for XSS vulnerabilities with Martian Vision", style="telepathic")
+        self.think("Using X-ray vision to detect injection points", category="Scanning")
+
+        xss_vulnerabilities = []
+
+        # Check for dangerous patterns in HTML
+        dangerous_patterns = [
+            (r'<script[^>]*>.*?</script>', 'Inline script tag', 'high'),
+            (r'on\w+\s*=\s*["\']', 'Inline event handler', 'high'),
+            (r'javascript:', 'javascript: protocol in href', 'critical'),
+            (r'eval\(', 'eval() usage', 'critical'),
+            (r'innerHTML\s*=', 'innerHTML without sanitization', 'high'),
+            (r'document\.write', 'document.write usage', 'medium')
+        ]
+
+        for pattern, description, severity in dangerous_patterns:
+            matches = re.findall(pattern, html_content, re.IGNORECASE)
+            if matches:
+                xss_vulnerabilities.append({
+                    'type': 'xss',
+                    'pattern': pattern,
+                    'description': description,
+                    'severity': severity,
+                    'count': len(matches),
+                    'locations': matches[:3]  # First 3 examples
+                })
+
+        # Check user inputs for proper sanitization
+        for input_field in user_inputs:
+            # Simulated check - in real implementation would test actual sanitization
+            xss_vulnerabilities.append({
+                'type': 'user_input',
+                'input_field': input_field,
+                'description': f'User input "{input_field}" needs XSS validation',
+                'severity': 'medium',
+                'recommendation': 'Sanitize with DOMPurify or similar library'
+            })
+
+        risk_level = 'critical' if any(v['severity'] == 'critical' for v in xss_vulnerabilities) else 'high' if xss_vulnerabilities else 'low'
+
+        self.say(
+            "XSS vulnerability scan complete",
+            style="telepathic",
+            technical_info=f"{len(xss_vulnerabilities)} vulnerabilities, risk: {risk_level}"
+        )
+
+        return {
+            'xss_vulnerabilities': xss_vulnerabilities,
+            'total_vulnerabilities': len(xss_vulnerabilities),
+            'risk_level': risk_level,
+            'mitigation_steps': [
+                "Use Content Security Policy (CSP) headers",
+                "Sanitize all user inputs with DOMPurify",
+                "Avoid innerHTML - use textContent instead",
+                "Implement output encoding for dynamic content"
+            ]
+        }
+
+    def validate_csp_headers(self, headers: Dict[str, str]) -> Dict[str, Any]:
+        """
+        Validate Content Security Policy headers.
+
+        Checks CSP configuration for proper XSS and injection
+        protection through policy analysis.
+
+        Args:
+            headers: HTTP response headers
+
+        Returns:
+            {
+                'csp_valid': bool,
+                'csp_issues': List[str],
+                'security_score': float
+            }
+        """
+        self.say("Validating Content Security Policy headers", style="telepathic")
+        self.think("Analyzing CSP directives for security gaps", category="Scanning")
+
+        csp_issues = []
+        csp_header = headers.get('content-security-policy', '').lower()
+
+        # Check if CSP exists
+        if not csp_header:
+            return {
+                'csp_valid': False,
+                'csp_issues': ['No Content-Security-Policy header found'],
+                'security_score': 0,
+                'recommendation': "Add CSP header: default-src 'self'; script-src 'self'"
+            }
+
+        # Check for unsafe directives
+        if "'unsafe-inline'" in csp_header:
+            csp_issues.append("CSP allows 'unsafe-inline' scripts - XSS risk")
+
+        if "'unsafe-eval'" in csp_header:
+            csp_issues.append("CSP allows 'unsafe-eval' - eval() XSS risk")
+
+        if "*" in csp_header and "default-src" in csp_header:
+            csp_issues.append("CSP uses wildcard (*) - too permissive")
+
+        # Check for missing important directives
+        important_directives = [
+            ('default-src', 'Default source directive'),
+            ('script-src', 'Script source directive'),
+            ('style-src', 'Style source directive'),
+            ('img-src', 'Image source directive')
+        ]
+
+        for directive, description in important_directives:
+            if directive not in csp_header:
+                csp_issues.append(f"Missing {description} ({directive})")
+
+        # Calculate security score
+        security_score = max(0, 100 - (len(csp_issues) * 15))
+        csp_valid = security_score >= 70
+
+        self.say(
+            "CSP validation complete",
+            style="telepathic",
+            technical_info=f"Security score: {security_score}/100, {len(csp_issues)} issues"
+        )
+
+        return {
+            'csp_valid': csp_valid,
+            'csp_header_present': bool(csp_header),
+            'csp_issues': csp_issues,
+            'security_score': security_score,
+            'recommendations': [
+                "Remove 'unsafe-inline' and 'unsafe-eval' from CSP",
+                "Use nonces or hashes for inline scripts",
+                "Restrict sources to specific trusted domains",
+                "Add CSP report-uri to monitor violations"
+            ]
+        }
+
+    def analyze_auth_flows(self, auth_config: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Analyze authentication flows for security weaknesses.
+
+        Telepathically reads authentication mechanisms to detect
+        weak session management, insecure storage, and auth bypasses.
+
+        Args:
+            auth_config: Authentication configuration
+
+        Returns:
+            {
+                'auth_issues': List[Dict],
+                'auth_score': float,
+                'recommendations': List[str]
+            }
+        """
+        self.say("Analyzing authentication flows with telepathy", style="telepathic")
+        self.think("Reading authentication mechanisms for weaknesses", category="Scanning")
+
+        auth_issues = []
+
+        # Check session configuration
+        session_config = auth_config.get('session', {})
+
+        if not session_config.get('httponly'):
+            auth_issues.append({
+                'type': 'session',
+                'issue': 'Session cookies missing HttpOnly flag',
+                'severity': 'high',
+                'impact': 'Vulnerable to XSS cookie theft'
+            })
+
+        if not session_config.get('secure'):
+            auth_issues.append({
+                'type': 'session',
+                'issue': 'Session cookies missing Secure flag',
+                'severity': 'high',
+                'impact': 'Vulnerable to man-in-the-middle attacks'
+            })
+
+        if not session_config.get('samesite'):
+            auth_issues.append({
+                'type': 'session',
+                'issue': 'Session cookies missing SameSite attribute',
+                'severity': 'medium',
+                'impact': 'Vulnerable to CSRF attacks'
+            })
+
+        # Check token storage
+        token_storage = auth_config.get('token_storage', '')
+        if token_storage == 'localStorage':
+            auth_issues.append({
+                'type': 'token_storage',
+                'issue': 'Tokens stored in localStorage',
+                'severity': 'critical',
+                'impact': 'Vulnerable to XSS token theft'
+            })
+
+        # Check password requirements
+        password_policy = auth_config.get('password_policy', {})
+        min_length = password_policy.get('min_length', 0)
+
+        if min_length < 8:
+            auth_issues.append({
+                'type': 'password_policy',
+                'issue': f'Weak password minimum length ({min_length} chars)',
+                'severity': 'high',
+                'impact': 'Easily brute-forced passwords'
+            })
+
+        # Check for MFA
+        if not auth_config.get('mfa_enabled'):
+            auth_issues.append({
+                'type': 'mfa',
+                'issue': 'Multi-factor authentication not enabled',
+                'severity': 'medium',
+                'impact': 'Account takeover risk'
+            })
+
+        # Calculate auth score
+        auth_score = max(0, 100 - (len(auth_issues) * 12))
+
+        self.say(
+            "Authentication flow analysis complete",
+            style="telepathic",
+            technical_info=f"{len(auth_issues)} issues, auth score: {auth_score}/100"
+        )
+
+        return {
+            'auth_issues': auth_issues,
+            'total_issues': len(auth_issues),
+            'auth_score': auth_score,
+            'critical_issues': sum(1 for i in auth_issues if i['severity'] == 'critical'),
+            'recommendations': [
+                "Enable HttpOnly and Secure flags on all session cookies",
+                "Store tokens in httpOnly cookies, not localStorage",
+                "Enforce minimum 12-character passwords with complexity",
+                "Implement multi-factor authentication (MFA)",
+                "Add rate limiting to prevent brute force attacks"
+            ]
+        }
+
+    def detect_sensitive_data_exposure(self, app_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Detect sensitive data exposure in application.
+
+        Uses Martian telepathy to find exposed API keys, passwords,
+        PII, and other sensitive information.
+
+        Args:
+            app_data: Application data and configuration
+
+        Returns:
+            {
+                'exposed_secrets': List[Dict],
+                'pii_exposure': List[str],
+                'exposure_score': float
+            }
+        """
+        self.say("Detecting sensitive data exposure", style="telepathic")
+        self.think("Telepathically scanning for exposed secrets and PII", category="Detecting")
+
+        exposed_secrets = []
+        pii_exposure = []
+
+        # Check for exposed secrets in config
+        config = app_data.get('config', {})
+
+        secret_patterns = {
+            'api_key': r'[a-zA-Z0-9]{32,}',
+            'password': r'password\s*[:=]\s*["\']([^"\']+)["\']',
+            'token': r'token\s*[:=]\s*["\']([^"\']+)["\']',
+            'secret': r'secret\s*[:=]\s*["\']([^"\']+)["\']'
+        }
+
+        for key, pattern in secret_patterns.items():
+            config_str = str(config)
+            if re.search(pattern, config_str, re.IGNORECASE):
+                exposed_secrets.append({
+                    'type': key,
+                    'location': 'application config',
+                    'severity': 'critical',
+                    'recommendation': f'Move {key} to environment variables'
+                })
+
+        # Check for PII exposure
+        response_data = app_data.get('response_data', {})
+
+        pii_fields = ['email', 'phone', 'ssn', 'credit_card', 'address']
+        for field in pii_fields:
+            if field in str(response_data).lower():
+                pii_exposure.append(field)
+
+        # Calculate exposure score
+        exposure_score = max(0, 100 - (len(exposed_secrets) * 20) - (len(pii_exposure) * 10))
+
+        self.say(
+            "Sensitive data exposure scan complete",
+            style="telepathic",
+            technical_info=f"{len(exposed_secrets)} exposed secrets, {len(pii_exposure)} PII exposures"
+        )
+
+        return {
+            'exposed_secrets': exposed_secrets,
+            'total_exposed': len(exposed_secrets),
+            'pii_exposure': pii_exposure,
+            'pii_count': len(pii_exposure),
+            'exposure_score': exposure_score,
+            'recommendations': [
+                "Move all secrets to environment variables or secret managers",
+                "Never commit secrets to version control",
+                "Implement encryption for PII at rest and in transit",
+                "Use HTTPS for all data transmission",
+                "Add .env files to .gitignore"
+            ]
+        }
+
     def _generate_telepathic_recommendations(self, results: Dict) -> List[Dict[str, Any]]:
         """
         🧠 Generate Martian Manhunter's telepathic security recommendations

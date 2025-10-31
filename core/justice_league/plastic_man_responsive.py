@@ -587,6 +587,222 @@ class PlasticManResponsive:
 
         return recommendations
 
+    def detect_layout_shifts(self, design: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Identify potential CLS (Cumulative Layout Shift) issues.
+
+        Analyzes design for elements that may cause layout shifts
+        during page load and provides recommendations.
+
+        Args:
+            design: Design structure dictionary
+
+        Returns:
+            {
+                'cls_risks': List[Dict],
+                'severity_score': float,
+                'recommendations': List[str]
+            }
+        """
+        self.say("Detecting potential layout shift issues", style="friendly")
+        self.think("Analyzing elements that may cause CLS", category="Scanning")
+
+        cls_risks = []
+
+        # Check for images without dimensions
+        images = design.get('images', [])
+        for img in images:
+            if 'width' not in img or 'height' not in img:
+                cls_risks.append({
+                    'type': 'image_no_dimensions',
+                    'element': img.get('src', 'Unknown image'),
+                    'severity': 'high',
+                    'impact': 'Causes layout shift when image loads'
+                })
+
+        # Check for dynamic content areas
+        if design.get('dynamic_content'):
+            for content in design['dynamic_content']:
+                if not content.get('min_height'):
+                    cls_risks.append({
+                        'type': 'dynamic_content_no_min_height',
+                        'element': content.get('id', 'Dynamic area'),
+                        'severity': 'medium',
+                        'impact': 'Content loading causes layout reflow'
+                    })
+
+        # Check for web fonts
+        if design.get('web_fonts') and not design.get('font_display'):
+            cls_risks.append({
+                'type': 'web_font_flash',
+                'element': 'Typography',
+                'severity': 'low',
+                'impact': 'Font swap causes text reflow'
+            })
+
+        severity_score = 100 - (
+            sum(15 for r in cls_risks if r['severity'] == 'high') +
+            sum(10 for r in cls_risks if r['severity'] == 'medium') +
+            sum(5 for r in cls_risks if r['severity'] == 'low')
+        )
+        severity_score = max(0, severity_score)
+
+        self.say(
+            "Layout shift analysis complete",
+            style="friendly",
+            technical_info=f"{len(cls_risks)} risks, score: {severity_score}/100"
+        )
+
+        return {
+            'cls_risks': cls_risks,
+            'severity_score': severity_score,
+            'recommendations': [
+                "Add explicit width/height to all images",
+                "Reserve space for dynamic content with min-height",
+                "Use font-display: optional for web fonts"
+            ]
+        }
+
+    def generate_breakpoint_strategy(self, layout: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Generate optimal breakpoint recommendations.
+
+        Analyzes layout structure and recommends responsive
+        breakpoints for mobile, tablet, and desktop.
+
+        Args:
+            layout: Layout configuration dictionary
+
+        Returns:
+            {
+                'breakpoints': Dict,
+                'strategy': str,
+                'media_queries': List[str]
+            }
+        """
+        self.say("Generating responsive breakpoint strategy", style="friendly")
+        self.think("Analyzing layout for optimal breakpoints", category="Planning")
+
+        # Analyze layout complexity
+        columns = layout.get('columns', 1)
+        has_sidebar = layout.get('sidebar', False)
+        content_density = layout.get('content_density', 'medium')
+
+        breakpoints = {
+            'mobile': {'min': 0, 'max': 639, 'columns': 1},
+            'tablet': {'min': 640, 'max': 1023, 'columns': min(2, columns)},
+            'desktop': {'min': 1024, 'max': 1279, 'columns': columns},
+            'wide': {'min': 1280, 'max': None, 'columns': columns}
+        }
+
+        # Adjust for sidebar layouts
+        if has_sidebar:
+            breakpoints['tablet']['sidebar'] = 'collapsible'
+            breakpoints['mobile']['sidebar'] = 'hidden'
+
+        # Generate media queries
+        media_queries = [
+            f"@media (min-width: {breakpoints['tablet']['min']}px) {{ /* Tablet */ }}",
+            f"@media (min-width: {breakpoints['desktop']['min']}px) {{ /* Desktop */ }}",
+            f"@media (min-width: {breakpoints['wide']['min']}px) {{ /* Wide screens */ }}"
+        ]
+
+        strategy = "mobile-first" if content_density != "high" else "desktop-first"
+
+        self.say(
+            "Breakpoint strategy generated",
+            style="friendly",
+            technical_info=f"{len(breakpoints)} breakpoints, {strategy}"
+        )
+
+        return {
+            'breakpoints': breakpoints,
+            'strategy': strategy,
+            'media_queries': media_queries,
+            'tailwind_config': {
+                'sm': f"{breakpoints['tablet']['min']}px",
+                'md': f"{breakpoints['desktop']['min']}px",
+                'lg': f"{breakpoints['wide']['min']}px"
+            }
+        }
+
+    def validate_touch_targets(self, ui: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Check mobile touch target sizes.
+
+        Validates that interactive elements meet minimum size
+        requirements for mobile usability (44x44px minimum).
+
+        Args:
+            ui: UI structure with interactive elements
+
+        Returns:
+            {
+                'issues': List[Dict],
+                'pass_rate': float,
+                'recommendations': List[str]
+            }
+        """
+        self.say("Validating mobile touch target sizes", style="friendly")
+        self.think("Checking interactive elements against 44x44px minimum", category="Validating")
+
+        MIN_SIZE = 44  # pixels
+        issues = []
+        total_targets = 0
+        passing_targets = 0
+
+        # Check buttons
+        buttons = ui.get('buttons', [])
+        for btn in buttons:
+            total_targets += 1
+            width = btn.get('width', 0)
+            height = btn.get('height', 0)
+
+            if width < MIN_SIZE or height < MIN_SIZE:
+                issues.append({
+                    'element': btn.get('id', 'Button'),
+                    'current_size': f"{width}x{height}px",
+                    'min_required': f"{MIN_SIZE}x{MIN_SIZE}px",
+                    'severity': 'high'
+                })
+            else:
+                passing_targets += 1
+
+        # Check links
+        links = ui.get('links', [])
+        for link in links:
+            total_targets += 1
+            # Assume text links need padding
+            if not link.get('padding'):
+                issues.append({
+                    'element': link.get('text', 'Link'),
+                    'issue': 'Missing padding',
+                    'min_required': f"{MIN_SIZE}x{MIN_SIZE}px touch area",
+                    'severity': 'medium'
+                })
+            else:
+                passing_targets += 1
+
+        pass_rate = (passing_targets / total_targets * 100) if total_targets > 0 else 100
+
+        self.say(
+            "Touch target validation complete",
+            style="friendly",
+            technical_info=f"Pass rate: {pass_rate:.1f}%"
+        )
+
+        return {
+            'issues': issues,
+            'pass_rate': pass_rate,
+            'total_targets': total_targets,
+            'passing_targets': passing_targets,
+            'recommendations': [
+                f"Increase touch targets to minimum {MIN_SIZE}x{MIN_SIZE}px",
+                "Add adequate padding to text links",
+                "Ensure spacing between tap targets"
+            ]
+        }
+
 
 # Main entry point - Plastic Man's Mission Interface
 def plastic_man_responsive_test(mcp_tools: Dict,

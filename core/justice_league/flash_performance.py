@@ -548,6 +548,247 @@ class FlashPerformance:
         """Alias for _store_performance_baseline"""
         return self._store_performance_baseline(test_name, results)
 
+    def analyze_render_blocking(self, page_resources: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Analyze render-blocking resources that delay page load.
+
+        Identifies CSS and JavaScript that blocks initial page rendering
+        and provides optimization recommendations.
+
+        Args:
+            page_resources: Dictionary of page resources (scripts, styles, fonts)
+
+        Returns:
+            {
+                'blocking_resources': List[Dict],
+                'blocking_score': float,
+                'recommendations': List[str]
+            }
+        """
+        self.say("Analyzing render-blocking resources at super speed", style="tactical")
+        self.think("Identifying resources that delay First Contentful Paint", category="Profiling")
+
+        blocking_resources = []
+
+        # Check for render-blocking CSS
+        stylesheets = page_resources.get('stylesheets', [])
+        for css in stylesheets:
+            if not css.get('async') and not css.get('media'):
+                blocking_resources.append({
+                    'type': 'css',
+                    'url': css.get('href', 'unknown'),
+                    'size': css.get('size', 0),
+                    'severity': 'high',
+                    'impact': 'Blocks initial render until CSS loads'
+                })
+
+        # Check for render-blocking JavaScript
+        scripts = page_resources.get('scripts', [])
+        for script in scripts:
+            if not script.get('async') and not script.get('defer'):
+                location = script.get('location', 'unknown')
+                if location == 'head':
+                    blocking_resources.append({
+                        'type': 'js',
+                        'url': script.get('src', 'inline'),
+                        'size': script.get('size', 0),
+                        'severity': 'critical',
+                        'impact': 'Blocks HTML parsing and rendering'
+                    })
+
+        # Check for custom fonts without font-display
+        fonts = page_resources.get('fonts', [])
+        for font in fonts:
+            if not font.get('font_display'):
+                blocking_resources.append({
+                    'type': 'font',
+                    'url': font.get('src', 'unknown'),
+                    'severity': 'medium',
+                    'impact': 'May cause FOIT (Flash of Invisible Text)'
+                })
+
+        blocking_score = max(0, 100 - (len(blocking_resources) * 10))
+
+        self.say(
+            "Render-blocking analysis complete",
+            style="tactical",
+            technical_info=f"{len(blocking_resources)} blocking resources, score: {blocking_score}/100"
+        )
+
+        return {
+            'blocking_resources': blocking_resources,
+            'blocking_score': blocking_score,
+            'total_blocking': len(blocking_resources),
+            'recommendations': [
+                "Use async/defer for non-critical JavaScript",
+                "Inline critical CSS and defer non-critical styles",
+                "Add font-display: optional to @font-face rules",
+                "Consider code-splitting for large JavaScript bundles"
+            ]
+        }
+
+    def optimize_critical_path(self, page_timeline: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Optimize the critical rendering path for faster load times.
+
+        Analyzes the sequence of resource loading and provides
+        recommendations to reduce time to First Contentful Paint.
+
+        Args:
+            page_timeline: Timeline of resource loading events
+
+        Returns:
+            {
+                'critical_resources': List[str],
+                'optimization_opportunities': List[Dict],
+                'estimated_improvement': float
+            }
+        """
+        self.say("Optimizing critical rendering path", style="tactical")
+        self.think("Analyzing resource loading sequence for optimization", category="Optimizing")
+
+        critical_resources = []
+        optimization_opportunities = []
+
+        # Identify critical resources (needed for initial render)
+        resources = page_timeline.get('resources', [])
+        for resource in resources:
+            if resource.get('critical', False):
+                critical_resources.append(resource.get('url', 'unknown'))
+
+            # Check for optimization opportunities
+            start_time = resource.get('start_time', 0)
+            load_time = resource.get('load_time', 0)
+
+            if load_time > 1000:  # > 1 second
+                optimization_opportunities.append({
+                    'resource': resource.get('url', 'unknown'),
+                    'issue': f'Slow loading resource ({load_time}ms)',
+                    'opportunity': 'Optimize, compress, or lazy-load this resource',
+                    'potential_savings': f'{load_time - 500}ms'
+                })
+
+        # Check for waterfall issues (sequential loading)
+        for i in range(len(resources) - 1):
+            current = resources[i]
+            next_res = resources[i + 1]
+
+            if next_res.get('start_time', 0) > current.get('end_time', 0) + 100:
+                optimization_opportunities.append({
+                    'resource': next_res.get('url', 'unknown'),
+                    'issue': 'Resource waiting in waterfall',
+                    'opportunity': 'Preload or fetch earlier in document',
+                    'potential_savings': '200-500ms'
+                })
+
+        estimated_improvement = min(len(optimization_opportunities) * 200, 2000)  # Max 2s improvement
+
+        self.say(
+            "Critical path optimization complete",
+            style="tactical",
+            technical_info=f"{len(optimization_opportunities)} opportunities, ~{estimated_improvement}ms savings"
+        )
+
+        return {
+            'critical_resources': critical_resources,
+            'critical_count': len(critical_resources),
+            'optimization_opportunities': optimization_opportunities,
+            'estimated_improvement_ms': estimated_improvement,
+            'recommendations': [
+                "Preload critical resources with <link rel='preload'>",
+                "Reduce resource count on critical path",
+                "Inline critical CSS and defer non-critical",
+                "Use HTTP/2 server push for critical resources"
+            ]
+        }
+
+    def measure_interaction_latency(self, user_interactions: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Measure interaction latency (INP - Interaction to Next Paint).
+
+        Analyzes responsiveness of user interactions and identifies
+        slow event handlers that cause UI lag.
+
+        Args:
+            user_interactions: List of user interaction events (click, input, etc.)
+
+        Returns:
+            {
+                'slow_interactions': List[Dict],
+                'inp_score': float,
+                'latency_percentiles': Dict
+            }
+        """
+        self.say("Measuring interaction latency at Flash speed", style="tactical")
+        self.think("Analyzing user interaction responsiveness", category="Profiling")
+
+        slow_interactions = []
+        latencies = []
+
+        for interaction in user_interactions:
+            event_type = interaction.get('type', 'unknown')
+            latency = interaction.get('latency_ms', 0)
+            latencies.append(latency)
+
+            # INP threshold: 200ms (good), 500ms (needs improvement)
+            if latency > 500:
+                slow_interactions.append({
+                    'event_type': event_type,
+                    'element': interaction.get('target', 'unknown'),
+                    'latency_ms': latency,
+                    'severity': 'critical',
+                    'impact': 'User experiences significant lag'
+                })
+            elif latency > 200:
+                slow_interactions.append({
+                    'event_type': event_type,
+                    'element': interaction.get('target', 'unknown'),
+                    'latency_ms': latency,
+                    'severity': 'moderate',
+                    'impact': 'Noticeable delay for users'
+                })
+
+        # Calculate percentiles
+        if latencies:
+            latencies.sort()
+            p50 = latencies[len(latencies) // 2]
+            p75 = latencies[int(len(latencies) * 0.75)]
+            p98 = latencies[int(len(latencies) * 0.98)] if len(latencies) > 50 else latencies[-1]
+        else:
+            p50, p75, p98 = 0, 0, 0
+
+        # INP score (based on p98)
+        if p98 <= 200:
+            inp_score = 100
+        elif p98 <= 500:
+            inp_score = 80 - ((p98 - 200) / 300 * 30)  # Scale from 80 to 50
+        else:
+            inp_score = max(0, 50 - ((p98 - 500) / 100))  # < 50 for very slow
+
+        self.say(
+            "Interaction latency measurement complete",
+            style="tactical",
+            technical_info=f"INP score: {inp_score:.1f}/100, p98: {p98}ms"
+        )
+
+        return {
+            'slow_interactions': slow_interactions,
+            'total_interactions': len(user_interactions),
+            'slow_count': len(slow_interactions),
+            'inp_score': inp_score,
+            'latency_percentiles': {
+                'p50_ms': p50,
+                'p75_ms': p75,
+                'p98_ms': p98
+            },
+            'recommendations': [
+                "Optimize event handlers to run in < 200ms",
+                "Use requestIdleCallback for non-urgent work",
+                "Debounce/throttle frequent events (scroll, resize)",
+                "Move heavy computation to Web Workers"
+            ]
+        }
+
     def _load_baseline(self, test_name: str) -> Optional[Dict]:
         """Load performance baseline from storage"""
         baseline_file = self.baseline_dir / f"{test_name}.json"

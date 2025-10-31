@@ -1035,6 +1035,281 @@ class ZatannaSEO:
         else:
             return f"Fix {category} issue: {issue_text}"
 
+    def analyze_meta_tags(self, html: str) -> Dict[str, Any]:
+        """
+        Comprehensive meta tag analysis for SEO optimization.
+
+        Analyzes title, description, Open Graph, Twitter Cards,
+        and other meta tags for SEO best practices.
+
+        Args:
+            html: HTML document content
+
+        Returns:
+            {
+                'meta_tags': Dict,
+                'issues': List[str],
+                'recommendations': List[str],
+                'seo_score': float
+            }
+        """
+        self.say("Analyzing meta tags for SEO optimization", style="mystical")
+        self.think("Extracting meta tags from HTML", category="Enchanting")
+
+        issues = []
+        meta_tags = {}
+        recommendations = []
+
+        # Extract title tag
+        title_match = re.search(r'<title>([^<]+)</title>', html, re.IGNORECASE)
+        if title_match:
+            title = title_match.group(1)
+            meta_tags['title'] = title
+            title_validation = self._validate_title(title)
+            if not title_validation['valid']:
+                issues.extend(title_validation['issues'])
+        else:
+            issues.append("Missing title tag")
+            recommendations.append("Add <title> tag with 30-60 characters")
+
+        # Extract meta description
+        desc_match = re.search(r'<meta\s+name=["\']description["\']\s+content=["\']([^"\']+)["\']', html, re.IGNORECASE)
+        if desc_match:
+            description = desc_match.group(1)
+            meta_tags['description'] = description
+            desc_validation = self._validate_description(description)
+            if not desc_validation['valid']:
+                issues.extend(desc_validation['issues'])
+        else:
+            issues.append("Missing meta description")
+            recommendations.append("Add meta description with 120-160 characters")
+
+        # Extract Open Graph tags
+        og_pattern = r'<meta\s+property=["\']og:(\w+)["\']\s+content=["\']([^"\']+)["\']'
+        og_tags = {}
+        for match in re.finditer(og_pattern, html, re.IGNORECASE):
+            og_tags[match.group(1)] = match.group(2)
+        meta_tags['open_graph'] = og_tags
+
+        # Extract Twitter Card tags
+        twitter_pattern = r'<meta\s+name=["\']twitter:(\w+)["\']\s+content=["\']([^"\']+)["\']'
+        twitter_tags = {}
+        for match in re.finditer(twitter_pattern, html, re.IGNORECASE):
+            twitter_tags[match.group(1)] = match.group(2)
+        meta_tags['twitter'] = twitter_tags
+
+        # Extract canonical
+        canonical_match = re.search(r'<link\s+rel=["\']canonical["\']\s+href=["\']([^"\']+)["\']', html, re.IGNORECASE)
+        if canonical_match:
+            meta_tags['canonical'] = canonical_match.group(1)
+        else:
+            issues.append("Missing canonical URL")
+            recommendations.append("Add canonical link to prevent duplicate content")
+
+        # Extract viewport
+        viewport_match = re.search(r'<meta\s+name=["\']viewport["\']\s+content=["\']([^"\']+)["\']', html, re.IGNORECASE)
+        if viewport_match:
+            meta_tags['viewport'] = viewport_match.group(1)
+        else:
+            issues.append("Missing viewport meta tag")
+            recommendations.append("Add viewport meta for mobile optimization")
+
+        # Calculate SEO score
+        seo_score = max(0, 100 - (len(issues) * 10))
+
+        self.think("Validating meta tags against SEO best practices", category="Optimizing")
+        self.say(
+            "Meta tag analysis complete",
+            style="mystical",
+            technical_info=f"SEO score: {seo_score}/100, {len(issues)} issues"
+        )
+
+        return {
+            'meta_tags': meta_tags,
+            'issues': issues,
+            'recommendations': recommendations,
+            'seo_score': seo_score
+        }
+
+    def generate_structured_data(self, content: Dict[str, Any]) -> str:
+        """
+        Generate schema.org structured data markup.
+
+        Creates JSON-LD structured data for rich snippets
+        and enhanced search results.
+
+        Args:
+            content: Content dictionary with type and properties
+                {
+                    'type': 'Article' | 'Organization' | 'Product' | etc.,
+                    'title': str,
+                    'description': str,
+                    'author': str (optional),
+                    'datePublished': str (optional),
+                    'image': str (optional),
+                    ...
+                }
+
+        Returns:
+            JSON-LD structured data string ready for insertion
+        """
+        self.say("Generating schema.org structured data", style="mystical")
+        self.think("Creating JSON-LD markup for rich snippets", category="Enchanting")
+
+        schema_type = content.get('type', 'WebPage')
+
+        structured_data = {
+            "@context": "https://schema.org",
+            "@type": schema_type
+        }
+
+        # Add common properties
+        if 'title' in content:
+            if schema_type == 'Article':
+                structured_data['headline'] = content['title']
+            else:
+                structured_data['name'] = content['title']
+
+        if 'description' in content:
+            structured_data['description'] = content['description']
+
+        if 'image' in content:
+            structured_data['image'] = content['image']
+
+        if 'url' in content:
+            structured_data['url'] = content['url']
+
+        # Article-specific properties
+        if schema_type == 'Article':
+            if 'author' in content:
+                structured_data['author'] = {
+                    "@type": "Person",
+                    "name": content['author']
+                }
+            if 'datePublished' in content:
+                structured_data['datePublished'] = content['datePublished']
+            if 'dateModified' in content:
+                structured_data['dateModified'] = content['dateModified']
+
+        # Organization-specific properties
+        elif schema_type == 'Organization':
+            if 'logo' in content:
+                structured_data['logo'] = content['logo']
+            if 'contactPoint' in content:
+                structured_data['contactPoint'] = content['contactPoint']
+
+        # Product-specific properties
+        elif schema_type == 'Product':
+            if 'offers' in content:
+                structured_data['offers'] = content['offers']
+            if 'aggregateRating' in content:
+                structured_data['aggregateRating'] = content['aggregateRating']
+
+        # Generate JSON-LD script tag
+        json_ld = json.dumps(structured_data, indent=2)
+        script_tag = f'<script type="application/ld+json">\n{json_ld}\n</script>'
+
+        self.say(
+            "Structured data generated successfully",
+            style="mystical",
+            technical_info=f"Type: {schema_type}"
+        )
+
+        return script_tag
+
+    def optimize_content_structure(self, html: str) -> Dict[str, Any]:
+        """
+        Optimize HTML structure for SEO.
+
+        Analyzes heading hierarchy, semantic HTML usage,
+        and content organization for search engine optimization.
+
+        Args:
+            html: HTML document content
+
+        Returns:
+            {
+                'heading_hierarchy': Dict,
+                'semantic_issues': List[str],
+                'recommendations': List[str],
+                'structure_score': float
+            }
+        """
+        self.say("Optimizing content structure for SEO", style="mystical")
+        self.think("Analyzing HTML semantic structure", category="Optimizing")
+
+        # Analyze heading hierarchy
+        h1_matches = re.findall(r'<h1[^>]*>([^<]+)</h1>', html, re.IGNORECASE)
+        h2_matches = re.findall(r'<h2[^>]*>([^<]+)</h2>', html, re.IGNORECASE)
+        h3_matches = re.findall(r'<h3[^>]*>([^<]+)</h3>', html, re.IGNORECASE)
+        h4_matches = re.findall(r'<h4[^>]*>([^<]+)</h4>', html, re.IGNORECASE)
+        h5_matches = re.findall(r'<h5[^>]*>([^<]+)</h5>', html, re.IGNORECASE)
+        h6_matches = re.findall(r'<h6[^>]*>([^<]+)</h6>', html, re.IGNORECASE)
+
+        heading_hierarchy = {
+            'h1': {'count': len(h1_matches), 'texts': h1_matches},
+            'h2': {'count': len(h2_matches), 'texts': h2_matches[:5]},  # First 5
+            'h3': {'count': len(h3_matches), 'texts': h3_matches[:5]},
+            'h4': {'count': len(h4_matches)},
+            'h5': {'count': len(h5_matches)},
+            'h6': {'count': len(h6_matches)}
+        }
+
+        semantic_issues = []
+        recommendations = []
+
+        # Check H1 count
+        if len(h1_matches) == 0:
+            semantic_issues.append("Missing H1 heading - critical for SEO")
+            recommendations.append("Add exactly one <h1> tag as the main page heading")
+        elif len(h1_matches) > 1:
+            semantic_issues.append(f"Multiple H1 headings ({len(h1_matches)}) - should have exactly 1")
+            recommendations.append("Consolidate to a single H1 tag, use H2-H6 for subheadings")
+
+        # Check H2 presence for content structure
+        if len(h2_matches) == 0 and len(html) > 500:
+            semantic_issues.append("No H2 subheadings - limits content structure")
+            recommendations.append("Add H2 subheadings to improve content organization")
+
+        # Check for semantic HTML5 tags
+        has_main = bool(re.search(r'<main[^>]*>', html, re.IGNORECASE))
+        has_article = bool(re.search(r'<article[^>]*>', html, re.IGNORECASE))
+        has_nav = bool(re.search(r'<nav[^>]*>', html, re.IGNORECASE))
+        has_header = bool(re.search(r'<header[^>]*>', html, re.IGNORECASE))
+
+        if not has_main:
+            semantic_issues.append("Missing <main> element")
+            recommendations.append("Wrap main content in <main> tag for better semantics")
+
+        if not has_header and '<head' not in html.lower():
+            semantic_issues.append("Missing <header> element")
+            recommendations.append("Add <header> element for page header content")
+
+        # Check for excessive div usage
+        div_count = html.lower().count('<div')
+        if div_count > 50:
+            semantic_issues.append(f"Excessive div usage ({div_count}) - consider semantic alternatives")
+            recommendations.append("Replace generic divs with semantic HTML5 tags (article, section, nav, etc.)")
+
+        # Calculate structure score
+        structure_score = 100
+        structure_score -= len(semantic_issues) * 10
+        structure_score = max(0, structure_score)
+
+        self.think("Generating structure optimization recommendations", category="Casting")
+        self.say(
+            "Content structure analysis complete",
+            style="mystical",
+            technical_info=f"Structure score: {structure_score}/100, {len(semantic_issues)} issues"
+        )
+
+        return {
+            'heading_hierarchy': heading_hierarchy,
+            'semantic_issues': semantic_issues,
+            'recommendations': recommendations,
+            'structure_score': structure_score
+        }
+
     def _save_magic_report(self, results: Dict) -> None:
         """Save Zatanna's magic report"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')

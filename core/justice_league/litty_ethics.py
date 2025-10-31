@@ -1052,6 +1052,235 @@ class LittyEthics:
         else:
             return 'F'
 
+    def analyze_inclusive_language(self, content: str) -> Dict[str, Any]:
+        """
+        Check content for inclusive terminology.
+
+        Analyzes text for potentially exclusionary language
+        and suggests more inclusive alternatives.
+
+        Args:
+            content: Text content to analyze
+
+        Returns:
+            {
+                'issues': List[Dict],
+                'suggestions': List[str],
+                'inclusive_score': float
+            }
+        """
+        self.say("Analyzing content for inclusive language", style="friendly")
+        self.think("Checking for potentially exclusionary terms", category="Analyzing")
+
+        content_lower = content.lower()
+        issues = []
+
+        # Common exclusionary terms and their inclusive alternatives
+        exclusionary_terms = {
+            'blacklist': 'blocklist',
+            'whitelist': 'allowlist',
+            'master': 'primary',
+            'slave': 'secondary',
+            'guys': 'everyone',
+            'mankind': 'humankind',
+            'manpower': 'workforce'
+        }
+
+        for term, alternative in exclusionary_terms.items():
+            if term in content_lower:
+                count = content_lower.count(term)
+                issues.append({
+                    'term': term,
+                    'alternative': alternative,
+                    'occurrences': count,
+                    'severity': 'medium'
+                })
+
+        inclusive_score = max(0, 100 - (len(issues) * 15))
+
+        self.say(
+            "Inclusive language analysis complete",
+            style="friendly",
+            technical_info=f"{len(issues)} issues, score: {inclusive_score}/100"
+        )
+
+        return {
+            'issues': issues,
+            'suggestions': [f"Replace '{i['term']}' with '{i['alternative']}'" for i in issues],
+            'inclusive_score': inclusive_score
+        }
+
+    def detect_bias_patterns(self, ui: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Identify potential UI biases.
+
+        Analyzes UI design for potential biases in imagery,
+        color choices, iconography, and user flows.
+
+        Args:
+            ui: UI structure dictionary
+
+        Returns:
+            {
+                'bias_patterns': List[Dict],
+                'recommendations': List[str],
+                'equity_score': float
+            }
+        """
+        self.say("Detecting potential UI bias patterns", style="friendly")
+        self.think("Analyzing UI for biases in design and flow", category="Analyzing")
+
+        bias_patterns = []
+
+        # Check for gender-neutral language in labels
+        labels = ui.get('labels', [])
+        for label in labels:
+            if any(term in str(label).lower() for term in ['he', 'she', 'his', 'her', 'him']):
+                bias_patterns.append({
+                    'type': 'gendered_language',
+                    'location': label,
+                    'severity': 'medium',
+                    'recommendation': 'Use gender-neutral pronouns (they/them)'
+                })
+
+        # Check for cultural assumptions
+        if ui.get('date_format'):
+            if ui['date_format'] not in ['YYYY-MM-DD', 'ISO8601']:
+                bias_patterns.append({
+                    'type': 'cultural_assumption',
+                    'location': 'date_format',
+                    'severity': 'low',
+                    'recommendation': 'Use ISO 8601 date format for international users'
+                })
+
+        equity_score = max(0, 100 - (len(bias_patterns) * 12))
+
+        self.say(
+            "Bias pattern detection complete",
+            style="friendly",
+            technical_info=f"{len(bias_patterns)} patterns, equity: {equity_score}/100"
+        )
+
+        return {
+            'bias_patterns': bias_patterns,
+            'recommendations': [p['recommendation'] for p in bias_patterns],
+            'equity_score': equity_score
+        }
+
+    def validate_consent_flows(self, forms: List[Dict]) -> Dict[str, Any]:
+        """
+        Review consent and privacy flows.
+
+        Validates that consent mechanisms meet GDPR/CCPA standards
+        and provide clear opt-in/opt-out options.
+
+        Args:
+            forms: List of form structures
+
+        Returns:
+            {
+                'consent_issues': List[str],
+                'gdpr_compliant': bool,
+                'recommendations': List[str]
+            }
+        """
+        self.say("Validating consent and privacy flows", style="friendly")
+        self.think("Checking GDPR/CCPA compliance", category="Validating")
+
+        consent_issues = []
+        recommendations = []
+
+        for i, form in enumerate(forms):
+            form_name = form.get('name', f'Form {i+1}')
+
+            # Check for explicit consent checkbox
+            if 'consent_checkbox' not in form and 'privacy_accept' not in form:
+                consent_issues.append(f"{form_name}: Missing explicit consent checkbox")
+                recommendations.append(f"Add consent checkbox to {form_name}")
+
+            # Check for pre-checked boxes (not GDPR compliant)
+            if form.get('consent_checkbox', {}).get('default_checked'):
+                consent_issues.append(f"{form_name}: Consent checkbox pre-checked")
+                recommendations.append(f"Remove default check from {form_name}")
+
+            # Check for privacy policy link
+            if 'privacy_policy_link' not in form:
+                consent_issues.append(f"{form_name}: Missing privacy policy link")
+                recommendations.append(f"Add privacy policy link to {form_name}")
+
+        gdpr_compliant = len(consent_issues) == 0
+
+        self.say(
+            "Consent flow validation complete",
+            style="friendly",
+            technical_info=f"GDPR compliant: {gdpr_compliant}"
+        )
+
+        return {
+            'consent_issues': consent_issues,
+            'gdpr_compliant': gdpr_compliant,
+            'ccpa_compliant': gdpr_compliant,
+            'recommendations': recommendations
+        }
+
+    def check_data_transparency(self, app: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Evaluate data usage transparency.
+
+        Assesses how clearly the application communicates
+        data collection, usage, and sharing practices.
+
+        Args:
+            app: Application structure and configuration
+
+        Returns:
+            {
+                'transparency_score': float,
+                'missing_disclosures': List[str],
+                'recommendations': List[str]
+            }
+        """
+        self.say("Checking data transparency practices", style="friendly")
+        self.think("Evaluating data usage disclosures", category="Analyzing")
+
+        missing_disclosures = []
+        recommendations = []
+
+        # Check for essential disclosures
+        required_disclosures = {
+            'privacy_policy': 'Privacy policy link',
+            'data_collection_notice': 'Data collection notice',
+            'cookie_policy': 'Cookie usage policy',
+            'third_party_sharing': 'Third-party data sharing disclosure',
+            'data_retention': 'Data retention policy',
+            'user_rights': 'User rights (access, deletion, portability)'
+        }
+
+        for key, description in required_disclosures.items():
+            if key not in app:
+                missing_disclosures.append(description)
+                recommendations.append(f"Add {description.lower()}")
+
+        # Check for clear opt-out mechanisms
+        if 'opt_out_mechanism' not in app:
+            missing_disclosures.append("Opt-out mechanism")
+            recommendations.append("Provide clear opt-out mechanism for data collection")
+
+        transparency_score = max(0, 100 - (len(missing_disclosures) * 14))
+
+        self.say(
+            "Data transparency check complete",
+            style="friendly",
+            technical_info=f"Transparency score: {transparency_score}/100"
+        )
+
+        return {
+            'transparency_score': transparency_score,
+            'missing_disclosures': missing_disclosures,
+            'recommendations': recommendations,
+            'compliant': transparency_score >= 80
+        }
+
     def _get_timestamp(self) -> str:
         """Get current timestamp"""
         from datetime import datetime

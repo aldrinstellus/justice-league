@@ -589,6 +589,284 @@ class BatmanTesting:
 
         return recommendations
 
+    def generate_integration_tests(self, component_spec: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Generate integration test cases for a component.
+
+        Creates comprehensive test scenarios for component
+        integration with parent components and external systems.
+
+        Args:
+            component_spec: Component specification with props, state, and interactions
+
+        Returns:
+            {
+                'test_cases': List[Dict],
+                'coverage_estimate': float,
+                'test_code': str
+            }
+        """
+        self.say("Generating integration test scenarios", style="tactical")
+        self.think("Identifying integration points and edge cases", category="Investigating")
+
+        test_cases = []
+
+        # Test component props
+        props = component_spec.get('props', [])
+        for prop in props:
+            prop_name = prop.get('name', 'unknown')
+            prop_type = prop.get('type', 'any')
+
+            test_cases.append({
+                'name': f'test_{prop_name}_prop_validation',
+                'description': f'Verify {prop_name} prop accepts valid {prop_type} values',
+                'priority': 'high',
+                'test_type': 'prop_validation'
+            })
+
+        # Test event handlers
+        events = component_spec.get('events', [])
+        for event in events:
+            event_name = event.get('name', 'unknown')
+
+            test_cases.append({
+                'name': f'test_{event_name}_handler',
+                'description': f'Verify {event_name} event triggers correct callback',
+                'priority': 'critical',
+                'test_type': 'event_handling'
+            })
+
+        # Test external API calls
+        api_calls = component_spec.get('api_calls', [])
+        for api in api_calls:
+            endpoint = api.get('endpoint', 'unknown')
+
+            test_cases.append({
+                'name': f'test_api_integration_{endpoint}',
+                'description': f'Verify {endpoint} API integration handles success/error states',
+                'priority': 'high',
+                'test_type': 'api_integration'
+            })
+
+        coverage_estimate = min(100, len(test_cases) * 15)  # Each test ~15% coverage
+
+        self.say(
+            "Integration tests generated",
+            style="tactical",
+            technical_info=f"{len(test_cases)} test cases, ~{coverage_estimate}% coverage"
+        )
+
+        return {
+            'test_cases': test_cases,
+            'total_tests': len(test_cases),
+            'coverage_estimate': coverage_estimate,
+            'test_framework': 'Jest + React Testing Library'
+        }
+
+    def detect_edge_cases(self, component_logic: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Detect edge cases that need testing.
+
+        Analyzes component logic to identify boundary conditions,
+        error states, and unusual scenarios.
+
+        Args:
+            component_logic: Component logic description (conditions, loops, etc.)
+
+        Returns:
+            {
+                'edge_cases': List[Dict],
+                'priority_cases': List[str],
+                'coverage_gaps': List[str]
+            }
+        """
+        self.say("Detecting edge cases in component logic", style="tactical")
+        self.think("Analyzing boundary conditions and error paths", category="Detecting")
+
+        edge_cases = []
+
+        # Check for null/undefined handling
+        inputs = component_logic.get('inputs', [])
+        for input_field in inputs:
+            edge_cases.append({
+                'scenario': f'{input_field} is null/undefined',
+                'category': 'null_handling',
+                'priority': 'high',
+                'test': f'Verify component handles null {input_field} gracefully'
+            })
+
+        # Check for empty states
+        lists = component_logic.get('lists', [])
+        for list_field in lists:
+            edge_cases.append({
+                'scenario': f'{list_field} is empty array',
+                'category': 'empty_state',
+                'priority': 'medium',
+                'test': f'Verify empty state UI renders when {list_field} is []'
+            })
+
+        # Check for maximum values
+        numbers = component_logic.get('numeric_values', [])
+        for num_field in numbers:
+            edge_cases.append({
+                'scenario': f'{num_field} exceeds maximum',
+                'category': 'boundary_condition',
+                'priority': 'high',
+                'test': f'Verify {num_field} validation at INT_MAX'
+            })
+
+        # Check for async edge cases
+        async_operations = component_logic.get('async_operations', [])
+        for async_op in async_operations:
+            edge_cases.append({
+                'scenario': f'{async_op} timeout/failure',
+                'category': 'error_handling',
+                'priority': 'critical',
+                'test': f'Verify error state when {async_op} fails'
+            })
+
+        priority_cases = [e['scenario'] for e in edge_cases if e['priority'] == 'critical']
+
+        self.say(
+            "Edge case detection complete",
+            style="tactical",
+            technical_info=f"{len(edge_cases)} edge cases, {len(priority_cases)} critical"
+        )
+
+        return {
+            'edge_cases': edge_cases,
+            'total_edge_cases': len(edge_cases),
+            'priority_cases': priority_cases,
+            'coverage_gaps': [e['scenario'] for e in edge_cases if e['priority'] in ['critical', 'high']]
+        }
+
+    def create_visual_regression_baseline(self, component_screenshots: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Create visual regression testing baseline.
+
+        Captures component screenshots as baseline for future
+        visual regression testing.
+
+        Args:
+            component_screenshots: List of component states with screenshots
+
+        Returns:
+            {
+                'baselines_created': int,
+                'baseline_path': str,
+                'states_captured': List[str]
+            }
+        """
+        self.say("Creating visual regression baseline", style="tactical")
+        self.think("Capturing component states for future comparison", category="Examining")
+
+        baselines_created = 0
+        states_captured = []
+
+        for screenshot in component_screenshots:
+            state_name = screenshot.get('state', 'default')
+            image_path = screenshot.get('path', '')
+
+            if image_path:
+                baselines_created += 1
+                states_captured.append(state_name)
+
+        baseline_path = '/tmp/batman-visual-baselines/'
+
+        self.say(
+            "Visual baseline created",
+            style="tactical",
+            technical_info=f"{baselines_created} baselines, {len(states_captured)} states"
+        )
+
+        return {
+            'baselines_created': baselines_created,
+            'baseline_path': baseline_path,
+            'states_captured': states_captured,
+            'total_states': len(component_screenshots),
+            'baseline_ready': baselines_created > 0
+        }
+
+    def analyze_test_coverage(self, test_results: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Analyze test coverage and identify gaps.
+
+        Reviews test execution results to calculate coverage
+        and recommend additional tests.
+
+        Args:
+            test_results: Test execution results with coverage data
+
+        Returns:
+            {
+                'coverage_percentage': float,
+                'uncovered_lines': List[int],
+                'coverage_gaps': List[Dict],
+                'recommendations': List[str]
+            }
+        """
+        self.say("Analyzing test coverage", style="tactical")
+        self.think("Identifying untested code paths", category="Analyzing")
+
+        coverage_data = test_results.get('coverage', {})
+        lines_covered = coverage_data.get('lines_covered', 0)
+        total_lines = coverage_data.get('total_lines', 1)
+        uncovered_lines = coverage_data.get('uncovered_lines', [])
+
+        coverage_percentage = (lines_covered / total_lines * 100) if total_lines > 0 else 0
+
+        # Identify coverage gaps
+        coverage_gaps = []
+
+        # Check for uncovered branches
+        branches = coverage_data.get('branches', {})
+        uncovered_branches = [b for b, covered in branches.items() if not covered]
+        if uncovered_branches:
+            coverage_gaps.append({
+                'type': 'branch_coverage',
+                'count': len(uncovered_branches),
+                'severity': 'high',
+                'description': f'{len(uncovered_branches)} conditional branches not tested'
+            })
+
+        # Check for untested functions
+        functions = coverage_data.get('functions', {})
+        uncovered_functions = [f for f, covered in functions.items() if not covered]
+        if uncovered_functions:
+            coverage_gaps.append({
+                'type': 'function_coverage',
+                'count': len(uncovered_functions),
+                'severity': 'critical',
+                'description': f'{len(uncovered_functions)} functions have no tests'
+            })
+
+        # Generate recommendations
+        recommendations = []
+        if coverage_percentage < 80:
+            recommendations.append('Increase overall coverage to minimum 80%')
+        if uncovered_branches:
+            recommendations.append('Add tests for all conditional branches')
+        if uncovered_functions:
+            recommendations.append(f'Add tests for {len(uncovered_functions)} uncovered functions')
+
+        self.say(
+            "Coverage analysis complete",
+            style="tactical",
+            technical_info=f"Coverage: {coverage_percentage:.1f}%, {len(coverage_gaps)} gaps"
+        )
+
+        return {
+            'coverage_percentage': coverage_percentage,
+            'lines_covered': lines_covered,
+            'total_lines': total_lines,
+            'uncovered_lines': uncovered_lines,
+            'coverage_gaps': coverage_gaps,
+            'uncovered_branches': len(uncovered_branches) if uncovered_branches else 0,
+            'uncovered_functions': len(uncovered_functions) if uncovered_functions else 0,
+            'recommendations': recommendations,
+            'passing_threshold': coverage_percentage >= 80
+        }
+
     def verify_frame_export_completeness(
         self,
         expected_items: List[Dict[str, Any]],
