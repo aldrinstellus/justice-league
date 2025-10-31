@@ -44,12 +44,15 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # Import Mission Control Narrator (v2.0)
 from .mission_control_narrator import get_narrator
 
-# Import Git Worktree Manager for parallel operations
+# Import Git Worktree Manager and Parallel Optimizer for parallel operations
 try:
     from ..utils.git_worktree_manager import GitWorktreeManager, HeroWorktreeContext
+    from ..utils.parallel_optimizer import ParallelOptimizer, ParallelRecommendation
     GIT_WORKTREE_AVAILABLE = True
+    PARALLEL_OPTIMIZER_AVAILABLE = True
 except ImportError:
     GIT_WORKTREE_AVAILABLE = False
+    PARALLEL_OPTIMIZER_AVAILABLE = False
     logging.warning("Git Worktree Manager not available - parallel operations will be limited")
 
 # Import all Justice League heroes
@@ -442,6 +445,169 @@ class SupermanCoordinator:
         if self.narrator:
             self.say(f"Parallel deployment complete: {results['successful']} succeeded, {results['failed']} failed",
                     style="tactical")
+
+        return results
+
+    def deploy_heroes_smart(
+        self,
+        missions: List[Dict[str, Any]],
+        max_workers: Optional[int] = None,
+        use_worktrees: Optional[bool] = None,
+        estimated_task_duration: Optional[float] = None,
+        show_recommendation: bool = True
+    ) -> Dict[str, Any]:
+        """
+        🔮 AUTONOMOUS DEPLOYMENT - Oracle & Superman decide optimal strategy
+
+        Oracle analyzes the missions and recommends the best execution strategy:
+        - Sequential vs Parallel
+        - Optimal worker count
+        - Whether to use git worktrees
+        - Expected performance improvements
+
+        Superman then executes using Oracle's recommendation.
+
+        Args:
+            missions: List of mission dicts (same format as deploy_heroes_parallel)
+            max_workers: Override Oracle's recommended worker count (optional)
+            use_worktrees: Override Oracle's worktree recommendation (optional)
+            estimated_task_duration: Help Oracle with duration estimate (optional)
+            show_recommendation: Display Oracle's analysis (default: True)
+
+        Returns:
+            Results dict with Oracle's recommendation and execution results
+
+        Example:
+            # Oracle and Superman automatically optimize
+            missions = [
+                {'hero_name': 'artemis', 'task_name': 'convert-header', 'params': {...}},
+                {'hero_name': 'artemis', 'task_name': 'convert-footer', 'params': {...}}
+            ]
+            results = superman.deploy_heroes_smart(missions)
+            # Oracle: "Analyzing 2 missions... Recommended: PARALLEL with 2 workers"
+            # Superman: "Executing with Oracle's recommendation"
+        """
+        if not PARALLEL_OPTIMIZER_AVAILABLE:
+            logger.warning("⚠️  Parallel Optimizer not available - falling back to manual settings")
+            return self.deploy_heroes_parallel(
+                missions=missions,
+                max_workers=max_workers or 4,
+                use_worktrees=use_worktrees if use_worktrees is not None else True
+            )
+
+        # Step 1: Oracle analyzes missions and makes recommendation
+        optimizer = ParallelOptimizer(narrator=self.narrator)
+        recommendation = optimizer.analyze_missions(
+            missions=missions,
+            estimated_task_duration=estimated_task_duration
+        )
+
+        # Step 2: Show Oracle's recommendation through narrator
+        if show_recommendation:
+            optimizer.show_recommendation(recommendation)
+
+        # Step 3: Apply Oracle's recommendation (or use overrides)
+        final_workers = max_workers if max_workers is not None else recommendation.recommended_workers
+        final_worktrees = use_worktrees if use_worktrees is not None else recommendation.use_worktrees
+
+        # Step 4: Determine execution path based on strategy
+        import time
+        start_time = time.time()
+
+        if recommendation.strategy.value == "sequential":
+            # Sequential execution (no parallelization)
+            if self.narrator:
+                self.say("Executing missions sequentially per Oracle's recommendation",
+                        style="tactical",
+                        technical_info=f"{len(missions)} missions")
+
+            results = {
+                'total_missions': len(missions),
+                'successful': 0,
+                'failed': 0,
+                'hero_results': [],
+                'parallel_execution': False,
+                'used_worktrees': False,
+                'oracle_recommendation': {
+                    'strategy': recommendation.strategy.value,
+                    'recommended_workers': recommendation.recommended_workers,
+                    'recommended_worktrees': recommendation.use_worktrees,
+                    'expected_speedup': recommendation.expected_speedup,
+                    'estimated_duration': recommendation.estimated_duration,
+                    'confidence': recommendation.confidence,
+                    'reasoning': recommendation.reasoning,
+                    'benefits': recommendation.benefits,
+                    'warnings': recommendation.warnings
+                }
+            }
+
+            # Execute sequentially
+            for mission in missions:
+                try:
+                    result = self._execute_mission_direct(mission)
+                    if result.get('success'):
+                        results['successful'] += 1
+                    else:
+                        results['failed'] += 1
+                    results['hero_results'].append(result)
+                except Exception as e:
+                    logger.error(f"❌ Mission failed: {mission.get('task_name')} - {e}")
+                    results['failed'] += 1
+                    results['hero_results'].append({
+                        'success': False,
+                        'error': str(e),
+                        'mission': mission
+                    })
+
+        else:
+            # Parallel execution with Oracle's recommendation
+            if self.narrator:
+                worktree_status = "with worktrees" if final_worktrees else "without worktrees"
+                self.say(f"Deploying {len(missions)} heroes in parallel {worktree_status}",
+                        style="tactical",
+                        technical_info=f"{final_workers} workers, Oracle confidence: {recommendation.confidence*100:.0f}%")
+
+            # Use existing parallel deployment with Oracle's settings
+            results = self.deploy_heroes_parallel(
+                missions=missions,
+                max_workers=final_workers,
+                use_worktrees=final_worktrees
+            )
+
+            # Add Oracle's recommendation to results
+            results['oracle_recommendation'] = {
+                'strategy': recommendation.strategy.value,
+                'recommended_workers': recommendation.recommended_workers,
+                'recommended_worktrees': recommendation.use_worktrees,
+                'expected_speedup': recommendation.expected_speedup,
+                'estimated_duration': recommendation.estimated_duration,
+                'confidence': recommendation.confidence,
+                'reasoning': recommendation.reasoning,
+                'benefits': recommendation.benefits,
+                'warnings': recommendation.warnings
+            }
+
+        # Step 5: Record actual results with Oracle for learning
+        actual_duration = time.time() - start_time
+        results['actual_duration'] = actual_duration
+
+        actual_result = {
+            'duration': actual_duration,
+            'successful': results['successful'],
+            'total_missions': results['total_missions'],
+            'used_worktrees': results.get('used_worktrees', False)
+        }
+
+        optimizer.record_decision(recommendation, actual_result)
+
+        # Step 6: Report results
+        if self.narrator:
+            actual_speedup = recommendation.estimated_duration / actual_duration if actual_duration > 0 else 1.0
+            self.say(
+                f"Smart deployment complete: {results['successful']}/{results['total_missions']} succeeded",
+                style="tactical",
+                technical_info=f"Actual: {actual_duration:.1f}s (predicted: {recommendation.estimated_duration:.1f}s)"
+            )
 
         return results
 
