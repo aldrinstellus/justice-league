@@ -322,6 +322,50 @@
       "missions_completed": 1,
       "learned_at": "2025-10-30T13:30:19.611048",
       "case_studies": []
+    },
+    "proactive-background-task-monitoring": {
+      "name": "proactive-background-task-monitoring",
+      "description": "Actively monitor all background tasks and report completion immediately without user prompting",
+      "accuracy_range": "100% completion notification",
+      "best_for": [
+        "Long-running exports (>60 seconds)",
+        "Background bash processes",
+        "PDF compilations",
+        "Figma frame exports",
+        "Any asynchronous operations"
+      ],
+      "pros": [
+        "User knows task status without asking",
+        "Better UX - no uncertainty about completion",
+        "Builds trust - Oracle actively monitors",
+        "Saves user time - no manual checks needed",
+        "Professional service - proactive not reactive"
+      ],
+      "cons": [
+        "Requires periodic status checks (30-60s intervals)",
+        "Slightly more system resources for monitoring"
+      ],
+      "heroes_involved": [
+        "Oracle (coordination)",
+        "Quicksilver (exports)",
+        "Hawkman (exports)",
+        "Superman (mission oversight)"
+      ],
+      "implementation": {
+        "check_interval": "30-60 seconds",
+        "tools": "BashOutput for background task monitoring",
+        "completion_detection": "Status change from 'running' to 'completed/failed'",
+        "notification": "Immediate display of results with full paths"
+      },
+      "case_study": {
+        "issue": "User had to ask 'are u stuck or is it complete' after 7-minute export",
+        "solution": "Oracle now checks every 30-60s and reports immediately upon completion",
+        "user_feedback": "oracle, when the export was complete this time, i didnt get a notification",
+        "learned_at": "2025-10-31"
+      },
+      "learned_at": "2025-10-31T13:01:11.808447",
+      "success_rate": 1.0,
+      "missions_completed": 0
     }
   },
   "api_credentials": {
@@ -550,6 +594,81 @@
           "status": "Fixed and validated"
         }
       }
+    },
+    "mission_debates": {
+      "preference": "always_debate_missions",
+      "priority": "HIGH",
+      "description": "All Justice League missions must include full team debate with sequential thinking before execution",
+      "debate_requirements": {
+        "who_participates": [
+          "Oracle (always - provides capability analysis and data)",
+          "All heroes relevant to mission type",
+          "Superman (always - decision maker)"
+        ],
+        "sequential_thinking": {
+          "heroes": "3-7 steps each when presenting positions",
+          "superman": "5-7 steps when making final decision",
+          "oracle": "3-5 steps during capability analysis"
+        },
+        "conversation_style": "full_dialogue",
+        "show_evidence": true,
+        "show_questions": true,
+        "show_proposals": true
+      },
+      "mission_flow": [
+        "1. Superman announces mission to team",
+        "2. Oracle queries hero capability database",
+        "3. Oracle provides capability analysis with context",
+        "4. Relevant heroes present positions with sequential thinking",
+        "5. Heroes question each other's proposals",
+        "6. Heroes provide evidence and benchmarks",
+        "7. Oracle asks mission-critical question to reframe debate",
+        "8. Superman analyzes all input with sequential thinking",
+        "9. Superman makes informed decision",
+        "10. Team confirms consensus",
+        "11. Selected hero executes mission"
+      ],
+      "output_format": {
+        "style": "live_conversation",
+        "not_summaries": true,
+        "show_emoji_heroes": true,
+        "show_technical_details": true,
+        "example": "\ud83e\udd87 Batman: [Sequential Thinking - Step 1] Analyzing component...\n\ud83c\udfa8 Artemis: [Question to Batman] What about mobile breakpoints?\n\ud83d\udd2e Oracle: \u26a1 MISSION-CRITICAL QUESTION: Which approach ensures accessibility?\n\ud83e\uddb8 Superman: [Decision] Based on team analysis..."
+      },
+      "learned_at": "2025-10-31T07:40:05Z",
+      "context": "User request: 'i want them to debate for every mission i give justice-league, as they are a team'",
+      "user_quote": "yes, make it happen for every mission",
+      "applies_to": [
+        "All Justice League missions",
+        "Figma frame exports",
+        "Component conversions",
+        "Visual validation",
+        "Performance testing",
+        "Accessibility testing",
+        "Every hero deployment decision"
+      ],
+      "benefits": [
+        "Better decisions through collaboration",
+        "Multiple perspectives prevent blind spots",
+        "Evidence-based mission planning",
+        "Transparent reasoning process visible to user",
+        "Team learns from each debate",
+        "User sees HOW decisions are made, not just WHAT was decided"
+      ]
+    },
+    "proactive_monitoring": {
+      "preference": "proactive_monitoring",
+      "priority": "HIGH",
+      "description": "Always monitor background tasks and notify completion proactively",
+      "applies_to": "All Justice League operations with background processes",
+      "learned_at": "2025-10-31T13:01:11.808450"
+    },
+    "always_debate_missions": {
+      "preference": "always_debate_missions",
+      "priority": "HIGH",
+      "description": "Full team debate for every mission with visible conversations",
+      "applies_to": "All missions",
+      "learned_at": "2025-10-31T13:01:11.808453"
     }
   },
   "user_learning": {

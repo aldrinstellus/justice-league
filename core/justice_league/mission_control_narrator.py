@@ -610,6 +610,320 @@ class MissionControlNarrator:
         print("=" * 78)
         print()
 
+    def debate_start(
+        self,
+        initiator: str,
+        issue: str,
+        participants: List[str],
+        context: Optional[Dict[str, Any]] = None
+    ):
+        """
+        Start an inter-agent debate on a specific issue
+
+        Args:
+            initiator: Hero who raises the issue
+            issue: The issue being debated
+            participants: List of heroes participating in debate
+            context: Optional context information
+
+        Example:
+            narrator.debate_start(
+                "🦇 Batman",
+                "Component has 3 CRITICAL WCAG violations",
+                ["🦸 Superman", "🦇 Batman", "🎨 Artemis", "🎯 Green Arrow", "🔮 Oracle"]
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        print()
+        print("🔥" * 39)
+        print(f"  {initiator}: INVESTIGATION COMPLETE")
+        print("🔥" * 39)
+        print()
+        print(f"{initiator}: {issue}")
+        print()
+
+        if context:
+            print("📋 Context:")
+            for key, value in context.items():
+                formatted_key = key.replace("_", " ").title()
+                print(f"  • {formatted_key}: {value}")
+            print()
+
+        self.conversation_log.append({
+            "type": "debate_start",
+            "initiator": initiator,
+            "issue": issue,
+            "participants": participants,
+            "context": context
+        })
+
+    def debate_position(
+        self,
+        hero: str,
+        position: str,
+        reasoning: Optional[List[str]] = None,
+        evidence: Optional[str] = None
+    ):
+        """
+        Hero takes a position in the debate with sequential thinking
+
+        Args:
+            hero: Hero taking position
+            position: Their position statement
+            reasoning: Optional list of sequential reasoning steps
+            evidence: Optional evidence supporting position
+
+        Example:
+            narrator.debate_position(
+                "🦇 Batman",
+                "Should we proceed knowing we'll exclude keyboard-only users?",
+                reasoning=[
+                    "Analyzing Figma file structure",
+                    "No Focus state detected in component",
+                    "WCAG 2.4.7 requires visible focus indicators"
+                ],
+                evidence="3 CRITICAL violations found"
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        # Show sequential thinking if provided
+        if reasoning:
+            for i, thought in enumerate(reasoning, 1):
+                category = "Investigating" if i < len(reasoning) else "Questioning"
+                self.hero_thinks(hero, thought, category=category)
+
+        # Show position
+        formatted = f"{hero}: {position}"
+        if evidence:
+            formatted += f" [{evidence}]"
+
+        print(formatted)
+        print()
+
+        self.conversation_log.append({
+            "type": "debate_position",
+            "hero": hero,
+            "position": position,
+            "reasoning": reasoning,
+            "evidence": evidence
+        })
+
+    def debate_question(
+        self,
+        from_hero: str,
+        to_hero: str,
+        question: str,
+        concern: Optional[str] = None
+    ):
+        """
+        Hero questions another hero in the debate
+
+        Args:
+            from_hero: Hero asking the question
+            to_hero: Hero being questioned
+            question: The question
+            concern: Optional concern being raised
+
+        Example:
+            narrator.debate_question(
+                "🦇 Batman",
+                "🦸 Superman",
+                "Should we proceed knowing we'll exclude keyboard-only users?",
+                concern="Mission accessibility requirements"
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        formatted = f"{from_hero} → {to_hero}: {question}"
+        if concern:
+            formatted += f" [⚠️ {concern}]"
+
+        print(formatted)
+        print()
+
+        self.conversation_log.append({
+            "type": "debate_question",
+            "from": from_hero,
+            "to": to_hero,
+            "question": question,
+            "concern": concern
+        })
+
+    def debate_evidence(
+        self,
+        hero: str,
+        finding: str,
+        evidence_type: str = "Technical Evidence"
+    ):
+        """
+        Hero presents evidence in the debate
+
+        Args:
+            hero: Hero presenting evidence
+            finding: The evidence/finding
+            evidence_type: Type of evidence (default: "Technical Evidence")
+
+        Example:
+            narrator.debate_evidence(
+                "🎨 Artemis",
+                "Figma file has NO Focus state - this is a design gap",
+                evidence_type="Design Analysis"
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        print(f"{hero}: [{evidence_type}] {finding}")
+        print()
+
+        self.conversation_log.append({
+            "type": "debate_evidence",
+            "hero": hero,
+            "finding": finding,
+            "evidence_type": evidence_type
+        })
+
+    def debate_proposal(
+        self,
+        hero: str,
+        proposal: str,
+        approach: Optional[str] = None
+    ):
+        """
+        Hero proposes a solution in the debate
+
+        Args:
+            hero: Hero making proposal
+            proposal: The proposed solution
+            approach: Optional approach description
+
+        Example:
+            narrator.debate_proposal(
+                "🎯 Green Arrow",
+                "Build with accessible defaults, refine with designer later",
+                approach="Accessibility-first development"
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        print(f"{hero}: 💡 Proposal: {proposal}")
+        if approach:
+            print(f"  Approach: {approach}")
+        print()
+
+        self.conversation_log.append({
+            "type": "debate_proposal",
+            "hero": hero,
+            "proposal": proposal,
+            "approach": approach
+        })
+
+    def debate_critical_question(
+        self,
+        hero: str,
+        question: str,
+        stakes: Optional[str] = None
+    ):
+        """
+        Hero asks a mission-critical question that reframes the debate
+
+        Args:
+            hero: Hero asking (usually Oracle)
+            question: The mission-critical question
+            stakes: Optional description of what's at stake
+
+        Example:
+            narrator.debate_critical_question(
+                "🔮 Oracle",
+                "If a student with disabilities cannot use this, have we succeeded?",
+                stakes="Mission success criteria"
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        print(f"{hero}: ⚡ MISSION-CRITICAL QUESTION:")
+        print(f"  \"{question}\"")
+        if stakes:
+            print(f"  Stakes: {stakes}")
+        print()
+
+        self.conversation_log.append({
+            "type": "debate_critical_question",
+            "hero": hero,
+            "question": question,
+            "stakes": stakes
+        })
+
+    def debate_resolution(
+        self,
+        leader: str,
+        decision: str,
+        rationale: Optional[List[str]] = None,
+        team_agreement: Optional[str] = None
+    ):
+        """
+        Leader resolves the debate with final decision
+
+        Args:
+            leader: Hero making decision (usually Superman)
+            decision: The final decision
+            rationale: Optional sequential thinking leading to decision
+            team_agreement: Optional note about team consensus
+
+        Example:
+            narrator.debate_resolution(
+                "🦸 Superman",
+                "Build with accessibility enhancements NOW",
+                rationale=[
+                    "Analyzing team input: Batman raised valid concerns",
+                    "Artemis confirmed design gap",
+                    "Oracle framed mission-critical question",
+                    "Green Arrow proposed practical solution"
+                ],
+                team_agreement="Unanimous - team aligned on accessible approach"
+            )
+        """
+        if not self.is_verbose():
+            return
+
+        print("─" * 78)
+        print(f"{leader}: DECISION")
+        print("─" * 78)
+
+        # Show sequential thinking if provided
+        if rationale:
+            for i, thought in enumerate(rationale, 1):
+                category = "Analyzing Team Input" if i < len(rationale) else "Deciding"
+                self.hero_thinks(leader, thought, category=category)
+            print()
+
+        # Show final decision
+        print(f"{leader}: ✅ {decision}")
+        print()
+
+        # Show team agreement if provided
+        if team_agreement:
+            print(f"  Team Status: {team_agreement}")
+            print()
+
+        print("=" * 78)
+        print()
+
+        self.conversation_log.append({
+            "type": "debate_resolution",
+            "leader": leader,
+            "decision": decision,
+            "rationale": rationale,
+            "team_agreement": team_agreement
+        })
+
     def reset_step_counter(self, hero: Optional[str] = None):
         """
         Reset sequential thinking step counter

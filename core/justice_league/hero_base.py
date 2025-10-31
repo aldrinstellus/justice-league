@@ -585,6 +585,147 @@ class HeroBase:
 
         return position_data
 
+    # ===========================================
+    # NARRATOR-INTEGRATED DEBATE METHODS
+    # ===========================================
+
+    def debate_with_sequential_thinking(
+        self,
+        position: str,
+        reasoning_steps: List[str],
+        evidence: Optional[str] = None
+    ):
+        """
+        Take a position in debate using sequential thinking (narrator integration)
+
+        Args:
+            position: Hero's position statement
+            reasoning_steps: List of sequential reasoning steps
+            evidence: Optional evidence supporting position
+
+        Example:
+            batman.debate_with_sequential_thinking(
+                position="Should we proceed knowing we'll exclude keyboard-only users?",
+                reasoning_steps=[
+                    "Analyzing Figma file structure",
+                    "No Focus state detected in component",
+                    "WCAG 2.4.7 requires visible focus indicators"
+                ],
+                evidence="3 CRITICAL violations found"
+            )
+        """
+        if self.narrator:
+            self.narrator.debate_position(
+                f"{self.hero_emoji} {self.hero_name}",
+                position,
+                reasoning=reasoning_steps,
+                evidence=evidence
+            )
+
+    def question_hero(
+        self,
+        target_hero: str,
+        question: str,
+        concern: Optional[str] = None
+    ):
+        """
+        Question another hero in the debate (narrator integration)
+
+        Args:
+            target_hero: Hero being questioned (emoji + name)
+            question: The question
+            concern: Optional concern being raised
+
+        Example:
+            batman.question_hero(
+                "🦸 Superman",
+                "Should we proceed knowing we'll exclude keyboard-only users?",
+                concern="Mission accessibility requirements"
+            )
+        """
+        if self.narrator:
+            self.narrator.debate_question(
+                f"{self.hero_emoji} {self.hero_name}",
+                target_hero,
+                question,
+                concern=concern
+            )
+
+    def present_evidence(
+        self,
+        finding: str,
+        evidence_type: str = "Technical Evidence"
+    ):
+        """
+        Present evidence in the debate (narrator integration)
+
+        Args:
+            finding: The evidence/finding
+            evidence_type: Type of evidence
+
+        Example:
+            artemis.present_evidence(
+                "Figma file has NO Focus state - this is a design gap",
+                evidence_type="Design Analysis"
+            )
+        """
+        if self.narrator:
+            self.narrator.debate_evidence(
+                f"{self.hero_emoji} {self.hero_name}",
+                finding,
+                evidence_type=evidence_type
+            )
+
+    def propose_solution(
+        self,
+        proposal: str,
+        approach: Optional[str] = None
+    ):
+        """
+        Propose a solution in the debate (narrator integration)
+
+        Args:
+            proposal: The proposed solution
+            approach: Optional approach description
+
+        Example:
+            green_arrow.propose_solution(
+                "Build with accessible defaults, refine with designer later",
+                approach="Accessibility-first development"
+            )
+        """
+        if self.narrator:
+            self.narrator.debate_proposal(
+                f"{self.hero_emoji} {self.hero_name}",
+                proposal,
+                approach=approach
+            )
+
+    def ask_critical_question(
+        self,
+        question: str,
+        stakes: Optional[str] = None
+    ):
+        """
+        Ask a mission-critical question that reframes the debate (narrator integration)
+
+        Args:
+            question: The mission-critical question
+            stakes: Optional description of what's at stake
+
+        Example:
+            oracle.ask_critical_question(
+                "If a student with disabilities cannot use this, have we succeeded?",
+                stakes="Mission success criteria"
+            )
+        """
+        if self.narrator:
+            self.narrator.debate_critical_question(
+                f"{self.hero_emoji} {self.hero_name}",
+                question,
+                stakes=stakes
+            )
+
     def evaluate_mission_alignment(self, order: str, mission_goals: List[str]) -> Dict[str, Any]:
         """
         Evaluate if an order aligns with mission goals.

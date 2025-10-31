@@ -1,0 +1,631 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-10-31",
+    "total_heroes": 16,
+    "purpose": "Central registry of all Justice League hero capabilities for mission-based debates"
+  },
+  "heroes": {
+    "superman": {
+      "name": "Superman",
+      "emoji": "\ud83e\uddb8",
+      "role": "Mission Coordinator",
+      "primary_capabilities": [
+        "Mission coordination and leadership",
+        "Hero deployment strategy",
+        "Team consensus building",
+        "Multi-hero orchestration",
+        "Final decision making",
+        "Sequential thinking analysis",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "all"
+      ],
+      "strengths": [
+        "Sees the big picture",
+        "Combines all hero insights",
+        "Makes informed decisions based on team input",
+        "Manages complex multi-hero workflows"
+      ],
+      "typical_eta": "Instant (coordination)",
+      "reliability": "100%",
+      "production_ready": true
+    },
+    "oracle": {
+      "name": "Oracle",
+      "emoji": "\ud83d\udd2e",
+      "role": "Knowledge Management & Pattern Learning",
+      "primary_capabilities": [
+        "Project pattern recognition",
+        "Historical data analysis",
+        "User preference tracking",
+        "Methodology recommendation",
+        "Mission-critical question framing",
+        "Learning from outcomes",
+        "Hero capability database queries",
+        "Self-improvement and learning cascade",
+        "Proactive background task monitoring",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "all"
+      ],
+      "strengths": [
+        "Learns from every mission",
+        "Provides data-driven insights",
+        "Asks questions that reframe debates",
+        "Stores team knowledge for future use"
+      ],
+      "typical_eta": "Instant (analysis)",
+      "reliability": "100%",
+      "production_ready": true,
+      "knowledge_base_paths": [
+        "data/oracle_project_patterns.json",
+        "data/oracle_shared_components.json",
+        "data/justice_league_hero_capabilities.json"
+      ]
+    },
+    "artemis": {
+      "name": "Artemis Codesmith",
+      "emoji": "\ud83c\udfa8",
+      "role": "Figma-to-Code Expert",
+      "primary_capabilities": [
+        "Figma-to-React/TypeScript conversion",
+        "shadcn/ui component generation",
+        "Tailwind CSS implementation",
+        "Component code optimization",
+        "Iterative refinement (up to 7 iterations)",
+        "Design pattern recognition",
+        "Mission debate participation",
+        "Proactive progress reporting"
+      ],
+      "mission_types": [
+        "figma-to-code",
+        "component-generation",
+        "design-system-building"
+      ],
+      "strengths": [
+        "Expert-level React/TypeScript generation",
+        "shadcn/ui library integration",
+        "Learns from Oracle's patterns",
+        "Self-improving through iterations"
+      ],
+      "accuracy_range": "70-95%",
+      "typical_eta": "30-90 minutes",
+      "reliability": "95%",
+      "production_ready": true,
+      "limitations": [
+        "Complex dashboards may need Image-to-HTML approach",
+        "Not optimized for bulk frame export"
+      ]
+    },
+    "green_arrow": {
+      "name": "Green Arrow",
+      "emoji": "\ud83c\udfaf",
+      "role": "Visual Validator (WYSIWYG)",
+      "primary_capabilities": [
+        "Pixel-perfect visual validation",
+        "Screenshot comparison",
+        "Accuracy scoring (0-100%)",
+        "Issue categorization (CRITICAL/HIGH/MEDIUM/LOW)",
+        "Fix recommendation generation",
+        "WYSIWYG verification",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "visual-validation",
+        "accuracy-checking",
+        "regression-testing"
+      ],
+      "strengths": [
+        "\u00b12px tolerance precision",
+        "Comprehensive issue detection",
+        "Actionable fix recommendations",
+        "Evidence-based validation"
+      ],
+      "accuracy_range": "98-100%",
+      "typical_eta": "2-5 minutes per component",
+      "reliability": "100%",
+      "production_ready": true
+    },
+    "hawkman": {
+      "name": "Hawkman",
+      "emoji": "\ud83e\udd85",
+      "role": "Structural Parser & Frame Export",
+      "primary_capabilities": [
+        "Figma file structure parsing",
+        "Sequential frame PNG export",
+        "Component hierarchy analysis",
+        "Reliable file-by-file processing",
+        "Zero-failure export missions",
+        "Mission debate participation",
+        "Proactive progress reporting"
+      ],
+      "mission_types": [
+        "figma-frame-export",
+        "structure-parsing",
+        "file-analysis"
+      ],
+      "strengths": [
+        "100% reliability across all missions",
+        "Proven over 6 months",
+        "Sequential approach prevents API rate limiting",
+        "Steady and dependable"
+      ],
+      "accuracy_range": "100%",
+      "typical_eta": "20 minutes for 177 frames",
+      "speed": "~1 frame per 7 seconds",
+      "reliability": "100%",
+      "production_ready": true,
+      "historical_performance": {
+        "k12_ui_master": {
+          "frames": 177,
+          "duration": "20 minutes",
+          "failures": 0,
+          "success_rate": "100%"
+        }
+      }
+    },
+    "quicksilver": {
+      "name": "Quicksilver",
+      "emoji": "\ud83d\udca8",
+      "role": "High-Speed Parallel Export",
+      "primary_capabilities": [
+        "Parallel frame export (8 concurrent workers)",
+        "Batch API processing",
+        "High-speed PNG generation",
+        "Automatic retry with exponential backoff",
+        "Independent worker failure isolation",
+        "Mission debate participation",
+        "Proactive progress reporting"
+      ],
+      "mission_types": [
+        "bulk-figma-export",
+        "high-speed-operations",
+        "parallel-processing"
+      ],
+      "strengths": [
+        "3x faster than sequential export",
+        "85% reduction in API calls via batching",
+        "Production-tested error handling",
+        "Maintains 100% reliability at high speed"
+      ],
+      "accuracy_range": "100%",
+      "typical_eta": "5 minutes for 484 frames",
+      "speed": "~0.62 seconds per frame",
+      "reliability": "100%",
+      "production_ready": true,
+      "configuration": {
+        "workers": 8,
+        "batch_size": 15,
+        "api_timeout": "60s",
+        "cdn_timeout": "120s"
+      },
+      "historical_performance": {
+        "benchmark_2025_10_31": {
+          "frames": 484,
+          "duration": "4m 50s",
+          "failures": 0,
+          "success_rate": "100%"
+        },
+        "k12_dashboard": {
+          "frames": 26,
+          "duration": "<2 minutes",
+          "failures": 0,
+          "success_rate": "100%"
+        }
+      }
+    },
+    "vision_analyst": {
+      "name": "Vision Analyst",
+      "emoji": "\ud83d\udc41\ufe0f",
+      "role": "Visual Measurement Extraction",
+      "primary_capabilities": [
+        "Dashboard image analysis",
+        "Layout measurement extraction",
+        "Color palette detection",
+        "Typography system analysis",
+        "Spacing and dimension calculation",
+        "UI pattern recognition",
+        "Mission debate participation",
+        "Proactive progress reporting"
+      ],
+      "mission_types": [
+        "image-to-html-conversion",
+        "visual-measurement",
+        "dashboard-analysis"
+      ],
+      "strengths": [
+        "Enables 90-95% accuracy for complex dashboards",
+        "Fresh build approach (no iteration needed)",
+        "Handles 2+ column layouts exceptionally",
+        "Provides precise measurements for Artemis"
+      ],
+      "accuracy_range": "90-95%",
+      "typical_eta": "15-30 minutes analysis",
+      "reliability": "95%",
+      "production_ready": true,
+      "use_cases": [
+        "Complex dashboards where Figma API < 70%",
+        "Screenshot-only conversions",
+        "Pixel-perfect requirement (95%+ accuracy)"
+      ]
+    },
+    "batman": {
+      "name": "Batman",
+      "emoji": "\ud83e\udd87",
+      "role": "Interactive Testing & Investigation",
+      "primary_capabilities": [
+        "Component accessibility investigation",
+        "WCAG compliance verification",
+        "Interactive behavior testing",
+        "Critical issue detection",
+        "Production readiness validation",
+        "Error handling verification",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "accessibility-testing",
+        "quality-assurance",
+        "production-validation"
+      ],
+      "strengths": [
+        "Detects critical violations before deployment",
+        "Thorough investigation methodology",
+        "Evidence-based concern raising",
+        "Prevents accessibility exclusion"
+      ],
+      "typical_eta": "5-10 minutes per component",
+      "reliability": "100%",
+      "production_ready": true
+    },
+    "flash": {
+      "name": "Flash",
+      "emoji": "\u26a1",
+      "role": "Performance Analysis",
+      "primary_capabilities": [
+        "Performance benchmarking",
+        "Speed comparison analysis",
+        "Throughput calculation",
+        "Optimization recommendations",
+        "Real-time performance monitoring",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "performance-testing",
+        "benchmark-analysis",
+        "optimization"
+      ],
+      "strengths": [
+        "Quantifies speed advantages",
+        "Identifies performance bottlenecks",
+        "Data-driven optimization",
+        "Comparative benchmarking"
+      ],
+      "typical_eta": "2-5 minutes analysis",
+      "reliability": "100%",
+      "production_ready": true
+    },
+    "green_lantern": {
+      "name": "Green Lantern",
+      "emoji": "\ud83d\udc9a",
+      "role": "Visual Regression Testing",
+      "primary_capabilities": [
+        "Visual regression detection",
+        "Cross-browser testing",
+        "Pixel-diff analysis",
+        "Screenshot baseline management",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "regression-testing",
+        "visual-qa"
+      ],
+      "strengths": [
+        "Catches unintended visual changes",
+        "Multi-browser validation",
+        "Baseline comparison"
+      ],
+      "typical_eta": "5-10 minutes",
+      "reliability": "95%",
+      "production_ready": true
+    },
+    "wonder_woman": {
+      "name": "Wonder Woman",
+      "emoji": "\u26a1",
+      "role": "Accessibility Champion",
+      "primary_capabilities": [
+        "WCAG 2.2 Level AA/AAA compliance",
+        "Screen reader testing",
+        "Keyboard navigation validation",
+        "Color contrast analysis",
+        "Accessible component recommendations",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "accessibility-testing",
+        "wcag-compliance",
+        "inclusive-design"
+      ],
+      "strengths": [
+        "Ensures no user is excluded",
+        "WCAG expertise",
+        "Comprehensive accessibility coverage",
+        "Remediation guidance"
+      ],
+      "typical_eta": "10-15 minutes",
+      "reliability": "100%",
+      "production_ready": true
+    },
+    "aquaman": {
+      "name": "Aquaman",
+      "emoji": "\ud83c\udf0a",
+      "role": "Network Analysis",
+      "primary_capabilities": [
+        "API request analysis",
+        "Network performance monitoring",
+        "Request optimization",
+        "CDN efficiency testing",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "network-testing",
+        "api-optimization"
+      ],
+      "strengths": [
+        "Identifies network bottlenecks",
+        "API efficiency analysis",
+        "Request optimization"
+      ],
+      "typical_eta": "5-10 minutes",
+      "reliability": "95%",
+      "production_ready": true
+    },
+    "cyborg": {
+      "name": "Cyborg",
+      "emoji": "\ud83e\udd16",
+      "role": "API Integrations",
+      "primary_capabilities": [
+        "Third-party API integration",
+        "Integration testing",
+        "API documentation",
+        "Authentication flows",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "api-integration",
+        "external-services"
+      ],
+      "strengths": [
+        "Seamless integrations",
+        "API expertise",
+        "Integration testing"
+      ],
+      "typical_eta": "15-30 minutes",
+      "reliability": "95%",
+      "production_ready": true
+    },
+    "atom": {
+      "name": "The Atom",
+      "emoji": "\ud83d\udd2c",
+      "role": "Component Analysis",
+      "primary_capabilities": [
+        "Component complexity analysis",
+        "Code structure evaluation",
+        "Micro-optimization",
+        "Component breakdown",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "component-analysis",
+        "code-review"
+      ],
+      "strengths": [
+        "Deep component understanding",
+        "Structural analysis",
+        "Complexity scoring"
+      ],
+      "typical_eta": "5-10 minutes",
+      "reliability": "95%",
+      "production_ready": true
+    },
+    "martian_manhunter": {
+      "name": "Martian Manhunter",
+      "emoji": "\ud83e\udde0",
+      "role": "Security Analysis",
+      "primary_capabilities": [
+        "Security vulnerability scanning",
+        "XSS prevention",
+        "Authentication security",
+        "Security best practices",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "security-testing",
+        "vulnerability-scanning"
+      ],
+      "strengths": [
+        "Comprehensive security coverage",
+        "Vulnerability detection",
+        "Security hardening"
+      ],
+      "typical_eta": "10-15 minutes",
+      "reliability": "100%",
+      "production_ready": true
+    },
+    "plastic_man": {
+      "name": "Plastic Man",
+      "emoji": "\ud83e\udd38",
+      "role": "Responsive Design Testing",
+      "primary_capabilities": [
+        "Multi-breakpoint testing",
+        "Responsive layout validation",
+        "Mobile-first analysis",
+        "Breakpoint optimization",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "responsive-testing",
+        "mobile-validation"
+      ],
+      "strengths": [
+        "Catches mobile regressions",
+        "Breakpoint-first approach",
+        "23% accuracy improvement on responsive components"
+      ],
+      "typical_eta": "10-15 minutes",
+      "reliability": "95%",
+      "production_ready": true
+    },
+    "zatanna": {
+      "name": "Zatanna",
+      "emoji": "\ud83c\udfa9",
+      "role": "SEO Optimization",
+      "primary_capabilities": [
+        "SEO metadata optimization",
+        "Schema markup",
+        "Meta tag generation",
+        "SEO best practices",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "seo-optimization",
+        "metadata-enhancement"
+      ],
+      "strengths": [
+        "Search engine optimization",
+        "Metadata expertise",
+        "SEO compliance"
+      ],
+      "typical_eta": "5-10 minutes",
+      "reliability": "95%",
+      "production_ready": true
+    },
+    "litty": {
+      "name": "Litty",
+      "emoji": "\ud83e\ude94",
+      "role": "Ethical Design & User Empathy",
+      "primary_capabilities": [
+        "Ethical design review",
+        "User empathy analysis",
+        "Inclusive design validation",
+        "Dark pattern detection",
+        "Mission debate participation"
+      ],
+      "mission_types": [
+        "ethical-review",
+        "user-empathy",
+        "inclusive-design"
+      ],
+      "strengths": [
+        "Ensures ethical user experience",
+        "Empathy-driven design",
+        "Detects manipulative patterns"
+      ],
+      "typical_eta": "10-15 minutes",
+      "reliability": "95%",
+      "production_ready": true
+    }
+  },
+  "mission_type_hero_mapping": {
+    "figma-frame-export": {
+      "recommended_heroes": [
+        "quicksilver",
+        "hawkman"
+      ],
+      "default": "quicksilver",
+      "fallback": "hawkman",
+      "decision_factors": [
+        "Speed requirement (Quicksilver: 3x faster)",
+        "Reliability requirement (Both: 100%)",
+        "Frame count (Large: Quicksilver, Small: Either)"
+      ]
+    },
+    "figma-to-code": {
+      "recommended_heroes": [
+        "artemis"
+      ],
+      "supporting_heroes": [
+        "vision_analyst",
+        "green_arrow",
+        "oracle"
+      ],
+      "decision_factors": [
+        "Component complexity (Simple: Artemis alone, Complex: Add Vision Analyst)",
+        "Accuracy requirement (>95%: Image-to-HTML, 70-85%: Figma API)",
+        "Time constraint (<30 min: Figma API, 60-90 min: Image-to-HTML)"
+      ]
+    },
+    "accessibility-testing": {
+      "recommended_heroes": [
+        "batman",
+        "wonder_woman"
+      ],
+      "decision_factors": [
+        "WCAG level (AA: Wonder Woman, Investigation: Batman)",
+        "Critical violations (Batman detects, Wonder Woman validates)"
+      ]
+    },
+    "performance-testing": {
+      "recommended_heroes": [
+        "flash"
+      ],
+      "supporting_heroes": [
+        "aquaman"
+      ],
+      "decision_factors": [
+        "Type (Speed: Flash, Network: Aquaman)"
+      ]
+    },
+    "visual-validation": {
+      "recommended_heroes": [
+        "green_arrow",
+        "green_lantern"
+      ],
+      "decision_factors": [
+        "Type (WYSIWYG: Green Arrow, Regression: Green Lantern)"
+      ]
+    },
+    "responsive-design": {
+      "recommended_heroes": [
+        "plastic_man"
+      ],
+      "decision_factors": [
+        "Breakpoint-first approach increases success 23%"
+      ]
+    }
+  },
+  "debate_protocols": {
+    "mission_assignment": {
+      "enabled": true,
+      "trigger": "Every new mission received by Superman",
+      "participants": [
+        "All heroes with relevant capabilities for mission type",
+        "Oracle (always - provides data analysis)",
+        "Superman (always - decision maker)"
+      ],
+      "flow": [
+        "1. Superman announces mission",
+        "2. Oracle queries capability database and provides analysis",
+        "3. Relevant heroes present positions with sequential thinking",
+        "4. Heroes question each other",
+        "5. Supporting heroes provide evidence",
+        "6. Oracle asks mission-critical question",
+        "7. Superman analyzes all input with sequential thinking",
+        "8. Superman makes decision",
+        "9. Team confirms consensus"
+      ],
+      "sequential_thinking_limits": {
+        "per_hero": "3-7 steps max",
+        "superman_decision": "5-7 steps"
+      }
+    }
+  },
+  "user_preferences": {
+    "always_debate_missions": true,
+    "show_full_conversations": true,
+    "narrator_mode": "narrative",
+    "banner_display": "auto"
+  }
+}
