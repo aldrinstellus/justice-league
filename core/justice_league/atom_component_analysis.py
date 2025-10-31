@@ -654,6 +654,533 @@ class AtomComponentAnalysis:
         """Alias for _generate_atom_recommendations"""
         return self._generate_atom_recommendations(results)
 
+    def validate_component_variants(self, components: Dict[str, Any],
+                                    component_type: Optional[str] = None) -> Dict[str, Any]:
+        """
+        🔬 Validate component variants are complete
+
+        Checks that all expected variants exist for each component type.
+        Essential for ensuring design system completeness.
+
+        Args:
+            components: Dictionary of components from design file
+            component_type: Optional specific component type to check ('button', 'input', etc.)
+                           If None, checks all component types
+
+        Returns:
+            Variant validation results with missing variants identified
+        """
+        self.say("Shrinking down to molecular level to validate variants", style="scientific")
+        self.think("Analyzing component variant completeness", category="Shrinking")
+
+        results = {
+            'hero': '🔬 The Atom',
+            'timestamp': datetime.now().isoformat(),
+            'variant_validation': {}
+        }
+
+        # Expected variants for each component type
+        expected_variants = {
+            'button': {
+                'required': ['primary', 'secondary'],
+                'recommended': ['ghost', 'danger', 'disabled', 'loading'],
+                'optional': ['outline', 'link', 'icon-only']
+            },
+            'input': {
+                'required': ['default', 'error'],
+                'recommended': ['focus', 'disabled', 'success'],
+                'optional': ['search', 'password', 'number']
+            },
+            'card': {
+                'required': ['default'],
+                'recommended': ['elevated', 'outlined', 'interactive'],
+                'optional': ['compact', 'expanded']
+            },
+            'alert': {
+                'required': ['info', 'error'],
+                'recommended': ['success', 'warning'],
+                'optional': ['dismissible', 'permanent']
+            },
+            'badge': {
+                'required': ['default'],
+                'recommended': ['primary', 'success', 'warning', 'error'],
+                'optional': ['pill', 'square', 'dot']
+            }
+        }
+
+        # Categorize components
+        categories = self._categorize_components(components)
+
+        self.think("Enumerating existing variants", category="Examining")
+
+        # Check each component type
+        types_to_check = [component_type] if component_type else expected_variants.keys()
+
+        validation_results = {}
+
+        for comp_type in types_to_check:
+            if comp_type not in categories:
+                self.think(f"No {comp_type} components found in library", category="Analyzing")
+                continue
+
+            # Get existing variants
+            comp_ids = categories[comp_type]
+            existing_variants = set()
+
+            for comp_id in comp_ids:
+                # Extract variant from component name
+                parts = comp_id.lower().split('-')
+                if len(parts) > 1:
+                    variant = '-'.join(parts[1:])
+                    existing_variants.add(variant)
+
+            # Compare with expected
+            expected = expected_variants.get(comp_type, {})
+            required = set(expected.get('required', []))
+            recommended = set(expected.get('recommended', []))
+            optional = set(expected.get('optional', []))
+
+            missing_required = required - existing_variants
+            missing_recommended = recommended - existing_variants
+            extra_variants = existing_variants - (required | recommended | optional)
+
+            # Calculate completeness
+            total_expected = len(required) + len(recommended)
+            total_found = len(existing_variants & (required | recommended))
+            completeness = (total_found / total_expected * 100) if total_expected > 0 else 0
+
+            validation_results[comp_type] = {
+                'existing_variants': list(existing_variants),
+                'missing_required': list(missing_required),
+                'missing_recommended': list(missing_recommended),
+                'extra_variants': list(extra_variants),
+                'completeness_percent': round(completeness, 1),
+                'component_count': len(comp_ids),
+                'severity': 'critical' if missing_required else 'high' if missing_recommended else 'low',
+                'atom_says': self._get_variant_message(missing_required, missing_recommended, completeness)
+            }
+
+        # Overall verdict
+        if validation_results:
+            avg_completeness = sum(v['completeness_percent'] for v in validation_results.values()) / len(validation_results)
+            critical_count = sum(1 for v in validation_results.values() if v['severity'] == 'critical')
+
+            if critical_count > 0:
+                verdict = f"🔬 MOLECULAR INSTABILITY - {critical_count} components missing required variants!"
+                grade = "D"
+            elif avg_completeness >= 90:
+                verdict = "🔬 MOLECULAR PERFECTION - All variants present!"
+                grade = "S+"
+            elif avg_completeness >= 75:
+                verdict = "🔬 STRONG STRUCTURE - Minor gaps detected"
+                grade = "A"
+            elif avg_completeness >= 60:
+                verdict = "🔬 NEEDS REFINEMENT - Several variants missing"
+                grade = "B"
+            else:
+                verdict = "🔬 INCOMPLETE LIBRARY - Many variants missing"
+                grade = "C"
+
+            results['variant_validation'] = validation_results
+            results['overall_completeness'] = round(avg_completeness, 1)
+            results['critical_gaps'] = critical_count
+            results['atom_verdict'] = verdict
+            results['grade'] = grade
+
+            self.say(verdict, style="scientific", technical_info=f"{avg_completeness:.1f}% complete, {critical_count} critical gaps")
+        else:
+            results['atom_verdict'] = "🔬 NO COMPONENTS FOUND - Library is empty!"
+            results['grade'] = "N/A"
+
+        return results
+
+    def _get_variant_message(self, missing_required: List[str], missing_recommended: List[str],
+                             completeness: float) -> str:
+        """Generate Atom's message based on variant completeness"""
+        if missing_required:
+            return f"CRITICAL: Missing required variants - {', '.join(missing_required)}"
+        elif missing_recommended:
+            return f"Add recommended variants: {', '.join(missing_recommended)}"
+        elif completeness >= 90:
+            return "Excellent variant coverage!"
+        else:
+            return "Variant coverage acceptable"
+
+    def detect_duplicate_components(self, components: Dict[str, Any],
+                                    similarity_threshold: float = 0.85) -> Dict[str, Any]:
+        """
+        🔬 Detect duplicate or highly similar components
+
+        Identifies components that are nearly identical, suggesting potential
+        consolidation opportunities in the component library.
+
+        Args:
+            components: Dictionary of components from design file
+            similarity_threshold: Similarity threshold (0.0-1.0) for considering components duplicates
+                                 Default: 0.85 (85% similar)
+
+        Returns:
+            Duplicate detection results with similarity scores
+        """
+        self.say("Analyzing component similarity at molecular level", style="scientific")
+        self.think("Comparing component structures for duplication", category="Shrinking")
+
+        results = {
+            'hero': '🔬 The Atom',
+            'timestamp': datetime.now().isoformat(),
+            'duplicate_analysis': {}
+        }
+
+        duplicate_groups = []
+        checked_pairs = set()
+
+        comp_ids = list(components.keys())
+
+        self.think(f"Examining {len(comp_ids)} components for similarity", category="Analyzing")
+
+        for i, comp_id_1 in enumerate(comp_ids):
+            for comp_id_2 in comp_ids[i+1:]:
+                # Skip if already checked
+                pair_key = tuple(sorted([comp_id_1, comp_id_2]))
+                if pair_key in checked_pairs:
+                    continue
+                checked_pairs.add(pair_key)
+
+                # Calculate similarity
+                similarity = self._calculate_component_similarity(
+                    components[comp_id_1],
+                    components[comp_id_2]
+                )
+
+                if similarity >= similarity_threshold:
+                    duplicate_groups.append({
+                        'component_1': comp_id_1,
+                        'component_2': comp_id_2,
+                        'similarity_score': round(similarity * 100, 1),
+                        'severity': 'critical' if similarity >= 0.95 else 'high' if similarity >= 0.90 else 'moderate',
+                        'atom_says': self._get_similarity_message(similarity),
+                        'recommendation': self._get_duplicate_recommendation(comp_id_1, comp_id_2, similarity)
+                    })
+
+        # Sort by similarity (highest first)
+        duplicate_groups.sort(key=lambda x: x['similarity_score'], reverse=True)
+
+        self.think("Calculating duplication impact", category="Examining")
+
+        # Calculate statistics
+        if duplicate_groups:
+            avg_similarity = sum(d['similarity_score'] for d in duplicate_groups) / len(duplicate_groups)
+            critical_count = sum(1 for d in duplicate_groups if d['severity'] == 'critical')
+            high_count = sum(1 for d in duplicate_groups if d['severity'] == 'high')
+
+            verdict = f"🔬 DUPLICATION DETECTED - {len(duplicate_groups)} similar component pairs found!"
+            if critical_count > 0:
+                grade = "D"
+            elif high_count > 3:
+                grade = "C"
+            elif high_count > 0:
+                grade = "B"
+            else:
+                grade = "A"
+        else:
+            avg_similarity = 0
+            critical_count = 0
+            high_count = 0
+            verdict = "🔬 NO DUPLICATION - All components are unique!"
+            grade = "S+"
+
+        results['duplicate_analysis'] = {
+            'total_components': len(components),
+            'duplicate_pairs_found': len(duplicate_groups),
+            'critical_duplicates': critical_count,
+            'high_duplicates': high_count,
+            'avg_similarity': round(avg_similarity, 1),
+            'duplicate_groups': duplicate_groups[:20],  # Top 20
+            'consolidation_opportunities': critical_count + high_count
+        }
+
+        results['atom_verdict'] = verdict
+        results['grade'] = grade
+
+        self.say(verdict, style="scientific",
+                 technical_info=f"{len(duplicate_groups)} pairs, {critical_count} critical, {high_count} high")
+
+        return results
+
+    def _calculate_component_similarity(self, comp1: Dict, comp2: Dict) -> float:
+        """
+        Calculate similarity between two components (0.0-1.0)
+
+        Factors:
+        - Type similarity (same button vs different type)
+        - Style similarity (colors, sizes, padding)
+        - Structure similarity (children, hierarchy)
+        """
+        similarity_score = 0.0
+        factors_checked = 0
+
+        # Type similarity (40% weight)
+        type1 = comp1.get('type', '').lower()
+        type2 = comp2.get('type', '').lower()
+        if type1 and type2:
+            factors_checked += 1
+            if type1 == type2:
+                similarity_score += 0.4
+
+        # Color similarity (20% weight)
+        fg1 = comp1.get('foreground_color', '')
+        fg2 = comp2.get('foreground_color', '')
+        bg1 = comp1.get('background_color', '')
+        bg2 = comp2.get('background_color', '')
+
+        if fg1 and fg2:
+            factors_checked += 1
+            if fg1 == fg2:
+                similarity_score += 0.1
+
+        if bg1 and bg2:
+            factors_checked += 1
+            if bg1 == bg2:
+                similarity_score += 0.1
+
+        # Size similarity (20% weight)
+        width1 = comp1.get('width', 0)
+        width2 = comp2.get('width', 0)
+        height1 = comp1.get('height', 0)
+        height2 = comp2.get('height', 0)
+
+        if width1 and width2 and height1 and height2:
+            factors_checked += 1
+            width_diff = abs(width1 - width2) / max(width1, width2) if max(width1, width2) > 0 else 0
+            height_diff = abs(height1 - height2) / max(height1, height2) if max(height1, height2) > 0 else 0
+            size_similarity = 1.0 - ((width_diff + height_diff) / 2)
+            similarity_score += size_similarity * 0.2
+
+        # Children count similarity (20% weight)
+        children1 = len(comp1.get('children', []))
+        children2 = len(comp2.get('children', []))
+
+        if children1 > 0 or children2 > 0:
+            factors_checked += 1
+            max_children = max(children1, children2)
+            child_diff = abs(children1 - children2)
+            child_similarity = 1.0 - (child_diff / max_children) if max_children > 0 else 1.0
+            similarity_score += child_similarity * 0.2
+
+        return similarity_score
+
+    def _get_similarity_message(self, similarity: float) -> str:
+        """Generate Atom's message based on similarity score"""
+        if similarity >= 0.95:
+            return "NEARLY IDENTICAL - Strong consolidation candidate!"
+        elif similarity >= 0.90:
+            return "VERY SIMILAR - Consider merging these components"
+        elif similarity >= 0.85:
+            return "SIMILAR - Review for potential consolidation"
+        else:
+            return "SOMEWHAT SIMILAR - Minor overlap detected"
+
+    def _get_duplicate_recommendation(self, comp1: str, comp2: str, similarity: float) -> str:
+        """Generate recommendation for duplicate components"""
+        if similarity >= 0.95:
+            return f"Consolidate '{comp1}' and '{comp2}' into a single component with variants"
+        elif similarity >= 0.90:
+            return f"Review if '{comp1}' and '{comp2}' can share a base component"
+        else:
+            return f"Document differences between '{comp1}' and '{comp2}'"
+
+    def validate_design_tokens(self, components: Dict[str, Any],
+                               design_tokens: Optional[Dict] = None) -> Dict[str, Any]:
+        """
+        🔬 Validate design token usage and consistency
+
+        Analyzes whether components use design tokens correctly and consistently.
+        Identifies hardcoded values that should use tokens.
+
+        Args:
+            components: Dictionary of components from design file
+            design_tokens: Optional design token definitions
+                {
+                    'colors': {'primary': '#007bff', ...},
+                    'spacing': {'xs': 4, 's': 8, ...},
+                    'typography': {'h1': {...}, ...}
+                }
+
+        Returns:
+            Design token validation results
+        """
+        self.say("Analyzing design token usage at atomic level", style="scientific")
+        self.think("Examining token consistency across components", category="Shrinking")
+
+        results = {
+            'hero': '🔬 The Atom',
+            'timestamp': datetime.now().isoformat(),
+            'token_validation': {}
+        }
+
+        # Track token usage
+        hardcoded_colors = []
+        hardcoded_spacing = []
+        hardcoded_typography = []
+        token_references = defaultdict(int)
+
+        self.think(f"Scanning {len(components)} components for hardcoded values", category="Analyzing")
+
+        for comp_id, component in components.items():
+            # Check colors
+            fg_color = component.get('foreground_color', '')
+            bg_color = component.get('background_color', '')
+
+            if fg_color and fg_color.startswith('#'):
+                hardcoded_colors.append({
+                    'component': comp_id,
+                    'property': 'foreground_color',
+                    'value': fg_color,
+                    'severity': 'high',
+                    'atom_says': f'Use color token instead of {fg_color}'
+                })
+
+            if bg_color and bg_color.startswith('#'):
+                hardcoded_colors.append({
+                    'component': comp_id,
+                    'property': 'background_color',
+                    'value': bg_color,
+                    'severity': 'high',
+                    'atom_says': f'Use color token instead of {bg_color}'
+                })
+
+            # Check spacing (margins, padding)
+            padding = component.get('padding', {})
+            if isinstance(padding, dict):
+                for side, value in padding.items():
+                    if isinstance(value, (int, float)) and value > 0:
+                        # Check if it's a standard spacing value
+                        if design_tokens and 'spacing' in design_tokens:
+                            token_values = set(design_tokens['spacing'].values())
+                            if value not in token_values:
+                                hardcoded_spacing.append({
+                                    'component': comp_id,
+                                    'property': f'padding-{side}',
+                                    'value': value,
+                                    'severity': 'moderate',
+                                    'atom_says': f'Use spacing token for {value}px padding'
+                                })
+
+            # Check typography
+            font_size = component.get('font_size')
+            font_weight = component.get('font_weight')
+
+            if font_size and isinstance(font_size, (int, float)):
+                if design_tokens and 'typography' in design_tokens:
+                    # Check if font size matches a typography token
+                    is_token_value = any(
+                        isinstance(token, dict) and token.get('fontSize') == font_size
+                        for token in design_tokens['typography'].values()
+                    )
+                    if not is_token_value:
+                        hardcoded_typography.append({
+                            'component': comp_id,
+                            'property': 'font_size',
+                            'value': font_size,
+                            'severity': 'moderate',
+                            'atom_says': f'Use typography token for {font_size}px font'
+                        })
+
+        self.think("Calculating token consistency metrics", category="Examining")
+
+        # Calculate metrics
+        total_hardcoded = len(hardcoded_colors) + len(hardcoded_spacing) + len(hardcoded_typography)
+        total_properties_checked = len(components) * 3  # Rough estimate
+
+        token_usage_rate = max(0, 100 - (total_hardcoded / total_properties_checked * 100)) if total_properties_checked > 0 else 0
+
+        # Determine verdict
+        if total_hardcoded == 0:
+            verdict = "🔬 MOLECULAR PERFECTION - 100% token usage!"
+            grade = "S+"
+        elif token_usage_rate >= 90:
+            verdict = "🔬 EXCELLENT CONSISTENCY - Strong token usage!"
+            grade = "A"
+        elif token_usage_rate >= 75:
+            verdict = "🔬 GOOD FOUNDATION - Some hardcoded values"
+            grade = "B"
+        elif token_usage_rate >= 60:
+            verdict = "🔬 NEEDS IMPROVEMENT - Many hardcoded values"
+            grade = "C"
+        else:
+            verdict = "🔬 MOLECULAR CHAOS - Minimal token usage!"
+            grade = "D"
+
+        results['token_validation'] = {
+            'total_components_analyzed': len(components),
+            'hardcoded_color_count': len(hardcoded_colors),
+            'hardcoded_spacing_count': len(hardcoded_spacing),
+            'hardcoded_typography_count': len(hardcoded_typography),
+            'total_hardcoded_values': total_hardcoded,
+            'token_usage_rate_percent': round(token_usage_rate, 1),
+            'hardcoded_colors': hardcoded_colors[:10],
+            'hardcoded_spacing': hardcoded_spacing[:10],
+            'hardcoded_typography': hardcoded_typography[:10],
+            'recommendations': self._generate_token_recommendations(hardcoded_colors, hardcoded_spacing, hardcoded_typography)
+        }
+
+        results['atom_verdict'] = verdict
+        results['grade'] = grade
+
+        self.say(verdict, style="scientific",
+                 technical_info=f"{token_usage_rate:.1f}% token usage, {total_hardcoded} hardcoded values")
+
+        return results
+
+    def _generate_token_recommendations(self, hardcoded_colors: List[Dict],
+                                        hardcoded_spacing: List[Dict],
+                                        hardcoded_typography: List[Dict]) -> List[Dict]:
+        """Generate recommendations for token improvements"""
+        recommendations = []
+
+        if hardcoded_colors:
+            unique_colors = set(item['value'] for item in hardcoded_colors)
+            recommendations.append({
+                'priority': 'high',
+                'area': 'Color Tokens',
+                'issue': f'{len(hardcoded_colors)} hardcoded colors ({len(unique_colors)} unique values)',
+                'atom_says': 'Create color tokens to replace hardcoded values!',
+                'actions': [
+                    f'Define color tokens for: {", ".join(list(unique_colors)[:5])}',
+                    'Update components to reference color tokens',
+                    'Document color token usage guidelines'
+                ]
+            })
+
+        if hardcoded_spacing:
+            unique_spacing = set(item['value'] for item in hardcoded_spacing)
+            recommendations.append({
+                'priority': 'medium',
+                'area': 'Spacing Tokens',
+                'issue': f'{len(hardcoded_spacing)} hardcoded spacing values',
+                'atom_says': 'Standardize spacing with tokens!',
+                'actions': [
+                    'Define spacing scale (4px, 8px, 16px, 24px, 32px, etc.)',
+                    'Map hardcoded values to nearest spacing token',
+                    'Update component padding/margins to use tokens'
+                ]
+            })
+
+        if hardcoded_typography:
+            recommendations.append({
+                'priority': 'medium',
+                'area': 'Typography Tokens',
+                'issue': f'{len(hardcoded_typography)} hardcoded typography values',
+                'atom_says': 'Create typography scale for consistency!',
+                'actions': [
+                    'Define typography scale (h1, h2, body, caption, etc.)',
+                    'Include font size, weight, line height in tokens',
+                    'Update components to reference typography tokens'
+                ]
+            })
+
+        return recommendations
+
 
 # Main entry point - The Atom's Mission Interface
 def atom_analyze_components(components: Dict[str, Any],

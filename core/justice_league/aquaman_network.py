@@ -665,6 +665,512 @@ class AquamanNetwork:
         """Alias for _generate_aquaman_recommendations"""
         return self._generate_aquaman_recommendations(results)
 
+    def detect_third_party_resources(self, mcp_tools: Dict) -> Dict[str, Any]:
+        """
+        🌊 Detect and analyze third-party resource domains
+
+        Identifies all third-party resources loading on the page and analyzes their
+        impact on performance. Useful for privacy audits and performance optimization.
+
+        Args:
+            mcp_tools: Dictionary of MCP tool functions
+                {
+                    'list_network_requests': mcp__chrome-devtools__list_network_requests
+                }
+
+        Returns:
+            Third-party resource analysis with domain breakdown
+        """
+        self.say("Diving deep to track third-party resources", style="tactical")
+        self.think("Scanning network traffic for foreign vessels", category="Diving")
+
+        results = {
+            'hero': '🌊 Aquaman',
+            'timestamp': datetime.now().isoformat(),
+            'third_party_analysis': {}
+        }
+
+        # Check if MCP tools available
+        if not mcp_tools:
+            return {
+                **results,
+                'status': 'mcp_tools_missing',
+                'message': 'Aquaman needs MCP tools to command the seas'
+            }
+
+        try:
+            # Get all network requests
+            list_func = mcp_tools.get('list_network_requests')
+            if not list_func:
+                return {**results, 'status': 'error', 'message': 'list_network_requests not available'}
+
+            all_requests = list_func().get('requests', [])
+            self.think(f"Found {len(all_requests)} network requests", category="Analyzing")
+
+            # Extract primary domain
+            primary_domain = None
+            if all_requests:
+                first_url = all_requests[0].get('url', '')
+                primary_domain = self._extract_domain(first_url)
+
+            # Analyze third-party domains
+            third_party_domains = defaultdict(lambda: {
+                'count': 0,
+                'total_size': 0,
+                'resource_types': defaultdict(int),
+                'urls': []
+            })
+
+            first_party_count = 0
+            third_party_count = 0
+
+            for req in all_requests:
+                url = req.get('url', '')
+                domain = self._extract_domain(url)
+                size = req.get('size', 0)
+                res_type = req.get('resourceType', 'unknown')
+
+                if domain == primary_domain:
+                    first_party_count += 1
+                elif domain:
+                    third_party_count += 1
+                    third_party_domains[domain]['count'] += 1
+                    third_party_domains[domain]['total_size'] += size
+                    third_party_domains[domain]['resource_types'][res_type] += 1
+                    third_party_domains[domain]['urls'].append(url)
+
+            # Sort domains by request count
+            sorted_domains = sorted(
+                third_party_domains.items(),
+                key=lambda x: x[1]['count'],
+                reverse=True
+            )
+
+            # Calculate metrics
+            total_third_party_size = sum(d['total_size'] for d in third_party_domains.values())
+            total_requests = len(all_requests)
+            third_party_percentage = (third_party_count / total_requests * 100) if total_requests > 0 else 0
+
+            self.think("Mapping third-party domain distribution", category="Investigating")
+
+            # Categorize domains by purpose
+            tracking_domains = []
+            cdn_domains = []
+            analytics_domains = []
+            other_domains = []
+
+            for domain, data in sorted_domains:
+                domain_lower = domain.lower()
+                if any(keyword in domain_lower for keyword in ['track', 'analytics', 'metric', 'telemetry']):
+                    analytics_domains.append(domain)
+                elif any(keyword in domain_lower for keyword in ['cdn', 'cloudfront', 'akamai', 'fastly']):
+                    cdn_domains.append(domain)
+                elif any(keyword in domain_lower for keyword in ['ad', 'doubleclick', 'adsense', 'advertising']):
+                    tracking_domains.append(domain)
+                else:
+                    other_domains.append(domain)
+
+            results['third_party_analysis'] = {
+                'total_requests': total_requests,
+                'first_party_count': first_party_count,
+                'third_party_count': third_party_count,
+                'third_party_percentage': round(third_party_percentage, 1),
+                'third_party_domain_count': len(third_party_domains),
+                'total_third_party_size_bytes': total_third_party_size,
+                'primary_domain': primary_domain,
+                'top_10_domains': [
+                    {
+                        'domain': domain,
+                        'request_count': data['count'],
+                        'total_size_bytes': data['total_size'],
+                        'resource_types': dict(data['resource_types'])
+                    }
+                    for domain, data in sorted_domains[:10]
+                ],
+                'domain_categories': {
+                    'tracking_domains': tracking_domains,
+                    'cdn_domains': cdn_domains,
+                    'analytics_domains': analytics_domains,
+                    'other_domains': other_domains[:10]
+                }
+            }
+
+            # Aquaman's verdict
+            if third_party_percentage > 50:
+                verdict = "🌊 TSUNAMI WARNING - Too many foreign vessels!"
+                severity = "critical"
+            elif third_party_percentage > 30:
+                verdict = "🌊 ROUGH SEAS - High third-party traffic"
+                severity = "high"
+            elif third_party_percentage > 15:
+                verdict = "🌊 CHOPPY WATERS - Moderate third-party load"
+                severity = "moderate"
+            else:
+                verdict = "🌊 CALM SEAS - Minimal third-party impact"
+                severity = "low"
+
+            results['aquaman_verdict'] = verdict
+            results['severity'] = severity
+
+            self.say(verdict, style="tactical", technical_info=f"{third_party_count}/{total_requests} requests ({third_party_percentage:.1f}%)")
+
+        except Exception as e:
+            logger.error(f"🌊 Aquaman encountered rough seas: {e}")
+            results['error'] = str(e)
+            results['status'] = 'error'
+
+        return results
+
+    def validate_resource_compression(self, mcp_tools: Dict) -> Dict[str, Any]:
+        """
+        🌊 Validate resource compression efficiency
+
+        Analyzes which resources are compressed (gzip/brotli) and identifies
+        opportunities for compression improvements.
+
+        Args:
+            mcp_tools: Dictionary of MCP tool functions
+                {
+                    'list_network_requests': mcp__chrome-devtools__list_network_requests,
+                    'get_network_request': mcp__chrome-devtools__get_network_request
+                }
+
+        Returns:
+            Compression analysis with optimization recommendations
+        """
+        self.say("Analyzing resource compression across the network", style="tactical")
+        self.think("Checking compression headers and efficiency", category="Diving")
+
+        results = {
+            'hero': '🌊 Aquaman',
+            'timestamp': datetime.now().isoformat(),
+            'compression_analysis': {}
+        }
+
+        # Check if MCP tools available
+        if not mcp_tools:
+            return {
+                **results,
+                'status': 'mcp_tools_missing',
+                'message': 'Aquaman needs MCP tools to analyze compression'
+            }
+
+        try:
+            # Get all network requests
+            list_func = mcp_tools.get('list_network_requests')
+            if not list_func:
+                return {**results, 'status': 'error', 'message': 'list_network_requests not available'}
+
+            all_requests = list_func().get('requests', [])
+            self.think(f"Scanning {len(all_requests)} resources for compression", category="Analyzing")
+
+            # Analyze compression
+            compressed_count = 0
+            uncompressed_count = 0
+            compressible_types = ['script', 'stylesheet', 'document', 'xhr', 'fetch', 'font']
+
+            compression_stats = {
+                'gzip': 0,
+                'br': 0,  # brotli
+                'deflate': 0,
+                'none': 0
+            }
+
+            uncompressed_opportunities = []
+            total_uncompressed_size = 0
+
+            for req in all_requests:
+                url = req.get('url', '')
+                headers = req.get('responseHeaders', {})
+                res_type = req.get('resourceType', 'unknown')
+                size = req.get('size', 0)
+
+                # Check content-encoding header
+                content_encoding = headers.get('content-encoding', '').lower()
+
+                if content_encoding:
+                    compressed_count += 1
+                    if 'br' in content_encoding:
+                        compression_stats['br'] += 1
+                    elif 'gzip' in content_encoding:
+                        compression_stats['gzip'] += 1
+                    elif 'deflate' in content_encoding:
+                        compression_stats['deflate'] += 1
+                else:
+                    uncompressed_count += 1
+                    compression_stats['none'] += 1
+
+                    # Check if resource should be compressed
+                    if res_type in compressible_types and size > 1024:  # > 1KB
+                        uncompressed_opportunities.append({
+                            'url': url,
+                            'type': res_type,
+                            'size_bytes': size,
+                            'size_kb': round(size / 1024, 1),
+                            'aquaman_says': f'This {res_type} should be compressed!'
+                        })
+                        total_uncompressed_size += size
+
+            # Calculate metrics
+            total_resources = len(all_requests)
+            compression_rate = (compressed_count / total_resources * 100) if total_resources > 0 else 0
+
+            # Sort uncompressed opportunities by size
+            uncompressed_opportunities.sort(key=lambda x: x['size_bytes'], reverse=True)
+
+            self.think("Calculating compression efficiency", category="Investigating")
+
+            results['compression_analysis'] = {
+                'total_resources': total_resources,
+                'compressed_count': compressed_count,
+                'uncompressed_count': uncompressed_count,
+                'compression_rate_percent': round(compression_rate, 1),
+                'compression_types': compression_stats,
+                'uncompressed_opportunities': uncompressed_opportunities[:10],
+                'total_uncompressed_size_bytes': total_uncompressed_size,
+                'total_uncompressed_size_mb': round(total_uncompressed_size / (1024 * 1024), 2),
+                'potential_savings_estimate_mb': round(total_uncompressed_size * 0.7 / (1024 * 1024), 2)  # ~70% compression
+            }
+
+            # Aquaman's verdict
+            if compression_rate >= 90:
+                verdict = "🌊 CRYSTAL CLEAR - Excellent compression!"
+                grade = "S+"
+            elif compression_rate >= 75:
+                verdict = "🌊 CALM SEAS - Good compression coverage"
+                grade = "A"
+            elif compression_rate >= 60:
+                verdict = "🌊 CHOPPY WATERS - Moderate compression"
+                grade = "B"
+            elif compression_rate >= 40:
+                verdict = "🌊 ROUGH SEAS - Poor compression"
+                grade = "C"
+            else:
+                verdict = "🌊 TSUNAMI WARNING - Critical compression issues!"
+                grade = "D"
+
+            results['aquaman_verdict'] = verdict
+            results['compression_grade'] = grade
+            results['recommendations'] = []
+
+            # Generate recommendations
+            if len(uncompressed_opportunities) > 0:
+                self.think("Generating compression recommendations", category="Result")
+                results['recommendations'].append({
+                    'priority': 'high',
+                    'area': 'Text Compression',
+                    'issue': f'{len(uncompressed_opportunities)} uncompressed resources ({total_uncompressed_size / (1024 * 1024):.2f} MB)',
+                    'aquaman_says': 'These resources are leaking bandwidth like a damaged hull!',
+                    'actions': [
+                        'Enable gzip or brotli compression on server',
+                        'Configure compression for JS, CSS, HTML, JSON',
+                        'Use brotli for better compression (5-20% smaller than gzip)',
+                        'Verify compression headers: Content-Encoding: gzip/br'
+                    ]
+                })
+
+            self.say(verdict, style="tactical", technical_info=f"{compression_rate:.1f}% compression rate, {len(uncompressed_opportunities)} opportunities")
+
+        except Exception as e:
+            logger.error(f"🌊 Aquaman encountered turbulence: {e}")
+            results['error'] = str(e)
+            results['status'] = 'error'
+
+        return results
+
+    def analyze_slow_responses(self, mcp_tools: Dict, threshold_ms: int = 1000) -> Dict[str, Any]:
+        """
+        🌊 Analyze slow API and XHR responses
+
+        Identifies slow network responses (XHR, fetch, API calls) that may be
+        degrading user experience.
+
+        Args:
+            mcp_tools: Dictionary of MCP tool functions
+                {
+                    'list_network_requests': mcp__chrome-devtools__list_network_requests
+                }
+            threshold_ms: Response time threshold in milliseconds (default: 1000ms)
+
+        Returns:
+            Slow response analysis with timing breakdown
+        """
+        self.say(f"Detecting slow responses over {threshold_ms}ms", style="tactical")
+        self.think("Analyzing API and XHR response times", category="Diving")
+
+        results = {
+            'hero': '🌊 Aquaman',
+            'timestamp': datetime.now().isoformat(),
+            'slow_response_analysis': {}
+        }
+
+        # Check if MCP tools available
+        if not mcp_tools:
+            return {
+                **results,
+                'status': 'mcp_tools_missing',
+                'message': 'Aquaman needs MCP tools to analyze responses'
+            }
+
+        try:
+            # Get all network requests
+            list_func = mcp_tools.get('list_network_requests')
+            if not list_func:
+                return {**results, 'status': 'error', 'message': 'list_network_requests not available'}
+
+            all_requests = list_func().get('requests', [])
+
+            # Filter for API/XHR/Fetch requests
+            api_requests = [req for req in all_requests if req.get('resourceType') in ['xhr', 'fetch']]
+
+            self.think(f"Scanning {len(api_requests)} API/XHR requests", category="Analyzing")
+
+            slow_responses = []
+            fast_responses = []
+            timing_distribution = {
+                '0-100ms': 0,
+                '100-500ms': 0,
+                '500-1000ms': 0,
+                '1000-3000ms': 0,
+                '3000ms+': 0
+            }
+
+            for req in api_requests:
+                timing = req.get('timing', {})
+
+                # Calculate total response time (TTFB + download)
+                wait_time = timing.get('wait', 0)  # Time to first byte
+                receive_time = timing.get('receive', 0)  # Download time
+                total_time = wait_time + receive_time
+
+                url = req.get('url', '')
+                method = req.get('method', 'GET')
+                status = req.get('status', 0)
+
+                # Categorize timing
+                if total_time < 100:
+                    timing_distribution['0-100ms'] += 1
+                    fast_responses.append({'url': url, 'time_ms': total_time})
+                elif total_time < 500:
+                    timing_distribution['100-500ms'] += 1
+                    fast_responses.append({'url': url, 'time_ms': total_time})
+                elif total_time < 1000:
+                    timing_distribution['500-1000ms'] += 1
+                elif total_time < 3000:
+                    timing_distribution['1000-3000ms'] += 1
+                else:
+                    timing_distribution['3000ms+'] += 1
+
+                # Check if slow
+                if total_time >= threshold_ms:
+                    slow_responses.append({
+                        'url': url,
+                        'method': method,
+                        'status': status,
+                        'total_time_ms': round(total_time, 2),
+                        'ttfb_ms': round(wait_time, 2),
+                        'download_ms': round(receive_time, 2),
+                        'severity': 'critical' if total_time > 3000 else 'high' if total_time > 2000 else 'moderate',
+                        'aquaman_says': self._get_slow_response_message(total_time)
+                    })
+
+            # Sort slow responses by time (slowest first)
+            slow_responses.sort(key=lambda x: x['total_time_ms'], reverse=True)
+
+            self.think("Calculating response time statistics", category="Investigating")
+
+            # Calculate statistics
+            if api_requests:
+                all_times = []
+                for req in api_requests:
+                    timing = req.get('timing', {})
+                    total = timing.get('wait', 0) + timing.get('receive', 0)
+                    all_times.append(total)
+
+                avg_response_time = sum(all_times) / len(all_times)
+                median_response_time = sorted(all_times)[len(all_times) // 2]
+                p95_response_time = sorted(all_times)[int(len(all_times) * 0.95)]
+            else:
+                avg_response_time = 0
+                median_response_time = 0
+                p95_response_time = 0
+
+            results['slow_response_analysis'] = {
+                'threshold_ms': threshold_ms,
+                'total_api_requests': len(api_requests),
+                'slow_response_count': len(slow_responses),
+                'slow_response_percentage': round(len(slow_responses) / len(api_requests) * 100, 1) if api_requests else 0,
+                'timing_distribution': timing_distribution,
+                'statistics': {
+                    'avg_response_time_ms': round(avg_response_time, 2),
+                    'median_response_time_ms': round(median_response_time, 2),
+                    'p95_response_time_ms': round(p95_response_time, 2)
+                },
+                'slowest_10_responses': slow_responses[:10],
+                'fastest_5_responses': sorted(fast_responses, key=lambda x: x['time_ms'])[:5]
+            }
+
+            # Aquaman's verdict
+            slow_percentage = len(slow_responses) / len(api_requests) * 100 if api_requests else 0
+
+            if slow_percentage == 0:
+                verdict = "🌊 CRYSTAL CLEAR WATERS - All responses fast!"
+                grade = "S+"
+            elif slow_percentage < 5:
+                verdict = "🌊 CALM SEAS - Minimal slow responses"
+                grade = "A"
+            elif slow_percentage < 15:
+                verdict = "🌊 CHOPPY WATERS - Some slow responses"
+                grade = "B"
+            elif slow_percentage < 30:
+                verdict = "🌊 ROUGH SEAS - Many slow responses"
+                grade = "C"
+            else:
+                verdict = "🌊 TSUNAMI WARNING - Critical API slowness!"
+                grade = "D"
+
+            results['aquaman_verdict'] = verdict
+            results['response_time_grade'] = grade
+            results['recommendations'] = []
+
+            # Generate recommendations
+            if len(slow_responses) > 0:
+                self.think("Generating optimization recommendations", category="Result")
+                results['recommendations'].append({
+                    'priority': 'high',
+                    'area': 'API Response Time',
+                    'issue': f'{len(slow_responses)} slow API responses detected',
+                    'aquaman_says': 'These API calls are stuck in deep ocean currents!',
+                    'actions': [
+                        'Optimize database queries for slow endpoints',
+                        'Implement caching for frequently accessed data',
+                        'Use CDN for API responses when possible',
+                        'Consider pagination for large data sets',
+                        'Add response compression',
+                        'Profile server-side code for bottlenecks'
+                    ]
+                })
+
+            self.say(verdict, style="tactical", technical_info=f"{len(slow_responses)}/{len(api_requests)} slow responses, avg {avg_response_time:.0f}ms")
+
+        except Exception as e:
+            logger.error(f"🌊 Aquaman encountered a whirlpool: {e}")
+            results['error'] = str(e)
+            results['status'] = 'error'
+
+        return results
+
+    def _get_slow_response_message(self, time_ms: float) -> str:
+        """Generate Aquaman's message for slow response based on severity"""
+        if time_ms > 5000:
+            return "Trapped in the Mariana Trench - extremely slow!"
+        elif time_ms > 3000:
+            return "Swimming through molasses - very slow!"
+        elif time_ms > 2000:
+            return "Fighting strong currents - quite slow"
+        else:
+            return "Choppy waters detected - moderately slow"
+
 
 # Main entry point - Aquaman's Mission Interface
 def aquaman_analyze_network(mcp_tools: Dict,
