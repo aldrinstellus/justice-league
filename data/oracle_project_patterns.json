@@ -375,6 +375,43 @@
         "File output tasks"
       ]
     },
+    "default_export_hero": {
+      "preference": "always_use_quicksilver_for_frame_export",
+      "priority": "HIGH",
+      "description": "Quicksilver is the default hero for all Figma PNG frame exports. Only use Hawkman when specifically requested or Quicksilver unavailable.",
+      "hero_selection": {
+        "first_choice": "Quicksilver",
+        "fallback": "Hawkman",
+        "user_override": "Allow user to specify --agent hawkman or agent='hawkman' in mission"
+      },
+      "benefits": {
+        "quicksilver": {
+          "speed": "2.5-3x faster than Hawkman (11.3x achieved in testing)",
+          "method": "Concurrent processing with 8 workers",
+          "batch_api": "15 frames per API call (vs 1 per call)",
+          "connection_pooling": "HTTP session reuse",
+          "reliability": "100% success rate maintained"
+        },
+        "hawkman": {
+          "speed": "Baseline (sequential processing)",
+          "method": "One frame at a time",
+          "reliability": "100% success rate, conservative approach",
+          "when_to_use": "Explicitly requested by user, or Quicksilver not available"
+        }
+      },
+      "learned_at": "2025-10-31T00:00:00Z",
+      "context": "User request: 'everytime i request figma to .png, quicksilver does this by default'",
+      "validation": {
+        "benchmark_test": "K-12 POC: 484 frames in 4m 50s (100% success)",
+        "speedup_achieved": "11.3x faster than Hawkman",
+        "production_ready": true
+      },
+      "applies_to": [
+        "All Figma frame PNG exports",
+        "Superman coordinator frame export missions",
+        "Scripts using export_frames API"
+      ]
+    },
     "banner_display": {
       "preference": "always_show_justice_league_banner",
       "priority": "CRITICAL",
@@ -954,5 +991,1105 @@
       "validation_required": true,
       "user_notification": true
     }
-  }
+  },
+  "decision_patterns": {
+    "optimal_hero_count": 2,
+    "consultation_history": [
+      {
+        "heroes_consulted": 2,
+        "success": true,
+        "timestamp": "2025-10-31T03:53:11.872099"
+      },
+      {
+        "heroes_consulted": 2,
+        "success": true,
+        "timestamp": "2025-10-31T03:53:12.238934"
+      },
+      {
+        "heroes_consulted": 2,
+        "success": false,
+        "timestamp": "2025-10-31T03:53:12.610182"
+      }
+    ]
+  },
+  "hero_skills_system": {
+    "description": "Oracle's hero skills training and management system",
+    "database_path": "data/oracle_hero_skills.json",
+    "reference_doc": "knowledge_base/HERO_SKILLS_REFERENCE.md",
+    "trainer_module": "core/justice_league/oracle_hero_trainer.py",
+    "total_heroes_tracked": 19,
+    "last_analyzed": "2025-10-31",
+    "features": [
+      "Automatic skill analysis from hero code",
+      "Training scenario generation",
+      "Performance tracking and grading",
+      "Skill level calculation",
+      "Training recommendations",
+      "Hero report cards"
+    ],
+    "capabilities": {
+      "analyze_all_heroes": "Extract capabilities from all 19 hero files",
+      "generate_training_plan": "Create adaptive training scenarios for heroes",
+      "track_skill_progress": "Monitor skill improvements over time",
+      "recommend_improvements": "Identify skill gaps and training needs",
+      "calculate_skill_levels": "Compute proficiency scores (0-100) per skill"
+    },
+    "integration_status": {
+      "narrator_integrated": "16/19 heroes (84%)",
+      "mcp_integrated": "11/19 heroes (58%)",
+      "skills_analyzed": "15/19 heroes have skills extracted",
+      "training_scenarios": "Active for heroes with skill gaps"
+    }
+  },
+  "training_sessions": [
+    {
+      "session_id": "TRAIN-JL-20251031044434",
+      "date": "2025-10-31T04:44:34.141585",
+      "improvement_plan": {
+        "plan_id": "IMPROVE-JL-20251031",
+        "created_at": "2025-10-31T04:44:34.141386",
+        "summary": {
+          "heroes_trained": 16,
+          "training_scenarios_generated": 29,
+          "improvements_planned": 16,
+          "estimated_team_improvement": "+50% skill level increase"
+        },
+        "priority_actions": {
+          "narrator_integration": {
+            "heroes": [
+              "Vision Analyst",
+              "Hawkman Equipped",
+              "Quicksilver Speed Export",
+              "Hephaestus Code To Design"
+            ],
+            "count": 4,
+            "priority": "HIGH",
+            "expected_impact": "+15% team coordination"
+          },
+          "mcp_integration": {
+            "heroes": [
+              "Green Lantern Visual"
+            ],
+            "count": 1,
+            "priority": "MEDIUM",
+            "expected_impact": "+20% visual testing accuracy"
+          },
+          "skill_expansion": {
+            "heroes": [
+              "Zatanna Seo",
+              "Litty Ethics",
+              "Plastic Man Responsive",
+              "Vision Analyst",
+              "Hawkman Equipped",
+              "Martian Manhunter Security",
+              "Batman Testing",
+              "Quicksilver Speed Export",
+              "Hephaestus Code To Design",
+              "Wonder Woman Accessibility",
+              "Flash Performance"
+            ],
+            "count": 11,
+            "priority": "MEDIUM",
+            "expected_impact": "+25% mission coverage"
+          }
+        },
+        "training_timeline": {
+          "immediate": [
+            {
+              "hero": "Green Lantern Visual",
+              "emoji": "\ud83d\udc9a",
+              "training_needs": [
+                "MCP/Playwright integration for visual testing",
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-GRE-20251031044434",
+                  "hero": "Green Lantern Visual",
+                  "target_area": "MCP/Playwright integration for visual testing",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141173",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-GRE-20251031044434",
+                  "hero": "Green Lantern Visual",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141180",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 12,
+              "improvements": [
+                {
+                  "type": "mcp_integration",
+                  "action": "Add Playwright/MCP capabilities",
+                  "expected_benefit": "+20% visual testing accuracy"
+                }
+              ]
+            },
+            {
+              "hero": "Plastic Man Responsive",
+              "emoji": "\ud83e\udd38",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-PLA-20251031044434",
+                  "hero": "Plastic Man Responsive",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141220",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-PLA-20251031044434",
+                  "hero": "Plastic Man Responsive",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141225",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Vision Analyst",
+              "emoji": "\ud83d\udc41\ufe0f",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-VIS-20251031044434",
+                  "hero": "Vision Analyst",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141232",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-VIS-20251031044434",
+                  "hero": "Vision Analyst",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141237",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-VIS-20251031044434",
+                  "hero": "Vision Analyst",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141242",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 1,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Hawkman Equipped",
+              "emoji": "\ud83e\udd85",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-HAW-20251031044434",
+                  "hero": "Hawkman Equipped",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141249",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HAW-20251031044434",
+                  "hero": "Hawkman Equipped",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141254",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HAW-20251031044434",
+                  "hero": "Hawkman Equipped",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141259",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 0,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Martian Manhunter Security",
+              "emoji": "\ud83e\udde0",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-MAR-20251031044434",
+                  "hero": "Martian Manhunter Security",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141272",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-MAR-20251031044434",
+                  "hero": "Martian Manhunter Security",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141277",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Batman Testing",
+              "emoji": "\ud83e\udd87",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-BAT-20251031044434",
+                  "hero": "Batman Testing",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141283",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-BAT-20251031044434",
+                  "hero": "Batman Testing",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141288",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Quicksilver Speed Export",
+              "emoji": "\u26a1",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-QUI-20251031044434",
+                  "hero": "Quicksilver Speed Export",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141295",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-QUI-20251031044434",
+                  "hero": "Quicksilver Speed Export",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141300",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-QUI-20251031044434",
+                  "hero": "Quicksilver Speed Export",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141304",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 0,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Hephaestus Code To Design",
+              "emoji": "\ud83d\udd28",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-HEP-20251031044434",
+                  "hero": "Hephaestus Code To Design",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141311",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HEP-20251031044434",
+                  "hero": "Hephaestus Code To Design",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141316",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HEP-20251031044434",
+                  "hero": "Hephaestus Code To Design",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141321",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 0,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Flash Performance",
+              "emoji": "\u26a1",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-FLA-20251031044434",
+                  "hero": "Flash Performance",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141349",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-FLA-20251031044434",
+                  "hero": "Flash Performance",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141354",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 4,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            }
+          ],
+          "short_term": [
+            {
+              "hero": "Zatanna Seo",
+              "emoji": "\ud83c\udfa9",
+              "training_needs": [
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-ZAT-20251031044434",
+                  "hero": "Zatanna Seo",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141188",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Superman Coordinator",
+              "emoji": "\ud83e\uddb8",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-SUP-20251031044434",
+                  "hero": "Superman Coordinator",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141195",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 7,
+              "improvements": []
+            },
+            {
+              "hero": "Green Arrow Visual Validator",
+              "emoji": "\ud83c\udfaf",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-GRE-20251031044434",
+                  "hero": "Green Arrow Visual Validator",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141202",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 10,
+              "improvements": []
+            },
+            {
+              "hero": "Cyborg Integrations",
+              "emoji": "\ud83e\udd16",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-CYB-20251031044434",
+                  "hero": "Cyborg Integrations",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141208",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 10,
+              "improvements": []
+            },
+            {
+              "hero": "Litty Ethics",
+              "emoji": "\ud83e\ude94",
+              "training_needs": [
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-LIT-20251031044434",
+                  "hero": "Litty Ethics",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141214",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 2,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Artemis Codesmith",
+              "emoji": "\ud83c\udfa8",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-ART-20251031044434",
+                  "hero": "Artemis Codesmith",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141266",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 8,
+              "improvements": []
+            },
+            {
+              "hero": "Wonder Woman Accessibility",
+              "emoji": "\u26a1",
+              "training_needs": [
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-WON-20251031044434",
+                  "hero": "Wonder Woman Accessibility",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141328",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 2,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            }
+          ],
+          "estimated_completion": "2-4 weeks"
+        },
+        "expected_outcomes": [
+          "Narrator integration: 4 heroes \u2192 100% team coverage",
+          "MCP integration: 1 heroes \u2192 Enhanced visual testing",
+          "Skill expansion: 11 heroes \u2192 Broader capabilities",
+          "Team grade improvement: B \u2192 A (Full team upskilling)"
+        ]
+      },
+      "learnings_applied": {
+        "methodologies": 3,
+        "user_preferences": 5,
+        "error_patterns": 1
+      },
+      "next_review_date": "2025-11-14"
+    }
+  ]
 }

@@ -1,0 +1,4007 @@
+{
+  "heroes": {
+    "Green Lantern Visual": {
+      "capabilities": {
+        "class_name": "GreenLanternVisual",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/green_lantern_visual.py",
+        "docstring": "\ud83d\udc9a Visual regression testing with baseline comparison\n\nGreen Lantern's Powers:\n1. Store baseline screenshots (create constructs)\n2. Compare new screenshots to baseline (detect changes)\n3. Generate diff images highlighting changes (visual constructs)\n4. Calculate similarity scores (measure visual integrity)\n5. Detect layout shifts (catch visual regressions)\n6. Report visual regressions (alert the Justice League)",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Green Lantern's visual regression system\n\nArgs:\n    baseline_dir: Directory to store baseline images (Green Lantern's vault)\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "baseline_dir",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Green Lantern dialogue - Protective, guardian-focused\n\nPersonality traits:\n- Vigilant protector of visual integrity\n- Constructs shields against regressions\n- Willpower-driven determination",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with visual regression focus\n\nCommon categories for Green Lantern:\n- Protecting, Guarding, Comparing, Detecting",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff visual data to another hero\n\nArgs:\n    to_hero: Name of hero receiving the handoff (with emoji)\n    context: What is being handed off\n    details: Optional additional details",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "store_baseline",
+            "docstring": "\ud83d\udc9a Store a screenshot as baseline for future comparisons\n(Create a Green Lantern construct for protection)\n\nArgs:\n    image_path: Path to image file\n    test_name: Unique name for this test (e.g., 'homepage-desktop')\n    metadata: Optional metadata (viewport size, url, etc.)\n\nReturns:\n    Storage result with baseline info",
+            "parameters": [
+              "image_path",
+              "test_name",
+              "metadata"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "compare_to_baseline",
+            "docstring": "\ud83d\udc9a Compare new screenshot to stored baseline\n(Green Lantern scans for visual threats)\n\nArgs:\n    new_image_path: Path to new screenshot\n    test_name: Name of test to compare against\n    threshold: Similarity threshold (0-1, default 0.95 = 95% similar)\n\nReturns:\n    Comparison results with diff image and scores",
+            "parameters": [
+              "new_image_path",
+              "test_name",
+              "threshold"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_diff_image",
+            "docstring": "\ud83d\udc9a Generate visual diff image highlighting differences\n(Create Green Lantern construct showing changes)\n\nArgs:\n    baseline: Baseline PIL Image\n    new: New PIL Image\n    ssim_diff: SSIM difference matrix\n    test_name: Test name for filename\n\nReturns:\n    Path to generated diff image",
+            "parameters": [
+              "baseline",
+              "new",
+              "ssim_diff",
+              "test_name"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_get_verdict",
+            "docstring": "\ud83d\udc9a Get Green Lantern's verdict on visual comparison",
+            "parameters": [
+              "score",
+              "threshold"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, str]"
+          },
+          {
+            "name": "list_baselines",
+            "docstring": "\ud83d\udc9a List all stored baseline constructs",
+            "parameters": [],
+            "is_public": true,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "delete_baseline",
+            "docstring": "\ud83d\udc9a Delete a stored baseline construct",
+            "parameters": [
+              "test_name"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "generate_report",
+            "docstring": "\ud83d\udc9a Generate Green Lantern's summary report for multiple comparisons\n\nArgs:\n    comparisons: List of comparison results\n\nReturns:\n    Summary report from the Visual Guardian",
+            "parameters": [
+              "comparisons"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_get_sector_status",
+            "docstring": "Get overall sector status",
+            "parameters": [
+              "passed",
+              "total"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "create_baseline",
+            "docstring": "Alias for store_baseline",
+            "parameters": [
+              "image_path",
+              "test_name",
+              "metadata"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "batch_compare",
+            "docstring": "\ud83d\udc9a Batch compare multiple screenshots to their baselines\n\nArgs:\n    image_paths: List of tuples [(image_path, test_name), ...]\n    threshold: Similarity threshold\n\nReturns:\n    Batch comparison results",
+            "parameters": [
+              "image_paths",
+              "threshold"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_ssim",
+            "docstring": "Calculate SSIM (Structural Similarity Index) between two images\n\nArgs:\n    img1_array: First image as numpy array\n    img2_array: Second image as numpy array\n\nReturns:\n    Tuple of (ssim_score, ssim_diff_matrix)",
+            "parameters": [
+              "img1_array",
+              "img2_array"
+            ],
+            "is_public": false,
+            "returns": "tuple"
+          },
+          {
+            "name": "_calculate_green_lantern_score",
+            "docstring": "\ud83d\udc9a Calculate Green Lantern's visual integrity score\n\nArgs:\n    comparison_results: Comparison results\n\nReturns:\n    Green Lantern score with grade",
+            "parameters": [
+              "comparison_results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_willpower_recommendations",
+            "docstring": "\ud83d\udc9a Generate Green Lantern's willpower recommendations\n\nArgs:\n    comparison: Comparison results\n\nReturns:\n    List of recommendations",
+            "parameters": [
+              "comparison"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_load_baseline",
+            "docstring": "Load baseline metadata from JSON file",
+            "parameters": [
+              "test_name"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict]"
+          },
+          {
+            "name": "_save_baseline",
+            "docstring": "Save baseline metadata to JSON file",
+            "parameters": [
+              "test_name",
+              "metadata"
+            ],
+            "is_public": false,
+            "returns": "None"
+          }
+        ],
+        "attributes": [
+          "baseline_dir",
+          "diff_dir",
+          "metadata_dir",
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Batch Compare",
+          "Compare To Baseline",
+          "Create",
+          "Create Baseline",
+          "Delete Baseline",
+          "Detect",
+          "Generate",
+          "Generate Report",
+          "List Baselines",
+          "Measure",
+          "Store Baseline",
+          "Test"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": false
+      },
+      "emoji": "\ud83d\udc9a",
+      "last_analyzed": "2025-10-31T04:37:56.599991",
+      "skill_levels": {
+        "Batch Compare": 98,
+        "Compare To Baseline": 98,
+        "Create": 98,
+        "Create Baseline": 98,
+        "Delete Baseline": 98,
+        "Detect": 98,
+        "Generate": 98,
+        "Generate Report": 98,
+        "List Baselines": 98,
+        "Measure": 98,
+        "Store Baseline": 98,
+        "Test": 98
+      },
+      "training_needed": [
+        "MCP/Playwright integration for visual testing",
+        "Analysis capabilities"
+      ]
+    },
+    "Zatanna Seo": {
+      "capabilities": {
+        "class_name": "ZatannaSEO",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/zatanna_seo.py",
+        "docstring": "\ud83c\udfa9 Zatanna - The Mistress of Magic and SEO\n\n\"!atadatem tcefrepni tsac I\" (I cast in perfect metadata!)\n\nUses backwards magic spells to analyze and optimize SEO elements.\nEach spell reveals hidden truths about search engine optimization.",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Zatanna's magic chamber\n\nArgs:\n    reports_dir: Directory for SEO reports\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "reports_dir",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Zatanna dialogue - SEO magic and mystical specialist",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with SEO focus. Categories: Enchanting, Optimizing, Casting",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff SEO analysis to another hero",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "analyze_seo_magic",
+            "docstring": "\ud83c\udfa9 Main SEO analysis using all magic spells\n\nCast all backwards spells to reveal complete SEO analysis:\n- Meta tags validation\n- Structured data detection\n- Heading hierarchy\n- Image alt text coverage\n- Internal linking structure\n- Core Web Vitals impact\n- Crawlability assessment\n- Mobile-friendliness\n\nArgs:\n    mcp_tools: Chrome DevTools MCP tools\n    target_url: Optional URL to analyze (if navigating first)\n\nReturns:\n    Complete SEO analysis with magic score",
+            "parameters": [
+              "mcp_tools",
+              "target_url"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_backwards_spell_meta_reveal",
+            "docstring": "\ud83c\udfa9 Spell: !sgat atem laeveR (Reveal meta tags!)\n\nExtracts and validates all meta tags:\n- Title tag\n- Meta description\n- Open Graph tags (og:*)\n- Twitter Card tags (twitter:*)\n- Canonical URL\n- Robots meta\n- Language meta\n- Viewport meta",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_backwards_spell_structured_data",
+            "docstring": "\ud83c\udfa9 Spell: !atad derutcurts dniF (Find structured data!)\n\nDetects and validates structured data (JSON-LD, Microdata, RDFa):\n- Schema.org types\n- Validation errors\n- Completeness check",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_backwards_spell_crawlability",
+            "docstring": "\ud83c\udfa9 Spell: !ytilibwalwarc kcehC (Check crawlability!)\n\nAnalyzes crawlability factors:\n- Robots meta directives\n- Canonical tags\n- Hreflang tags\n- Pagination links (rel=prev/next)\n- XML sitemap references",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_heading_hierarchy",
+            "docstring": "Analyze heading structure (H1-H6) for SEO",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_images_seo",
+            "docstring": "Analyze images for SEO (alt text, file names, dimensions)",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_internal_links",
+            "docstring": "Analyze internal linking structure",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_mobile_seo",
+            "docstring": "Analyze mobile SEO factors",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_cwv_impact",
+            "docstring": "Analyze how page structure impacts Core Web Vitals (SEO ranking factor)\n\nFocus on elements that affect:\n- LCP (Largest Contentful Paint)\n- FID (First Input Delay)\n- CLS (Cumulative Layout Shift)",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_title",
+            "docstring": "Validate title tag",
+            "parameters": [
+              "title"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_description",
+            "docstring": "Validate meta description",
+            "parameters": [
+              "description"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_canonical",
+            "docstring": "Validate canonical URL",
+            "parameters": [
+              "canonical"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_open_graph",
+            "docstring": "Validate Open Graph tags",
+            "parameters": [
+              "og_tags"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_twitter_card",
+            "docstring": "Validate Twitter Card tags",
+            "parameters": [
+              "twitter_tags"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_viewport",
+            "docstring": "Validate viewport meta tag",
+            "parameters": [
+              "viewport"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_structured_data_item",
+            "docstring": "Validate individual structured data item",
+            "parameters": [
+              "item"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_compile_seo_issues",
+            "docstring": "Compile all SEO issues from analysis",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_calculate_zatanna_score",
+            "docstring": "Calculate Zatanna's magic SEO score (0-100)\n\nScoring deductions:\n- Critical issues: -15 points each\n- High severity: -10 points each\n- Medium severity: -5 points each\n- Low severity: -2 points each",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_magic_recommendations",
+            "docstring": "Generate Zatanna's magical recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_get_fix_recommendation",
+            "docstring": "Get specific fix recommendation for an issue",
+            "parameters": [
+              "issue"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_save_magic_report",
+            "docstring": "Save Zatanna's magic report",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "None"
+          }
+        ],
+        "attributes": [
+          "reports_dir",
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Analyze",
+          "Analyze Seo Magic",
+          "Optimize"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83c\udfa9",
+      "last_analyzed": "2025-10-31T04:37:56.600022",
+      "skill_levels": {
+        "Analyze": 100,
+        "Analyze Seo Magic": 100,
+        "Optimize": 100
+      },
+      "training_needed": [
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Atom Component Analysis": {
+      "capabilities": {
+        "class_name": "AtomComponentAnalysis",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/atom_component_analysis.py",
+        "docstring": "\ud83d\udd2c THE ATOM - Component Library Analyzer\n\nThe Atom's Powers:\n1. Enumerate all component variants\n2. Test each variant for accessibility\n3. Validate design token consistency\n4. Check component naming conventions\n5. Analyze component hierarchy\n6. Detect missing variants\n7. Test component combinations\n8. Generate component documentation",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize The Atom's molecular analysis lab\n\nArgs:\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "The Atom dialogue - Molecular analysis and shrinking specialist",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with component focus. Categories: Analyzing, Shrinking, Examining",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff component analysis to another hero",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "analyze_component_library",
+            "docstring": "\ud83d\udd2c The Atom analyzes component library at molecular level\n\nArgs:\n    components: Dictionary of components from design file\n        {\n            'button-primary': {...},\n            'button-secondary': {...},\n            'input-default': {...},\n            etc.\n        }\n    design_tokens: Optional design tokens/variables\n\nReturns:\n    Complete component library analysis",
+            "parameters": [
+              "components",
+              "design_tokens"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_categorize_components",
+            "docstring": "\ud83d\udd2c Categorize components by type\n\nCategories: buttons, inputs, cards, modals, navigation, etc.\n\nArgs:\n    components: All components\n\nReturns:\n    Components categorized by type",
+            "parameters": [
+              "components"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, List[str]]"
+          },
+          {
+            "name": "_enumerate_variants",
+            "docstring": "\ud83d\udd2c Enumerate variants for each component type\n\nVariants: primary, secondary, disabled, error, etc.\n\nArgs:\n    components: All components\n    categories: Categorized components\n\nReturns:\n    Variants enumerated for each component type",
+            "parameters": [
+              "components",
+              "categories"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Dict]"
+          },
+          {
+            "name": "_analyze_design_tokens",
+            "docstring": "\ud83d\udd2c Analyze design token consistency\n\nCheck if components use design tokens consistently\n\nArgs:\n    components: All components\n    design_tokens: Design tokens/variables\n\nReturns:\n    Token consistency analysis",
+            "parameters": [
+              "components",
+              "design_tokens"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_check_naming_conventions",
+            "docstring": "\ud83d\udd2c Check component naming conventions\n\nGood naming: button-primary, input-error, card-elevated\nBad naming: btn1, myButton, component_2\n\nArgs:\n    components: All components\n\nReturns:\n    Naming convention analysis",
+            "parameters": [
+              "components"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_detect_missing_variants",
+            "docstring": "\ud83d\udd2c Detect missing variants in component library\n\nExpected variants:\n- Buttons: primary, secondary, ghost, danger, disabled\n- Inputs: default, focus, error, disabled\n- etc.\n\nArgs:\n    variants: Enumerated variants\n\nReturns:\n    Missing variants for each component type",
+            "parameters": [
+              "variants"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, List[str]]"
+          },
+          {
+            "name": "_analyze_component_hierarchy",
+            "docstring": "\ud83d\udd2c Analyze component hierarchy and composition\n\nArgs:\n    components: All components\n\nReturns:\n    Hierarchy analysis",
+            "parameters": [
+              "components"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_test_accessibility_patterns",
+            "docstring": "\ud83d\udd2c Test component accessibility patterns\n\nCheck for common ARIA patterns\n\nArgs:\n    components: All components\n\nReturns:\n    Accessibility pattern analysis",
+            "parameters": [
+              "components"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_component_score",
+            "docstring": "\ud83d\udd2c Calculate Atom Component Score (0-100)\n\nScoring:\n- Variant completeness (30%)\n- Naming conventions (25%)\n- Design token usage (25%)\n- Accessibility patterns (20%)\n\nArgs:\n    results: Analysis results\n\nReturns:\n    Component score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_atom_recommendations",
+            "docstring": "\ud83d\udd2c Generate The Atom's component recommendations\n\nArgs:\n    results: Analysis results\n\nReturns:\n    List of recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_calculate_atom_score",
+            "docstring": "Alias for _calculate_component_score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_molecular_recommendations",
+            "docstring": "Alias for _generate_atom_recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          }
+        ],
+        "attributes": [
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Analyze",
+          "Analyze Component Library",
+          "Detect",
+          "Generate",
+          "Test",
+          "Validate"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": false
+      },
+      "emoji": "\ud83d\udd2c",
+      "last_analyzed": "2025-10-31T04:37:56.600031",
+      "skill_levels": {
+        "Analyze": 92,
+        "Analyze Component Library": 92,
+        "Detect": 92,
+        "Generate": 92,
+        "Test": 92,
+        "Validate": 92
+      },
+      "training_needed": []
+    },
+    "Oracle Meta Agent": {
+      "capabilities": {
+        "class_name": "OracleMeta",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/oracle_meta_agent.py",
+        "docstring": "\ud83d\udd2e ORACLE - The Meta-Agent\n\nBarbara Gordon's Oracle serves as the Justice League's:\n- Information hub and knowledge keeper\n- System architect and code quality guardian\n- Self-healing engine with predictive capabilities\n- MCP integration manager\n- Continuous improvement coordinator\n- Strategic reasoning advisor (NEW!)\n\nPowers:\n1. Strategic Reasoning - Think through patterns before storing (NEW!)\n2. Knowledge Management - Store all errors, solutions, patterns\n3. Learning Engine - Learn from every mission, improve agents\n4. Self-Healing - Detect issues, propose fixes (require approval)\n5. Performance Monitoring - Track metrics, optimize performance\n6. Version Control - Manage versions, enable rollback\n7. Predictive Maintenance - Predict and prevent failures\n8. MCP Integration - Monitor and integrate MCP servers\n9. Testing Pipeline - Generate and validate tests\n\n\"I see everything. I know everything. I think strategically.\" - Oracle",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Oracle's information network\n\nArgs:\n    knowledge_base_dir: Directory for knowledge base storage\n    narrator: Optional MissionControlNarrator for enhanced UX",
+            "parameters": [
+              "knowledge_base_dir",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "_init_databases",
+            "docstring": "Initialize all knowledge base databases",
+            "parameters": [],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "_load_agent_versions",
+            "docstring": "Load current agent versions",
+            "parameters": [],
+            "is_public": false,
+            "returns": "Dict[str, str]"
+          },
+          {
+            "name": "_save_agent_versions",
+            "docstring": "Save agent versions to database",
+            "parameters": [],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "store_error_solution",
+            "docstring": "\ud83d\udd2e Store an error and its solution in knowledge base\n\nArgs:\n    agent_name: Name of agent that encountered error\n    error_type: Type of error (timeout, validation, api_error, etc.)\n    error_details: Detailed error information\n    solution: Solution that fixed the error\n    context: Context in which error occurred\n\nReturns:\n    Error ID for future reference",
+            "parameters": [
+              "agent_name",
+              "error_type",
+              "error_details",
+              "solution",
+              "context"
+            ],
+            "is_public": true,
+            "returns": "str"
+          },
+          {
+            "name": "_find_similar_error",
+            "docstring": "Find similar error in database",
+            "parameters": [
+              "agent_name",
+              "error_type",
+              "error_details",
+              "existing_errors"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict]"
+          },
+          {
+            "name": "_errors_are_similar",
+            "docstring": "Check if two errors are similar enough to be considered the same",
+            "parameters": [
+              "error1",
+              "error2"
+            ],
+            "is_public": false,
+            "returns": "bool"
+          },
+          {
+            "name": "query_error_solutions",
+            "docstring": "\ud83d\udd2e Query error solutions from knowledge base for auto-fix\n\nArgs:\n    error: Error dict with 'type', 'message', 'context'\n    min_similarity: Minimum similarity threshold (default: 0.8)\n\nReturns:\n    List of matching error-solution pairs sorted by confidence",
+            "parameters": [
+              "error",
+              "min_similarity"
+            ],
+            "is_public": true,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "reinforce_solution",
+            "docstring": "\ud83d\udd2e Reinforce or penalize solution confidence based on outcome\n\nArgs:\n    error: The error that occurred\n    solution: The solution that was applied\n    success: Whether the solution worked\n\nUpdates confidence scores in knowledge base for learning",
+            "parameters": [
+              "error",
+              "solution",
+              "success"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Oracle dialogue - Analytical, strategic thinker\n\nPersonality traits:\n- Mentor and guide for all heroes\n- Strategic pattern recognition\n- Knowledge-focused language\n- Analytical but approachable",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Convenience method for Oracle's sequential thinking display.\n\nArgs:\n    thought: The reasoning step\n    step: Step number (auto-increments if None)\n    category: Label like \"Scanning\", \"Analyzing\", \"Pattern Recognition\", \"Learning\"\n\nExample:\n    self.think(\"Checking knowledge base for patterns\", category=\"Scanning\")",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "contribute_to_strategy",
+            "docstring": "Oracle's contribution to team strategy session\n\nProvides pattern-based recommendations from knowledge base\n\nArgs:\n    topic: Strategy session topic\n    context: Optional context data\n\nReturns:\n    Dictionary with perspective, reasoning, and recommendation",
+            "parameters": [
+              "topic",
+              "context"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "query_knowledge_base",
+            "docstring": "\ud83d\udd2e Query knowledge base for relevant errors/solutions\n\nArgs:\n    query: Search query (error message, keywords, etc.)\n    agent_name: Optional filter by agent name\n\nReturns:\n    List of relevant error/solution records",
+            "parameters": [
+              "query",
+              "agent_name"
+            ],
+            "is_public": true,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "get_best_practices",
+            "docstring": "\ud83d\udd2e Get best practices for a category\n\nArgs:\n    category: Category (coding, testing, performance, security, etc.)\n\nReturns:\n    List of best practices",
+            "parameters": [
+              "category"
+            ],
+            "is_public": true,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "add_best_practice",
+            "docstring": "Add a new best practice to the knowledge base",
+            "parameters": [
+              "category",
+              "title",
+              "description",
+              "source"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "analyze_mission_results",
+            "docstring": "\ud83d\udd2e Analyze mission results and learn from them\n\nArgs:\n    mission_results: Complete mission results from Superman\n\nReturns:\n    Analysis and recommendations",
+            "parameters": [
+              "mission_results"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_hero_performance",
+            "docstring": "Analyze individual hero performance",
+            "parameters": [
+              "hero_name",
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_detect_patterns",
+            "docstring": "Detect patterns in mission data",
+            "parameters": [
+              "data"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_store_mission_insights",
+            "docstring": "Store mission insights in patterns database",
+            "parameters": [
+              "analysis"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "_analyze_error_patterns",
+            "docstring": "Analyze if error is part of a pattern",
+            "parameters": [
+              "agent_name",
+              "error_type"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "_analyze_pattern_strategically",
+            "docstring": "\ud83e\udde0 NEW: Oracle uses strategic thinking to deeply analyze patterns\n\nThis makes Oracle intelligent - she THINKS about patterns instead of\njust counting them!\n\nArgs:\n    pattern_data: Data about the pattern to analyze\n\nReturns:\n    Strategic insights about the pattern",
+            "parameters": [
+              "pattern_data"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_store_pattern",
+            "docstring": "Store detected pattern",
+            "parameters": [
+              "pattern"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "predict_failures",
+            "docstring": "\ud83d\udd2e Predict potential failures for an agent\n\nArgs:\n    agent_name: Name of agent to analyze\n\nReturns:\n    Prediction report with probability and recommendations",
+            "parameters": [
+              "agent_name"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "track_agent_performance",
+            "docstring": "\ud83d\udd2e Track agent performance metrics\n\nArgs:\n    agent_name: Name of agent\n    metrics: Performance metrics dictionary",
+            "parameters": [
+              "agent_name",
+              "metrics"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "get_agent_metrics",
+            "docstring": "Get current metrics for an agent",
+            "parameters": [
+              "agent_name"
+            ],
+            "is_public": true,
+            "returns": "Optional[Dict]"
+          },
+          {
+            "name": "generate_performance_report",
+            "docstring": "\ud83d\udd2e Generate comprehensive performance report for all agents\n\nReturns:\n    Performance report with recommendations",
+            "parameters": [],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "create_agent_version",
+            "docstring": "\ud83d\udd2e Create a new version of an agent\n\nArgs:\n    agent_name: Name of agent\n    version: Version number (e.g., \"1.2.0\")\n    changes: Description of changes\n    code_hash: Optional hash of agent code for verification\n\nReturns:\n    Success status",
+            "parameters": [
+              "agent_name",
+              "version",
+              "changes",
+              "code_hash"
+            ],
+            "is_public": true,
+            "returns": "bool"
+          },
+          {
+            "name": "rollback_agent",
+            "docstring": "\ud83d\udd2e Rollback agent to a previous version\n\nArgs:\n    agent_name: Name of agent\n    target_version: Version to rollback to\n\nReturns:\n    Success status",
+            "parameters": [
+              "agent_name",
+              "target_version"
+            ],
+            "is_public": true,
+            "returns": "bool"
+          },
+          {
+            "name": "get_agent_version_history",
+            "docstring": "Get version history for an agent",
+            "parameters": [
+              "agent_name"
+            ],
+            "is_public": true,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "oracle_report",
+            "docstring": "\ud83d\udd2e Generate Oracle's comprehensive system report\n\nReturns:\n    Complete system health and knowledge report",
+            "parameters": [],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "get_project_context",
+            "docstring": "\ud83d\udd2e Get project-level context for Figma conversions\n\nThis method is called by Superman/Artemis to retrieve existing patterns\nfrom the same Figma project, enabling component reuse and consistency.\n\nArgs:\n    file_key: Figma file key (e.g., \"6Pmf9gCcUccyqbCO9nN6Ts\")\n\nReturns:\n    Project context including:\n    - project_known: bool\n    - conversions_count: int\n    - shared_components: List of components to reuse\n    - design_system: Colors, spacing, typography\n    - common_patterns: List of pattern names\n    - recommendation: String recommendation",
+            "parameters": [
+              "file_key"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "update_project_patterns",
+            "docstring": "\ud83d\udd2e Update project patterns after a conversion\n\nCalled by Artemis after generating a component to record:\n- New conversions\n- New shared elements discovered\n- New patterns identified\n\nArgs:\n    file_key: Figma file key\n    component_name: Name of converted component\n    node_id: Figma node ID\n    new_shared_elements: New shared elements to track\n    new_patterns: New patterns discovered\n\nReturns:\n    Success status",
+            "parameters": [
+              "file_key",
+              "component_name",
+              "node_id",
+              "new_shared_elements",
+              "new_patterns"
+            ],
+            "is_public": true,
+            "returns": "bool"
+          },
+          {
+            "name": "get_shared_component_status",
+            "docstring": "\ud83d\udd2e Get status of a shared component\n\nArgs:\n    component_name: Name of shared component (e.g., \"AppHeader\")\n\nReturns:\n    Component status including extraction status, file path, etc.",
+            "parameters": [
+              "component_name"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "mark_shared_component_extracted",
+            "docstring": "\ud83d\udd2e Mark a shared component as extracted\n\nArgs:\n    component_name: Name of shared component\n    file_path: Path to the extracted component file\n\nReturns:\n    Success status",
+            "parameters": [
+              "component_name",
+              "file_path"
+            ],
+            "is_public": true,
+            "returns": "bool"
+          },
+          {
+            "name": "store_user_question",
+            "docstring": "\ud83d\udd2e Store a user question with full context for learning\n\nArgs:\n    question: The user's question\n    category: Question category (frame_export, figma_conversion, etc.)\n    context: Mission context (mission_type, user_stage, etc.)\n    response_summary: Brief summary of Oracle's response\n\nReturns:\n    question_id: Unique identifier for the stored question",
+            "parameters": [
+              "question",
+              "category",
+              "context",
+              "response_summary"
+            ],
+            "is_public": true,
+            "returns": "str"
+          },
+          {
+            "name": "query_similar_questions",
+            "docstring": "\ud83d\udd2e Find similar questions in FAQ database\n\nArgs:\n    question: User's current question\n    category: Optional category filter\n\nReturns:\n    List of similar questions with their answers",
+            "parameters": [
+              "question",
+              "category"
+            ],
+            "is_public": true,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "get_question_analytics",
+            "docstring": "\ud83d\udd2e Get analytics on user questions\n\nReturns:\n    Analytics including most asked categories, common patterns, etc.",
+            "parameters": [],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "track_user_journey",
+            "docstring": "\ud83d\udd2e Track user's learning journey progression\n\nArgs:\n    user_stage: Current stage (beginner, intermediate, advanced)\n    milestone: Milestone achieved (completed_first_export, achieved_90plus_accuracy, etc.)\n\nReturns:\n    Success status",
+            "parameters": [
+              "user_stage",
+              "milestone"
+            ],
+            "is_public": true,
+            "returns": "bool"
+          },
+          {
+            "name": "identify_knowledge_gaps",
+            "docstring": "\ud83d\udd2e Identify knowledge gaps based on user questions\n\nReturns:\n    List of identified gaps with severity and suggested improvements",
+            "parameters": [],
+            "is_public": true,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "track_mission_outcome",
+            "docstring": "\ud83d\udd2e Track complete mission outcome for meta-learning (PHASE 1)\n\nThis is called by Superman after EVERY mission (success or failure) to enable\nOracle to learn patterns and improve all heroes over time.\n\nArgs:\n    mission_results: Complete mission results from Superman\n\nReturns:\n    Success status",
+            "parameters": [
+              "mission_results"
+            ],
+            "is_public": true,
+            "returns": "bool"
+          },
+          {
+            "name": "start_learning_session",
+            "docstring": "\ud83c\udf93 Start a new learning session for auto-learning\n\nCreates a LearningSession that tracks the entire user interaction from\nrequest to completion, enabling Oracle to learn automatically.\n\nArgs:\n    user_request: Original user request (exact words)\n    user_intent: Parsed intent (figma_conversion, frame_export, website_analysis, etc.)\n    mission_type: Type of mission being performed\n\nReturns:\n    LearningSession instance\n\nExample:\n    session = oracle.start_learning_session(\n        user_request=\"Convert Dashboard 10 to React\",\n        user_intent=\"figma_conversion\",\n        mission_type=\"figma_conversion\"\n    )",
+            "parameters": [
+              "user_request",
+              "user_intent",
+              "mission_type"
+            ],
+            "is_public": true,
+            "returns": "'LearningSession'"
+          },
+          {
+            "name": "complete_learning_session",
+            "docstring": "\ud83c\udf93 Complete a learning session and generate insights\n\nAnalyzes the complete session, infers user satisfaction, generates\ninsights and recommendations, then stores everything for future learning.\n\nArgs:\n    session: The LearningSession to complete\n    results: Final mission results\n\nReturns:\n    Advisory dictionary with learnings and recommendations\n\nExample:\n    advisory = oracle.complete_learning_session(session, mission_results)\n    # Returns: {\n    #     'satisfaction': {...},\n    #     'what_worked_well': [...],\n    #     'what_needs_improvement': [...],\n    #     'recommendations': [...]\n    # }",
+            "parameters": [
+              "session",
+              "results"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "learn_from_operation",
+            "docstring": "\ud83d\udd2e Learn from a single hero operation (auto-invoked by hero hooks)\n\nThis is called automatically by hero operation hooks to enable\nreal-time learning from every operation.\n\nArgs:\n    hero: Hero name (e.g., \"Artemis\")\n    operation: Operation name (e.g., \"generate_component_code_expert\")\n    result: Operation result\n    session: Optional learning session (if part of larger mission)",
+            "parameters": [
+              "hero",
+              "operation",
+              "result",
+              "session"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "_generate_session_insights",
+            "docstring": "Generate insights from completed learning session",
+            "parameters": [
+              "session"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_generate_session_recommendations",
+            "docstring": "Generate recommendations from session",
+            "parameters": [
+              "session"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_store_learning_session",
+            "docstring": "Store learning session in knowledge base",
+            "parameters": [
+              "session"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "_detect_mission_type",
+            "docstring": "Detect mission type from results",
+            "parameters": [
+              "mission_results"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_extract_hero_learnings",
+            "docstring": "\ud83d\udd2e Extract learnings from a hero's report (PHASE 1)\n\nParses hero-specific data to extract performance metrics",
+            "parameters": [
+              "hero_name",
+              "hero_report"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_update_hero_performance_trends",
+            "docstring": "Update hero performance trends with new mission data",
+            "parameters": [
+              "data",
+              "mission_record"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "_perform_real_time_learning",
+            "docstring": "\ud83d\udd2e Perform real-time learning after each mission (PHASE 2 preview)\n\nAnalyzes mission outcome and immediately generates insights",
+            "parameters": [
+              "data",
+              "mission_record"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "analyze_hero_performance_trends",
+            "docstring": "\ud83d\udd2e Analyze a hero's performance trends over time (PHASE 2)\n\nArgs:\n    hero_name: Name of the hero to analyze\n\nReturns:\n    Performance analysis with trends, skill gaps, and insights",
+            "parameters": [
+              "hero_name"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "identify_skill_gaps",
+            "docstring": "\ud83d\udd2e Identify specific skill gaps for a hero (PHASE 2)\n\nAnalyzes mission history to find scenarios where hero underperforms\n\nArgs:\n    hero_name: Name of hero to analyze\n\nReturns:\n    List of identified skill gaps with severity and recommendations",
+            "parameters": [
+              "hero_name"
+            ],
+            "is_public": true,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "compare_hero_effectiveness",
+            "docstring": "\ud83d\udd2e Compare which heroes are most effective for a mission type (PHASE 2)\n\nArgs:\n    mission_type: Type of mission (frame_export, figma_conversion, etc.)\n\nReturns:\n    Effectiveness comparison across heroes",
+            "parameters": [
+              "mission_type"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "generate_hero_improvement_recommendations",
+            "docstring": "\ud83d\udd2e Generate actionable improvement recommendations for a hero (PHASE 2)\n\nArgs:\n    hero_name: Name of hero\n\nReturns:\n    List of recommendations with priority and expected impact",
+            "parameters": [
+              "hero_name"
+            ],
+            "is_public": true,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_generate_trend_recommendation",
+            "docstring": "Generate recommendation based on trend",
+            "parameters": [
+              "trends",
+              "trend_direction"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "get_hero_capabilities",
+            "docstring": "\ud83d\udd2e Get hero's current capabilities and Oracle's recommendations (PHASE 3)\n\nHeroes call this on initialization to load Oracle's learned wisdom\n\nArgs:\n    hero_name: Name of hero\n\nReturns:\n    Hero capabilities including thresholds and recommendations",
+            "parameters": [
+              "hero_name"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "update_hero_capability",
+            "docstring": "\ud83d\udd2e Update hero capability based on learning (PHASE 3)\n\nArgs:\n    hero_name: Name of hero\n    capability_type: Type of update ('threshold', 'technique', 'skill_evolution')\n    updates: Dict of updates to apply\n\nReturns:\n    Success status",
+            "parameters": [
+              "hero_name",
+              "capability_type",
+              "updates"
+            ],
+            "is_public": true,
+            "returns": "bool"
+          },
+          {
+            "name": "predict_mission_success",
+            "docstring": "\ud83d\udd2e Predict mission success probability (PHASE 4)\n\nArgs:\n    mission_context: Mission details (type, complexity, etc.)\n    heroes_list: List of heroes being deployed\n\nReturns:\n    Prediction with probability and reasoning",
+            "parameters": [
+              "mission_context",
+              "heroes_list"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "suggest_optimal_hero_combination",
+            "docstring": "\ud83d\udd2e Suggest optimal hero combination for a mission (PHASE 4)\n\nArgs:\n    mission_context: Mission details\n\nReturns:\n    List of recommended heroes",
+            "parameters": [
+              "mission_context"
+            ],
+            "is_public": true,
+            "returns": "List[str]"
+          },
+          {
+            "name": "generate_training_scenario",
+            "docstring": "\ud83d\udd2e Generate training scenario to strengthen hero weakness (PHASE 5)\n\nArgs:\n    hero_name: Name of hero\n    weak_area: Area needing improvement\n\nReturns:\n    Training scenario with objectives and success criteria",
+            "parameters": [
+              "hero_name",
+              "weak_area"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_training_objectives",
+            "docstring": "Generate specific training objectives",
+            "parameters": [
+              "hero_name",
+              "weak_area"
+            ],
+            "is_public": false,
+            "returns": "List[str]"
+          },
+          {
+            "name": "get_hero_training_plan",
+            "docstring": "\ud83d\udd2e Get complete training plan for a hero (PHASE 5)\n\nArgs:\n    hero_name: Name of hero\n\nReturns:\n    Training plan with scenarios and priorities",
+            "parameters": [
+              "hero_name"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "welcome_new_hero",
+            "docstring": "\ud83d\udd2e Oracle welcomes a new Justice League member\n\nProvides:\n- Welcome message with personality-based greeting\n- Initial orientation on Justice League operations\n- First mission recommendations\n- Mentorship pairing suggestions\n\nArgs:\n    hero_name: Name of the new hero (e.g., \"Quicksilver\")\n    hero_emoji: Hero's emoji (e.g., \"\ud83d\udca8\")\n    specialization: Hero's core skill (e.g., \"speed-optimization\")\n\nReturns:\n    Welcome package with orientation info",
+            "parameters": [
+              "hero_name",
+              "hero_emoji",
+              "specialization"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_suggest_mentor_for_specialization",
+            "docstring": "Suggest a mentor hero based on specialization",
+            "parameters": [
+              "specialization"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, str]"
+          },
+          {
+            "name": "_generate_first_missions",
+            "docstring": "Generate recommended first missions for a new hero",
+            "parameters": [
+              "hero_name",
+              "specialization"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_define_success_criteria",
+            "docstring": "Define success criteria for new hero",
+            "parameters": [
+              "specialization"
+            ],
+            "is_public": false,
+            "returns": "List[str]"
+          },
+          {
+            "name": "_log_hero_onboarding",
+            "docstring": "Log new hero onboarding to patterns database",
+            "parameters": [
+              "welcome_package"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "coach_hero_performance",
+            "docstring": "\ud83d\udd2e Oracle provides coaching feedback after a mission\n\nAnalyzes mission performance and provides:\n- What went well (celebrate successes)\n- Areas for improvement (constructive feedback)\n- Next challenge recommendations\n- Pattern learning opportunities\n\nArgs:\n    hero_name: Name of hero to coach\n    mission_result: Mission results dictionary\n\nReturns:\n    Coaching feedback with actionable recommendations",
+            "parameters": [
+              "hero_name",
+              "mission_result"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_suggest_next_challenges",
+            "docstring": "Suggest progressively harder challenges based on performance",
+            "parameters": [
+              "hero_name",
+              "mission_result"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, str]]"
+          },
+          {
+            "name": "_generate_oracle_tip",
+            "docstring": "Generate a personalized tip from Oracle",
+            "parameters": [
+              "hero_name",
+              "mission_result"
+            ],
+            "is_public": false,
+            "returns": "str"
+          }
+        ],
+        "attributes": [
+          "knowledge_base_dir",
+          "hero_name",
+          "hero_emoji",
+          "narrator",
+          "errors_db",
+          "patterns_db",
+          "metrics_db",
+          "mcp_db",
+          "best_practices_db",
+          "versions_db",
+          "project_patterns_db",
+          "shared_components_db",
+          "agent_versions",
+          "performance_thresholds",
+          "mcp_servers"
+        ],
+        "skills": [
+          "Add Best Practice",
+          "Analyze Hero Performance Trends",
+          "Analyze Mission Results",
+          "Coach Hero Performance",
+          "Compare Hero Effectiveness",
+          "Complete Learning Session",
+          "Contribute To Strategy",
+          "Create Agent Version",
+          "Detect",
+          "Generate",
+          "Generate Hero Improvement Recommendations",
+          "Generate Performance Report",
+          "Generate Training Scenario",
+          "Get Agent Metrics",
+          "Get Agent Version History",
+          "Get Best Practices",
+          "Get Hero Capabilities",
+          "Get Hero Training Plan",
+          "Get Project Context",
+          "Get Question Analytics",
+          "Get Shared Component Status",
+          "Identify Knowledge Gaps",
+          "Identify Skill Gaps",
+          "Learn From Operation",
+          "Mark Shared Component Extracted",
+          "Monitor",
+          "Optimize",
+          "Oracle Report",
+          "Predict Failures",
+          "Predict Mission Success",
+          "Query Error Solutions",
+          "Query Knowledge Base",
+          "Query Similar Questions",
+          "Reinforce Solution",
+          "Rollback Agent",
+          "Start Learning Session",
+          "Store Error Solution",
+          "Store User Question",
+          "Suggest Optimal Hero Combination",
+          "Test",
+          "Track",
+          "Track Agent Performance",
+          "Track Mission Outcome",
+          "Track User Journey",
+          "Update Hero Capability",
+          "Update Project Patterns",
+          "Validate",
+          "Welcome New Hero"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83d\udd2e",
+      "last_analyzed": "2025-10-31T04:37:56.600038",
+      "skill_levels": {
+        "Add Best Practice": 100,
+        "Analyze Hero Performance Trends": 100,
+        "Analyze Mission Results": 100,
+        "Coach Hero Performance": 100,
+        "Compare Hero Effectiveness": 100,
+        "Complete Learning Session": 100,
+        "Contribute To Strategy": 100,
+        "Create Agent Version": 100,
+        "Detect": 100,
+        "Generate": 100,
+        "Generate Hero Improvement Recommendations": 100,
+        "Generate Performance Report": 100,
+        "Generate Training Scenario": 100,
+        "Get Agent Metrics": 100,
+        "Get Agent Version History": 100,
+        "Get Best Practices": 100,
+        "Get Hero Capabilities": 100,
+        "Get Hero Training Plan": 100,
+        "Get Project Context": 100,
+        "Get Question Analytics": 100,
+        "Get Shared Component Status": 100,
+        "Identify Knowledge Gaps": 100,
+        "Identify Skill Gaps": 100,
+        "Learn From Operation": 100,
+        "Mark Shared Component Extracted": 100,
+        "Monitor": 100,
+        "Optimize": 100,
+        "Oracle Report": 100,
+        "Predict Failures": 100,
+        "Predict Mission Success": 100,
+        "Query Error Solutions": 100,
+        "Query Knowledge Base": 100,
+        "Query Similar Questions": 100,
+        "Reinforce Solution": 100,
+        "Rollback Agent": 100,
+        "Start Learning Session": 100,
+        "Store Error Solution": 100,
+        "Store User Question": 100,
+        "Suggest Optimal Hero Combination": 100,
+        "Test": 100,
+        "Track": 100,
+        "Track Agent Performance": 100,
+        "Track Mission Outcome": 100,
+        "Track User Journey": 100,
+        "Update Hero Capability": 100,
+        "Update Project Patterns": 100,
+        "Validate": 100,
+        "Welcome New Hero": 100
+      },
+      "training_needed": []
+    },
+    "Superman Coordinator": {
+      "capabilities": {
+        "class_name": "SupermanCoordinator",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/superman_coordinator.py",
+        "docstring": "\ud83e\uddb8 SUPERMAN - Justice League Coordinator\n\nSuperman assembles and coordinates all heroes for complete design analysis\n\nLeadership Powers:\n1. Assemble the Justice League\n2. Deploy heroes based on mission requirements\n3. Coordinate multi-hero operations\n4. Combine results from all heroes\n5. Calculate Justice League composite score\n6. Generate comprehensive reports\n7. Prioritize critical issues across all analyses\n8. Deliver final verdict",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Superman's command center\n\nArgs:\n    baseline_dir: Directory for baselines and configs",
+            "parameters": [
+              "baseline_dir"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Superman dialogue - Authoritative, mission-focused leadership\n\nPersonality traits:\n- Direct tactical commands\n- Mission-focused language\n- Authoritative leadership voice\n- Clear deployment directives",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with mission coordination focus\n\nCommon categories for Superman:\n- Commanding, Deploying, Coordinating, Strategizing",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff mission to another hero\n\nArgs:\n    to_hero: Name of hero receiving the mission (with emoji)\n    context: What mission/task is being assigned\n    details: Optional additional mission details",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "strategy_session",
+            "docstring": "\ud83e\uddb8 Superman leads a strategy session where heroes debate and collaborate\n\nHeroes share their sequential thinking, Superman analyzes, and makes final decision.\n\nArgs:\n    topic: What the team is strategizing about\n    heroes_dict: Dictionary of {hero_name: hero_instance} to consult\n    context: Optional context data for the discussion\n\nReturns:\n    Strategy session results with decision and next steps\n\nExample:\n    result = superman.strategy_session(\n        topic=\"Best methodology for Dashboard 10 conversion\",\n        heroes_dict={\n            \"Oracle\": self.oracle,\n            \"Artemis\": self.artemis,\n            \"Vision Analyst\": self.vision_analyst\n        },\n        context={\"complexity\": \"high\", \"layout\": \"2-column\"}\n    )",
+            "parameters": [
+              "topic",
+              "heroes_dict",
+              "context"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_make_strategy_decision",
+            "docstring": "Superman analyzes all contributions and makes final decision\n\nArgs:\n    contributions: List of hero contributions\n    context: Optional context data\n\nReturns:\n    Decision dict with choice and reasoning",
+            "parameters": [
+              "contributions",
+              "context"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_assign_next_steps",
+            "docstring": "Assign next steps to heroes based on decision\n\nArgs:\n    decision: The decision made\n    heroes_dict: Available heroes\n\nReturns:\n    Dict of {hero_name: task}",
+            "parameters": [
+              "decision",
+              "heroes_dict"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, str]"
+          },
+          {
+            "name": "start_mission_tracking",
+            "docstring": "Start Oracle mission tracking for self-learning\n\nArgs:\n    user_request: Original user request/input\n    mission_type: Type of mission (conversion, analysis, export, etc.)\n    context: Optional context data\n\nReturns:\n    Mission ID for tracking",
+            "parameters": [
+              "user_request",
+              "mission_type",
+              "context"
+            ],
+            "is_public": true,
+            "returns": "str"
+          },
+          {
+            "name": "complete_mission_with_learning",
+            "docstring": "Complete mission and trigger Oracle's self-learning\n\nArgs:\n    success: Whether mission succeeded\n    outcome_details: Detailed outcome metrics\n    issues: Optional list of issues encountered\n\nReturns:\n    Learning results with team feedback",
+            "parameters": [
+              "success",
+              "outcome_details",
+              "issues"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "assemble_justice_league",
+            "docstring": "\ud83e\uddb8 ASSEMBLE THE JUSTICE LEAGUE!\n\nSuperman coordinates all heroes for complete design analysis\n\nArgs:\n    mission: Mission parameters\n        {\n            'url': str,  # Target URL\n            'mcp_tools': Dict,  # Chrome DevTools MCP tools\n            'design_data': Dict,  # Extracted design data\n            'components': Dict,  # Component library\n            'page_snapshot': str,  # DOM snapshot\n            'screenshot_path': str,  # Screenshot for visual testing\n            'options': {\n                'test_interactive': bool,  # Deploy Batman?\n                'test_visual': bool,  # Deploy Green Lantern?\n                'test_accessibility': bool,  # Deploy Wonder Woman?\n                'test_performance': bool,  # Deploy Flash?\n                'test_network': bool,  # Deploy Aquaman?\n                'test_integrations': bool,  # Deploy Cyborg?\n                'test_components': bool,  # Deploy The Atom?\n                'test_security': bool,  # Deploy Martian Manhunter?\n                'test_responsive': bool,  # Deploy Plastic Man?\n                'test_seo': bool,  # Deploy Zatanna?\n                'validate_ethics': bool,  # Deploy Litty?\n            }\n        }\n\nReturns:\n    Complete Justice League analysis results",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_deploy_batman",
+            "docstring": "\ud83e\udd87 Deploy Batman for interactive testing",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_green_lantern",
+            "docstring": "\ud83d\udc9a Deploy Green Lantern for visual regression testing",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_wonder_woman",
+            "docstring": "\u26a1 Deploy Wonder Woman for accessibility analysis (Superman-Enhanced!)",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_flash",
+            "docstring": "\u26a1 Deploy Flash for performance profiling (Enhanced by Superman)",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_aquaman",
+            "docstring": "\ud83c\udf0a Deploy Aquaman for network analysis (Enhanced by Superman)",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_cyborg",
+            "docstring": "\ud83e\udd16 Deploy Cyborg for integration checking",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_atom",
+            "docstring": "\ud83d\udd2c Deploy The Atom for component analysis",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_martian_manhunter",
+            "docstring": "\ud83e\udde0 Deploy Martian Manhunter for security scanning",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_plastic_man",
+            "docstring": "\ud83e\udd38 Deploy Plastic Man for responsive design testing",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_zatanna",
+            "docstring": "\ud83c\udfa9 Deploy Zatanna for SEO & metadata analysis",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_litty",
+            "docstring": "\ud83e\ude94 Deploy Litty - The Conscience Keeper\n\nArgs:\n    mission: Mission parameters\n\nReturns:\n    Ethics validation results",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_artemis",
+            "docstring": "\ud83c\udfa8 Deploy Artemis - The Figma-to-Code Expert (Oracle & Green Arrow Enhanced)\n\nArgs:\n    mission: Mission parameters including:\n        - figma_url: Figma design URL\n        - component_name: Name for the component\n        - framework: 'next' or 'react' (default: 'next')\n        - language: 'typescript' or 'javascript' (default: 'typescript')\n        - expert_mode: Enable expert workflow (default: True)\n        - rendered_url: URL of rendered component (for Green Arrow validation)\n\nReturns:\n    Figma-to-Code conversion results with learning data, Oracle tracking, and Green Arrow validation",
+            "parameters": [
+              "mission"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_deploy_hawkman_frame_export",
+            "docstring": "\ud83d\udca8 Deploy Quicksilver (or \ud83e\udd85 Hawkman) - Figma Frame PNG Export\n\nExports all top-level frames from a Figma file as PNG images\nUses Quicksilver (speed-optimized) by default, falls back to Hawkman if unavailable\n\nArgs:\n    mission: Mission parameters including:\n        - file_key: Figma file key (or figma_url to extract from)\n        - output_dir: Optional custom output directory\n        - scale: Export scale 1.0-4.0 (default: 2.0)\n        - progress_callback: Optional callback(current, total, frame_name) for progress updates\n        - show_count_first: Optional bool to pre-count frames before export (default: False)\n        - agent: Optional 'quicksilver' or 'hawkman' to force specific hero (default: auto)\n    auto_fix_mode: Enable autonomous error recovery (default: True)\n\nReturns:\n    Export results with list of exported files and total frame count",
+            "parameters": [
+              "mission",
+              "auto_fix_mode"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_combine_hero_results",
+            "docstring": "\ud83e\uddb8 Combine results from all heroes\n\nArgs:\n    hero_reports: Reports from each hero\n\nReturns:\n    Combined analysis",
+            "parameters": [
+              "hero_reports"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_justice_league_score",
+            "docstring": "\ud83e\uddb8 Calculate overall Justice League Score\n\nWeighted average of all hero scores\n\nArgs:\n    results: Complete results\n\nReturns:\n    Justice League composite score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_league_action_plan",
+            "docstring": "\ud83e\uddb8 Generate Justice League prioritized action plan\n\nCombines recommendations from all heroes\n\nArgs:\n    results: Complete results\n\nReturns:\n    Prioritized action plan",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          }
+        ],
+        "attributes": [
+          "baseline_dir",
+          "narrator",
+          "batman",
+          "green_lantern",
+          "wonder_woman",
+          "flash",
+          "aquaman",
+          "cyborg",
+          "atom",
+          "green_arrow",
+          "martian_manhunter",
+          "plastic_man",
+          "zatanna",
+          "litty",
+          "artemis",
+          "oracle",
+          "hawkman",
+          "quicksilver",
+          "hero_name",
+          "hero_emoji",
+          "auto_fix_orchestrator",
+          "heroes_available"
+        ],
+        "skills": [
+          "Assemble Justice League",
+          "Complete Mission With Learning",
+          "Coordinate",
+          "Deploy",
+          "Generate",
+          "Start Mission Tracking",
+          "Strategy Session"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83e\uddb8",
+      "last_analyzed": "2025-10-31T04:37:56.600059",
+      "skill_levels": {
+        "Assemble Justice League": 100,
+        "Complete Mission With Learning": 100,
+        "Coordinate": 100,
+        "Deploy": 100,
+        "Generate": 100,
+        "Start Mission Tracking": 100,
+        "Strategy Session": 100
+      },
+      "training_needed": [
+        "Analysis capabilities"
+      ]
+    },
+    "Green Arrow Visual Validator": {
+      "capabilities": {
+        "class_name": "GreenArrowVisualValidator",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/green_arrow_visual_validator.py",
+        "docstring": "\ud83c\udfaf GREEN ARROW - The Visual Validation Specialist\n\nOliver Queen ensures that rendered components match Figma designs\npixel-perfectly. He's the guardian of WYSIWYG (What You See Is What You Get).\n\nPowers:\n1. Figma Design Extraction - Get exact measurements, colors, typography\n2. Chrome DevTools Inspection - Inspect rendered DOM and computed styles\n3. Tailwind Validation - Verify utility classes match design specs\n4. shadcn/ui Compliance - Ensure components follow design system\n5. Visual Diff Generation - Create detailed discrepancy reports\n6. Accuracy Scoring - Rate conversions 0-100% accuracy\n\nMCP Integrations:\n- figma-mcp: Extract design specs from Figma files\n- chrome-devtools-mcp: Inspect rendered components\n- tailwindcss-mcp: Validate Tailwind utility classes\n- shadcn-ui: Verify component library compliance",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Green Arrow's validation arsenal\n\nArgs:\n    validation_data_dir: Directory for validation reports\n    narrator: Optional Mission Control Narrator for team dialogue",
+            "parameters": [
+              "validation_data_dir",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Convenience method for Green Arrow dialogue",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Convenience method for sequential thinking",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Convenience method for hero-to-hero handoff",
+            "parameters": [
+              "to_hero",
+              "task",
+              "context"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "_init_databases",
+            "docstring": "Initialize all validation databases",
+            "parameters": [],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "extract_figma_specs",
+            "docstring": "\ud83c\udfaf Extract design specifications from Figma using Figma MCP\n\nArgs:\n    file_key: Figma file key\n    node_id: Node ID to extract\n\nReturns:\n    Design specifications including:\n    - Measurements (width, height, x, y)\n    - Colors (fills, strokes)\n    - Typography (fontSize, fontWeight, lineHeight)\n    - Spacing (padding, gaps)\n    - Layout (constraints, layoutMode)",
+            "parameters": [
+              "file_key",
+              "node_id"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "parse_figma_design_tokens",
+            "docstring": "\ud83c\udfaf Parse Figma specs into design tokens\n\nConverts Figma measurements into expected Tailwind values\n\nArgs:\n    figma_specs: Raw Figma specifications\n\nReturns:\n    Design tokens in Tailwind format",
+            "parameters": [
+              "figma_specs"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_px_to_tailwind_spacing",
+            "docstring": "Convert pixel value to Tailwind spacing scale",
+            "parameters": [
+              "px_value"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_rgb_to_hex",
+            "docstring": "Convert Figma RGB color to hex",
+            "parameters": [
+              "color"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_figma_weight_to_tailwind",
+            "docstring": "Convert Figma font weight to Tailwind class",
+            "parameters": [
+              "weight"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "inspect_rendered_component",
+            "docstring": "\ud83c\udfaf Inspect rendered component using Chrome DevTools MCP\n\nArgs:\n    url: URL of rendered page\n    selector: CSS selector for component\n\nReturns:\n    Computed styles and measurements from rendered component",
+            "parameters": [
+              "url",
+              "selector"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "extract_tailwind_classes",
+            "docstring": "\ud83c\udfaf Extract Tailwind classes from component code\n\nArgs:\n    component_code: Component source code\n\nReturns:\n    List of Tailwind utility classes",
+            "parameters": [
+              "component_code"
+            ],
+            "is_public": true,
+            "returns": "List[str]"
+          },
+          {
+            "name": "validate_component",
+            "docstring": "\ud83c\udfaf Complete validation pipeline: Figma \u2192 Rendered comparison\n\nArgs:\n    figma_url: Figma design URL (with node-id)\n    rendered_url: URL of rendered component\n    component_name: Name of component (e.g., \"SettingsProfile\")\n    component_code: Source code of component\n\nReturns:\n    Complete validation report with:\n    - Measurements comparison\n    - Colors comparison\n    - Typography comparison\n    - Spacing comparison\n    - Discrepancies list\n    - Accuracy score\n    - Pass/Fail status",
+            "parameters": [
+              "figma_url",
+              "rendered_url",
+              "component_name",
+              "component_code"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_parse_figma_url",
+            "docstring": "Parse Figma URL to extract file_key and node_id",
+            "parameters": [
+              "figma_url"
+            ],
+            "is_public": false,
+            "returns": "Tuple[str, str]"
+          },
+          {
+            "name": "_compare_measurements",
+            "docstring": "Compare measurements between Figma and rendered",
+            "parameters": [
+              "figma",
+              "rendered"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_compare_colors",
+            "docstring": "Compare colors between Figma and rendered",
+            "parameters": [
+              "figma",
+              "rendered"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_compare_typography",
+            "docstring": "Compare typography between Figma and rendered",
+            "parameters": [
+              "figma",
+              "rendered"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_compare_spacing",
+            "docstring": "Compare spacing between Figma and rendered",
+            "parameters": [
+              "figma",
+              "rendered"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_compare_value",
+            "docstring": "Compare a single value with tolerance",
+            "parameters": [
+              "figma_value",
+              "rendered_value",
+              "value_type"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_tailwind_classes",
+            "docstring": "Validate that Tailwind classes match Figma design tokens",
+            "parameters": [
+              "classes",
+              "figma_tokens"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_accuracy_score",
+            "docstring": "Calculate overall accuracy score (0-100)",
+            "parameters": [
+              "comparisons"
+            ],
+            "is_public": false,
+            "returns": "float"
+          },
+          {
+            "name": "_get_status",
+            "docstring": "Get validation status based on accuracy score",
+            "parameters": [
+              "score"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_collect_discrepancies",
+            "docstring": "Collect all discrepancies from comparisons",
+            "parameters": [
+              "comparisons"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_save_validation_report",
+            "docstring": "Save validation report to database",
+            "parameters": [
+              "report"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "generate_validation_report_markdown",
+            "docstring": "\ud83c\udfaf Generate beautiful markdown validation report\n\nArgs:\n    report: Validation report dictionary\n\nReturns:\n    Markdown-formatted report",
+            "parameters": [
+              "report"
+            ],
+            "is_public": true,
+            "returns": "str"
+          }
+        ],
+        "attributes": [
+          "validation_data_dir",
+          "hero_name",
+          "hero_emoji",
+          "narrator",
+          "reports_db",
+          "discrepancies_db",
+          "accuracy_scores_db",
+          "accuracy_thresholds",
+          "tolerances"
+        ],
+        "skills": [
+          "Create",
+          "Extract",
+          "Extract Figma Specs",
+          "Extract Tailwind Classes",
+          "Generate Validation Report Markdown",
+          "Inspect Rendered Component",
+          "Measure",
+          "Parse Figma Design Tokens",
+          "Validate",
+          "Validate Component"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83c\udfaf",
+      "last_analyzed": "2025-10-31T04:37:56.600066",
+      "skill_levels": {
+        "Create": 100,
+        "Extract": 100,
+        "Extract Figma Specs": 100,
+        "Extract Tailwind Classes": 100,
+        "Generate Validation Report Markdown": 100,
+        "Inspect Rendered Component": 100,
+        "Measure": 100,
+        "Parse Figma Design Tokens": 100,
+        "Validate": 100,
+        "Validate Component": 100
+      },
+      "training_needed": [
+        "Analysis capabilities"
+      ]
+    },
+    "Cyborg Integrations": {
+      "capabilities": {
+        "class_name": "CyborgIntegrations",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/cyborg_integrations.py",
+        "docstring": "\ud83e\udd16 CYBORG - The Integration Master\n\nCyborg's Powers:\n1. Connect to Figma (design files)\n2. Connect to Penpot (open-source design)\n3. Connect to GitHub (code repositories)\n4. Connect to issue trackers (Jira, Linear)\n5. Connect to communication (Slack, Discord)\n6. Manage webhooks\n7. Synchronize data across platforms\n8. Automated workflow integration",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Cyborg's integration systems\n\nArgs:\n    config_dir: Directory to store integration configs\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "config_dir",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Cyborg dialogue - Technological integration specialist",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with integration focus. Categories: Integrating, Connecting, Syncing",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff integration data to another hero",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "connect_all_systems",
+            "docstring": "\ud83e\udd16 Cyborg connects to all external systems\n\nArgs:\n    credentials: Dictionary of credentials for each system\n        {\n            'figma': {'access_token': '...'},\n            'penpot': {'api_key': '...', 'api_url': '...'},\n            'github': {'access_token': '...'},\n            'jira': {'api_token': '...', 'domain': '...'},\n            'slack': {'webhook_url': '...'}\n        }\n\nReturns:\n    Connection status for all systems",
+            "parameters": [
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_connect_figma",
+            "docstring": "\ud83e\udd16 Connect to Figma API\n\nFigma Integration:\n- OAuth 2.0 authentication\n- File extraction\n- Component parsing\n- Version history\n\nArgs:\n    credentials: Figma credentials\n\nReturns:\n    Connection status",
+            "parameters": [
+              "credentials"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_connect_penpot",
+            "docstring": "\ud83e\udd16 Connect to Penpot API\n\nPenpot Integration:\n- API key authentication\n- File downloads\n- Component extraction\n- Open-source design platform\n\nArgs:\n    credentials: Penpot credentials\n\nReturns:\n    Connection status",
+            "parameters": [
+              "credentials"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_connect_github",
+            "docstring": "\ud83e\udd16 Connect to GitHub API\n\nGitHub Integration:\n- Personal access token auth\n- Repository operations\n- Code analysis\n- Issue management\n\nArgs:\n    credentials: GitHub credentials\n\nReturns:\n    Connection status",
+            "parameters": [
+              "credentials"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_connect_jira",
+            "docstring": "\ud83e\udd16 Connect to Jira API\n\nJira Integration:\n- API token authentication\n- Issue creation\n- Project management\n- Sprint tracking\n\nArgs:\n    credentials: Jira credentials\n\nReturns:\n    Connection status",
+            "parameters": [
+              "credentials"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_connect_slack",
+            "docstring": "\ud83e\udd16 Connect to Slack API\n\nSlack Integration:\n- Webhook notifications\n- Message posting\n- Alert delivery\n\nArgs:\n    credentials: Slack credentials\n\nReturns:\n    Connection status",
+            "parameters": [
+              "credentials"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "extract_from_figma",
+            "docstring": "\ud83e\udd16 Extract design data from Figma\n\nArgs:\n    file_key: Figma file key\n    credentials: Figma credentials\n\nReturns:\n    Extracted design data",
+            "parameters": [
+              "file_key",
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "extract_from_penpot",
+            "docstring": "\ud83e\udd16 Extract design data from Penpot\n\nUses existing Penpot API connector\n\nArgs:\n    file_id: Penpot file ID\n    credentials: Penpot credentials\n\nReturns:\n    Extracted design data",
+            "parameters": [
+              "file_id",
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "send_to_jira",
+            "docstring": "\ud83e\udd16 Send accessibility issues to Jira\n\nArgs:\n    issue_data: Issue data to create\n    credentials: Jira credentials\n\nReturns:\n    Jira creation result",
+            "parameters": [
+              "issue_data",
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "notify_slack",
+            "docstring": "\ud83e\udd16 Send notification to Slack\n\nArgs:\n    message: Message to send\n    credentials: Slack credentials\n\nReturns:\n    Notification result",
+            "parameters": [
+              "message",
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "synchronize_data",
+            "docstring": "\ud83e\udd16 Synchronize data between systems\n\nArgs:\n    source: Source system (figma, penpot, etc.)\n    destination: Destination system\n    credentials: Credentials for both systems\n\nReturns:\n    Synchronization result",
+            "parameters": [
+              "source",
+              "destination",
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "generate_integration_report",
+            "docstring": "\ud83e\udd16 Generate Cyborg integration status report\n\nReturns:\n    Integration report",
+            "parameters": [],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "extract_figma_file",
+            "docstring": "Alias for extract_from_figma",
+            "parameters": [
+              "file_key",
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "extract_penpot_file",
+            "docstring": "Alias for extract_from_penpot",
+            "parameters": [
+              "file_id",
+              "credentials"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_integration_score",
+            "docstring": "Calculate Cyborg's integration score based on successful connections",
+            "parameters": [
+              "connections"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          }
+        ],
+        "attributes": [
+          "config_dir",
+          "integrations_available",
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Connect All Systems",
+          "Extract Figma File",
+          "Extract From Figma",
+          "Extract From Penpot",
+          "Extract Penpot File",
+          "Generate Integration Report",
+          "Notify Slack",
+          "Send To Jira",
+          "Synchronize Data",
+          "Track"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": false
+      },
+      "emoji": "\ud83e\udd16",
+      "last_analyzed": "2025-10-31T04:37:56.600073",
+      "skill_levels": {
+        "Connect All Systems": 98,
+        "Extract Figma File": 98,
+        "Extract From Figma": 98,
+        "Extract From Penpot": 98,
+        "Extract Penpot File": 98,
+        "Generate Integration Report": 98,
+        "Notify Slack": 98,
+        "Send To Jira": 98,
+        "Synchronize Data": 98,
+        "Track": 98
+      },
+      "training_needed": [
+        "Analysis capabilities"
+      ]
+    },
+    "Litty Ethics": {
+      "capabilities": {
+        "class_name": "LittyEthics",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/litty_ethics.py",
+        "docstring": "\ud83e\ude94 Litty - The Conscience Keeper\n\nValidates user empathy, ethical design patterns, and real-world impact.\nUses guilt-tripping to make developers aware of how their choices affect users.",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Litty with her ethical validation toolkit\n\nArgs:\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Litty dialogue - Ethical design and empathy specialist",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with ethics focus. Categories: Empathizing, Validating, Caring",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff ethical validation to another hero",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "validate_ethics",
+            "docstring": "\ud83e\ude94 Main validation: Analyze ethical design and user empathy\n\nArgs:\n    url: Website URL to analyze\n    mcp_tools: MCP Chrome DevTools\n\nReturns:\n    Dictionary with ethics score, guilt trips, and user stories",
+            "parameters": [
+              "url",
+              "mcp_tools"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_detect_dark_patterns",
+            "docstring": "\ud83d\udd75\ufe0f Detect manipulative/deceptive design patterns\n\nDark patterns that guilt-trip users:\n- Forced continuity (hard to cancel subscriptions)\n- Confirmshaming (\"No thanks, I don't want to save money\")\n- Hidden costs (surprise fees at checkout)\n- Urgency manipulation (\"Only 2 left! 5 people viewing!\")",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_check_inclusive_design",
+            "docstring": "\ud83d\udc75 Check if design works for ALL users (not just tech-savvy 25-year-olds)\n\nChecks:\n- Touch target sizes (for elderly, motor impairments)\n- Font sizes (for vision issues)\n- Color contrast (for color blindness)\n- Simple language (for non-native speakers)",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_cognitive_load",
+            "docstring": "\ud83e\udde0 Analyze cognitive complexity - is the interface overwhelming?\n\nChecks:\n- Too many choices (paradox of choice)\n- Complex navigation\n- Information overload\n- Unclear primary actions",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_evaluate_user_respect",
+            "docstring": "\ud83d\ude4f Evaluate if the design respects users' time, attention, and autonomy\n\nChecks:\n- Auto-playing media (annoying!)\n- Forced registration walls\n- Cookie consent dark patterns\n- Excessive pop-ups",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_check_accessibility_empathy",
+            "docstring": "\u267f Check if accessibility is implemented with empathy (not just checkboxes)\n\nChecks:\n- Alt text quality (is it meaningful or just \"image\"?)\n- ARIA labels (are they helpful or generic?)\n- Skip links (do they exist?)\n- Focus indicators (visible and clear?)",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_validate_ethical_language",
+            "docstring": "\ud83d\udcac Validate language for ethical issues\n\nChecks:\n- Gendered language (\"guys\", \"mankind\")\n- Ableist language (\"crazy\", \"insane\")\n- Violent metaphors (\"kill\", \"destroy\")\n- Respectful error messages",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_guilt_trips",
+            "docstring": "\ud83d\ude22 Generate guilt-inducing messages based on failures\n\nThis is Litty's signature move - making developers feel the user's pain",
+            "parameters": [
+              "checks"
+            ],
+            "is_public": false,
+            "returns": "List[str]"
+          },
+          {
+            "name": "_generate_user_stories",
+            "docstring": "\ud83d\udcd6 Generate empathy-driven user stories\n\nFormat: \"As [persona], I want [need], but I can't because [your issue]\"",
+            "parameters": [
+              "checks"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "_generate_recommendations",
+            "docstring": "\ud83d\udca1 Generate actionable recommendations with Malayali wisdom",
+            "parameters": [
+              "checks"
+            ],
+            "is_public": false,
+            "returns": "List[str]"
+          },
+          {
+            "name": "_generate_verdict",
+            "docstring": "\u2696\ufe0f Litty's final verdict with Malayali flavor",
+            "parameters": [
+              "score"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_calculate_grade",
+            "docstring": "Calculate letter grade from score",
+            "parameters": [
+              "score"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_get_timestamp",
+            "docstring": "Get current timestamp",
+            "parameters": [],
+            "is_public": false,
+            "returns": "str"
+          }
+        ],
+        "attributes": [
+          "name",
+          "title",
+          "emoji",
+          "origin",
+          "hero_name",
+          "hero_emoji",
+          "narrator",
+          "guilt_phrases",
+          "dark_patterns",
+          "user_personas"
+        ],
+        "skills": [
+          "Validate",
+          "Validate Ethics"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83e\ude94",
+      "last_analyzed": "2025-10-31T04:37:56.600081",
+      "skill_levels": {
+        "Validate": 100,
+        "Validate Ethics": 100
+      },
+      "training_needed": [
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Plastic Man Responsive": {
+      "capabilities": {
+        "class_name": "PlasticManResponsive",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/plastic_man_responsive.py",
+        "docstring": "\ud83c\udfa8 PLASTIC MAN - Responsive Design Specialist\n\nEel O'Brien uses his elasticity to test every possible screen size!\n\nElastic Powers:\n1. Elasticity - Stretch to any screen size/breakpoint\n2. Shape-shifting - Transform into any device form factor\n3. Malleability - Adapt to any container/viewport\n4. Flexibility - Test all orientations (portrait/landscape)\n5. Extensibility - Validate touch targets across devices",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Plastic Man's responsive testing lab\n\nArgs:\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Plastic Man dialogue - Flexible and responsive specialist",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with responsive focus. Categories: Stretching, Adapting, Flexing",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff responsive testing to another hero",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "test_all_breakpoints",
+            "docstring": "\ud83c\udfa8 Test responsiveness across all breakpoints\n\nPlastic Man stretches to every screen size!\n\nArgs:\n    mcp_tools: MCP Chrome DevTools functions\n        {\n            'resize_page': mcp__chrome-devtools__resize_page,\n            'take_screenshot': mcp__chrome-devtools__take_screenshot,\n            'take_snapshot': mcp__chrome-devtools__take_snapshot,\n            'evaluate_script': mcp__chrome-devtools__evaluate_script\n        }\n    test_scenarios: Optional list of breakpoints to test\n\nReturns:\n    Complete responsive testing results",
+            "parameters": [
+              "mcp_tools",
+              "test_scenarios"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_elastic_stretch_test",
+            "docstring": "\ud83c\udfa8 Elasticity - Stretch to test a specific breakpoint\n\nArgs:\n    breakpoint_name: Name of breakpoint to test\n    mcp_tools: MCP tools\n\nReturns:\n    Breakpoint test results",
+            "parameters": [
+              "breakpoint_name",
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_shapeshift_device_test",
+            "docstring": "\ud83c\udfa8 Shape-shifting - Test device-specific features\n\nArgs:\n    mcp_tools: MCP tools\n\nReturns:\n    Device-specific test results",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_malleable_viewport_test",
+            "docstring": "\ud83c\udfa8 Malleability - Validate viewport meta tags\n\nArgs:\n    mcp_tools: MCP tools\n\nReturns:\n    Viewport validation results",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_flexible_orientation_test",
+            "docstring": "\ud83c\udfa8 Flexibility - Test orientation changes (portrait/landscape)\n\nArgs:\n    mcp_tools: MCP tools\n\nReturns:\n    Orientation test results",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_extensible_touch_target_test",
+            "docstring": "\ud83c\udfa8 Extensibility - Validate touch target sizes\n\nArgs:\n    mcp_tools: MCP tools\n\nReturns:\n    Touch target validation results",
+            "parameters": [
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_plastic_man_score",
+            "docstring": "\ud83c\udfa8 Calculate Plastic Man's responsive design score\n\nArgs:\n    results: Complete test results\n\nReturns:\n    Responsive design score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_elastic_recommendations",
+            "docstring": "\ud83c\udfa8 Generate Plastic Man's elastic recommendations\n\nArgs:\n    results: Test results\n\nReturns:\n    List of recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          }
+        ],
+        "attributes": [
+          "test_results",
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Test",
+          "Test All Breakpoints",
+          "Validate"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83e\udd38",
+      "last_analyzed": "2025-10-31T04:37:56.600086",
+      "skill_levels": {
+        "Test": 94,
+        "Test All Breakpoints": 94,
+        "Validate": 94
+      },
+      "training_needed": [
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Vision Analyst": {
+      "capabilities": {
+        "class_name": "LayoutType",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/vision_analyst.py",
+        "docstring": "Layout pattern types detected in UI analysis",
+        "methods": [],
+        "attributes": [],
+        "skills": [
+          "Detect"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": false,
+        "mcp_integrated": false
+      },
+      "emoji": "\ud83d\udc41\ufe0f",
+      "last_analyzed": "2025-10-31T04:37:56.600091",
+      "skill_levels": {
+        "Detect": 50
+      },
+      "training_needed": [
+        "Narrator integration (say, think, handoff methods)",
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Hawkman Equipped": {
+      "capabilities": {
+        "class_name": "OutputFormat",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/hawkman_equipped.py",
+        "docstring": "Available output formats",
+        "methods": [],
+        "attributes": [],
+        "skills": [],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": false,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83e\udd85",
+      "last_analyzed": "2025-10-31T04:37:56.600095",
+      "skill_levels": {},
+      "training_needed": [
+        "Narrator integration (say, think, handoff methods)",
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Artemis Codesmith": {
+      "capabilities": {
+        "class_name": "ArtemisCodeSmith",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/artemis_codesmith.py",
+        "docstring": "Artemis CodeSmith - Figma Frame to shadcn/ui Code Generator\n\nCapabilities:\n- Extract Figma frame/component data\n- Map to shadcn/ui components\n- Generate production-ready React/TypeScript code\n- Create test files and Storybook stories\n- Provide installation commands",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Artemis CodeSmith.\n\nArgs:\n    atc_orchestrator_path: Path to ATC Orchestrator installation\n    figma_token: Figma Personal Access Token\n    expert_mode: Enable expert workflow with learning and self-healing\n    narrator: Optional Mission Control Narrator for team dialogue",
+            "parameters": [
+              "atc_orchestrator_path",
+              "figma_token",
+              "expert_mode",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Convenience method for Artemis dialogue",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Convenience method for sequential thinking",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Convenience method for hero-to-hero handoff",
+            "parameters": [
+              "to_hero",
+              "task",
+              "context"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "contribute_to_strategy",
+            "docstring": "Artemis's contribution to team strategy session\n\nProvides code generation perspective based on component complexity\n\nArgs:\n    topic: Strategy session topic\n    context: Optional context data (e.g., {\"complexity\": \"high\", \"layout\": \"2-column\"})\n\nReturns:\n    Dictionary with perspective, reasoning, and recommendation",
+            "parameters": [
+              "topic",
+              "context"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_find_atc_orchestrator",
+            "docstring": "Find ATC Orchestrator installation.",
+            "parameters": [],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "generate_component_code",
+            "docstring": "Generate component code from Figma frame.\n\nArgs:\n    figma_url: Figma file/frame URL\n    component_name: Name for generated component\n    framework: 'next' or 'react'\n    language: 'typescript' or 'javascript'\n    options: Additional generation options\n        - include_types: bool\n        - include_props: bool\n        - include_state: bool\n        - accessibility: bool\n        - responsive: bool\n        - include_tests: bool\n        - include_stories: bool\n    project_context: Oracle-provided project context with shared components and patterns\n\nReturns:\n    {\n        'success': bool,\n        'files': {\n            'components/ComponentName.tsx': '<code>',\n            'components/ComponentName.test.tsx': '<test_code>',\n            'components/ComponentName.stories.tsx': '<story_code>'\n        },\n        'install_commands': ['npx shadcn@latest add button', ...],\n        'dependencies': ['react', '@radix-ui/react-label', ...],\n        'artemis_score': 95.5,\n        'quality_report': {...},\n        'errors': []\n    }",
+            "parameters": [
+              "figma_url",
+              "component_name",
+              "framework",
+              "language",
+              "options",
+              "project_context"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_extract_figma_data",
+            "docstring": "Extract data from Figma using Figma API.\n\nFor now, this is a placeholder that would integrate with:\n- Cyborg's Figma extraction\n- Direct Figma API calls\n- ATC's Figma Monitor",
+            "parameters": [
+              "figma_url"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict[str, Any]]"
+          },
+          {
+            "name": "_parse_figma_url",
+            "docstring": "Parse Figma URL to extract file ID and optional node ID.",
+            "parameters": [
+              "url"
+            ],
+            "is_public": false,
+            "returns": "tuple"
+          },
+          {
+            "name": "_map_to_shadcn",
+            "docstring": "Map Figma components to shadcn/ui components.\n\nUses Artemis's existing validation logic.",
+            "parameters": [
+              "figma_data"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_code_with_atc",
+            "docstring": "Generate code using ATC Orchestrator Page Generator.\n\nThis calls ATC's code generation system.",
+            "parameters": [
+              "figma_data",
+              "component_name",
+              "mapping",
+              "framework",
+              "language",
+              "options"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_component_template",
+            "docstring": "Generate React component code template.",
+            "parameters": [
+              "component_name",
+              "mapping",
+              "language",
+              "options"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_generate_imports",
+            "docstring": "Generate import statements for shadcn/ui components.",
+            "parameters": [
+              "mapping",
+              "language"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_generate_test_template",
+            "docstring": "Generate Jest/React Testing Library test template.",
+            "parameters": [
+              "component_name",
+              "language"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_generate_story_template",
+            "docstring": "Generate Storybook story template.",
+            "parameters": [
+              "component_name",
+              "language"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_extract_dependencies",
+            "docstring": "Extract npm dependencies from component mapping.",
+            "parameters": [
+              "mapping"
+            ],
+            "is_public": false,
+            "returns": "List[str]"
+          },
+          {
+            "name": "_calculate_artemis_score",
+            "docstring": "Calculate Artemis Score (0-100) for generated code.\n\nFactors:\n- TypeScript strict mode: +20\n- Accessibility features: +20\n- Responsive design: +15\n- Test coverage: +15\n- Storybook stories: +10\n- Clean code quality: +20",
+            "parameters": [
+              "code_result"
+            ],
+            "is_public": false,
+            "returns": "float"
+          },
+          {
+            "name": "generate_full_page",
+            "docstring": "Generate complete page layout from Figma frame.\n\nUses ATC's Page Generator for sophisticated layout analysis.",
+            "parameters": [
+              "figma_url",
+              "page_name",
+              "options"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "generate_component_code_expert",
+            "docstring": "\ud83c\udfa8 EXPERT MODE: Generate component code with learning and self-healing.\n\nThis method uses Artemis's knowledge base and self-healing engine to\nproduce pixel-perfect code with minimal iterations. Now enhanced with\nOracle-provided project context for pattern reuse!\n\nArgs:\n    figma_url: Figma file/frame URL\n    component_name: Name for generated component\n    framework: 'next' or 'react'\n    language: 'typescript' or 'javascript'\n    options: Additional generation options\n    max_iterations: Maximum refinement iterations (default: 3)\n    target_accuracy: Target accuracy percentage (default: 98%)\n    project_context: Oracle-provided project context with shared components and patterns\n\nReturns:\n    Enhanced result with learning data:\n    {\n        'success': bool,\n        'files': {...},\n        'install_commands': [...],\n        'dependencies': [...],\n        'artemis_score': float,\n        'accuracy_score': float,\n        'iterations': int,\n        'issues_solved': [...],\n        'lessons_learned': {...},\n        'expert_rating': str,\n        'conversion_id': str,\n        'project_context_used': bool,\n        'shared_components_reused': [...]\n    }",
+            "parameters": [
+              "figma_url",
+              "component_name",
+              "framework",
+              "language",
+              "options",
+              "max_iterations",
+              "target_accuracy",
+              "project_context"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_create_error_result",
+            "docstring": "Create standardized error result.",
+            "parameters": [
+              "error_message"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_extract_lessons",
+            "docstring": "Extract lessons learned from fixes applied.",
+            "parameters": [
+              "fixes_applied"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_extract_patterns",
+            "docstring": "Extract reusable patterns from fixes applied.",
+            "parameters": [
+              "fixes_applied"
+            ],
+            "is_public": false,
+            "returns": "List[str]"
+          },
+          {
+            "name": "_calculate_expert_rating_enhanced",
+            "docstring": "Calculate enhanced expert rating.",
+            "parameters": [
+              "accuracy",
+              "iterations"
+            ],
+            "is_public": false,
+            "returns": "str"
+          }
+        ],
+        "attributes": [
+          "atc_path",
+          "figma_token",
+          "expert_mode",
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Contribute To Strategy",
+          "Create",
+          "Extract",
+          "Generate",
+          "Generate Component Code",
+          "Generate Component Code Expert",
+          "Generate Full Page",
+          "Test"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": false
+      },
+      "emoji": "\ud83c\udfa8",
+      "last_analyzed": "2025-10-31T04:37:56.600098",
+      "skill_levels": {
+        "Contribute To Strategy": 100,
+        "Create": 100,
+        "Extract": 100,
+        "Generate": 100,
+        "Generate Component Code": 100,
+        "Generate Component Code Expert": 100,
+        "Generate Full Page": 100,
+        "Test": 100
+      },
+      "training_needed": [
+        "Analysis capabilities"
+      ]
+    },
+    "Martian Manhunter Security": {
+      "capabilities": {
+        "class_name": "MartianManhunterSecurity",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/martian_manhunter_security.py",
+        "docstring": "\ud83e\udde0 MARTIAN MANHUNTER - Security Testing Specialist\n\nJ'onn J'onzz uses his Martian powers to detect security vulnerabilities\n\nTelepathic Powers:\n1. Mind Reading - Detect authentication flaws\n2. Shapeshifting - Test different attack vectors\n3. Phase-shifting - Bypass security to find weaknesses\n4. Martian Vision - X-ray vision for hidden vulnerabilities\n5. Density Control - Penetrate through security layers",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Martian Manhunter's security command center\n\nArgs:\n    config_dir: Directory for security configs and reports\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "config_dir",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Martian Manhunter dialogue - Security and telepathic focus",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with security focus. Categories: Scanning, Detecting, Protecting",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff security findings to another hero",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "scan_all_vulnerabilities",
+            "docstring": "\ud83e\udde0 Complete security vulnerability scan\n\nMartian Manhunter uses all his powers to detect security issues\n\nArgs:\n    target_data: Target information\n        {\n            'url': str,  # Target URL\n            'source_code_path': str,  # Path to source code\n            'package_json_path': str,  # Path to package.json\n            'dependencies': List[str],  # List of dependencies\n            'env_files': List[str],  # Paths to .env files\n            'html_content': str,  # HTML content to scan\n            'headers': Dict  # HTTP headers\n        }\n\nReturns:\n    Complete security analysis",
+            "parameters": [
+              "target_data"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_telepathic_auth_scan",
+            "docstring": "\ud83e\udde0 Telepathy - Read authentication vulnerabilities\n\nArgs:\n    target_data: Target information\n\nReturns:\n    List of authentication vulnerabilities",
+            "parameters": [
+              "target_data"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_martian_vision_xss_scan",
+            "docstring": "\ud83e\udde0 Martian Vision - X-ray scan for XSS vulnerabilities\n\nArgs:\n    target_data: Target information\n\nReturns:\n    List of XSS vulnerabilities",
+            "parameters": [
+              "target_data"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_shapeshifting_injection_scan",
+            "docstring": "\ud83e\udde0 Shapeshifting - Test different injection attack vectors\n\nArgs:\n    target_data: Target information\n\nReturns:\n    List of injection vulnerabilities",
+            "parameters": [
+              "target_data"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_phase_shift_header_scan",
+            "docstring": "\ud83e\udde0 Phase-shifting - Bypass security headers to find weaknesses\n\nArgs:\n    target_data: Target information\n\nReturns:\n    List of missing security headers",
+            "parameters": [
+              "target_data"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_density_control_dependency_scan",
+            "docstring": "\ud83e\udde0 Density Control - Penetrate through dependency vulnerabilities\n\nArgs:\n    target_data: Target information\n\nReturns:\n    List of dependency vulnerabilities",
+            "parameters": [
+              "target_data"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_detect_secrets",
+            "docstring": "\ud83e\udde0 Detect exposed secrets and credentials\n\nArgs:\n    target_data: Target information\n\nReturns:\n    List of exposed secrets",
+            "parameters": [
+              "target_data"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_calculate_martian_manhunter_score",
+            "docstring": "\ud83e\udde0 Calculate Martian Manhunter's security score\n\nArgs:\n    results: Security scan results\n\nReturns:\n    Security score with grade",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_telepathic_recommendations",
+            "docstring": "\ud83e\udde0 Generate Martian Manhunter's telepathic security recommendations\n\nArgs:\n    results: Security scan results\n\nReturns:\n    List of prioritized recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          }
+        ],
+        "attributes": [
+          "config_dir",
+          "vulnerability_db",
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Detect",
+          "Scan All Vulnerabilities",
+          "Test"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": false
+      },
+      "emoji": "\ud83e\udde0",
+      "last_analyzed": "2025-10-31T04:37:56.600107",
+      "skill_levels": {
+        "Detect": 86,
+        "Scan All Vulnerabilities": 86,
+        "Test": 86
+      },
+      "training_needed": [
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Batman Testing": {
+      "capabilities": {
+        "class_name": "BatmanTesting",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/batman_testing.py",
+        "docstring": "Interactive element testing with accessibility validation\n\nTests:\n1. All buttons are clickable\n2. All links navigate\n3. All forms are fillable\n4. All interactive elements keyboard accessible\n5. Focus management works correctly\n6. No accessibility regressions after interaction",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "",
+            "parameters": [
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Detective-style narration",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with detective focus\n\nCommon categories for Batman:\n- Analyzing, Investigating, Detecting, Examining",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff investigation to another hero\n\nArgs:\n    to_hero: Name of hero receiving the handoff (with emoji)\n    context: What is being handed off\n    details: Optional additional details",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "test_all_interactive_elements",
+            "docstring": "Test all interactive elements found in page snapshot\n\nArgs:\n    page_snapshot: DOM snapshot with element UIDs\n    mcp_tools: Dictionary of MCP tool functions\n        {\n            'click': mcp__chrome-devtools__click,\n            'fill': mcp__chrome-devtools__fill,\n            'hover': mcp__chrome-devtools__hover,\n            'take_snapshot': mcp__chrome-devtools__take_snapshot,\n            'list_console': mcp__chrome-devtools__list_console_messages\n        }\n\nReturns:\n    Complete test results with accessibility validation",
+            "parameters": [
+              "page_snapshot",
+              "mcp_tools"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_extract_interactive_elements",
+            "docstring": "Extract interactive elements from snapshot text",
+            "parameters": [
+              "snapshot_text"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_test_buttons",
+            "docstring": "Test all buttons are clickable and accessible",
+            "parameters": [
+              "buttons",
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict"
+          },
+          {
+            "name": "_test_links",
+            "docstring": "Test all links are clickable and have accessible names",
+            "parameters": [
+              "links",
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict"
+          },
+          {
+            "name": "_test_inputs",
+            "docstring": "Test all form inputs are fillable and labeled",
+            "parameters": [
+              "inputs",
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict"
+          },
+          {
+            "name": "_test_keyboard_navigation",
+            "docstring": "Test keyboard navigation order and focus management",
+            "parameters": [
+              "elements",
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict"
+          },
+          {
+            "name": "_generate_test_summary",
+            "docstring": "Generate human-readable test summary",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "str"
+          },
+          {
+            "name": "_test_forms",
+            "docstring": "Test form elements for completeness and validation\n\nArgs:\n    forms: List of form elements\n    mcp_tools: MCP tool functions\n\nReturns:\n    Form testing results",
+            "parameters": [
+              "forms",
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict"
+          },
+          {
+            "name": "_test_focus_management",
+            "docstring": "Test focus management and visible focus indicators\n\nArgs:\n    elements: List of focusable elements\n    mcp_tools: MCP tool functions\n\nReturns:\n    Focus management results",
+            "parameters": [
+              "elements",
+              "mcp_tools"
+            ],
+            "is_public": false,
+            "returns": "Dict"
+          },
+          {
+            "name": "_calculate_batman_score",
+            "docstring": "Calculate Batman's overall testing score (0-100)\n\nArgs:\n    results: Complete test results\n\nReturns:\n    Batman score with grade",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_batman_recommendations",
+            "docstring": "Generate Batman's detective recommendations\n\nArgs:\n    results: Complete test results\n\nReturns:\n    List of prioritized recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict[str, Any]]"
+          },
+          {
+            "name": "verify_frame_export_completeness",
+            "docstring": "\ud83e\udd87 Verify frame export completeness - Simple count check\n\nValidates that all expected Figma items were successfully exported as PNG files.\n\nArgs:\n    expected_items: List of items from Figma API\n        [{'id': 'node_id', 'name': 'Frame Name', 'type': 'FRAME'}, ...]\n    exported_files: List of exported file paths\n    output_dir: Directory where files were exported\n\nReturns:\n    {\n        'complete': bool,              # True if all items exported\n        'expected_count': int,         # Total items expected\n        'exported_count': int,         # Total files exported\n        'missing_count': int,          # Number of missing items\n        'missing_items': List[Dict],   # Details of missing items\n        'completeness_percentage': float,  # 0-100\n        'verification_passed': bool,   # Same as 'complete'\n        'batman_verdict': str\n    }",
+            "parameters": [
+              "expected_items",
+              "exported_files",
+              "output_dir"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          }
+        ],
+        "attributes": [
+          "test_results",
+          "accessibility_issues",
+          "hero_name",
+          "hero_emoji",
+          "narrator"
+        ],
+        "skills": [
+          "Test",
+          "Test All Interactive Elements",
+          "Verify Frame Export Completeness"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83e\udd87",
+      "last_analyzed": "2025-10-31T04:37:56.600112",
+      "skill_levels": {
+        "Test": 100,
+        "Test All Interactive Elements": 100,
+        "Verify Frame Export Completeness": 100
+      },
+      "training_needed": [
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Quicksilver Speed Export": {
+      "capabilities": {
+        "class_name": "OutputFormat",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/quicksilver_speed_export.py",
+        "docstring": "Available output formats",
+        "methods": [],
+        "attributes": [],
+        "skills": [],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": false,
+        "mcp_integrated": true
+      },
+      "emoji": "\u26a1",
+      "last_analyzed": "2025-10-31T04:37:56.600117",
+      "skill_levels": {},
+      "training_needed": [
+        "Narrator integration (say, think, handoff methods)",
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Aquaman Network": {
+      "capabilities": {
+        "class_name": "AquamanNetwork",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/aquaman_network.py",
+        "docstring": "\ud83c\udf0a AQUAMAN - King of the Network Seas\n\nAquaman's Powers:\n1. Monitor all network requests\n2. Analyze waterfall timing\n3. Detect blocking resources\n4. Identify critical path\n5. Analyze cache efficiency\n6. Track third-party resources\n7. Generate optimization recommendations",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Aquaman's network command center\n\nArgs:\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Aquaman dialogue - Deep-diver, investigative, fluid\n\nPersonality traits:\n- Water and ocean metaphors\n- Deep investigation approach\n- Fluid tactical language\n- Network flow focused",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with network focus\n\nCommon categories for Aquaman:\n- Diving, Analyzing, Mapping, Investigating",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff network analysis to another hero\n\nArgs:\n    to_hero: Name of hero receiving the handoff (with emoji)\n    context: What is being handed off\n    details: Optional additional details",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "analyze_network_traffic",
+            "docstring": "\ud83c\udf0a Aquaman analyzes all network traffic with hydrokinetic precision\n\nArgs:\n    mcp_tools: Dictionary of MCP tool functions\n        {\n            'list_network_requests': mcp__chrome-devtools__list_network_requests,\n            'get_network_request': mcp__chrome-devtools__get_network_request\n        }\n    resource_types: Optional filter for resource types\n        ['document', 'stylesheet', 'script', 'image', 'font', 'xhr', 'fetch', etc.]\n\nReturns:\n    Aquaman's complete network analysis",
+            "parameters": [
+              "mcp_tools",
+              "resource_types"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_request_types",
+            "docstring": "\ud83c\udf0a Analyze distribution of resource types\n\nArgs:\n    requests: List of network requests\n\nReturns:\n    Resource type analysis",
+            "parameters": [
+              "requests"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_timing_waterfall",
+            "docstring": "\ud83c\udf0a Analyze request timing waterfall\n\nTiming phases:\n- DNS lookup\n- Connection setup\n- SSL/TLS negotiation\n- Request sent\n- Waiting (TTFB)\n- Content download\n\nArgs:\n    requests: List of network requests\n\nReturns:\n    Waterfall timing analysis",
+            "parameters": [
+              "requests"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_detect_blocking_resources",
+            "docstring": "\ud83c\udf0a Detect render-blocking resources\n\nBlocking resources:\n- Synchronous scripts in <head>\n- Stylesheets without media queries\n- Large critical resources\n\nArgs:\n    requests: List of network requests\n\nReturns:\n    Blocking resource analysis",
+            "parameters": [
+              "requests"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_identify_critical_path",
+            "docstring": "\ud83c\udf0a Identify critical rendering path\n\nCritical path = resources needed for initial render:\n- HTML document\n- Critical CSS\n- Critical JavaScript\n- Above-the-fold images\n\nArgs:\n    requests: List of network requests\n\nReturns:\n    Critical path analysis",
+            "parameters": [
+              "requests"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_cache_efficiency",
+            "docstring": "\ud83c\udf0a Analyze cache efficiency\n\nArgs:\n    requests: List of network requests\n\nReturns:\n    Cache analysis",
+            "parameters": [
+              "requests"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_track_third_party_resources",
+            "docstring": "\ud83c\udf0a Track third-party resources\n\nThird-party = different domain from main site\n\nArgs:\n    requests: List of network requests\n\nReturns:\n    Third-party analysis",
+            "parameters": [
+              "requests"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_extract_domain",
+            "docstring": "Extract domain from URL",
+            "parameters": [
+              "url"
+            ],
+            "is_public": false,
+            "returns": "Optional[str]"
+          },
+          {
+            "name": "_calculate_network_score",
+            "docstring": "\ud83c\udf0a Calculate Aquaman's Network Score (0-100)\n\nScoring:\n- Cache efficiency (25%)\n- Blocking resources (25%)\n- Third-party overhead (20%)\n- Request count (15%)\n- Resource timing (15%)\n\nArgs:\n    results: Network analysis results\n\nReturns:\n    Network score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_aquaman_recommendations",
+            "docstring": "\ud83c\udf0a Generate Aquaman's network optimization recommendations\n\nArgs:\n    results: Network analysis results\n\nReturns:\n    List of recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_calculate_aquaman_score",
+            "docstring": "Alias for _calculate_network_score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_ocean_recommendations",
+            "docstring": "Alias for _generate_aquaman_recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          }
+        ],
+        "attributes": [
+          "narrator",
+          "hero_name",
+          "hero_emoji"
+        ],
+        "skills": [
+          "Analyze",
+          "Analyze Network Traffic",
+          "Detect",
+          "Generate",
+          "Monitor",
+          "Track"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\ud83c\udf0a",
+      "last_analyzed": "2025-10-31T04:37:56.600120",
+      "skill_levels": {
+        "Analyze": 100,
+        "Analyze Network Traffic": 100,
+        "Detect": 100,
+        "Generate": 100,
+        "Monitor": 100,
+        "Track": 100
+      },
+      "training_needed": []
+    },
+    "Hephaestus Code To Design": {
+      "capabilities": {
+        "class_name": "FigmaNodeType",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/hephaestus_code_to_design.py",
+        "docstring": "Figma node types",
+        "methods": [],
+        "attributes": [],
+        "skills": [],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": false,
+        "mcp_integrated": false
+      },
+      "emoji": "\ud83d\udd28",
+      "last_analyzed": "2025-10-31T04:37:56.600126",
+      "skill_levels": {},
+      "training_needed": [
+        "Narrator integration (say, think, handoff methods)",
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Wonder Woman Accessibility": {
+      "capabilities": {
+        "class_name": "WonderWomanAccessibility",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/wonder_woman_accessibility.py",
+        "docstring": "\u26a1 WONDER WOMAN - The Accessibility Champion\nCombines the best accessibility tools in the world with Amazonian warrior precision\n\nWonder Woman's Arsenal:\n1. World-Class WCAG 2.2 Analysis (Aldo Vision)\n2. axe-core (Deque Systems - Industry Leader)\n3. Advanced Color Science (colormath)\n4. Automated Browser Testing (Playwright)\n5. Browser Eyes (Chrome DevTools + Lighthouse)\n6. Combined Analysis & Deduplication\n7. Champion-Level Scoring\n8. Prioritized Action Plan",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Wonder Woman's accessibility analysis system\n\nArgs:\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Wonder Woman dialogue - Compassionate, inclusive, justice-focused\n\nPersonality traits:\n- Champions accessibility for all users\n- Inclusive and empowering language\n- Justice-oriented approach\n- Friendly with tactical precision",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with accessibility focus\n\nCommon categories for Wonder Woman:\n- Championing, Ensuring, Validating, Empowering",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff accessibility validation to another hero\n\nArgs:\n    to_hero: Name of hero receiving the handoff (with emoji)\n    context: What is being handed off\n    details: Optional additional details",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "champion_accessibility_analysis",
+            "docstring": "\u26a1 ULTIMATE accessibility analysis with Wonder Woman's powers\n\nThe Champion reveals all accessibility barriers with her Lasso of Truth!\n\nArgs:\n    design_data: Extracted design data\n    html_output_path: Optional path to generated HTML for axe-core testing\n\nReturns:\n    Wonder Woman's comprehensive accessibility analysis",
+            "parameters": [
+              "design_data",
+              "html_output_path"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_wield_lasso_of_truth",
+            "docstring": "\u26a1 Wield the Lasso of Truth to reveal accessibility barriers\n(axe-core accessibility testing - industry leader - 57% WCAG coverage)\n\nArgs:\n    html_path: Path to HTML file to test\n\nReturns:\n    Truth revealed by the Lasso (axe-core results)",
+            "parameters": [
+              "html_path"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_analyze_colors_with_bracers",
+            "docstring": "\u26a1 Use Bracers of Submission to deflect color accessibility issues\n(Advanced color analysis using color science - Delta E, CIELAB, etc.)\n\nArgs:\n    design_data: Design data with color information\n\nReturns:\n    Advanced color analysis results",
+            "parameters": [
+              "design_data"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_deploy_invisible_jet",
+            "docstring": "\u26a1 Deploy the Invisible Jet for stealth browser accessibility testing\n(Run automated accessibility tests in real browser)\n\nArgs:\n    html_path: Path to HTML to test\n\nReturns:\n    Invisible Jet reconnaissance results",
+            "parameters": [
+              "html_path"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_combine_all_issues",
+            "docstring": "\u26a1 Combine and deduplicate issues from all analysis tools\n(Warrior strategy - eliminate redundancy, maximize efficiency)\n\nArgs:\n    analyses: All analysis results\n\nReturns:\n    Combined, deduplicated issues",
+            "parameters": [
+              "analyses"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_calculate_champion_score",
+            "docstring": "\u26a1 Calculate Wonder Woman Champion Score from all tools\n\nThe more tools used, the higher the confidence!\n\nArgs:\n    results: All analysis results\n\nReturns:\n    Champion composite score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_battle_plan",
+            "docstring": "\u26a1 Generate Wonder Woman's prioritized battle plan\n(Strategic action plan to defeat all accessibility barriers)\n\nArgs:\n    issues: All combined issues\n\nReturns:\n    Prioritized battle plan",
+            "parameters": [
+              "issues"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_estimate_battle_effort",
+            "docstring": "\u26a1 Estimate Wonder Woman's battle effort to defeat all barriers",
+            "parameters": [
+              "issues"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, str]"
+          },
+          {
+            "name": "_hex_to_rgb",
+            "docstring": "Convert hex color to RGB tuple",
+            "parameters": [
+              "hex_color"
+            ],
+            "is_public": false,
+            "returns": "Optional[tuple]"
+          },
+          {
+            "name": "_calculate_wcag_contrast",
+            "docstring": "Calculate WCAG contrast ratio",
+            "parameters": [
+              "rgb1",
+              "rgb2"
+            ],
+            "is_public": false,
+            "returns": "float"
+          },
+          {
+            "name": "_calculate_delta_e",
+            "docstring": "Calculate Delta E (perceptual color difference) using CIE2000",
+            "parameters": [
+              "rgb1",
+              "rgb2"
+            ],
+            "is_public": false,
+            "returns": "float"
+          },
+          {
+            "name": "_create_battle_plan",
+            "docstring": "Alias for _generate_battle_plan",
+            "parameters": [
+              "issues"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_wcag_scores",
+            "docstring": "Calculate WCAG compliance scores for Level A, AA, AAA",
+            "parameters": [
+              "wcag_analysis"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_amazon_vision_analysis",
+            "docstring": "Amazon Vision analysis using Lighthouse API\n\nIntegrates with Chrome DevTools Lighthouse for official accessibility scoring",
+            "parameters": [
+              "html_path"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          }
+        ],
+        "attributes": [
+          "world_class_analyzer",
+          "axe_enabled",
+          "colormath_enabled",
+          "playwright_enabled",
+          "browser_eyes_enabled",
+          "narrator",
+          "hero_name",
+          "hero_emoji"
+        ],
+        "skills": [
+          "Champion Accessibility Analysis",
+          "Test"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\u26a1",
+      "last_analyzed": "2025-10-31T04:37:56.600130",
+      "skill_levels": {
+        "Champion Accessibility Analysis": 100,
+        "Test": 100
+      },
+      "training_needed": [
+        "Expand skill set (currently < 5 skills)"
+      ]
+    },
+    "Flash Performance": {
+      "capabilities": {
+        "class_name": "FlashPerformance",
+        "file_path": "/Users/admin/Documents/claudecode/Projects/aldo-vision/core/justice_league/flash_performance.py",
+        "docstring": "\u26a1 THE FLASH - Performance Analysis at Super Speed\n\nFlash's Powers:\n1. Start performance trace recording\n2. Stop trace and collect metrics\n3. Analyze Core Web Vitals\n4. Detect performance regressions\n5. Generate speed recommendations\n6. Compare against baselines",
+        "methods": [
+          {
+            "name": "__init__",
+            "docstring": "Initialize Flash's performance lab\n\nArgs:\n    baseline_dir: Directory to store performance baselines\n    narrator: Mission Control Narrator for coordinated communication",
+            "parameters": [
+              "baseline_dir",
+              "narrator"
+            ],
+            "is_public": false,
+            "returns": null
+          },
+          {
+            "name": "say",
+            "docstring": "Flash dialogue - Fast, energetic, metric-focused\n\nPersonality traits:\n- Speed-oriented language\n- Performance metrics focus\n- Energetic but tactical\n- Quick updates",
+            "parameters": [
+              "message",
+              "style",
+              "technical_info"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "think",
+            "docstring": "Sequential thinking with performance focus\n\nCommon categories for Flash:\n- Optimizing, Racing, Profiling, Accelerating",
+            "parameters": [
+              "thought",
+              "step",
+              "category"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "handoff",
+            "docstring": "Handoff performance data to another hero\n\nArgs:\n    to_hero: Name of hero receiving the handoff (with emoji)\n    context: What is being handed off\n    details: Optional additional details",
+            "parameters": [
+              "to_hero",
+              "context",
+              "details"
+            ],
+            "is_public": true,
+            "returns": null
+          },
+          {
+            "name": "profile_performance",
+            "docstring": "\u26a1 Flash runs at super speed to profile performance\n\nArgs:\n    mcp_tools: Dictionary of MCP tool functions\n        {\n            'start_trace': mcp__chrome-devtools__performance_start_trace,\n            'stop_trace': mcp__chrome-devtools__performance_stop_trace,\n            'analyze_insight': mcp__chrome-devtools__performance_analyze_insight\n        }\n    test_name: Unique test name for this performance run\n    url: Optional URL (for context)\n    reload_page: Whether to reload page during trace\n\nReturns:\n    Flash's complete performance analysis",
+            "parameters": [
+              "mcp_tools",
+              "test_name",
+              "url",
+              "reload_page"
+            ],
+            "is_public": true,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_extract_core_web_vitals",
+            "docstring": "\u26a1 Extract Core Web Vitals from performance trace\n\nMetrics:\n- LCP (Largest Contentful Paint) - < 2.5s good\n- FID (First Input Delay) - < 100ms good\n- CLS (Cumulative Layout Shift) - < 0.1 good\n- FCP (First Contentful Paint) - < 1.8s good\n- TTI (Time to Interactive) - < 3.8s good\n- TBT (Total Blocking Time) - < 200ms good\n\nArgs:\n    trace_data: Raw performance trace data\n\nReturns:\n    Extracted Core Web Vitals",
+            "parameters": [
+              "trace_data"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_calculate_speed_score",
+            "docstring": "\u26a1 Calculate Flash's Speed Score (0-100)\n\nFlash scores based on:\n- Core Web Vitals (60%)\n- Performance Insights (20%)\n- Resource Loading (10%)\n- JavaScript Execution (10%)\n\nArgs:\n    results: Performance analysis results\n\nReturns:\n    Flash Speed Score",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_store_performance_baseline",
+            "docstring": "\u26a1 Store performance baseline for future comparisons\n\nArgs:\n    test_name: Test name\n    results: Performance results",
+            "parameters": [
+              "test_name",
+              "results"
+            ],
+            "is_public": false,
+            "returns": "None"
+          },
+          {
+            "name": "_check_performance_regression",
+            "docstring": "\u26a1 Check for performance regressions vs baseline\n\nArgs:\n    test_name: Test name\n    results: Current performance results\n\nReturns:\n    Regression analysis",
+            "parameters": [
+              "test_name",
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_generate_flash_recommendations",
+            "docstring": "\u26a1 Generate Flash's lightning-fast recommendations\n\nArgs:\n    results: Performance analysis results\n\nReturns:\n    List of recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_generate_lightning_recommendations",
+            "docstring": "Alias for _generate_flash_recommendations",
+            "parameters": [
+              "results"
+            ],
+            "is_public": false,
+            "returns": "List[Dict]"
+          },
+          {
+            "name": "_check_for_regression",
+            "docstring": "Alias for _check_performance_regression",
+            "parameters": [
+              "test_name",
+              "results"
+            ],
+            "is_public": false,
+            "returns": "Dict[str, Any]"
+          },
+          {
+            "name": "_store_baseline",
+            "docstring": "Alias for _store_performance_baseline",
+            "parameters": [
+              "test_name",
+              "results"
+            ],
+            "is_public": false,
+            "returns": "None"
+          },
+          {
+            "name": "_load_baseline",
+            "docstring": "Load performance baseline from storage",
+            "parameters": [
+              "test_name"
+            ],
+            "is_public": false,
+            "returns": "Optional[Dict]"
+          }
+        ],
+        "attributes": [
+          "baseline_dir",
+          "narrator",
+          "hero_name",
+          "hero_emoji"
+        ],
+        "skills": [
+          "Analyze",
+          "Detect",
+          "Generate",
+          "Profile Performance"
+        ],
+        "powers": [],
+        "dependencies": [],
+        "narrator_integrated": true,
+        "mcp_integrated": true
+      },
+      "emoji": "\u26a1",
+      "last_analyzed": "2025-10-31T04:37:56.600134",
+      "skill_levels": {
+        "Analyze": 98,
+        "Detect": 98,
+        "Generate": 98,
+        "Profile Performance": 98
+      },
+      "training_needed": [
+        "Analysis capabilities",
+        "Expand skill set (currently < 5 skills)"
+      ]
+    }
+  },
+  "skills_evolved": 0,
+  "last_evolution": "2025-10-31T03:53:12.611578",
+  "last_updated": "2025-10-31T04:37:56.600138"
+}

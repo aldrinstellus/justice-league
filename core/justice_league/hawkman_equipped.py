@@ -202,6 +202,48 @@ class HawkmanEquipped(HeroBase):
             with open(self.patterns_db, 'w') as f:
                 json.dump({'patterns': []}, f, indent=2)
 
+    # ==================== NARRATOR INTEGRATION ====================
+
+    def say(self, message: str, style: str = "equipped", technical_info: Optional[str] = None):
+        """
+        Hawkman dialogue - Equipped, reliable, structural-focused
+
+        Personality traits:
+        - Reliable and methodical
+        - Structural analysis expert
+        - Always prepared (equipped!)
+        - Frame export specialist
+        """
+        if self.narrator:
+            self.narrator.hero_speaks(f"{self.hero_emoji} {self.hero_name}", message, style, technical_info)
+
+    def think(self, thought: str, step: Optional[int] = None, category: Optional[str] = "Parsing"):
+        """
+        Sequential thinking with structural parsing focus
+
+        Common categories for Hawkman:
+        - Parsing, Analyzing, Exporting, Validating, Building
+        """
+        if self.narrator:
+            self.narrator.hero_thinks(f"{self.hero_emoji} {self.hero_name}", thought, step, category)
+
+    def handoff(self, to_hero: str, context: str, details: Optional[str] = None):
+        """
+        Handoff parsed data to another hero
+
+        Args:
+            to_hero: Name of hero receiving the handoff (with emoji)
+            context: What is being handed off
+            details: Optional additional details
+        """
+        if self.narrator:
+            self.narrator.hero_handoff(
+                f"{self.hero_emoji} {self.hero_name}",
+                to_hero,
+                context,
+                details
+            )
+
     # ==================== FIGMA API INTEGRATION ====================
 
     def _fetch_figma_structure(self, file_key: str, node_id: Optional[str] = None) -> Dict[str, Any]:
