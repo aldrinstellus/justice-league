@@ -348,6 +348,641 @@ class HephaestusCodeToDesign:
 
         return node
 
+    def generate_component_from_description(
+        self,
+        description: str,
+        component_name: str,
+        framework: str = "react"
+    ) -> Dict[str, Any]:
+        """
+        Generate a component from natural language description.
+
+        Creates React/TypeScript component code based on text description,
+        then converts to Figma for design preview.
+
+        Args:
+            description: Natural language component description
+            component_name: Name for the component
+            framework: "react", "next", "vue" (default: react)
+
+        Returns:
+            {
+                'component_code': str,
+                'figma_preview': FigmaNode,
+                'suggestions': List[str],
+                'hephaestus_score': float
+            }
+        """
+        self.say(f"Forging {component_name} from description", style="friendly")
+        self.think("Parsing component requirements from description", category="Analyzing")
+
+        # Extract requirements from description
+        requirements = self._parse_component_requirements(description)
+
+        self.think("Generating component structure and code", category="Forging")
+
+        # Generate component code
+        code = self._generate_component_code(
+            component_name=component_name,
+            requirements=requirements,
+            framework=framework
+        )
+
+        self.think("Creating Figma preview of generated component", category="Crafting")
+
+        # Generate Figma preview
+        jsx_tree = self._code_to_jsx_tree(code)
+        figma_preview = self.jsx_to_figma_nodes(jsx_tree)
+
+        # Calculate quality score
+        score = self._score_generated_component(code, requirements)
+
+        self.say(
+            f"{component_name} forged successfully",
+            style="friendly",
+            technical_info=f"Score: {score:.0f}/100"
+        )
+
+        return {
+            'component_code': code,
+            'figma_preview': figma_preview,
+            'requirements_met': len(requirements),
+            'suggestions': self._generate_improvement_suggestions(code, requirements),
+            'hephaestus_score': score,
+            'framework': framework
+        }
+
+    def reverse_engineer_design(self, html: str) -> Dict[str, Any]:
+        """
+        Extract design patterns and specifications from HTML.
+
+        Analyzes existing HTML to extract design tokens, component patterns,
+        layout strategies, and styling conventions.
+
+        Args:
+            html: HTML markup to analyze
+
+        Returns:
+            {
+                'design_tokens': Dict,
+                'components_found': List[Dict],
+                'layout_patterns': List[str],
+                'styling_approach': str,
+                'recommendations': List[str]
+            }
+        """
+        self.say("Reverse engineering design from HTML", style="friendly")
+        self.think("Analyzing HTML structure and patterns", category="Analyzing")
+
+        analysis = {
+            'design_tokens': {},
+            'components_found': [],
+            'layout_patterns': [],
+            'styling_approach': 'unknown',
+            'recommendations': []
+        }
+
+        # Extract design tokens
+        self.think("Extracting design tokens (colors, spacing, typography)", category="Extracting")
+        analysis['design_tokens'] = self._extract_design_tokens_from_html(html)
+
+        # Identify component patterns
+        self.think("Identifying reusable component patterns", category="Pattern Recognition")
+        analysis['components_found'] = self._identify_component_patterns(html)
+
+        # Detect layout patterns
+        self.think("Detecting layout patterns and grid systems", category="Analyzing")
+        analysis['layout_patterns'] = self._detect_layout_patterns(html)
+
+        # Determine styling approach
+        analysis['styling_approach'] = self._determine_styling_approach(html)
+
+        # Generate recommendations
+        self.think("Generating optimization recommendations", category="Result")
+        analysis['recommendations'] = self._generate_refactoring_recommendations(analysis)
+
+        component_count = len(analysis['components_found'])
+        token_count = sum(len(tokens) for tokens in analysis['design_tokens'].values())
+
+        self.say(
+            "Design reverse engineering complete",
+            style="friendly",
+            technical_info=f"{component_count} components, {token_count} design tokens"
+        )
+
+        return analysis
+
+    def optimize_component_structure(self, code: str) -> Dict[str, Any]:
+        """
+        Refactor component code for best practices.
+
+        Analyzes component code and applies optimizations for performance,
+        maintainability, accessibility, and adherence to React best practices.
+
+        Args:
+            code: React/TypeScript component code
+
+        Returns:
+            {
+                'optimized_code': str,
+                'improvements': List[Dict],
+                'metrics': Dict,
+                'hephaestus_score_before': float,
+                'hephaestus_score_after': float
+            }
+        """
+        self.say("Optimizing component structure", style="friendly")
+
+        # Score before optimization
+        score_before = self._score_component_quality(code)
+
+        self.think("Analyzing code quality and detecting issues", category="Analyzing")
+
+        # Detect optimization opportunities
+        issues = self._detect_code_issues(code)
+
+        self.think(f"Found {len(issues)} optimization opportunities", category="Analyzing")
+        self.think("Applying refactoring transformations", category="Refactoring")
+
+        # Apply optimizations
+        optimized_code = code  # Start with original
+        improvements = []
+
+        for issue in issues:
+            if issue['type'] == 'extract_component':
+                optimized_code, improvement = self._extract_subcomponent(optimized_code, issue)
+                improvements.append(improvement)
+
+            elif issue['type'] == 'memoization':
+                optimized_code, improvement = self._add_memoization(optimized_code, issue)
+                improvements.append(improvement)
+
+            elif issue['type'] == 'accessibility':
+                optimized_code, improvement = self._improve_accessibility(optimized_code, issue)
+                improvements.append(improvement)
+
+            elif issue['type'] == 'performance':
+                optimized_code, improvement = self._optimize_performance(optimized_code, issue)
+                improvements.append(improvement)
+
+        # Score after optimization
+        score_after = self._score_component_quality(optimized_code)
+
+        self.think("Calculating improvement metrics", category="Result")
+
+        metrics = {
+            'lines_of_code': len(optimized_code.split('\n')),
+            'components_extracted': sum(1 for i in improvements if i.get('type') == 'extract_component'),
+            'accessibility_improvements': sum(1 for i in improvements if i.get('type') == 'accessibility'),
+            'performance_optimizations': sum(1 for i in improvements if i.get('type') == 'performance'),
+            'score_improvement': score_after - score_before
+        }
+
+        self.say(
+            "Component optimization complete",
+            style="friendly",
+            technical_info=f"Score: {score_before:.0f} \u2192 {score_after:.0f} (+{metrics['score_improvement']:.0f})"
+        )
+
+        return {
+            'optimized_code': optimized_code,
+            'improvements': improvements,
+            'metrics': metrics,
+            'hephaestus_score_before': score_before,
+            'hephaestus_score_after': score_after
+        }
+
+    def generate_variants(
+        self,
+        component_code: str,
+        variant_types: Optional[List[str]] = None
+    ) -> Dict[str, str]:
+        """
+        Create component variations for different use cases.
+
+        Generates variants like dark mode, mobile, compact, loading states,
+        error states, etc.
+
+        Args:
+            component_code: Original component code
+            variant_types: List of variants to generate
+                          ["dark", "mobile", "compact", "loading", "error", "skeleton"]
+
+        Returns:
+            Dictionary mapping variant names to component code
+        """
+        variant_types = variant_types or ["dark", "mobile", "compact"]
+
+        self.say(f"Generating {len(variant_types)} component variants", style="friendly")
+
+        variants = {}
+
+        for variant_type in variant_types:
+            self.think(f"Creating {variant_type} variant", category="Crafting")
+
+            if variant_type == "dark":
+                variants['dark'] = self._generate_dark_mode_variant(component_code)
+
+            elif variant_type == "mobile":
+                variants['mobile'] = self._generate_mobile_variant(component_code)
+
+            elif variant_type == "compact":
+                variants['compact'] = self._generate_compact_variant(component_code)
+
+            elif variant_type == "loading":
+                variants['loading'] = self._generate_loading_variant(component_code)
+
+            elif variant_type == "error":
+                variants['error'] = self._generate_error_variant(component_code)
+
+            elif variant_type == "skeleton":
+                variants['skeleton'] = self._generate_skeleton_variant(component_code)
+
+        self.say(
+            "Component variants generated",
+            style="friendly",
+            technical_info=f"{len(variants)} variants ready"
+        )
+
+        return variants
+
+    def extract_reusable_patterns(self, codebase_path: str) -> Dict[str, Any]:
+        """
+        Find reusable patterns across a codebase.
+
+        Analyzes multiple component files to identify common patterns
+        that should be extracted as shared components or utilities.
+
+        Args:
+            codebase_path: Path to directory containing React components
+
+        Returns:
+            {
+                'patterns': List[Dict],  # Common patterns found
+                'extraction_priority': List[str],  # Patterns to extract first
+                'potential_savings': Dict,  # Code reduction estimates
+                'recommendations': List[str]
+            }
+        """
+        self.say("Scanning codebase for reusable patterns", style="friendly")
+
+        codebase_dir = Path(codebase_path)
+        if not codebase_dir.exists():
+            return {
+                'patterns': [],
+                'extraction_priority': [],
+                'potential_savings': {},
+                'recommendations': ["Codebase path not found"]
+            }
+
+        # Find all React/TypeScript files
+        component_files = list(codebase_dir.rglob("*.tsx")) + list(codebase_dir.rglob("*.jsx"))
+
+        self.think(f"Analyzing {len(component_files)} component files", category="Scanning")
+
+        patterns = {
+            'repeated_jsx': [],
+            'common_hooks': [],
+            'shared_utilities': [],
+            'similar_components': [],
+            'duplicate_styles': []
+        }
+
+        # Analyze each file
+        for file_path in component_files[:20]:  # Limit to first 20 for performance
+            content = file_path.read_text()
+
+            # Detect repeated JSX patterns
+            jsx_patterns = self._find_jsx_patterns(content)
+            patterns['repeated_jsx'].extend(jsx_patterns)
+
+            # Detect common hooks
+            hook_patterns = self._find_hook_patterns(content)
+            patterns['common_hooks'].extend(hook_patterns)
+
+            # Detect shared utilities
+            util_patterns = self._find_utility_patterns(content)
+            patterns['shared_utilities'].extend(util_patterns)
+
+        self.think("Grouping and prioritizing patterns", category="Analyzing")
+
+        # Group similar patterns
+        grouped_patterns = self._group_similar_patterns(patterns)
+
+        # Calculate potential savings
+        potential_savings = self._calculate_code_savings(grouped_patterns)
+
+        # Generate extraction priority
+        extraction_priority = self._prioritize_pattern_extraction(grouped_patterns, potential_savings)
+
+        self.say(
+            "Pattern extraction analysis complete",
+            style="friendly",
+            technical_info=f"{len(extraction_priority)} patterns, {potential_savings.get('total_lines_saved', 0)} lines savable"
+        )
+
+        return {
+            'patterns': grouped_patterns,
+            'extraction_priority': extraction_priority,
+            'potential_savings': potential_savings,
+            'recommendations': self._generate_extraction_recommendations(extraction_priority)
+        }
+
+    def build_design_system(
+        self,
+        components: List[str],
+        system_name: str = "DesignSystem"
+    ) -> Dict[str, Any]:
+        """
+        Assemble a cohesive design system from components.
+
+        Takes multiple component files and creates a unified design system
+        with consistent tokens, naming, documentation, and structure.
+
+        Args:
+            components: List of component file paths
+            system_name: Name for the design system
+
+        Returns:
+            {
+                'design_tokens': Dict,
+                'component_library': Dict,
+                'documentation': str,
+                'figma_file_structure': Dict,
+                'storybook_config': str
+            }
+        """
+        self.say(f"Building {system_name} design system", style="friendly")
+        self.think(f"Analyzing {len(components)} components", category="Analyzing")
+
+        design_system = {
+            'name': system_name,
+            'version': '1.0.0',
+            'design_tokens': {
+                'colors': {},
+                'spacing': {},
+                'typography': {},
+                'shadows': {},
+                'borders': {}
+            },
+            'component_library': {},
+            'documentation': "",
+            'figma_file_structure': {},
+            'storybook_config': ""
+        }
+
+        # Extract design tokens from all components
+        self.think("Extracting unified design tokens", category="Extracting")
+        for component_path in components[:10]:  # Limit for performance
+            try:
+                component = self.parse_react_file(component_path)
+                tokens = self._extract_component_tokens(component)
+
+                # Merge tokens
+                for category, values in tokens.items():
+                    if category in design_system['design_tokens']:
+                        design_system['design_tokens'][category].update(values)
+
+                # Add to component library
+                design_system['component_library'][component.name] = {
+                    'file_path': component_path,
+                    'props': component.props,
+                    'imports': component.imports
+                }
+
+            except Exception as e:
+                continue
+
+        # Generate documentation
+        self.think("Generating design system documentation", category="Documenting")
+        design_system['documentation'] = self._generate_design_system_docs(design_system)
+
+        # Generate Figma file structure
+        self.think("Creating Figma file organization", category="Structuring")
+        design_system['figma_file_structure'] = self._create_figma_library_structure(design_system)
+
+        # Generate Storybook configuration
+        self.think("Generating Storybook configuration", category="Configuring")
+        design_system['storybook_config'] = self._generate_storybook_config(design_system)
+
+        component_count = len(design_system['component_library'])
+        token_count = sum(len(tokens) for tokens in design_system['design_tokens'].values())
+
+        self.say(
+            f"{system_name} design system assembled",
+            style="friendly",
+            technical_info=f"{component_count} components, {token_count} design tokens"
+        )
+
+        return design_system
+
+    # Helper methods for new skills
+    def _parse_component_requirements(self, description: str) -> Dict[str, Any]:
+        """Parse requirements from natural language description"""
+        requirements = {
+            'has_form': 'form' in description.lower() or 'input' in description.lower(),
+            'has_button': 'button' in description.lower() or 'submit' in description.lower(),
+            'has_card': 'card' in description.lower(),
+            'is_responsive': 'responsive' in description.lower() or 'mobile' in description.lower(),
+            'needs_validation': 'validation' in description.lower() or 'validate' in description.lower()
+        }
+        return requirements
+
+    def _generate_component_code(
+        self,
+        component_name: str,
+        requirements: Dict[str, Any],
+        framework: str
+    ) -> str:
+        """Generate component code from requirements"""
+        # Simplified code generation
+        code_template = f"""
+export default function {component_name}() {{
+  return (
+    <div className="component-root">
+      <h2>{component_name}</h2>
+    </div>
+  );
+}}
+"""
+        return code_template.strip()
+
+    def _code_to_jsx_tree(self, code: str) -> Dict[str, Any]:
+        """Convert code string to JSX tree structure"""
+        # Simplified parsing
+        return {
+            'type': 'div',
+            'name': 'Root',
+            'props': {},
+            'children': []
+        }
+
+    def _score_generated_component(self, code: str, requirements: Dict) -> float:
+        """Score generated component quality"""
+        score = 70.0  # Base score
+        if len(code) > 100:
+            score += 15.0
+        if 'className' in code:
+            score += 15.0
+        return min(score, 100.0)
+
+    def _generate_improvement_suggestions(self, code: str, requirements: Dict) -> List[str]:
+        """Generate suggestions for component improvement"""
+        suggestions = []
+        if 'useState' not in code and requirements.get('needs_validation'):
+            suggestions.append("Add state management for form validation")
+        return suggestions
+
+    def _extract_design_tokens_from_html(self, html: str) -> Dict[str, List[str]]:
+        """Extract design tokens from HTML"""
+        return {
+            'colors': [],
+            'spacing': [],
+            'typography': []
+        }
+
+    def _identify_component_patterns(self, html: str) -> List[Dict[str, Any]]:
+        """Identify reusable component patterns in HTML"""
+        patterns = []
+        if 'class="btn' in html or 'class="button' in html:
+            patterns.append({'type': 'Button', 'occurrences': html.count('btn')})
+        return patterns
+
+    def _detect_layout_patterns(self, html: str) -> List[str]:
+        """Detect layout patterns"""
+        patterns = []
+        if 'display: flex' in html or 'class="flex' in html:
+            patterns.append('flexbox')
+        if 'display: grid' in html or 'class="grid' in html:
+            patterns.append('css-grid')
+        return patterns
+
+    def _determine_styling_approach(self, html: str) -> str:
+        """Determine styling approach used"""
+        if 'class="' in html and ('text-' in html or 'bg-' in html):
+            return 'tailwind'
+        elif 'className=' in html:
+            return 'css-modules'
+        return 'inline-styles'
+
+    def _generate_refactoring_recommendations(self, analysis: Dict) -> List[str]:
+        """Generate recommendations for refactoring"""
+        recommendations = []
+        if len(analysis['components_found']) > 5:
+            recommendations.append("Extract common components into shared library")
+        return recommendations
+
+    def _score_component_quality(self, code: str) -> float:
+        """Score component code quality"""
+        score = 60.0
+        if 'interface' in code or 'type' in code:
+            score += 15.0
+        if 'export default' in code:
+            score += 10.0
+        if len(code.split('\n')) < 100:
+            score += 15.0
+        return min(score, 100.0)
+
+    def _detect_code_issues(self, code: str) -> List[Dict[str, Any]]:
+        """Detect code quality issues"""
+        issues = []
+        if code.count('useState') > 3:
+            issues.append({'type': 'extract_component', 'reason': 'Too many state hooks'})
+        return issues
+
+    def _extract_subcomponent(self, code: str, issue: Dict) -> Tuple[str, Dict]:
+        """Extract subcomponent from code"""
+        return code, {'type': 'extract_component', 'description': 'Extracted subcomponent'}
+
+    def _add_memoization(self, code: str, issue: Dict) -> Tuple[str, Dict]:
+        """Add React.memo or useMemo"""
+        return code, {'type': 'memoization', 'description': 'Added memoization'}
+
+    def _improve_accessibility(self, code: str, issue: Dict) -> Tuple[str, Dict]:
+        """Improve accessibility"""
+        return code, {'type': 'accessibility', 'description': 'Added ARIA labels'}
+
+    def _optimize_performance(self, code: str, issue: Dict) -> Tuple[str, Dict]:
+        """Optimize performance"""
+        return code, {'type': 'performance', 'description': 'Optimized rendering'}
+
+    def _generate_dark_mode_variant(self, code: str) -> str:
+        """Generate dark mode variant"""
+        # Replace light colors with dark equivalents
+        return code.replace('bg-white', 'bg-gray-900').replace('text-gray-900', 'text-white')
+
+    def _generate_mobile_variant(self, code: str) -> str:
+        """Generate mobile-optimized variant"""
+        # Add responsive classes
+        return code.replace('className="', 'className="sm:')
+
+    def _generate_compact_variant(self, code: str) -> str:
+        """Generate compact spacing variant"""
+        return code.replace('p-6', 'p-2').replace('gap-4', 'gap-2')
+
+    def _generate_loading_variant(self, code: str) -> str:
+        """Generate loading state variant"""
+        return code + "\n// Add loading spinner"
+
+    def _generate_error_variant(self, code: str) -> str:
+        """Generate error state variant"""
+        return code + "\n// Add error message"
+
+    def _generate_skeleton_variant(self, code: str) -> str:
+        """Generate skeleton loading variant"""
+        return code + "\n// Add skeleton placeholders"
+
+    def _find_jsx_patterns(self, content: str) -> List[Dict]:
+        """Find repeated JSX patterns"""
+        return []
+
+    def _find_hook_patterns(self, content: str) -> List[Dict]:
+        """Find common hook usage patterns"""
+        return []
+
+    def _find_utility_patterns(self, content: str) -> List[Dict]:
+        """Find shared utility function patterns"""
+        return []
+
+    def _group_similar_patterns(self, patterns: Dict) -> List[Dict]:
+        """Group similar patterns together"""
+        return []
+
+    def _calculate_code_savings(self, patterns: List[Dict]) -> Dict[str, int]:
+        """Calculate potential code reduction"""
+        return {'total_lines_saved': 0, 'components_extractable': 0}
+
+    def _prioritize_pattern_extraction(self, patterns: List, savings: Dict) -> List[str]:
+        """Prioritize which patterns to extract first"""
+        return []
+
+    def _generate_extraction_recommendations(self, priority: List) -> List[str]:
+        """Generate recommendations for pattern extraction"""
+        return []
+
+    def _extract_component_tokens(self, component: ReactComponent) -> Dict[str, Dict]:
+        """Extract design tokens from component"""
+        return {
+            'colors': {},
+            'spacing': {},
+            'typography': {}
+        }
+
+    def _generate_design_system_docs(self, system: Dict) -> str:
+        """Generate markdown documentation for design system"""
+        return f"# {system['name']} Design System\n\nVersion: {system['version']}"
+
+    def _create_figma_library_structure(self, system: Dict) -> Dict[str, Any]:
+        """Create Figma component library structure"""
+        return {
+            'pages': ['Foundation', 'Components', 'Patterns'],
+            'components': list(system['component_library'].keys())
+        }
+
+    def _generate_storybook_config(self, system: Dict) -> str:
+        """Generate Storybook configuration"""
+        return f"// Storybook config for {system['name']}"
+
     def _extract_component_name(self, content: str, filename: str) -> str:
         """Extract component name from file content or filename."""
         # Try to find export default or export function

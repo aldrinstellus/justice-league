@@ -563,6 +563,727 @@ class VisionAnalyst:
 
         return brief
 
+    def compare_designs(
+        self,
+        design_a: Dict[str, Any],
+        design_b: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """
+        Compare two designs for visual consistency.
+
+        Analyzes color palettes, spacing systems, typography, and layout patterns
+        to identify inconsistencies between two dashboard designs.
+
+        Args:
+            design_a: First design analysis (from analyze_dashboard_image)
+            design_b: Second design analysis (from analyze_dashboard_image)
+
+        Returns:
+            Comparison report with consistency scores and difference details
+        """
+        self.say("Comparing design consistency across two dashboards", style="friendly")
+
+        comparison = {
+            "consistency_score": 0.0,
+            "color_consistency": self._compare_color_palettes(
+                design_a.get("color_palette", {}),
+                design_b.get("color_palette", {})
+            ),
+            "spacing_consistency": self._compare_spacing_systems(
+                design_a.get("spacing_system", {}),
+                design_b.get("spacing_system", {})
+            ),
+            "typography_consistency": self._compare_typography(
+                design_a.get("typography", {}),
+                design_b.get("typography", {})
+            ),
+            "layout_consistency": self._compare_layouts(
+                design_a.get("overall_layout", {}),
+                design_b.get("overall_layout", {})
+            ),
+            "differences": [],
+            "recommendations": []
+        }
+
+        # Calculate overall consistency score (0-100)
+        scores = [
+            comparison["color_consistency"]["score"],
+            comparison["spacing_consistency"]["score"],
+            comparison["typography_consistency"]["score"],
+            comparison["layout_consistency"]["score"]
+        ]
+        comparison["consistency_score"] = sum(scores) / len(scores)
+
+        # Generate recommendations based on differences
+        if comparison["consistency_score"] < 80:
+            comparison["recommendations"].append(
+                "Design systems diverge significantly - consider establishing unified design tokens"
+            )
+
+        self.say(
+            "Design comparison complete",
+            style="friendly",
+            technical_info=f"Consistency: {comparison['consistency_score']:.1f}%"
+        )
+
+        return comparison
+
+    def extract_design_tokens(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Extract design tokens (colors, spacing, typography) from visual analysis.
+
+        Converts raw analysis into structured design token format compatible with
+        design systems and CSS variable generation.
+
+        Args:
+            analysis: Dashboard analysis from analyze_dashboard_image()
+
+        Returns:
+            Structured design tokens ready for design system integration
+        """
+        self.say("Extracting design tokens from visual analysis", style="friendly")
+
+        color_palette = analysis.get("color_palette", {})
+        spacing_system = analysis.get("spacing_system", {})
+        typography = analysis.get("typography", {})
+
+        tokens = {
+            "colors": {},
+            "spacing": {},
+            "typography": {},
+            "shadows": {},
+            "borders": {},
+            "breakpoints": {}
+        }
+
+        # Extract color tokens
+        for category, colors in color_palette.items():
+            for i, color_info in enumerate(colors):
+                token_name = f"{category}-{i+1}" if len(colors) > 1 else category
+                tokens["colors"][token_name] = {
+                    "value": color_info.hex_value,
+                    "usage": color_info.usage,
+                    "css_var": f"--color-{token_name}"
+                }
+
+        # Extract spacing tokens
+        spacing_scale = spacing_system.get("scale", [])
+        for i, value in enumerate(spacing_scale):
+            tokens["spacing"][f"space-{i}"] = {
+                "value": f"{value}px",
+                "rem": f"{value/16}rem",
+                "css_var": f"--space-{i}"
+            }
+
+        # Extract typography tokens
+        font_sizes = typography.get("font_sizes", {})
+        for size_px, tailwind_class in font_sizes.items():
+            token_name = tailwind_class.replace("text-", "")
+            tokens["typography"][token_name] = {
+                "size": size_px,
+                "line_height": "1.5",
+                "css_var": f"--font-size-{token_name}"
+            }
+
+        tokens["typography"]["font-family"] = {
+            "value": typography.get("font_family", "system-ui"),
+            "css_var": "--font-family-base"
+        }
+
+        # Common design token defaults
+        tokens["shadows"] = {
+            "sm": {"value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"},
+            "md": {"value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)"},
+            "lg": {"value": "0 10px 15px -3px rgba(0, 0, 0, 0.1)"}
+        }
+
+        tokens["borders"] = {
+            "radius-sm": {"value": "0.375rem"},
+            "radius-md": {"value": "0.5rem"},
+            "radius-lg": {"value": "0.75rem"},
+            "radius-xl": {"value": "1rem"}
+        }
+
+        self.say(
+            "Design tokens extracted successfully",
+            style="friendly",
+            technical_info=f"{len(tokens['colors'])} colors, {len(tokens['spacing'])} spacing values"
+        )
+
+        return tokens
+
+    def detect_responsive_breakpoints(self, description: str) -> Dict[str, Any]:
+        """
+        Identify responsive layout breakpoints from design description.
+
+        Analyzes layout changes across different viewport sizes and recommends
+        optimal breakpoint strategy.
+
+        Args:
+            description: Text description mentioning mobile, tablet, desktop layouts
+
+        Returns:
+            Breakpoint recommendations with CSS media query suggestions
+        """
+        self.say("Detecting responsive breakpoints from layout description", style="friendly")
+
+        description_lower = description.lower()
+
+        breakpoints = {
+            "detected_viewports": [],
+            "recommended_breakpoints": {},
+            "layout_changes": [],
+            "media_queries": []
+        }
+
+        # Detect mentioned viewports
+        viewport_keywords = {
+            "mobile": ["mobile", "phone", "320px", "375px", "414px"],
+            "tablet": ["tablet", "ipad", "768px", "834px"],
+            "desktop": ["desktop", "laptop", "1024px", "1280px", "1440px"],
+            "wide": ["wide", "4k", "1920px", "2560px"]
+        }
+
+        for viewport, keywords in viewport_keywords.items():
+            if any(keyword in description_lower for keyword in keywords):
+                breakpoints["detected_viewports"].append(viewport)
+
+        # Standard breakpoint recommendations
+        if "mobile" in breakpoints["detected_viewports"]:
+            breakpoints["recommended_breakpoints"]["sm"] = {
+                "min_width": "640px",
+                "description": "Small devices (landscape phones)",
+                "css": "@media (min-width: 640px)"
+            }
+
+        if "tablet" in breakpoints["detected_viewports"]:
+            breakpoints["recommended_breakpoints"]["md"] = {
+                "min_width": "768px",
+                "description": "Medium devices (tablets)",
+                "css": "@media (min-width: 768px)"
+            }
+
+        if "desktop" in breakpoints["detected_viewports"]:
+            breakpoints["recommended_breakpoints"]["lg"] = {
+                "min_width": "1024px",
+                "description": "Large devices (desktops)",
+                "css": "@media (min-width: 1024px)"
+            }
+            breakpoints["recommended_breakpoints"]["xl"] = {
+                "min_width": "1280px",
+                "description": "Extra large devices",
+                "css": "@media (min-width: 1280px)"
+            }
+
+        # Detect layout changes
+        if "sidebar" in description_lower and "collapse" in description_lower:
+            breakpoints["layout_changes"].append({
+                "breakpoint": "md",
+                "change": "Sidebar collapses to hamburger menu",
+                "implementation": "Use CSS Grid with conditional columns"
+            })
+
+        if "stack" in description_lower or "column" in description_lower:
+            breakpoints["layout_changes"].append({
+                "breakpoint": "sm",
+                "change": "Multi-column layout stacks vertically",
+                "implementation": "Switch from grid-cols-2 to grid-cols-1"
+            })
+
+        self.say(
+            "Responsive breakpoints identified",
+            style="friendly",
+            technical_info=f"{len(breakpoints['detected_viewports'])} viewports, {len(breakpoints['recommended_breakpoints'])} breakpoints"
+        )
+
+        return breakpoints
+
+    def analyze_component_library(self, description: str) -> Dict[str, Any]:
+        """
+        Catalog reusable components from dashboard description.
+
+        Identifies repeating UI patterns that should be extracted as
+        reusable components in the design system.
+
+        Args:
+            description: Detailed dashboard description
+
+        Returns:
+            Component catalog with reusability recommendations
+        """
+        self.say("Cataloging reusable component patterns", style="friendly")
+
+        description_lower = description.lower()
+
+        library = {
+            "components": [],
+            "reusability_score": 0.0,
+            "extraction_priority": []
+        }
+
+        # Common component patterns
+        component_patterns = {
+            "Card": {
+                "keywords": ["card", "box", "panel", "widget"],
+                "variants": ["announcement card", "stat card", "metric card"],
+                "props": ["title", "content", "footer", "badge"],
+                "reusability": "HIGH"
+            },
+            "Button": {
+                "keywords": ["button", "cta", "action"],
+                "variants": ["primary", "secondary", "ghost", "icon"],
+                "props": ["label", "icon", "onClick", "variant"],
+                "reusability": "HIGH"
+            },
+            "Badge": {
+                "keywords": ["badge", "tag", "label", "pill"],
+                "variants": ["notification", "status", "count"],
+                "props": ["count", "variant", "color"],
+                "reusability": "HIGH"
+            },
+            "Avatar": {
+                "keywords": ["avatar", "profile picture", "user icon"],
+                "variants": ["circle", "square", "with-badge"],
+                "props": ["src", "alt", "size", "fallback"],
+                "reusability": "MEDIUM"
+            },
+            "Sidebar": {
+                "keywords": ["sidebar", "aside", "side panel"],
+                "variants": ["left", "right", "collapsible"],
+                "props": ["items", "position", "width"],
+                "reusability": "MEDIUM"
+            },
+            "Header": {
+                "keywords": ["header", "navbar", "top bar"],
+                "variants": ["sticky", "transparent", "with-search"],
+                "props": ["logo", "navigation", "actions"],
+                "reusability": "MEDIUM"
+            },
+            "Grid": {
+                "keywords": ["grid", "layout", "columns"],
+                "variants": ["2-column", "3-column", "masonry"],
+                "props": ["columns", "gap", "responsive"],
+                "reusability": "HIGH"
+            }
+        }
+
+        # Detect components in description
+        for component_name, pattern in component_patterns.items():
+            if any(keyword in description_lower for keyword in pattern["keywords"]):
+                # Count occurrences to estimate reusability
+                occurrence_count = sum(
+                    description_lower.count(keyword) for keyword in pattern["keywords"]
+                )
+
+                library["components"].append({
+                    "name": component_name,
+                    "detected_variants": [
+                        v for v in pattern["variants"]
+                        if v.replace("-", " ") in description_lower
+                    ],
+                    "suggested_props": pattern["props"],
+                    "reusability": pattern["reusability"],
+                    "occurrences": occurrence_count
+                })
+
+        # Calculate reusability score
+        high_reuse = sum(1 for c in library["components"] if c["reusability"] == "HIGH")
+        library["reusability_score"] = (high_reuse / len(library["components"]) * 100) if library["components"] else 0
+
+        # Prioritize extraction
+        library["extraction_priority"] = sorted(
+            library["components"],
+            key=lambda c: (c["reusability"] == "HIGH", c["occurrences"]),
+            reverse=True
+        )
+
+        self.say(
+            "Component library analysis complete",
+            style="friendly",
+            technical_info=f"{len(library['components'])} components, {library['reusability_score']:.0f}% reusability"
+        )
+
+        return library
+
+    def generate_style_guide(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Create comprehensive style guide from visual analysis.
+
+        Generates a complete style guide documenting colors, typography,
+        spacing, components, and design patterns.
+
+        Args:
+            analysis: Complete dashboard analysis from analyze_dashboard_image()
+
+        Returns:
+            Structured style guide ready for documentation or Storybook
+        """
+        self.say("Generating comprehensive style guide", style="friendly")
+
+        style_guide = {
+            "metadata": {
+                "title": "Dashboard Design System",
+                "version": "1.0.0",
+                "last_updated": "2025-10-31"
+            },
+            "foundation": {
+                "colors": self._format_color_guide(analysis.get("color_palette", {})),
+                "typography": self._format_typography_guide(analysis.get("typography", {})),
+                "spacing": self._format_spacing_guide(analysis.get("spacing_system", {})),
+                "grid_system": self._format_grid_guide(analysis.get("overall_layout", {}))
+            },
+            "components": {
+                "patterns": analysis.get("patterns_detected", []),
+                "component_specs": []
+            },
+            "usage_guidelines": {
+                "layout_principles": [],
+                "accessibility": [],
+                "responsive_design": []
+            }
+        }
+
+        # Add layout principles
+        layout_type = analysis.get("overall_layout", {}).get("type", "unknown")
+        style_guide["usage_guidelines"]["layout_principles"].append(
+            f"Primary layout pattern: {layout_type}"
+        )
+        style_guide["usage_guidelines"]["layout_principles"].append(
+            f"Recommended CSS approach: {analysis.get('overall_layout', {}).get('recommended_css_approach', 'Flexbox')}"
+        )
+
+        # Add accessibility guidelines
+        style_guide["usage_guidelines"]["accessibility"].append(
+            "Maintain WCAG 2.1 Level AA contrast ratios (4.5:1 for normal text)"
+        )
+        style_guide["usage_guidelines"]["accessibility"].append(
+            "Ensure touch targets are minimum 44x44px for mobile"
+        )
+
+        # Add responsive design guidelines
+        style_guide["usage_guidelines"]["responsive_design"].append(
+            "Mobile-first approach with progressive enhancement"
+        )
+        style_guide["usage_guidelines"]["responsive_design"].append(
+            "Breakpoints: 640px (sm), 768px (md), 1024px (lg), 1280px (xl)"
+        )
+
+        self.say(
+            "Style guide generation complete",
+            style="friendly",
+            technical_info=f"{len(style_guide['foundation']['colors'])} colors, {len(style_guide['components']['patterns'])} patterns"
+        )
+
+        return style_guide
+
+    def validate_accessibility_contrast(self, colors: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Check color contrast ratios for WCAG 2.1 compliance.
+
+        Validates text/background color combinations against WCAG AA and AAA
+        standards for accessibility.
+
+        Args:
+            colors: Color palette with primary, secondary, background, text colors
+
+        Returns:
+            Contrast validation report with WCAG compliance status
+        """
+        self.say("Validating color contrast for accessibility", style="friendly")
+
+        validation = {
+            "wcag_aa_compliance": True,
+            "wcag_aaa_compliance": True,
+            "contrast_checks": [],
+            "violations": [],
+            "recommendations": []
+        }
+
+        # Common text/background combinations to check
+        combinations = [
+            ("text", "background", "Normal text on background"),
+            ("primary", "background", "Primary accent on background"),
+            ("secondary", "background", "Secondary accent on background")
+        ]
+
+        for fg_category, bg_category, description in combinations:
+            fg_colors = colors.get(fg_category, [])
+            bg_colors = colors.get(bg_category, [])
+
+            for fg_color in fg_colors:
+                for bg_color in bg_colors:
+                    contrast_ratio = self._calculate_contrast_ratio(
+                        fg_color.hex_value,
+                        bg_color.hex_value
+                    )
+
+                    check = {
+                        "foreground": fg_color.hex_value,
+                        "background": bg_color.hex_value,
+                        "description": description,
+                        "contrast_ratio": contrast_ratio,
+                        "wcag_aa_normal": contrast_ratio >= 4.5,
+                        "wcag_aa_large": contrast_ratio >= 3.0,
+                        "wcag_aaa_normal": contrast_ratio >= 7.0,
+                        "wcag_aaa_large": contrast_ratio >= 4.5
+                    }
+
+                    validation["contrast_checks"].append(check)
+
+                    # Track violations
+                    if not check["wcag_aa_normal"]:
+                        validation["wcag_aa_compliance"] = False
+                        validation["violations"].append({
+                            "severity": "HIGH",
+                            "issue": f"{description}: {fg_color.hex_value} on {bg_color.hex_value}",
+                            "contrast_ratio": contrast_ratio,
+                            "required": 4.5,
+                            "recommendation": "Increase color contrast or use larger text"
+                        })
+
+                    if not check["wcag_aaa_normal"]:
+                        validation["wcag_aaa_compliance"] = False
+
+        # Generate recommendations
+        if not validation["wcag_aa_compliance"]:
+            validation["recommendations"].append(
+                "Critical: Fix WCAG AA violations to meet minimum accessibility standards"
+            )
+        elif not validation["wcag_aaa_compliance"]:
+            validation["recommendations"].append(
+                "Consider improving contrast for WCAG AAA compliance (enhanced accessibility)"
+            )
+        else:
+            validation["recommendations"].append(
+                "✅ All color combinations meet WCAG AAA standards"
+            )
+
+        self.say(
+            "Accessibility contrast validation complete",
+            style="friendly",
+            technical_info=f"{len(validation['contrast_checks'])} checks, {len(validation['violations'])} violations"
+        )
+
+        return validation
+
+    def measure_visual_hierarchy(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Analyze information hierarchy and visual prominence.
+
+        Evaluates how effectively the design guides user attention through
+        size, color, spacing, and positioning.
+
+        Args:
+            analysis: Dashboard analysis from analyze_dashboard_image()
+
+        Returns:
+            Hierarchy analysis with prominence scores and recommendations
+        """
+        self.say("Measuring visual hierarchy and information flow", style="friendly")
+
+        typography = analysis.get("typography", {})
+        spacing_system = analysis.get("spacing_system", {})
+        color_palette = analysis.get("color_palette", {})
+
+        hierarchy = {
+            "levels": [],
+            "hierarchy_score": 0.0,
+            "attention_flow": [],
+            "recommendations": []
+        }
+
+        # Analyze typography hierarchy
+        font_sizes = typography.get("font_sizes", {})
+        size_range = len(font_sizes)
+
+        hierarchy["levels"].append({
+            "type": "Typography",
+            "scale_range": size_range,
+            "clarity": "GOOD" if size_range >= 5 else "NEEDS_IMPROVEMENT",
+            "details": f"{size_range} distinct font sizes create clear hierarchy"
+        })
+
+        # Analyze spacing hierarchy
+        spacing_scale = spacing_system.get("scale", [])
+        spacing_range = len(spacing_scale)
+
+        hierarchy["levels"].append({
+            "type": "Spacing",
+            "scale_range": spacing_range,
+            "clarity": "GOOD" if spacing_range >= 6 else "NEEDS_IMPROVEMENT",
+            "details": f"{spacing_range} spacing values for content grouping"
+        })
+
+        # Analyze color hierarchy
+        has_primary = len(color_palette.get("primary", [])) > 0
+        has_secondary = len(color_palette.get("secondary", [])) > 0
+
+        hierarchy["levels"].append({
+            "type": "Color",
+            "scale_range": len(color_palette),
+            "clarity": "GOOD" if (has_primary and has_secondary) else "NEEDS_IMPROVEMENT",
+            "details": "Primary and secondary colors establish visual priority"
+        })
+
+        # Calculate hierarchy score (0-100)
+        good_levels = sum(1 for level in hierarchy["levels"] if level["clarity"] == "GOOD")
+        hierarchy["hierarchy_score"] = (good_levels / len(hierarchy["levels"]) * 100) if hierarchy["levels"] else 0
+
+        # Define attention flow
+        hierarchy["attention_flow"] = [
+            "1. Largest typography elements (headers, titles)",
+            "2. Primary color accents (CTAs, important actions)",
+            "3. Secondary content sections",
+            "4. Supporting details and metadata"
+        ]
+
+        # Generate recommendations
+        if hierarchy["hierarchy_score"] < 70:
+            hierarchy["recommendations"].append(
+                "Strengthen visual hierarchy with clearer size and color differentiation"
+            )
+
+        if size_range < 5:
+            hierarchy["recommendations"].append(
+                "Add more font size variations to create clearer content hierarchy"
+            )
+
+        if spacing_range < 6:
+            hierarchy["recommendations"].append(
+                "Expand spacing scale for better content grouping and separation"
+            )
+
+        self.say(
+            "Visual hierarchy analysis complete",
+            style="friendly",
+            technical_info=f"Hierarchy score: {hierarchy['hierarchy_score']:.0f}%"
+        )
+
+        return hierarchy
+
+    # Helper methods for new skills
+    def _compare_color_palettes(self, palette_a: Dict, palette_b: Dict) -> Dict[str, Any]:
+        """Compare two color palettes"""
+        common_colors = set()
+        total_colors_a = sum(len(colors) for colors in palette_a.values())
+        total_colors_b = sum(len(colors) for colors in palette_b.values())
+
+        # Simple comparison - can be enhanced
+        score = 70.0 if total_colors_a == total_colors_b else 50.0
+
+        return {
+            "score": score,
+            "common_colors": len(common_colors),
+            "differences": abs(total_colors_a - total_colors_b)
+        }
+
+    def _compare_spacing_systems(self, spacing_a: Dict, spacing_b: Dict) -> Dict[str, Any]:
+        """Compare two spacing systems"""
+        base_a = spacing_a.get("base_unit", 8)
+        base_b = spacing_b.get("base_unit", 8)
+
+        score = 100.0 if base_a == base_b else 70.0
+
+        return {
+            "score": score,
+            "base_unit_match": base_a == base_b,
+            "differences": abs(base_a - base_b)
+        }
+
+    def _compare_typography(self, typo_a: Dict, typo_b: Dict) -> Dict[str, Any]:
+        """Compare two typography systems"""
+        font_a = typo_a.get("font_family", "")
+        font_b = typo_b.get("font_family", "")
+
+        score = 100.0 if font_a == font_b else 60.0
+
+        return {
+            "score": score,
+            "font_family_match": font_a == font_b,
+            "differences": []
+        }
+
+    def _compare_layouts(self, layout_a: Dict, layout_b: Dict) -> Dict[str, Any]:
+        """Compare two layout structures"""
+        type_a = layout_a.get("type", "")
+        type_b = layout_b.get("type", "")
+
+        score = 100.0 if type_a == type_b else 50.0
+
+        return {
+            "score": score,
+            "layout_type_match": type_a == type_b,
+            "differences": []
+        }
+
+    def _format_color_guide(self, color_palette: Dict) -> List[Dict[str, str]]:
+        """Format color palette for style guide"""
+        colors = []
+        for category, color_list in color_palette.items():
+            for color_info in color_list:
+                colors.append({
+                    "name": category,
+                    "hex": color_info.hex_value,
+                    "usage": color_info.usage
+                })
+        return colors
+
+    def _format_typography_guide(self, typography: Dict) -> Dict[str, Any]:
+        """Format typography for style guide"""
+        return {
+            "font_family": typography.get("font_family", "system-ui"),
+            "font_sizes": typography.get("font_sizes", {}),
+            "font_weights": typography.get("font_weights", [400, 600, 700])
+        }
+
+    def _format_spacing_guide(self, spacing_system: Dict) -> Dict[str, Any]:
+        """Format spacing system for style guide"""
+        return {
+            "base_unit": spacing_system.get("base_unit", 8),
+            "scale": spacing_system.get("scale", [4, 8, 16, 24, 32])
+        }
+
+    def _format_grid_guide(self, layout: Dict) -> Dict[str, str]:
+        """Format grid system for style guide"""
+        return {
+            "type": layout.get("type", "unknown"),
+            "approach": layout.get("recommended_css_approach", "Flexbox")
+        }
+
+    def _calculate_contrast_ratio(self, hex_fg: str, hex_bg: str) -> float:
+        """
+        Calculate WCAG contrast ratio between two colors.
+
+        Formula: (L1 + 0.05) / (L2 + 0.05)
+        where L1 is lighter color luminance, L2 is darker
+        """
+        # Convert hex to RGB
+        def hex_to_rgb(hex_color: str) -> Tuple[int, int, int]:
+            hex_color = hex_color.lstrip('#')
+            return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
+        # Calculate relative luminance
+        def get_luminance(rgb: Tuple[int, int, int]) -> float:
+            r, g, b = [x / 255.0 for x in rgb]
+            r = r / 12.92 if r <= 0.03928 else ((r + 0.055) / 1.055) ** 2.4
+            g = g / 12.92 if g <= 0.03928 else ((g + 0.055) / 1.055) ** 2.4
+            b = b / 12.92 if b <= 0.03928 else ((b + 0.055) / 1.055) ** 2.4
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+        try:
+            rgb_fg = hex_to_rgb(hex_fg)
+            rgb_bg = hex_to_rgb(hex_bg)
+
+            lum_fg = get_luminance(rgb_fg)
+            lum_bg = get_luminance(rgb_bg)
+
+            lighter = max(lum_fg, lum_bg)
+            darker = min(lum_fg, lum_bg)
+
+            return (lighter + 0.05) / (darker + 0.05)
+        except (ValueError, ZeroDivisionError):
+            return 1.0  # Invalid colors default to no contrast
+
     # Helper methods
     def _extract_number(self, text: str, keywords: List[str]) -> Optional[int]:
         """Extract a number near certain keywords"""
