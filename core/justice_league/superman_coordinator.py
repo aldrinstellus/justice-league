@@ -39,9 +39,18 @@ from typing import Dict, List, Any, Optional
 from datetime import datetime
 from pathlib import Path
 import json
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Import Mission Control Narrator (v2.0)
 from .mission_control_narrator import get_narrator
+
+# Import Git Worktree Manager for parallel operations
+try:
+    from ..utils.git_worktree_manager import GitWorktreeManager, HeroWorktreeContext
+    GIT_WORKTREE_AVAILABLE = True
+except ImportError:
+    GIT_WORKTREE_AVAILABLE = False
+    logging.warning("Git Worktree Manager not available - parallel operations will be limited")
 
 # Import all Justice League heroes
 try:
@@ -316,6 +325,312 @@ class SupermanCoordinator:
                 context,
                 details
             )
+
+    def deploy_heroes_parallel(
+        self,
+        missions: List[Dict[str, Any]],
+        max_workers: int = 4,
+        use_worktrees: bool = True
+    ) -> Dict[str, Any]:
+        """
+        🌳 Deploy multiple heroes in parallel using git worktrees
+
+        This enables true parallel processing where each hero gets an isolated
+        workspace (git worktree) to work in without conflicts.
+
+        Args:
+            missions: List of mission dicts, each containing:
+                - hero_name: Name of hero to deploy
+                - task_name: Description of task
+                - params: Hero-specific parameters
+            max_workers: Maximum concurrent hero deployments
+            use_worktrees: Use git worktrees for isolation (requires git repo)
+
+        Returns:
+            Results dict with per-hero results and summary
+
+        Example:
+            missions = [
+                {
+                    'hero_name': 'artemis',
+                    'task_name': 'convert-component-1',
+                    'params': {'figma_url': '...', 'component_name': 'Header'}
+                },
+                {
+                    'hero_name': 'artemis',
+                    'task_name': 'convert-component-2',
+                    'params': {'figma_url': '...', 'component_name': 'Footer'}
+                }
+            ]
+            results = superman.deploy_heroes_parallel(missions)
+        """
+        if not GIT_WORKTREE_AVAILABLE and use_worktrees:
+            logger.warning("🌳 Git worktrees requested but not available, using sequential deployment")
+            use_worktrees = False
+
+        if self.narrator:
+            self.say(f"Deploying {len(missions)} heroes in parallel", style="tactical",
+                    technical_info=f"{max_workers} workers, worktrees={'enabled' if use_worktrees else 'disabled'}")
+
+        # Initialize worktree manager if needed
+        worktree_manager = GitWorktreeManager() if use_worktrees else None
+
+        results = {
+            'total_missions': len(missions),
+            'successful': 0,
+            'failed': 0,
+            'hero_results': [],
+            'parallel_execution': True,
+            'used_worktrees': use_worktrees
+        }
+
+        # Execute missions in parallel
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all missions
+            future_to_mission = {}
+
+            for mission in missions:
+                if use_worktrees:
+                    # Submit with worktree context
+                    future = executor.submit(
+                        self._execute_mission_with_worktree,
+                        mission,
+                        worktree_manager
+                    )
+                else:
+                    # Submit without worktree
+                    future = executor.submit(
+                        self._execute_mission_direct,
+                        mission
+                    )
+
+                future_to_mission[future] = mission
+
+            # Collect results as they complete
+            for future in as_completed(future_to_mission):
+                mission = future_to_mission[future]
+                try:
+                    result = future.result()
+
+                    if result.get('success'):
+                        results['successful'] += 1
+                    else:
+                        results['failed'] += 1
+
+                    results['hero_results'].append(result)
+
+                    if self.narrator:
+                        status_emoji = "✅" if result.get('success') else "❌"
+                        self.say(f"{status_emoji} {mission['hero_name']} - {mission['task_name']}",
+                                style="friendly",
+                                technical_info=f"Completed in {result.get('duration', 0):.1f}s")
+
+                except Exception as e:
+                    logger.error(f"❌ Mission failed: {mission['task_name']} - {e}")
+                    results['failed'] += 1
+                    results['hero_results'].append({
+                        'success': False,
+                        'error': str(e),
+                        'mission': mission
+                    })
+
+        # Cleanup worktrees if used
+        if use_worktrees and worktree_manager:
+            cleanup_summary = worktree_manager.cleanup_all(force=True)
+            results['worktree_cleanup'] = cleanup_summary
+
+        if self.narrator:
+            self.say(f"Parallel deployment complete: {results['successful']} succeeded, {results['failed']} failed",
+                    style="tactical")
+
+        return results
+
+    def _execute_mission_with_worktree(
+        self,
+        mission: Dict[str, Any],
+        worktree_manager: 'GitWorktreeManager'
+    ) -> Dict[str, Any]:
+        """
+        Execute a single mission in an isolated worktree
+
+        Args:
+            mission: Mission parameters
+            worktree_manager: Worktree manager instance
+
+        Returns:
+            Mission result
+        """
+        import time
+        start_time = time.time()
+
+        try:
+            # Create worktree for this mission
+            worktree_info = worktree_manager.create_worktree(
+                task_name=mission['task_name'],
+                branch=mission.get('branch')
+            )
+
+            # Execute mission in worktree
+            result = self._execute_hero_mission(
+                mission,
+                workspace_path=worktree_info['path']
+            )
+
+            duration = time.time() - start_time
+
+            return {
+                **result,
+                'worktree_path': str(worktree_info['path']),
+                'duration': duration
+            }
+
+        except Exception as e:
+            duration = time.time() - start_time
+            return {
+                'success': False,
+                'error': str(e),
+                'mission': mission,
+                'duration': duration
+            }
+
+    def _execute_mission_direct(self, mission: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Execute a mission directly without worktree isolation
+
+        Args:
+            mission: Mission parameters
+
+        Returns:
+            Mission result
+        """
+        import time
+        start_time = time.time()
+
+        try:
+            result = self._execute_hero_mission(mission)
+            duration = time.time() - start_time
+
+            return {
+                **result,
+                'duration': duration
+            }
+
+        except Exception as e:
+            duration = time.time() - start_time
+            return {
+                'success': False,
+                'error': str(e),
+                'mission': mission,
+                'duration': duration
+            }
+
+    def _execute_hero_mission(
+        self,
+        mission: Dict[str, Any],
+        workspace_path: Optional[Path] = None
+    ) -> Dict[str, Any]:
+        """
+        Execute a specific hero mission
+
+        Args:
+            mission: Mission dict with hero_name, task_name, params
+            workspace_path: Optional workspace path for worktree
+
+        Returns:
+            Mission execution result
+        """
+        hero_name = mission['hero_name'].lower()
+        params = mission.get('params', {})
+
+        # Route to appropriate hero
+        if hero_name == 'artemis' and self.artemis:
+            return self._deploy_artemis_mission(params, workspace_path)
+        elif hero_name == 'green_arrow' and self.green_arrow:
+            return self._deploy_green_arrow_mission(params, workspace_path)
+        elif hero_name == 'batman' and self.batman:
+            return self._deploy_batman_mission(params, workspace_path)
+        elif hero_name == 'oracle' and self.oracle:
+            return self._deploy_oracle_mission(params, workspace_path)
+        else:
+            return {
+                'success': False,
+                'error': f"Hero {hero_name} not available or not supported for parallel deployment"
+            }
+
+    def _deploy_artemis_mission(
+        self,
+        params: Dict[str, Any],
+        workspace_path: Optional[Path] = None
+    ) -> Dict[str, Any]:
+        """Deploy Artemis for code generation"""
+        try:
+            # Update output path if workspace provided
+            if workspace_path:
+                params['output_dir'] = str(workspace_path / 'generated')
+
+            result = self.artemis.generate_component_code_expert(
+                figma_url=params.get('figma_url'),
+                component_name=params.get('component_name'),
+                framework=params.get('framework', 'next'),
+                language=params.get('language', 'typescript'),
+                project_context=params.get('project_context')
+            )
+
+            return result
+
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _deploy_green_arrow_mission(
+        self,
+        params: Dict[str, Any],
+        workspace_path: Optional[Path] = None
+    ) -> Dict[str, Any]:
+        """Deploy Green Arrow for validation"""
+        try:
+            result = self.green_arrow.validate_component(
+                figma_url=params.get('figma_url'),
+                rendered_url=params.get('rendered_url'),
+                component_name=params.get('component_name'),
+                component_code=params.get('component_code')
+            )
+
+            return result
+
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _deploy_batman_mission(
+        self,
+        params: Dict[str, Any],
+        workspace_path: Optional[Path] = None
+    ) -> Dict[str, Any]:
+        """Deploy Batman for testing"""
+        try:
+            result = self.batman.test_all_interactive_elements(
+                page_snapshot=params.get('page_snapshot'),
+                mcp_tools=params.get('mcp_tools', {})
+            )
+
+            return result
+
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _deploy_oracle_mission(
+        self,
+        params: Dict[str, Any],
+        workspace_path: Optional[Path] = None
+    ) -> Dict[str, Any]:
+        """Deploy Oracle for pattern analysis"""
+        try:
+            file_key = params.get('file_key')
+            result = self.oracle.get_project_context(file_key)
+
+            return {'success': True, 'context': result}
+
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
 
     def strategy_session(
         self,
