@@ -1,0 +1,37 @@
+{
+  "name": "aldo-vision",
+  "version": "1.0.0",
+  "description": "Comprehensive Penpot Design File Analysis Agent with Multi-Persona Insights and Visual Reporting",
+  "main": "main.py",
+  "scripts": {
+    "analyze": "python main.py",
+    "test": "python -m pytest tests/",
+    "install-deps": "pip install -r requirements.txt",
+    "generate-report": "python main.py --output-format all",
+    "serve-report": "python -m http.server 8000 --directory output/html"
+  },
+  "keywords": [
+    "design-analysis",
+    "penpot",
+    "design-systems",
+    "multi-persona",
+    "visual-reporting",
+    "component-analysis",
+    "accessibility",
+    "future-proofing"
+  ],
+  "author": "Aldo Agents Team",
+  "license": "MIT",
+  "dependencies": {
+    "python": ">=3.9",
+    "requirements": "see requirements.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/aldo-agents"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/aldo-agents/issues"
+  },
+  "homepage": "https://github.com/your-org/aldo-agents/tree/main/aldo-vision"
+}

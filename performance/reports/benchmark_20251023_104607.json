@@ -1,0 +1,64 @@
+{
+  "timestamp": "2025-10-23T10:46:07.589773",
+  "results": {
+    "health_checks": {
+      "iterations": 100,
+      "avg": 0.2149677276611328,
+      "median": 0.21004676818847656,
+      "min": 0.20194053649902344,
+      "max": 0.40602684020996094,
+      "p95": 0.24698972702026367,
+      "p99": 0.40602684020996094,
+      "target": 500,
+      "pass": true
+    },
+    "agent_health": {
+      "iterations": 50,
+      "avg": 0.045456886291503906,
+      "median": 0.03528594970703125,
+      "p95": 0.038743019104003906,
+      "target": 500,
+      "pass": true
+    },
+    "version_checks": {
+      "iterations": 50,
+      "avg": 0.4812479019165039,
+      "median": 0.2980232238769531,
+      "p95": 0.4527568817138672,
+      "target": 500,
+      "pass": true
+    },
+    "system_scan": {
+      "iterations": 20,
+      "avg": 0.21431446075439453,
+      "median": 0.20039081573486328,
+      "p95": 0.34999847412109375,
+      "target": 2000,
+      "pass": true
+    },
+    "dependency_graph": {
+      "iterations": 50,
+      "avg": 0.1256847381591797,
+      "median": 0.11396408081054688,
+      "p95": 0.18874406814575195,
+      "target": 1000,
+      "pass": true
+    },
+    "concurrent": {
+      "concurrent_requests": 20,
+      "total_time": 6.231069564819336,
+      "avg_response": 1.8016695976257324,
+      "max_response": 2.964019775390625,
+      "throughput": 3209.7218289649895,
+      "pass": true
+    },
+    "database": {
+      "skipped": true,
+      "pass": true
+    },
+    "memory": {
+      "skipped": true,
+      "pass": true
+    }
+  }
+}

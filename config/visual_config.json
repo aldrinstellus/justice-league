@@ -1,0 +1,147 @@
+{
+  "screenshot_settings": {
+    "quality": "high",
+    "formats": ["png", "jpg", "webp"],
+    "resolutions": {
+      "thumbnail": {"width": 300, "height": 200},
+      "medium": {"width": 800, "height": 600},
+      "high": {"width": 1440, "height": 1080},
+      "print": {"width": 2880, "height": 2160}
+    },
+    "capture_settings": {
+      "include_full_page": true,
+      "include_component_isolation": true,
+      "include_state_variations": true,
+      "include_responsive_breakpoints": true
+    },
+    "optimization": {
+      "compress_images": true,
+      "generate_webp": true,
+      "progressive_jpeg": true,
+      "png_optimization": true
+    }
+  },
+  "annotation_styles": {
+    "callout_boxes": {
+      "background_color": "#ffffff",
+      "border_color": "#3b82f6",
+      "border_width": "2px",
+      "border_radius": "6px",
+      "drop_shadow": "0 4px 6px rgba(0, 0, 0, 0.1)",
+      "typography": {
+        "font_family": "DM Sans",
+        "font_size": "12px",
+        "font_weight": "400",
+        "color": "#1f2937",
+        "line_height": "1.4"
+      },
+      "padding": "8px 12px",
+      "max_width": "200px",
+      "positioning": "smart_avoid_overlap"
+    },
+    "highlight_areas": {
+      "overlay_color": "#3b82f6",
+      "overlay_opacity": 0.2,
+      "border_color": "#3b82f6",
+      "border_width": "2px",
+      "border_style": "solid",
+      "animation": {
+        "type": "pulse",
+        "duration": "2s",
+        "intensity": "subtle"
+      }
+    },
+    "measurement_lines": {
+      "line_color": "#ef4444",
+      "line_width": "1px",
+      "line_style": "dashed",
+      "label_style": {
+        "font_family": "Monaco",
+        "font_size": "10px",
+        "color": "#ef4444",
+        "background": "#ffffff",
+        "padding": "2px 4px",
+        "border_radius": "3px"
+      },
+      "units": ["px", "rem", "%"],
+      "precision": 1
+    },
+    "component_boundaries": {
+      "border_color": "#10b981",
+      "border_width": "1px",
+      "border_style": "solid",
+      "label_background": "#10b981",
+      "label_color": "#ffffff",
+      "label_position": "top_left"
+    }
+  },
+  "visual_themes": {
+    "professional": {
+      "primary_color": "#3b82f6",
+      "secondary_color": "#64748b",
+      "accent_color": "#10b981",
+      "warning_color": "#f59e0b",
+      "error_color": "#ef4444",
+      "background_color": "#ffffff",
+      "text_color": "#1f2937",
+      "border_color": "#e5e7eb"
+    },
+    "government": {
+      "primary_color": "#1e40af",
+      "secondary_color": "#475569",
+      "accent_color": "#059669",
+      "warning_color": "#d97706",
+      "error_color": "#dc2626",
+      "background_color": "#f8fafc",
+      "text_color": "#0f172a",
+      "border_color": "#cbd5e1"
+    },
+    "modern": {
+      "primary_color": "#8b5cf6",
+      "secondary_color": "#6b7280",
+      "accent_color": "#06b6d4",
+      "warning_color": "#f59e0b",
+      "error_color": "#f43f5e",
+      "background_color": "#ffffff",
+      "text_color": "#111827",
+      "border_color": "#d1d5db"
+    }
+  },
+  "component_isolation": {
+    "enabled": true,
+    "background_color": "#ffffff",
+    "padding": "20px",
+    "border_radius": "8px",
+    "drop_shadow": "0 1px 3px rgba(0, 0, 0, 0.1)",
+    "include_specifications": true,
+    "show_dimensions": true,
+    "show_spacing": true,
+    "show_colors": true,
+    "show_typography": true
+  },
+  "responsive_capture": {
+    "breakpoints": {
+      "mobile": {"width": 375, "height": 812},
+      "tablet": {"width": 768, "height": 1024},
+      "desktop": {"width": 1440, "height": 900},
+      "large_desktop": {"width": 1920, "height": 1080}
+    },
+    "capture_all_breakpoints": false,
+    "primary_breakpoints": ["mobile", "desktop"],
+    "show_breakpoint_labels": true
+  },
+  "animation_capture": {
+    "enabled": false,
+    "formats": ["gif", "mp4"],
+    "duration": "3s",
+    "fps": 30,
+    "quality": "medium"
+  },
+  "accessibility_visualization": {
+    "show_focus_indicators": true,
+    "highlight_contrast_issues": true,
+    "show_tab_order": true,
+    "indicate_aria_labels": true,
+    "color_blind_simulation": false
+  }
+}

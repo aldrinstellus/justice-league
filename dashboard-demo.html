@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard10 - Visual Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #f3f4f6;
+            padding: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        }
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+        }
+        .checkbox {
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+        }
+        .space-y-2 > * + * {
+            margin-top: 0.5rem;
+        }
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        .p-4 {
+            padding: 1rem;
+        }
+        .p-6 {
+            padding: 1.5rem;
+        }
+        .flex {
+            display: flex;
+        }
+        .flex-col {
+            flex-direction: column;
+        }
+        .gap-4 {
+            gap: 1rem;
+        }
+        .grid {
+            display: grid;
+        }
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .font-semibold {
+            font-weight: 600;
+        }
+        .text-gray-500 {
+            color: #6b7280;
+        }
+        .text-gray-700 {
+            color: #374151;
+        }
+        .text-blue-600 {
+            color: #2563eb;
+            cursor: pointer;
+        }
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+        .max-w-7xl {
+            max-width: 80rem;
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Dashboard10 Component - Visual Preview</h1>
+
+        <!-- Dashboard10 Component -->
+        <div class="flex flex-col gap-4">
+            <!-- Main Container Card -->
+            <div class="card p-4 space-y-4">
+
+                <!-- LEFT SIDEBAR SECTION -->
+                <div class="card p-4 space-y-4">
+                    <!-- Announcement Section -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-sm font-semibold text-gray-700">Announcement</p>
+                            <p class="text-sm text-blue-600">View all</p>
+                        </div>
+                        <div class="card p-4 space-y-2">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <span class="text-sm">📢</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-700">New lesson has been added to Heredity and evolution...</p>
+                                    <p class="text-sm text-gray-500 mt-1">20 mins ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 mt-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-sm">📝</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-700">Assignment 2 has been added by Jane Smith</p>
+                                    <p class="text-sm text-gray-500 mt-1">1 hour ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Tests Section -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-sm font-semibold text-gray-700">Upcoming Tests</p>
+                            <p class="text-sm text-blue-600">View all</p>
+                        </div>
+                        <div class="card p-4 space-y-3">
+                            <div class="card p-3 bg-purple-50 border-l-4 border-purple-500">
+                                <p class="text-sm font-semibold text-gray-700">Math Quiz - Chapter 5</p>
+                                <p class="text-sm text-gray-500">Tomorrow, 10:00 AM</p>
+                            </div>
+                            <div class="card p-3 bg-blue-50 border-l-4 border-blue-500">
+                                <p class="text-sm font-semibold text-gray-700">Science Test - Biology</p>
+                                <p class="text-sm text-gray-500">Friday, 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- To-Do List Section -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-sm font-semibold text-gray-700">To-Do List</p>
+                            <p class="text-sm text-blue-600">View all</p>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="card p-3 flex items-center space-x-3">
+                                <input type="checkbox" class="checkbox" />
+                                <p class="text-sm text-gray-700">Complete Math homework</p>
+                            </div>
+                            <div class="card p-3 flex items-center space-x-3">
+                                <input type="checkbox" class="checkbox" checked />
+                                <p class="text-sm text-gray-500 line-through">Read Chapter 3</p>
+                            </div>
+                            <div class="card p-3 flex items-center space-x-3">
+                                <input type="checkbox" class="checkbox" />
+                                <p class="text-sm text-gray-700">Submit Science project</p>
+                            </div>
+                            <div class="card p-3 flex items-center space-x-3">
+                                <input type="checkbox" class="checkbox" />
+                                <p class="text-sm text-gray-700">Prepare for quiz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MAIN CONTENT SECTION -->
+                <div class="card p-4 space-y-4">
+                    <!-- Welcome Message -->
+                    <div class="space-y-2">
+                        <p class="text-2xl font-semibold text-gray-800">Good Morning, Georgia 👋</p>
+                        <p class="text-sm text-gray-600">Nice to have you back! Get ready and continue your lesson today.</p>
+
+                        <!-- My Badges -->
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="card p-4 space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <p class="text-sm font-semibold text-gray-700">My Badges</p>
+                                    <p class="text-sm text-blue-600">View all</p>
+                                </div>
+                                <p class="text-sm text-gray-500">Today, April 22</p>
+                            </div>
+                            <div class="card p-4 grid grid-cols-3 gap-3">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                    <span class="text-xl">🏆</span>
+                                </div>
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <span class="text-xl">⭐</span>
+                                </div>
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-xl">🎯</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Today's Classes -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-sm font-semibold text-gray-700">Today's Classes</p>
+                            <p class="text-sm text-blue-600">View all</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="card p-4 space-y-2 bg-gradient-to-br from-blue-50 to-blue-100">
+                                <p class="text-sm font-semibold text-gray-700">Mathematics</p>
+                                <p class="text-sm text-gray-600">9:00 AM - 10:00 AM</p>
+                                <span class="badge">Room 101</span>
+                            </div>
+                            <div class="card p-4 space-y-2 bg-gradient-to-br from-green-50 to-green-100">
+                                <p class="text-sm font-semibold text-gray-700">Science</p>
+                                <p class="text-sm text-gray-600">10:15 AM - 11:15 AM</p>
+                                <span class="badge">Lab 2</span>
+                            </div>
+                            <div class="card p-4 space-y-2 bg-gradient-to-br from-purple-50 to-purple-100">
+                                <p class="text-sm font-semibold text-gray-700">History</p>
+                                <p class="text-sm text-gray-600">1:00 PM - 2:00 PM</p>
+                                <span class="badge">Room 205</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Your Courses -->
+                    <div class="card p-4 space-y-4">
+                        <p class="text-sm font-semibold text-gray-700">Your Courses</p>
+
+                        <div class="flex gap-2 flex-wrap">
+                            <button class="btn">All</button>
+                            <button class="btn" style="background: white; color: #6b7280; border: 1px solid #d1d5db;">Language Arts</button>
+                            <button class="btn" style="background: white; color: #6b7280; border: 1px solid #d1d5db;">Math</button>
+                            <button class="btn" style="background: white; color: #6b7280; border: 1px solid #d1d5db;">Science</button>
+                            <button class="btn" style="background: white; color: #6b7280; border: 1px solid #d1d5db;">History & Geography</button>
+                            <button class="btn" style="background: white; color: #6b7280; border: 1px solid #d1d5db;">Spelling</button>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="card p-4 space-y-2">
+                                <div class="w-full h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white text-2xl">
+                                    📐
+                                </div>
+                                <p class="text-sm font-semibold text-gray-700">Algebra Basics</p>
+                                <p class="text-sm text-gray-500">45% Complete</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="card p-4 space-y-2">
+                                <div class="w-full h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center text-white text-2xl">
+                                    🧬
+                                </div>
+                                <p class="text-sm font-semibold text-gray-700">Biology 101</p>
+                                <p class="text-sm text-gray-500">72% Complete</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 72%"></div>
+                                </div>
+                            </div>
+                            <div class="card p-4 space-y-2">
+                                <div class="w-full h-32 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center text-white text-2xl">
+                                    🌍
+                                </div>
+                                <p class="text-sm font-semibold text-gray-700">World History</p>
+                                <p class="text-sm text-gray-500">28% Complete</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-purple-600 h-2 rounded-full" style="width: 28%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHAT SECTION -->
+                <div class="card p-4 space-y-2">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="avatar"></div>
+                        <p class="text-sm font-semibold text-gray-700">Chat</p>
+                    </div>
+                    <div class="card p-4 bg-gray-50 space-y-3">
+                        <div class="flex space-x-2">
+                            <div class="avatar" style="width: 2rem; height: 2rem;"></div>
+                            <div class="card p-2 bg-white flex-1">
+                                <p class="text-sm text-gray-700">Hey Georgia! Ready for today's math class?</p>
+                                <p class="text-xs text-gray-500 mt-1">10:23 AM</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2 justify-end">
+                            <div class="card p-2 bg-blue-500 text-white">
+                                <p class="text-sm">Yes! Looking forward to it!</p>
+                                <p class="text-xs text-blue-100 mt-1">10:25 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" class="input" placeholder="Type a message..." />
+                </div>
+
+                <!-- USER PROFILE SECTION -->
+                <div class="card p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="avatar" style="width: 3rem; height: 3rem;"></div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">Georgia Watson</p>
+                            <p class="text-sm text-gray-500">Class 10</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="badge" style="background: #dcfce7; color: #166534;">🔔 Active</span>
+                        <button class="btn" style="background: white; color: #6b7280; border: 1px solid #d1d5db; padding: 0.5rem;">⚙️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="mt-8 text-center text-sm text-gray-500">
+            <p>Generated by Artemis CodeSmith + Justice League | Score: 85/100</p>
+            <p class="mt-2">Figma Design → React Component | October 23, 2025</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if (this.checked) {
+                    label.style.textDecoration = 'line-through';
+                    label.style.color = '#9ca3af';
+                } else {
+                    label.style.textDecoration = 'none';
+                    label.style.color = '#374151';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

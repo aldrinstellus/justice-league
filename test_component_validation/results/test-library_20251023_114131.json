@@ -1,0 +1,18 @@
+{
+  "library_name": "test-library",
+  "total_components": 1,
+  "tested_components": 1,
+  "total_variants": 15,
+  "tested_variants": 15,
+  "passed_tests": 15,
+  "failed_tests": 0,
+  "coverage_percentage": 100.0,
+  "consistency_checks": [],
+  "token_usage": [],
+  "recommendations": [
+    "\ud83d\udcca Low token usage (0%) - components may be using custom values instead of design tokens",
+    "\u2705 Consider adding more component variants to improve coverage"
+  ],
+  "timestamp": "2025-10-23T11:41:31.452120",
+  "test_duration": 6.699562072753906e-05
+}

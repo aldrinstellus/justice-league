@@ -1,0 +1,20 @@
+{
+  "component_name": "Settings",
+  "artemis_score": 100.0,
+  "install_commands": [
+    "npx shadcn@latest add button",
+    "npx shadcn@latest add card",
+    "npx shadcn@latest add input",
+    "npx shadcn@latest add label",
+    "npx shadcn@latest add badge",
+    "npx shadcn@latest add avatar",
+    "npx shadcn@latest add tabs",
+    "npx shadcn@latest add select",
+    "npx shadcn@latest add table"
+  ],
+  "generated_files": [
+    "Settings.tsx",
+    "Settings.test.tsx",
+    "Settings.stories.tsx"
+  ]
+}

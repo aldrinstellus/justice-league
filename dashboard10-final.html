@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard 10 - Quizmor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #F6F6F6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        .navbar {
+            background: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .notification-bell {
+            position: relative;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #FEF2F2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .notification-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 8px;
+            height: 8px;
+            background: #EF4444;
+            border-radius: 50%;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .view-all {
+            color: #EF4444;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .badge-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        .class-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+        }
+        .class-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+        }
+        .class-info {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+        }
+        .class-title {
+            color: white;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .class-time {
+            color: rgba(255,255,255,0.9);
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: #F3F4F6;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #6B7280;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .tab-btn.active {
+            background: #EF4444;
+            color: white;
+        }
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .course-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .course-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .status-progress {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        .status-math {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+        .status-science {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+        .status-history {
+            background: #E0E7FF;
+            color: #3730A3;
+        }
+        .course-teacher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0;
+        }
+        .teacher-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+        }
+        .course-actions {
+            display: flex;
+            gap: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #F3F4F6;
+        }
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #F9FAFB;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .action-icon:hover {
+            background: #F3F4F6;
+        }
+        .announcement-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            background: #F9FAFB;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .announcement-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+        }
+        .test-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            background: #F9FAFB;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .test-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #F9FAFB;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .todo-overdue {
+            background: #FEF2F2;
+            border-left: 3px solid #EF4444;
+        }
+        .todo-upcoming {
+            background: #FFFBEB;
+            border-left: 3px solid #F59E0B;
+        }
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #D1D5DB;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .checkbox.checked {
+            background: #EF4444;
+            border-color: #EF4444;
+        }
+        .complete-btn {
+            width: 100%;
+            padding: 10px;
+            background: #D1FAE5;
+            color: #065F46;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+        .chat-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="navbar">
+        <div class="logo">
+            <div class="logo-icon">Q</div>
+            <span>quizmor</span>
+        </div>
+        <div class="user-menu">
+            <div class="notification-bell">
+                🔔
+                <div class="notification-badge"></div>
+            </div>
+            <div class="user-profile">
+                <div class="avatar"></div>
+                <span style="font-size: 14px; font-weight: 500;">Georgia Watson</span>
+                <span style="color: #9CA3AF;">▼</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- MAIN CONTENT -->
+        <div>
+            <!-- Header Card -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-between; align-items: start;">
+                    <div>
+                        <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">Good Morning, Georgia 👋</h1>
+                        <p style="color: #6B7280; font-size: 13px;">Nice to have you back!</p>
+                        <p style="color: #6B7280; font-size: 13px;">Get ready and continue your lesson today</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">My Badges</p>
+                        <div style="display: flex; gap: 12px;">
+                            <div class="badge-circle" style="background: #FCE7F3;">🏆</div>
+                            <div class="badge-circle" style="background: #E0E7FF;">🎯</div>
+                            <div class="badge-circle" style="background: #FEE2E2;">⭐</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Classes -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="section-header">
+                    <h2 style="font-size: 16px; font-weight: 700;">Today's Classes</h2>
+                    <span class="view-all">View all</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                    <div class="class-card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=400') center/cover;">
+                        <div class="class-badge" style="background: #EC4899;">COMP SCIENSE</div>
+                        <div class="class-info">
+                            <div class="class-title">States and Capitals</div>
+                            <div class="class-time">
+                                <span>🕐 8:30 - 9:30 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="class-card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400') center/cover;">
+                        <div class="class-badge" style="background: #8B5CF6;">SCIENCE</div>
+                        <div class="class-info">
+                            <div class="class-title">Earth and Space</div>
+                            <div class="class-time">
+                                <span>🕐 9:30 - 10:15 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="class-card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1635372722656-389f87a941b7?w=400') center/cover;">
+                        <div class="class-badge" style="background: #F59E0B;">MATH</div>
+                        <div class="class-info">
+                            <div class="class-title">Number System</div>
+                            <div class="class-time">
+                                <span>🕐 10:30 - 11:15 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your Courses -->
+            <div class="card">
+                <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">Your Courses</h2>
+
+                <!-- Tabs -->
+                <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Language Arts</button>
+                    <button class="tab-btn">Math</button>
+                    <button class="tab-btn">Science</button>
+                    <button class="tab-btn">History & Geography</button>
+                    <button class="tab-btn">Spelling</button>
+                </div>
+
+                <!-- Course Grid -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <!-- Reading and Writing Stories -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400" alt="Reading" class="course-img" />
+                        <div style="padding: 16px;">
+                            <span class="course-status status-progress">IN PROGRESS</span>
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">Reading and Writing Stories</h3>
+                            <div class="course-teacher">
+                                <div class="teacher-avatar"></div>
+                                <span style="font-size: 11px; color: #6B7280;">Jane Sturgis</span>
+                                <span style="font-size: 11px; color: #9CA3AF;">🕐 Summer 2025</span>
+                            </div>
+                            <div class="course-actions">
+                                <div class="action-icon">⭐</div>
+                                <div class="action-icon">💬</div>
+                                <div class="action-icon">📄</div>
+                                <div class="action-icon">📎</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Number System -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1635372722656-389f87a941b7?w=400" alt="Math" class="course-img" />
+                        <div style="padding: 16px;">
+                            <span class="course-status status-math">MATH</span>
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">Number System</h3>
+                            <div class="course-teacher">
+                                <div class="teacher-avatar" style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);"></div>
+                                <span style="font-size: 11px; color: #6B7280;">Kate Austin</span>
+                                <span style="font-size: 11px; color: #9CA3AF;">🕐 Summer 2025</span>
+                            </div>
+                            <div class="course-actions">
+                                <div class="action-icon">⭐</div>
+                                <div class="action-icon">💬</div>
+                                <div class="action-icon">📄</div>
+                                <div class="action-icon">📎</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earth and Space -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400" alt="Earth" class="course-img" />
+                        <div style="padding: 16px;">
+                            <span class="course-status status-science">SCIENCE</span>
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">Earth and Space</h3>
+                            <div class="course-teacher">
+                                <div class="teacher-avatar" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);"></div>
+                                <span style="font-size: 11px; color: #6B7280;">Kate Austin</span>
+                                <span style="font-size: 11px; color: #9CA3AF;">🕐 Summer 2025</span>
+                            </div>
+                            <div class="course-actions">
+                                <div class="action-icon">⭐</div>
+                                <div class="action-icon">💬</div>
+                                <div class="action-icon">📄</div>
+                                <div class="action-icon">📎</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- States and Capitals -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=400" alt="States" class="course-img" />
+                        <div style="padding: 16px;">
+                            <span class="course-status status-history">History & Geography</span>
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">States and Capitals</h3>
+                            <div class="course-teacher">
+                                <div class="teacher-avatar" style="background: linear-gradient(135deg, #EC4899 0%, #F43F5E 100%);"></div>
+                                <span style="font-size: 11px; color: #6B7280;">Jane Sturgis</span>
+                                <span style="font-size: 11px; color: #9CA3AF;">🕐 Summer 2025</span>
+                            </div>
+                            <div class="course-actions">
+                                <div class="action-icon">⭐</div>
+                                <div class="action-icon">💬</div>
+                                <div class="action-icon">📄</div>
+                                <div class="action-icon">📎</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Heredity and evolution -->
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400" alt="Biology" class="course-img" />
+                        <div style="padding: 16px;">
+                            <span class="course-status status-science">SCIENCE</span>
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">Heredity and evolution</h3>
+                            <div class="course-teacher">
+                                <div class="teacher-avatar" style="background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);"></div>
+                                <span style="font-size: 11px; color: #6B7280;">Kate Austin</span>
+                                <span style="font-size: 11px; color: #9CA3AF;">🕐 Summer 2025</span>
+                            </div>
+                            <div class="course-actions">
+                                <div class="action-icon">⭐</div>
+                                <div class="action-icon">💬</div>
+                                <div class="action-icon">📄</div>
+                                <div class="action-icon">📎</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div>
+            <!-- Announcement -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="section-header">
+                    <h3 style="font-size: 14px; font-weight: 700;">Announcement</h3>
+                    <span class="view-all">View all</span>
+                </div>
+                <div class="announcement-item">
+                    <div class="announcement-avatar"></div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 12px; font-weight: 600; margin-bottom: 2px;">Georgia Wilson</p>
+                        <p style="font-size: 11px; color: #6B7280; margin-bottom: 4px;">New lesson has been added</p>
+                        <p style="font-size: 11px; color: #9CA3AF;">Heredity and evolution</p>
+                        <p style="font-size: 10px; color: #9CA3AF; margin-top: 4px;">20 mins ago</p>
+                    </div>
+                </div>
+                <div class="announcement-item">
+                    <div class="announcement-avatar" style="background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);"></div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 12px; font-weight: 600; margin-bottom: 2px;">Jane Smith</p>
+                        <p style="font-size: 11px; color: #6B7280; margin-bottom: 4px;">Assignment 2 has been added</p>
+                        <p style="font-size: 10px; color: #9CA3AF; margin-top: 4px;">1 hour ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Tests -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="section-header">
+                    <h3 style="font-size: 14px; font-weight: 700;">Upcoming Tests</h3>
+                    <span class="view-all">View all</span>
+                </div>
+                <div class="test-item">
+                    <div class="test-icon" style="background: #DBEAFE;">📚</div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 12px; font-weight: 600;">Basic English</p>
+                        <p style="font-size: 11px; color: #9CA3AF;">May 15</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <div class="test-icon" style="background: #E0E7FF;">🧪</div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 12px; font-weight: 600;">Atomic Reactions</p>
+                        <p style="font-size: 11px; color: #9CA3AF;">Science Test 2</p>
+                        <p style="font-size: 11px; color: #9CA3AF;">May 12</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <div class="test-icon" style="background: #FEF3C7;">🌍</div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 12px; font-weight: 600;">World War II</p>
+                        <p style="font-size: 11px; color: #9CA3AF;">May 16</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- To-Do List -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="section-header">
+                    <h3 style="font-size: 14px; font-weight: 700;">To-Do List</h3>
+                    <span class="view-all">View all</span>
+                </div>
+                <div class="todo-item">
+                    <div class="checkbox"></div>
+                    <p style="font-size: 12px; flex: 1;">Meet your teachers</p>
+                </div>
+                <div class="todo-item">
+                    <div class="checkbox checked"></div>
+                    <p style="font-size: 12px; flex: 1; color: #9CA3AF; text-decoration: line-through;">Introduction to classmates</p>
+                </div>
+                <div class="todo-item todo-overdue">
+                    <div class="checkbox"></div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 12px; font-weight: 600;">Find Assignment</p>
+                        <p style="font-size: 10px; color: #EF4444; margin-top: 2px;">🕐 May 1 • Due tomorrow</p>
+                    </div>
+                </div>
+                <div class="todo-item todo-upcoming">
+                    <div class="checkbox"></div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 12px; font-weight: 600;">Second Assignment</p>
+                        <p style="font-size: 10px; color: #F59E0B; margin-top: 2px;">🕐 May 2 • Due tomorrow</p>
+                    </div>
+                </div>
+                <button class="complete-btn">✓ 2/5 Complete</button>
+            </div>
+
+            <!-- Chat -->
+            <div class="chat-section">
+                <div class="avatar" style="width: 48px; height: 48px;"></div>
+                <div style="flex: 1;">
+                    <p style="font-size: 13px; font-weight: 600;">Chat</p>
+                    <p style="font-size: 11px; color: #9CA3AF;">Click to open chat</p>
+                </div>
+                <span style="color: #9CA3AF;">›</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Checkbox functionality
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+            });
+        });
+    </script>
+</body>
+</html>

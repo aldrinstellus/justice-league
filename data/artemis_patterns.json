@@ -1,0 +1,100 @@
+{
+  "full-width-divider": {
+    "name": "full-width-divider",
+    "usage_count": 1,
+    "success_rate": 100,
+    "first_seen": "2025-10-23T00:00:00.000Z",
+    "description": "Pattern identified in Settings - Full-width border with constrained inner content",
+    "implementation": {
+      "structure": "Outer div with border-b, inner div with max-w-[1400px] mx-auto",
+      "example": "<div className=\"border-b border-gray-200\">\n  <div className=\"max-w-[1400px] mx-auto px-6 py-6\">\n    {/* Content */}\n  </div>\n</div>",
+      "when_to_use": "When design has full-width horizontal dividers but content is constrained"
+    }
+  },
+  "sidebar-layout": {
+    "name": "sidebar-layout",
+    "usage_count": 1,
+    "success_rate": 100,
+    "first_seen": "2025-10-23T00:00:00.000Z",
+    "description": "Pattern identified in Settings - Sidebar navigation with main content area",
+    "implementation": {
+      "structure": "Flex container with aside (fixed width) and main (flex-1)",
+      "example": "<div className=\"max-w-[1400px] mx-auto flex gap-6 px-6 pt-6\">\n  <aside className=\"w-56 flex-shrink-0\">\n    {/* Sidebar nav */}\n  </aside>\n  <main className=\"flex-1\">\n    {/* Main content */}\n  </main>\n</div>",
+      "when_to_use": "Settings pages, dashboard layouts with persistent side navigation"
+    }
+  },
+  "24px-spacing": {
+    "name": "24px-spacing",
+    "usage_count": 1,
+    "success_rate": 100,
+    "first_seen": "2025-10-23T00:00:00.000Z",
+    "description": "Pattern identified in Settings - Consistent 24px (1.5rem) spacing system",
+    "implementation": {
+      "structure": "Use Tailwind 6 scale (py-6, space-y-6, gap-6, mb-6)",
+      "mapping": {
+        "24px": "6 (py-6, space-y-6, gap-6, p-6)",
+        "16px": "4 (py-4, space-y-4, gap-4, p-4)",
+        "32px": "8 (py-8, space-y-8, gap-8, p-8)"
+      },
+      "when_to_use": "Enterprise dashboards, settings pages, form layouts"
+    }
+  },
+  "black-banner-white-cta": {
+    "name": "black-banner-white-cta",
+    "usage_count": 1,
+    "success_rate": 100,
+    "first_seen": "2025-10-23T00:00:00.000Z",
+    "description": "Pattern identified in Settings - Black banner with white CTA button",
+    "implementation": {
+      "structure": "Black background container with white text and white button with hover states",
+      "example": "<div className=\"bg-black text-white p-6 mb-6 flex items-center justify-between rounded-lg\">\n  <div>\n    <h2 className=\"text-lg font-semibold mb-1\">Title</h2>\n    <p className=\"text-gray-300 text-sm\">Description</p>\n  </div>\n  <button className=\"bg-white hover:bg-gray-100 active:bg-gray-200 text-black px-5 py-2 rounded-md text-sm font-medium flex items-center gap-2 transition-colors duration-150\">\n    CTA Text\n  </button>\n</div>",
+      "when_to_use": "Upgrade banners, promotional notices, important announcements"
+    }
+  },
+  "native-html-for-custom-styles": {
+    "name": "native-html-for-custom-styles",
+    "usage_count": 1,
+    "success_rate": 100,
+    "first_seen": "2025-10-23T00:00:00.000Z",
+    "description": "Pattern identified in Settings - Use native HTML when styled components block custom classes",
+    "implementation": {
+      "structure": "Replace styled components with native HTML elements",
+      "examples": {
+        "card": "Use <div> instead of <Card> when custom bg-* needed",
+        "button": "Use <button> instead of <Button> when custom bg-* needed"
+      },
+      "when_to_use": "When component library has hardcoded defaults that conflict with design",
+      "long_term_fix": "Update component library to use cn() utility for proper class merging"
+    }
+  },
+  "max-w-constrained-content": {
+    "name": "max-w-constrained-content",
+    "usage_count": 1,
+    "success_rate": 100,
+    "first_seen": "2025-10-23T00:00:00.000Z",
+    "description": "Pattern identified in Settings - Content constrained to maximum width",
+    "implementation": {
+      "structure": "Use max-w-[1400px] mx-auto for content constraint",
+      "example": "<div className=\"max-w-[1400px] mx-auto px-6\">\n  {/* Constrained content */}\n</div>",
+      "when_to_use": "Dashboard layouts, settings pages, any content that shouldn't span ultra-wide screens",
+      "common_widths": {
+        "1400px": "Enterprise dashboards",
+        "1200px": "Standard content pages",
+        "1024px": "Blog posts, articles",
+        "768px": "Narrow content, forms"
+      }
+    }
+  },
+  "two-column-form-grid": {
+    "name": "two-column-form-grid",
+    "usage_count": 1,
+    "success_rate": 100,
+    "first_seen": "2025-10-23T00:00:00.000Z",
+    "description": "Pattern identified in Settings - Two-column form layout with consistent spacing",
+    "implementation": {
+      "structure": "Grid with 2 columns, 16px gap between columns, 24px gap between rows",
+      "example": "<div className=\"space-y-6\">\n  <div className=\"grid grid-cols-2 gap-4\">\n    <div>\n      <Label>Field 1</Label>\n      <Input />\n    </div>\n    <div>\n      <Label>Field 2</Label>\n      <Input />\n    </div>\n  </div>\n</div>",
+      "when_to_use": "Settings forms, profile pages, data entry forms"
+    }
+  }
+}

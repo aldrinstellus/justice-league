@@ -1,0 +1,23 @@
+preview-app/node_modules/
+preview-app/.next/
+
+# Environment variables (secrets)
+.env
+.env.local
+.env*.local
+
+# macOS
+.DS_Store
+
+# Figma exports (large binary files)
+figma-export-*/
+.git-backup/
+
+# Figma exports (too large for git)
+figma-*-export/
+benchmark-*/
+
+# API Keys and Secrets
+**/.env
+.env
+.env.local

@@ -1,0 +1,2446 @@
+{
+  "projects": {
+    "6Pmf9gCcUccyqbCO9nN6Ts": {
+      "figma_file_key": "6Pmf9gCcUccyqbCO9nN6Ts",
+      "project_name": "poc test",
+      "conversions_count": 3,
+      "conversions": [
+        {
+          "component_name": "Settings",
+          "node_id": "17-1321",
+          "converted_at": "2025-10-23T21:46:00Z",
+          "file_path": "preview-app/src/components/Settings.tsx"
+        },
+        {
+          "component_name": "SettingsProfile",
+          "node_id": "17-1440",
+          "converted_at": "2025-10-23T22:06:00Z",
+          "file_path": "preview-app/src/components/SettingsProfile.tsx"
+        },
+        {
+          "component_name": "PocTestComponent",
+          "node_id": "2-948",
+          "converted_at": "2025-10-24T06:49:05.420687",
+          "file_path": "preview-app/src/components/PocTestComponent.tsx"
+        }
+      ],
+      "shared_elements": {
+        "AppHeader": {
+          "description": "Top navigation with logo, menu, upgrade button, avatar",
+          "found_in": [
+            "Settings",
+            "SettingsProfile"
+          ],
+          "extraction_priority": "high",
+          "elements": [
+            "Logo (Z in black square)",
+            "Navigation (Dashboard, Orders, Products, Customers, Settings)",
+            "Upgrade button (black with lightning)",
+            "User avatar (gradient purple-pink)"
+          ],
+          "props_needed": [
+            "currentPage"
+          ],
+          "file_suggestion": "components/layout/AppHeader.tsx"
+        },
+        "SettingsSidebar": {
+          "description": "Settings navigation sidebar",
+          "found_in": [
+            "Settings",
+            "SettingsProfile"
+          ],
+          "extraction_priority": "high",
+          "elements": [
+            "Profile",
+            "Account",
+            "Members",
+            "Billing",
+            "Invoices",
+            "API"
+          ],
+          "props_needed": [
+            "activePage"
+          ],
+          "file_suggestion": "components/layout/SettingsSidebar.tsx"
+        },
+        "AppLayout": {
+          "description": "Main layout wrapper with header",
+          "found_in": [
+            "Settings",
+            "SettingsProfile"
+          ],
+          "extraction_priority": "high",
+          "props_needed": [
+            "children"
+          ],
+          "file_suggestion": "components/layout/AppLayout.tsx"
+        }
+      },
+      "design_system": {
+        "colors": {
+          "primary_black": "#000000",
+          "primary_white": "#FFFFFF",
+          "background": "#fafafa",
+          "surface": "#ffffff",
+          "border": "#e5e7eb",
+          "text_primary": "#18181b",
+          "text_secondary": "#71717a"
+        },
+        "spacing": {
+          "standard": "24px",
+          "tailwind": "6"
+        },
+        "typography": {
+          "heading_xl": "text-3xl font-bold",
+          "heading_lg": "text-xl font-semibold",
+          "body": "text-sm"
+        }
+      },
+      "common_patterns": [
+        "full-width-divider",
+        "sidebar-layout",
+        "24px-spacing",
+        "black-cta-buttons",
+        "form-field-styling",
+        "search-bar-in-header",
+        "gradient-avatar",
+        "constrained-content-max-w-1400"
+      ]
+    },
+    "fubdMARNgA2lVhmzpPg77y": {
+      "figma_file_key": "fubdMARNgA2lVhmzpPg77y",
+      "figma_url": "https://www.figma.com/design/fubdMARNgA2lVhmzpPg77y/3.00---UI-Master?node-id=0-1&p=f&t=NrxblgJTlxah1Tnw-0",
+      "project_name": "K-12 UI Master",
+      "mission_type": "frame_export",
+      "export_missions": [
+        {
+          "mission_name": "K-12 Frame Export Production Test",
+          "exported_at": "2025-10-30T08:07:00Z",
+          "frames_exported": 177,
+          "output_directory": "/Users/admin/Documents/claudecode/Projects/aldo-vision/poc-test-k12/",
+          "export_scale": 2.0,
+          "total_size": "67 MB",
+          "duration": "~20 minutes",
+          "success_rate": "100%",
+          "heroes_involved": [
+            "Superman",
+            "Hawkman",
+            "Oracle"
+          ],
+          "content_categories": [
+            "Calendar Views (7 variants)",
+            "Assignment System (3 types)",
+            "Student Features (6 screens)",
+            "Analytics Dashboards",
+            "UI Components (Badges, Tooltips)"
+          ],
+          "validation_status": "Production-ready",
+          "notes": "First production-scale test of Figma Frame Export feature. Zero failures across 177 frames."
+        }
+      ]
+    },
+    "BD8gtxyQiSGLFm86Q6ZMVB": {
+      "figma_file_key": "BD8gtxyQiSGLFm86Q6ZMVB",
+      "figma_url": "https://www.figma.com/design/BD8gtxyQiSGLFm86Q6ZMVB/k12-poc1--Copy7-",
+      "project_name": "k12-poc1--Copy7-",
+      "mission_type": "frame_export",
+      "export_missions": [
+        {
+          "mission_name": "K-12 POC Dashboard Export",
+          "exported_at": "2025-10-30T16:14:30.962205",
+          "frames_exported": 26,
+          "output_directory": "/Users/admin/Documents/claudecode/Projects/aldo-vision/figma-export-2025-10-30-160942",
+          "export_scale": 2.0,
+          "total_size": "14.21 MB",
+          "duration": "1m 58s",
+          "success_rate": "100%",
+          "heroes_involved": [
+            "Superman",
+            "Hawkman",
+            "Oracle"
+          ],
+          "content_categories": [
+            "Attendance Tracking",
+            "Messaging System",
+            "User Profiles",
+            "Course Management",
+            "Calendar & Scheduling",
+            "UI Components",
+            "Group Management",
+            "Gradebook System",
+            "Dashboard Views"
+          ],
+          "pages": [
+            "page 2 test",
+            "aldos test of dashboard"
+          ],
+          "validation_status": "Complete",
+          "notes": "K-12 POC dashboard with course management, attendance, and user features"
+        }
+      ]
+    },
+    "PUXDBKsDgMF1Y4TWatYzyd": {
+      "figma_file_key": "PUXDBKsDgMF1Y4TWatYzyd",
+      "figma_url": "https://www.figma.com/design/PUXDBKsDgMF1Y4TWatYzyd/3.00---UI-Master--poc-test-?node-id=0-1&p=f&t=Ue3xy31o0FKqOzE7-0",
+      "project_name": "3.00---UI-Master--poc-test-",
+      "mission_type": "frame_export",
+      "export_missions": [
+        {
+          "mission_name": "UI Master POC Test Export - Quicksilver Benchmark",
+          "exported_at": "2025-10-31T06:09:49.386186",
+          "frames_exported": 484,
+          "output_directory": "/Users/admin/Documents/claudecode/Projects/aldo-vision/benchmark-2025-10-31-060446/quicksilver-export/",
+          "export_scale": 2.0,
+          "duration": "1m 22s",
+          "success_rate": "100%",
+          "speed": "5.85 frames/second",
+          "heroes_involved": [
+            "Superman",
+            "Quicksilver",
+            "Oracle"
+          ],
+          "hero_used": "Quicksilver",
+          "workers": 8,
+          "content_categories": [
+            "Admin Workflow (484 frames)",
+            "Settings Management",
+            "Course Management",
+            "Grading Systems",
+            "Student Details",
+            "File Uploads",
+            "Dashboard Views",
+            "Task Management",
+            "Role Configuration",
+            "Question Management"
+          ],
+          "pages": [
+            "Document"
+          ],
+          "validation_status": "Production-ready",
+          "performance_notes": "Quicksilver achieved 5.85 frames/sec with 8 concurrent workers - 3.25x faster than Hawkman baseline",
+          "notes": "First production test of new file. Demonstrates Quicksilver parallel processing excellence. Zero failures across 484 frames."
+        }
+      ]
+    }
+  },
+  "methodologies": {
+    "figma-api-conversion": {
+      "name": "Figma API to React Conversion",
+      "description": "Uses Figma REST API to extract design data and generate React components",
+      "accuracy_range": "70-85%",
+      "time_estimate": "30-60 minutes",
+      "best_for": [
+        "Simple components",
+        "Single screens",
+        "When Figma API access available"
+      ],
+      "pros": [
+        "Direct API access",
+        "Structured data",
+        "Automated asset extraction"
+      ],
+      "cons": [
+        "Layout interpretation issues",
+        "Complex grids fail",
+        "Requires iterative fixes"
+      ],
+      "heroes_involved": [
+        "Oracle",
+        "Artemis",
+        "Hawkman",
+        "Green Arrow"
+      ],
+      "success_rate": 0.75,
+      "missions_completed": 3
+    },
+    "image-to-html-sequential-analysis": {
+      "name": "Image-to-HTML with Sequential Thinking",
+      "description": "Analyzes dashboard screenshots with Oracle sequential thinking to build fresh HTML/CSS from measurements",
+      "accuracy_range": "90-95%",
+      "time_estimate": "60-90 minutes",
+      "best_for": [
+        "Complex dashboards",
+        "Multi-column layouts",
+        "When Figma API produces low accuracy",
+        "Pixel-perfect recreations"
+      ],
+      "pros": [
+        "Higher accuracy",
+        "Correct structure from start",
+        "Clean semantic HTML",
+        "Visual measurements",
+        "Faster than fixing API output"
+      ],
+      "cons": [
+        "Manual image analysis required",
+        "Slightly longer initial build"
+      ],
+      "heroes_involved": [
+        "Oracle",
+        "Superman",
+        "Vision Analyst (new)",
+        "Artemis",
+        "Green Arrow"
+      ],
+      "sequential_thinking_steps": 12,
+      "methodology_steps": [
+        "Oracle sequential analysis (12 thoughts)",
+        "Component-by-component visual breakdown",
+        "Layout measurement extraction",
+        "Color palette detection",
+        "Spacing pattern identification",
+        "Fresh HTML/CSS generation with Tailwind",
+        "Green Arrow visual validation",
+        "Iterative refinement"
+      ],
+      "success_rate": 0.92,
+      "missions_completed": 1,
+      "case_studies": [
+        {
+          "project": "Dashboard 10 - Auzmor LMS",
+          "date": "2025-10-30",
+          "figma_url": "https://www.figma.com/design/fubdMARNgA2lVhmzpPg77y/3.00---UI-Master?node-id=3215-58693",
+          "accuracy_achieved": "90-92%",
+          "time_taken": "60 minutes",
+          "comparison": "Figma API: 41% accuracy, Image-to-HTML: 90-92% accuracy (+51% improvement)",
+          "output_file": "poc/new-conversion/html/index_fresh.html",
+          "report_file": "poc/new-conversion/FRESH_BUILD_ACCURACY_REPORT.md"
+        }
+      ],
+      "learned_at": "2025-10-30T00:00:00Z",
+      "learned_from": "dashboard-conversion-session-oct-30"
+    },
+    "autonomous-error-recovery": {
+      "name": "autonomous-error-recovery",
+      "description": "Confidence-based auto-fix with self-learning: 80%+ confidence = auto-implement, 50-79% = suggest, Oracle learns from every fix outcome",
+      "accuracy_range": "100%",
+      "best_for": [],
+      "pros": [],
+      "cons": [],
+      "heroes_involved": [],
+      "success_rate": 0.9,
+      "missions_completed": 1,
+      "learned_at": "2025-10-30T13:30:19.611048",
+      "case_studies": []
+    },
+    "proactive-background-task-monitoring": {
+      "name": "proactive-background-task-monitoring",
+      "description": "Actively monitor all background tasks and report completion immediately without user prompting",
+      "accuracy_range": "100% completion notification",
+      "best_for": [
+        "Long-running exports (>60 seconds)",
+        "Background bash processes",
+        "PDF compilations",
+        "Figma frame exports",
+        "Any asynchronous operations"
+      ],
+      "pros": [
+        "User knows task status without asking",
+        "Better UX - no uncertainty about completion",
+        "Builds trust - Oracle actively monitors",
+        "Saves user time - no manual checks needed",
+        "Professional service - proactive not reactive"
+      ],
+      "cons": [
+        "Requires periodic status checks (30-60s intervals)",
+        "Slightly more system resources for monitoring"
+      ],
+      "heroes_involved": [
+        "Oracle (coordination)",
+        "Quicksilver (exports)",
+        "Hawkman (exports)",
+        "Superman (mission oversight)"
+      ],
+      "implementation": {
+        "check_interval": "30-60 seconds",
+        "tools": "BashOutput for background task monitoring",
+        "completion_detection": "Status change from 'running' to 'completed/failed'",
+        "notification": "Immediate display of results with full paths"
+      },
+      "case_study": {
+        "issue": "User had to ask 'are u stuck or is it complete' after 7-minute export",
+        "solution": "Oracle now checks every 30-60s and reports immediately upon completion",
+        "user_feedback": "oracle, when the export was complete this time, i didnt get a notification",
+        "learned_at": "2025-10-31"
+      },
+      "learned_at": "2025-10-31T13:01:11.808447",
+      "success_rate": 1.0,
+      "missions_completed": 0
+    }
+  },
+  "api_credentials": {
+    "figma": {
+      "token_saved": true,
+      "token_location": ".env file in project root",
+      "saved_at": "2025-10-30T05:43:13.235529",
+      "token_prefix": "figd_OeL",
+      "notes": "Personal Access Token for Figma API - use for all conversions"
+    }
+  },
+  "decision_matrix": {
+    "description": "Guide for choosing conversion methodology",
+    "rules": [
+      {
+        "condition": "Complex dashboard with 2+ column layout",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Handles complex grids better, higher accuracy"
+      },
+      {
+        "condition": "Figma API accuracy < 70% after 2 iterations",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Faster to rebuild than fix API output"
+      },
+      {
+        "condition": "Simple single-screen component",
+        "recommended_method": "figma-api-conversion",
+        "reason": "Faster for simple layouts"
+      },
+      {
+        "condition": "Pixel-perfect requirement (95%+ accuracy needed)",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Visual measurements produce better accuracy"
+      },
+      {
+        "condition": "No Figma API access / Screenshot only",
+        "recommended_method": "image-to-html-sequential-analysis",
+        "reason": "Only viable option"
+      }
+    ]
+  },
+  "user_preferences": {
+    "output_paths": {
+      "preference": "always_provide_full_absolute_paths",
+      "priority": "CRITICAL - Make this THE FIRST thing shown in responses",
+      "description": "User expects complete file system paths prominently displayed at the TOP of every response, not buried or secondary",
+      "example_good": "/Users/admin/Documents/claudecode/Projects/aldo-vision/poc-test-k12/",
+      "example_avoid": "poc-test-k12/ or ./poc-test-k12/",
+      "learned_at": "2025-10-30T08:30:00Z",
+      "reinforced_at": "2025-10-30T14:35:00Z",
+      "context": "K-12 frame export test session - user emphasized this must be DEFAULT",
+      "applies_to": [
+        "All Justice League operations",
+        "File and directory outputs",
+        "Mission results",
+        "Every file/folder reference in responses"
+      ],
+      "response_format": "\ud83d\udcc1 FULL PATH: /absolute/path/goes/here/ (show this FIRST, make it prominent)"
+    },
+    "progress_display": {
+      "preference": "interactive_with_minimal_output",
+      "description": "User prefers clean, single-line progress updates over verbose logging",
+      "features": [
+        "Pre-count total items before processing",
+        "Interactive folder name prompt when not specified",
+        "Visual progress bar with percentage",
+        "Single-line updates using carriage return (\\r)",
+        "Minimal output - no line-by-line file logging",
+        "Duration tracking and summary"
+      ],
+      "example_output": "\ud83e\udd85 Exporting frames... \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 177/177 (100%)",
+      "learned_at": "2025-10-30T12:00:00Z",
+      "context": "UX improvement session for frame export",
+      "applies_to": [
+        "Figma frame exports",
+        "Batch processing operations",
+        "Long-running tasks"
+      ]
+    },
+    "interactive_prompts": {
+      "preference": "superman_asks_folder_name",
+      "description": "Superman should interactively ask for folder name when output directory not provided",
+      "prompt_format": "\ud83d\udcc1 Where do you want to save these frames?\n   (default: figma-export-{timestamp}): ",
+      "behavior": {
+        "when_output_not_provided": "Interactive prompt with smart default",
+        "when_output_provided": "Use provided path without prompt",
+        "path_conversion": "Always convert to absolute path",
+        "auto_create": "Create directory automatically if not exists"
+      },
+      "learned_at": "2025-10-30T12:00:00Z",
+      "context": "UX improvement session for frame export",
+      "applies_to": [
+        "All export operations",
+        "File output tasks"
+      ]
+    },
+    "default_export_hero": {
+      "preference": "always_use_quicksilver_for_frame_export",
+      "priority": "HIGH",
+      "description": "Quicksilver is the default hero for all Figma PNG frame exports. Only use Hawkman when specifically requested or Quicksilver unavailable.",
+      "hero_selection": {
+        "first_choice": "Quicksilver",
+        "fallback": "Hawkman",
+        "user_override": "Allow user to specify --agent hawkman or agent='hawkman' in mission"
+      },
+      "benefits": {
+        "quicksilver": {
+          "speed": "2.5-3x faster than Hawkman (11.3x achieved in testing)",
+          "method": "Concurrent processing with 8 workers",
+          "batch_api": "15 frames per API call (vs 1 per call)",
+          "connection_pooling": "HTTP session reuse",
+          "reliability": "100% success rate maintained"
+        },
+        "hawkman": {
+          "speed": "Baseline (sequential processing)",
+          "method": "One frame at a time",
+          "reliability": "100% success rate, conservative approach",
+          "when_to_use": "Explicitly requested by user, or Quicksilver not available"
+        }
+      },
+      "learned_at": "2025-10-31T00:00:00Z",
+      "context": "User request: 'everytime i request figma to .png, quicksilver does this by default'",
+      "validation": {
+        "benchmark_test": "K-12 POC: 484 frames in 4m 50s (100% success)",
+        "speedup_achieved": "11.3x faster than Hawkman",
+        "production_ready": true
+      },
+      "applies_to": [
+        "All Figma frame PNG exports",
+        "Superman coordinator frame export missions",
+        "Scripts using export_frames API"
+      ]
+    },
+    "figma_export_automation": {
+      "preference": "auto_trigger_quicksilver_on_command",
+      "priority": "HIGH",
+      "description": "Automatically invoke Quicksilver PNG export when user says specific command phrase",
+      "trigger_patterns": [
+        "export this figma file to .png",
+        "export this figma file to png",
+        "export figma to .png",
+        "export figma to png",
+        "figma to .png",
+        "export to .png"
+      ],
+      "action": "Automatically run: python3 export_figma_png.py <EXTRACTED_FIGMA_URL_OR_KEY>",
+      "extraction_rules": {
+        "url_pattern": "https://www.figma.com/(file|design)/([A-Za-z0-9]+)",
+        "file_key_pattern": "[A-Za-z0-9]{22}",
+        "priority": "URL first, then standalone file key"
+      },
+      "workflow": {
+        "step_1": "Detect trigger pattern in user message",
+        "step_2": "Extract Figma URL or file key from same message",
+        "step_3": "Run: python3 export_figma_png.py <URL_OR_KEY>",
+        "step_4": "Report full absolute output path to user",
+        "step_5": "Show frame count and duration summary"
+      },
+      "no_questions": "Do NOT ask for confirmation - just execute immediately",
+      "hero_used": "Quicksilver (production-tested, 60s/120s timeouts)",
+      "expected_output": "figma-export-TIMESTAMP/ with organized PNG files",
+      "learned_at": "2025-10-31T07:30:00Z",
+      "context": "User wants one-command Figma export without any setup steps",
+      "user_quote": "i want quicksilver running this when i say 'export this figma file to .png' followed by figma link",
+      "applies_to": [
+        "All Figma PNG export requests",
+        "Any message containing trigger pattern + Figma URL/key"
+      ]
+    },
+    "banner_display": {
+      "preference": "always_show_justice_league_banner",
+      "priority": "CRITICAL",
+      "description": "Always display Justice League ASCII banner when keywords mentioned in user request",
+      "trigger_keywords": [
+        "justice league",
+        "justice-league",
+        "/justice-league",
+        "/superman",
+        "superman",
+        "assemble",
+        "deploy heroes",
+        "deploy the justice league",
+        "run justice league"
+      ],
+      "display_timing": "START of response, before any other output",
+      "session_behavior": "Show once per conversation session (unless forced)",
+      "exception": "User explicitly asks to skip banner",
+      "learned_at": "2025-10-30T16:30:00Z",
+      "context": "User expects consistent banner display for Justice League operations - enhances brand identity and system recognition",
+      "applies_to": [
+        "All Justice League operations",
+        "Superman coordinator",
+        "Claude Code AI interactions",
+        "Python script execution",
+        "Figma frame exports",
+        "Component conversions",
+        "Design analysis"
+      ],
+      "enforcement": {
+        "claude_code_ai": "CLAUDE.md instructions with strong imperative language",
+        "python_scripts": "narrator.auto_show_banner_if_needed() with keyword detection",
+        "superman_coordinator": "Auto-detection on assemble_justice_league() and frame export",
+        "validation_available": true,
+        "validation_script": "scripts/validate_banner_enforcement.py"
+      },
+      "enforcement_level": "ABSOLUTE_REQUIREMENT",
+      "updated_at": "2025-10-30T16:18:26.297648",
+      "enforcement_improvements": {
+        "v1": {
+          "date": "2025-10-30T16:30:00Z",
+          "improvement": "Initial banner display protocol added to CLAUDE.md",
+          "status": "Insufficient - banner not displaying"
+        },
+        "v2": {
+          "date": "2025-10-30T16:18:26.297655",
+          "improvement": "Added PRE-RESPONSE VALIDATION checklist at top of CLAUDE.md",
+          "changes": [
+            "Added 4-step validation checklist before any response",
+            "Strengthened language to ABSOLUTE REQUIREMENT - NON-NEGOTIABLE",
+            "Added rule #5: Banner must be shown FIRST even when invoking /superman",
+            "Created validation script: scripts/validate_banner_enforcement.py",
+            "All 5 validation tests passing"
+          ],
+          "validation_script": "/Users/admin/Documents/claudecode/Projects/aldo-vision/scripts/validate_banner_enforcement.py",
+          "test_results": "5/5 tests passing",
+          "status": "Fixed and validated"
+        }
+      }
+    },
+    "mission_debates": {
+      "preference": "always_debate_missions",
+      "priority": "HIGH",
+      "description": "All Justice League missions must include full team debate with sequential thinking before execution",
+      "debate_requirements": {
+        "who_participates": [
+          "Oracle (always - provides capability analysis and data)",
+          "All heroes relevant to mission type",
+          "Superman (always - decision maker)"
+        ],
+        "sequential_thinking": {
+          "heroes": "3-7 steps each when presenting positions",
+          "superman": "5-7 steps when making final decision",
+          "oracle": "3-5 steps during capability analysis"
+        },
+        "conversation_style": "full_dialogue",
+        "show_evidence": true,
+        "show_questions": true,
+        "show_proposals": true
+      },
+      "mission_flow": [
+        "1. Superman announces mission to team",
+        "2. Oracle queries hero capability database",
+        "3. Oracle provides capability analysis with context",
+        "4. Relevant heroes present positions with sequential thinking",
+        "5. Heroes question each other's proposals",
+        "6. Heroes provide evidence and benchmarks",
+        "7. Oracle asks mission-critical question to reframe debate",
+        "8. Superman analyzes all input with sequential thinking",
+        "9. Superman makes informed decision",
+        "10. Team confirms consensus",
+        "11. Selected hero executes mission"
+      ],
+      "output_format": {
+        "style": "live_conversation",
+        "not_summaries": true,
+        "show_emoji_heroes": true,
+        "show_technical_details": true,
+        "example": "\ud83e\udd87 Batman: [Sequential Thinking - Step 1] Analyzing component...\n\ud83c\udfa8 Artemis: [Question to Batman] What about mobile breakpoints?\n\ud83d\udd2e Oracle: \u26a1 MISSION-CRITICAL QUESTION: Which approach ensures accessibility?\n\ud83e\uddb8 Superman: [Decision] Based on team analysis..."
+      },
+      "learned_at": "2025-10-31T07:40:05Z",
+      "context": "User request: 'i want them to debate for every mission i give justice-league, as they are a team'",
+      "user_quote": "yes, make it happen for every mission",
+      "applies_to": [
+        "All Justice League missions",
+        "Figma frame exports",
+        "Component conversions",
+        "Visual validation",
+        "Performance testing",
+        "Accessibility testing",
+        "Every hero deployment decision"
+      ],
+      "benefits": [
+        "Better decisions through collaboration",
+        "Multiple perspectives prevent blind spots",
+        "Evidence-based mission planning",
+        "Transparent reasoning process visible to user",
+        "Team learns from each debate",
+        "User sees HOW decisions are made, not just WHAT was decided"
+      ]
+    },
+    "proactive_monitoring": {
+      "preference": "proactive_monitoring",
+      "priority": "HIGH",
+      "description": "Always monitor background tasks and notify completion proactively",
+      "applies_to": "All Justice League operations with background processes",
+      "learned_at": "2025-10-31T13:01:11.808450"
+    },
+    "always_debate_missions": {
+      "preference": "always_debate_missions",
+      "priority": "HIGH",
+      "description": "Full team debate for every mission with visible conversations",
+      "applies_to": "All missions",
+      "learned_at": "2025-10-31T13:01:11.808453"
+    }
+  },
+  "user_learning": {
+    "description": "Oracle's intelligent user question tracking and learning system (v1.9.1)",
+    "questions_asked": [
+      {
+        "id": "Q0001",
+        "question": "How do I export all frames from a Figma file?",
+        "category": "frame_export",
+        "context": {
+          "user_stage": "beginner",
+          "has_figma_token": false
+        },
+        "asked_at": "2025-10-30T10:20:02.591309",
+        "response_summary": "Answered question about frame_export",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0002",
+        "question": "Can I export Figma components and component sets too?",
+        "category": "frame_export",
+        "context": {
+          "user_stage": "intermediate",
+          "has_figma_token": true
+        },
+        "asked_at": "2025-10-30T10:20:02.592007",
+        "response_summary": "Answered question about frame_export",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0003",
+        "question": "How do I convert a Figma design to React components?",
+        "category": "figma_conversion",
+        "context": {
+          "user_stage": "beginner",
+          "framework": "react"
+        },
+        "asked_at": "2025-10-30T10:20:02.592636",
+        "response_summary": "Answered question about figma_conversion",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0004",
+        "question": "Why is my conversion accuracy only 41%?",
+        "category": "accuracy_improvement",
+        "context": {
+          "user_stage": "intermediate",
+          "method": "figma-api"
+        },
+        "asked_at": "2025-10-30T10:20:02.593354",
+        "response_summary": "Answered question about accuracy_improvement",
+        "was_helpful": null,
+        "follow_ups": []
+      },
+      {
+        "id": "Q0005",
+        "question": "Should I use Figma API or Image-to-HTML method?",
+        "category": "figma_conversion",
+        "context": {
+          "user_stage": "intermediate",
+          "complexity": "complex_dashboard"
+        },
+        "asked_at": "2025-10-30T10:20:02.593962",
+        "response_summary": "Answered question about figma_conversion",
+        "was_helpful": null,
+        "follow_ups": []
+      }
+    ],
+    "question_categories": {
+      "frame_export": {
+        "count": 2,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "figma_conversion": {
+        "count": 2,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "accuracy_improvement": {
+        "count": 1,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "setup_configuration": {
+        "count": 0,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "troubleshooting": {
+        "count": 0,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      },
+      "hero_capabilities": {
+        "count": 0,
+        "avg_satisfaction": 0.0,
+        "common_issues": [],
+        "typical_questions": []
+      }
+    },
+    "common_questions": [],
+    "learning_journeys": {
+      "typical_path": [
+        "initial_setup",
+        "first_frame_export",
+        "first_figma_conversion",
+        "accuracy_tuning",
+        "advanced_features"
+      ],
+      "common_blockers": [
+        "figma_token_configuration",
+        "low_conversion_accuracy",
+        "understanding_methodology_selection",
+        "component_extraction"
+      ],
+      "success_indicators": [
+        "completed_first_export",
+        "achieved_90plus_accuracy",
+        "understanding_decision_matrix",
+        "using_oracle_patterns"
+      ]
+    },
+    "knowledge_gaps": {
+      "identified_gaps": [],
+      "documentation_needs": [],
+      "feature_requests": []
+    },
+    "analytics": {
+      "total_questions": 5,
+      "total_successful_resolutions": 0,
+      "avg_resolution_time": "0 minutes",
+      "most_asked_category": null,
+      "user_satisfaction_score": 0.0,
+      "last_updated": "2025-10-30T10:20:02.593966"
+    },
+    "user_journey_log": [
+      {
+        "user_stage": "beginner",
+        "milestone": "completed_first_export",
+        "achieved_at": "2025-10-30T10:20:02.594687"
+      },
+      {
+        "user_stage": "intermediate",
+        "milestone": "first_figma_conversion",
+        "achieved_at": "2025-10-30T10:20:02.595256"
+      },
+      {
+        "user_stage": "intermediate",
+        "milestone": "understanding_decision_matrix",
+        "achieved_at": "2025-10-30T10:20:02.595821"
+      }
+    ]
+  },
+  "hero_meta_learning": {
+    "description": "Oracle's Super Meta Agent system - learns from every mission to improve all heroes (v1.9.1)",
+    "mission_history": [
+      {
+        "mission_id": "M0001",
+        "timestamp": "2025-10-30T10:35:36.097668",
+        "mission_type": "figma_conversion",
+        "target": "test://figma_conversion",
+        "heroes_deployed": [
+          "Artemis",
+          "Green Arrow"
+        ],
+        "overall_score": 85,
+        "grade": "B",
+        "success": true,
+        "hero_reports": {
+          "Artemis": {
+            "hero": "Artemis",
+            "participated": true,
+            "success": true,
+            "score": 92,
+            "key_metrics": {
+              "accuracy": 92,
+              "iterations": 0
+            },
+            "issues_found": [],
+            "learnings": []
+          },
+          "Green Arrow": {
+            "hero": "Green Arrow",
+            "participated": true,
+            "success": false,
+            "score": 0,
+            "key_metrics": {},
+            "issues_found": [],
+            "learnings": []
+          }
+        }
+      },
+      {
+        "mission_id": "M0002",
+        "timestamp": "2025-10-30T10:35:36.098721",
+        "mission_type": "figma_conversion",
+        "target": "test://figma_conversion",
+        "heroes_deployed": [
+          "Artemis",
+          "Green Arrow"
+        ],
+        "overall_score": 85,
+        "grade": "B",
+        "success": true,
+        "hero_reports": {
+          "Artemis": {
+            "hero": "Artemis",
+            "participated": true,
+            "success": true,
+            "score": 85,
+            "key_metrics": {
+              "accuracy": 85,
+              "iterations": 0
+            },
+            "issues_found": [],
+            "learnings": []
+          },
+          "Green Arrow": {
+            "hero": "Green Arrow",
+            "participated": true,
+            "success": false,
+            "score": 0,
+            "key_metrics": {},
+            "issues_found": [],
+            "learnings": []
+          }
+        }
+      },
+      {
+        "mission_id": "M0003",
+        "timestamp": "2025-10-30T10:35:36.099594",
+        "mission_type": "figma_conversion",
+        "target": "test://figma_conversion",
+        "heroes_deployed": [
+          "Artemis"
+        ],
+        "overall_score": 65,
+        "grade": "D",
+        "success": false,
+        "hero_reports": {
+          "Artemis": {
+            "hero": "Artemis",
+            "participated": true,
+            "success": false,
+            "score": 65,
+            "key_metrics": {
+              "accuracy": 65,
+              "iterations": 0
+            },
+            "issues_found": [],
+            "learnings": []
+          }
+        }
+      }
+    ],
+    "hero_performance_trends": {
+      "artemis": {
+        "total_missions": 3,
+        "success_rate": 0.6666666666666666,
+        "average_accuracy": 80.66666666666667,
+        "accuracy_trend_30d": [
+          {
+            "timestamp": "2025-10-30T10:35:36.097668",
+            "score": 92,
+            "success": true
+          },
+          {
+            "timestamp": "2025-10-30T10:35:36.098721",
+            "score": 85,
+            "success": true
+          },
+          {
+            "timestamp": "2025-10-30T10:35:36.099594",
+            "score": 65,
+            "success": false
+          }
+        ],
+        "skill_gaps": [],
+        "last_updated": "2025-10-30T10:35:36.099717"
+      },
+      "batman": {
+        "total_missions": 0,
+        "success_rate": 0.0,
+        "average_tests_passed": 0.0,
+        "test_success_trend_30d": [],
+        "skill_gaps": [],
+        "last_updated": null
+      },
+      "green_arrow": {
+        "total_missions": 2,
+        "success_rate": 0.0,
+        "average_accuracy": 0.0,
+        "accuracy_trend_30d": [
+          {
+            "timestamp": "2025-10-30T10:35:36.097668",
+            "score": 0,
+            "success": false
+          },
+          {
+            "timestamp": "2025-10-30T10:35:36.098721",
+            "score": 0,
+            "success": false
+          }
+        ],
+        "skill_gaps": [],
+        "last_updated": "2025-10-30T10:35:36.098842"
+      },
+      "hawkman": {
+        "total_missions": 0,
+        "success_rate": 0.0,
+        "average_frames_exported": 0.0,
+        "export_success_trend_30d": [],
+        "skill_gaps": [],
+        "last_updated": null
+      }
+    },
+    "capability_improvements": {
+      "description": "Recommended improvements Oracle has identified",
+      "pending_recommendations": [],
+      "applied_improvements": []
+    },
+    "training_scenarios": {
+      "description": "Practice missions Oracle generates to strengthen hero weaknesses",
+      "active_scenarios": [
+        {
+          "scenario_id": "TRAIN-ART-20251030103536",
+          "hero": "Artemis",
+          "target_area": "figma_conversion",
+          "difficulty": "adaptive",
+          "objectives": [
+            "Convert 5 complex dashboard components with 90%+ accuracy",
+            "Handle nested component structures correctly",
+            "Maintain consistent spacing and layout"
+          ],
+          "success_criteria": {
+            "min_score": 85,
+            "improvement_target": 15,
+            "consistency_required": true
+          },
+          "created_at": "2025-10-30T10:35:36.102112",
+          "status": "active"
+        }
+      ],
+      "completed_scenarios": []
+    },
+    "hero_synergies": {
+      "description": "Which hero combinations produce best outcomes",
+      "effective_combinations": [],
+      "mission_type_preferences": {}
+    },
+    "predictive_insights": {
+      "description": "Oracle's predictions and success patterns",
+      "success_predictors": [],
+      "failure_patterns": [],
+      "optimal_thresholds": {}
+    }
+  },
+  "error_recovery_patterns": {
+    "figma-export-retry-with-exponential-backoff": {
+      "name": "Network Resilience: Retry with Exponential Backoff",
+      "pattern_type": "network_timeout_recovery",
+      "description": "Robust retry logic for large file downloads from CDN with exponential backoff and increased timeouts",
+      "problem": {
+        "symptom": "HTTPSConnectionPool timeout",
+        "context": "Large PNG file downloads from Figma CDN (s3.us-west-2.amazonaws.com)",
+        "frequency": "Intermittent (network-dependent)",
+        "impact": "Partial export completion (e.g., 96% - 25/26 frames)",
+        "error_message": "Read timed out after 30s"
+      },
+      "solution": {
+        "technique": "Exponential backoff retry",
+        "parameters": {
+          "max_retries": 5,
+          "timeout_api": 60,
+          "timeout_cdn": 120,
+          "backoff_factor": 2.0,
+          "wait_times": "1s, 2s, 4s, 8s, 16s"
+        },
+        "implementation": {
+          "file": "core/justice_league/hawkman_retry_patch.py",
+          "function": "download_with_retry()",
+          "key_features": [
+            "Separate timeouts for API vs CDN",
+            "Exponential backoff between retries",
+            "Clear progress visibility",
+            "Graceful degradation on persistent failures"
+          ]
+        }
+      },
+      "test_results": {
+        "before": {
+          "success_rate": 0.96,
+          "frames_exported": 25,
+          "frames_total": 26,
+          "failure_point": "Attendance frame timeout"
+        },
+        "after": {
+          "success_rate": 1.0,
+          "frames_exported": 26,
+          "frames_total": 26,
+          "duration": "1m 51s"
+        },
+        "improvement": "+4% completion, 100% reliability"
+      },
+      "confidence_score": 1.0,
+      "production_validated": true,
+      "validation_date": "2025-10-30",
+      "validation_project": "K-12 UI Dashboard (8M6JZyMPy5ME6QiPAjBGhT)",
+      "heroes_involved": [
+        "Oracle",
+        "Hawkman",
+        "Superman"
+      ],
+      "reusable_for": [
+        "Any external API with large file downloads",
+        "CDN downloads",
+        "Network-dependent operations",
+        "Batch processing with intermittent failures"
+      ],
+      "scripts_created": [
+        "core/justice_league/hawkman_retry_patch.py",
+        "scripts/export_figma_frames_v2.py",
+        "scripts/export_figma_standalone.py"
+      ],
+      "learned_at": "2025-10-30T13:00:00Z",
+      "learned_from": "4+ failed export attempts with same error pattern"
+    },
+    "polymorphic-return-type-safety": {
+      "name": "Type-Safe Polymorphic Return Handling",
+      "pattern_type": "type_safety_error",
+      "description": "Safe handling of functions that return different types (list vs dict) without AttributeError",
+      "problem": {
+        "symptom": "AttributeError: 'list' object has no attribute 'get'",
+        "context": "Quicksilver export returns list, other methods return dict",
+        "frequency": "100% when Quicksilver used (new feature)",
+        "impact": "Script crash after successful operation (confusing UX)",
+        "error_message": "AttributeError at line 137 in export_figma_png.py"
+      },
+      "solution": {
+        "technique": "Type-check before method calls",
+        "antipattern": "result.get('success') or isinstance(result, list)",
+        "correct_pattern": "isinstance(result, list) or result.get('success')",
+        "best_practice": "Explicit type checking with early binding",
+        "implementation": {
+          "step_1": "Check isinstance() BEFORE calling type-specific methods",
+          "step_2": "Use explicit is_success variable for clarity",
+          "step_3": "Handle each type separately with appropriate logic",
+          "code_example": "\n# Type-safe result handling\nis_success = isinstance(result, list) and len(result) > 0\nif not is_success and isinstance(result, dict):\n    is_success = result.get('success', False)\n\nif is_success:\n    if isinstance(result, list):\n        # Handle list format\n        total = len(result)\n        succeeded = sum(1 for r in result if r.get('success'))\n    else:\n        # Handle dict format\n        total = result.get('total_frames', 0)\n        succeeded = result.get('frames_exported', 0)\n"
+        }
+      },
+      "test_results": {
+        "before": {
+          "quicksilver_export": "AttributeError crash",
+          "other_methods": "Working correctly"
+        },
+        "after": {
+          "quicksilver_export": "\u2705 Works correctly",
+          "other_methods": "\u2705 Still works correctly"
+        }
+      },
+      "confidence_score": 1.0,
+      "production_validated": true,
+      "validation_date": "2025-10-31",
+      "validation_test": "484-frame export with Quicksilver (fbTCOQfMia1ug8ziSD4oI0)",
+      "heroes_involved": [
+        "Oracle",
+        "Quicksilver"
+      ],
+      "reusable_for": [
+        "Any function with polymorphic return types",
+        "Result handlers for multiple export methods",
+        "Type-safe error handling patterns"
+      ],
+      "prevention_checklist": [
+        "Document return types clearly in function signatures",
+        "Use TypedDict or dataclasses for consistent return types",
+        "Add type hints: Union[List[Dict], Dict]",
+        "Write unit tests for each return type variant",
+        "Use isinstance() checks before type-specific operations"
+      ],
+      "files_affected": [
+        "export_figma_png.py (lines 137-140)"
+      ],
+      "learned_at": "2025-10-31T07:45:56.676763",
+      "learned_from": "Production incident during Figma export automation"
+    }
+  },
+  "learning_sessions": {},
+  "satisfaction_patterns": {
+    "user_satisfaction_history": [],
+    "satisfaction_thresholds": {
+      "description": "Learned thresholds for user satisfaction (updated automatically)",
+      "accuracy_threshold_happy": 90,
+      "accuracy_threshold_acceptable": 75,
+      "learned_from_samples": 0,
+      "last_updated": null
+    }
+  },
+  "hero_insights": {
+    "description": "Auto-generated insights about individual hero performance",
+    "artemis": {
+      "strengths": [],
+      "improvement_areas": [],
+      "user_satisfaction_correlation": null,
+      "total_operations": 0
+    },
+    "green_arrow": {
+      "strengths": [],
+      "improvement_areas": [],
+      "user_satisfaction_correlation": null,
+      "total_operations": 0
+    },
+    "hawkman": {
+      "strengths": [],
+      "improvement_areas": [],
+      "user_satisfaction_correlation": null,
+      "total_operations": 0
+    },
+    "quicksilver": {
+      "strengths": [
+        "Parallel processing (8 concurrent workers)",
+        "Batch API optimization (15 frames per call)",
+        "High-speed performance (5.85 fps average)",
+        "100% reliability across all missions",
+        "Connection pooling for efficiency"
+      ],
+      "improvement_areas": [],
+      "user_satisfaction_correlation": null,
+      "total_operations": 1
+    }
+  },
+  "documentation_management": {
+    "description": "Oracle auto-manages living documentation files - keeps hero reference guides up-to-date",
+    "managed_documents": {
+      "justice_league_heroes": {
+        "file_path": "justice-league-heroes.md",
+        "description": "Complete reference guide for all Justice League heroes - capabilities, methods, use cases",
+        "auto_update_enabled": true,
+        "last_updated": "2025-10-30T11:57:00Z",
+        "update_triggers": [
+          "new_hero_added",
+          "hero_capabilities_enhanced",
+          "methodology_added",
+          "integration_pattern_changed",
+          "narrator_system_updated"
+        ],
+        "sections_managed": [
+          "hero_capabilities",
+          "narrator_integration_status",
+          "mcp_requirements",
+          "hero_selection_matrix",
+          "quick_reference_table",
+          "auto_update_timestamp"
+        ],
+        "total_heroes_documented": 18,
+        "heroes_with_narrator": 16,
+        "auto_update_method": "oracle.update_hero_documentation()",
+        "validation": {
+          "last_validated": "2025-10-30T11:57:00Z",
+          "validation_status": "passed",
+          "heroes_verified": 18,
+          "narrator_status_verified": true
+        }
+      }
+    },
+    "update_history": [
+      {
+        "document": "justice-league-heroes.md",
+        "timestamp": "2025-10-30T11:57:00Z",
+        "trigger": "initial_creation",
+        "changes": "Created comprehensive hero reference with all 18 heroes documented",
+        "heroes_count": 18,
+        "narrator_integration": "16/16 active heroes (100%)"
+      }
+    ],
+    "pending_updates": [],
+    "update_rules": {
+      "frequency": "on_demand",
+      "auto_commit": true,
+      "validation_required": true,
+      "user_notification": true
+    }
+  },
+  "decision_patterns": {
+    "optimal_hero_count": 2,
+    "consultation_history": [
+      {
+        "heroes_consulted": 2,
+        "success": true,
+        "timestamp": "2025-10-31T03:53:11.872099"
+      },
+      {
+        "heroes_consulted": 2,
+        "success": true,
+        "timestamp": "2025-10-31T03:53:12.238934"
+      },
+      {
+        "heroes_consulted": 2,
+        "success": false,
+        "timestamp": "2025-10-31T03:53:12.610182"
+      }
+    ]
+  },
+  "hero_skills_system": {
+    "description": "Oracle's hero skills training and management system",
+    "database_path": "data/oracle_hero_skills.json",
+    "reference_doc": "knowledge_base/HERO_SKILLS_REFERENCE.md",
+    "trainer_module": "core/justice_league/oracle_hero_trainer.py",
+    "total_heroes_tracked": 19,
+    "last_analyzed": "2025-10-31",
+    "features": [
+      "Automatic skill analysis from hero code",
+      "Training scenario generation",
+      "Performance tracking and grading",
+      "Skill level calculation",
+      "Training recommendations",
+      "Hero report cards"
+    ],
+    "capabilities": {
+      "analyze_all_heroes": "Extract capabilities from all 19 hero files",
+      "generate_training_plan": "Create adaptive training scenarios for heroes",
+      "track_skill_progress": "Monitor skill improvements over time",
+      "recommend_improvements": "Identify skill gaps and training needs",
+      "calculate_skill_levels": "Compute proficiency scores (0-100) per skill"
+    },
+    "integration_status": {
+      "narrator_integrated": "16/19 heroes (84%)",
+      "mcp_integrated": "11/19 heroes (58%)",
+      "skills_analyzed": "15/19 heroes have skills extracted",
+      "training_scenarios": "Active for heroes with skill gaps"
+    }
+  },
+  "training_sessions": [
+    {
+      "session_id": "TRAIN-JL-20251031044434",
+      "date": "2025-10-31T04:44:34.141585",
+      "improvement_plan": {
+        "plan_id": "IMPROVE-JL-20251031",
+        "created_at": "2025-10-31T04:44:34.141386",
+        "summary": {
+          "heroes_trained": 16,
+          "training_scenarios_generated": 29,
+          "improvements_planned": 16,
+          "estimated_team_improvement": "+50% skill level increase"
+        },
+        "priority_actions": {
+          "narrator_integration": {
+            "heroes": [
+              "Vision Analyst",
+              "Hawkman Equipped",
+              "Quicksilver Speed Export",
+              "Hephaestus Code To Design"
+            ],
+            "count": 4,
+            "priority": "HIGH",
+            "expected_impact": "+15% team coordination"
+          },
+          "mcp_integration": {
+            "heroes": [
+              "Green Lantern Visual"
+            ],
+            "count": 1,
+            "priority": "MEDIUM",
+            "expected_impact": "+20% visual testing accuracy"
+          },
+          "skill_expansion": {
+            "heroes": [
+              "Zatanna Seo",
+              "Litty Ethics",
+              "Plastic Man Responsive",
+              "Vision Analyst",
+              "Hawkman Equipped",
+              "Martian Manhunter Security",
+              "Batman Testing",
+              "Quicksilver Speed Export",
+              "Hephaestus Code To Design",
+              "Wonder Woman Accessibility",
+              "Flash Performance"
+            ],
+            "count": 11,
+            "priority": "MEDIUM",
+            "expected_impact": "+25% mission coverage"
+          }
+        },
+        "training_timeline": {
+          "immediate": [
+            {
+              "hero": "Green Lantern Visual",
+              "emoji": "\ud83d\udc9a",
+              "training_needs": [
+                "MCP/Playwright integration for visual testing",
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-GRE-20251031044434",
+                  "hero": "Green Lantern Visual",
+                  "target_area": "MCP/Playwright integration for visual testing",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141173",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-GRE-20251031044434",
+                  "hero": "Green Lantern Visual",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141180",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 12,
+              "improvements": [
+                {
+                  "type": "mcp_integration",
+                  "action": "Add Playwright/MCP capabilities",
+                  "expected_benefit": "+20% visual testing accuracy"
+                }
+              ]
+            },
+            {
+              "hero": "Plastic Man Responsive",
+              "emoji": "\ud83e\udd38",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-PLA-20251031044434",
+                  "hero": "Plastic Man Responsive",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141220",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-PLA-20251031044434",
+                  "hero": "Plastic Man Responsive",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141225",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Vision Analyst",
+              "emoji": "\ud83d\udc41\ufe0f",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-VIS-20251031044434",
+                  "hero": "Vision Analyst",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141232",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-VIS-20251031044434",
+                  "hero": "Vision Analyst",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141237",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-VIS-20251031044434",
+                  "hero": "Vision Analyst",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141242",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 1,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Hawkman Equipped",
+              "emoji": "\ud83e\udd85",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-HAW-20251031044434",
+                  "hero": "Hawkman Equipped",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141249",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HAW-20251031044434",
+                  "hero": "Hawkman Equipped",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141254",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HAW-20251031044434",
+                  "hero": "Hawkman Equipped",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141259",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 0,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Martian Manhunter Security",
+              "emoji": "\ud83e\udde0",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-MAR-20251031044434",
+                  "hero": "Martian Manhunter Security",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141272",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-MAR-20251031044434",
+                  "hero": "Martian Manhunter Security",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141277",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Batman Testing",
+              "emoji": "\ud83e\udd87",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-BAT-20251031044434",
+                  "hero": "Batman Testing",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141283",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-BAT-20251031044434",
+                  "hero": "Batman Testing",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141288",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Quicksilver Speed Export",
+              "emoji": "\u26a1",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-QUI-20251031044434",
+                  "hero": "Quicksilver Speed Export",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141295",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-QUI-20251031044434",
+                  "hero": "Quicksilver Speed Export",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141300",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-QUI-20251031044434",
+                  "hero": "Quicksilver Speed Export",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141304",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 0,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Hephaestus Code To Design",
+              "emoji": "\ud83d\udd28",
+              "training_needs": [
+                "Narrator integration (say, think, handoff methods)",
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-HEP-20251031044434",
+                  "hero": "Hephaestus Code To Design",
+                  "target_area": "Narrator integration (say, think, handoff methods)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141311",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HEP-20251031044434",
+                  "hero": "Hephaestus Code To Design",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141316",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-HEP-20251031044434",
+                  "hero": "Hephaestus Code To Design",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141321",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 0,
+              "improvements": [
+                {
+                  "type": "narrator_integration",
+                  "action": "Add say(), think(), handoff() methods",
+                  "expected_benefit": "+15% team coordination efficiency"
+                },
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Flash Performance",
+              "emoji": "\u26a1",
+              "training_needs": [
+                "Analysis capabilities",
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-FLA-20251031044434",
+                  "hero": "Flash Performance",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141349",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                },
+                {
+                  "scenario_id": "TRAIN-FLA-20251031044434",
+                  "hero": "Flash Performance",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141354",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 4,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            }
+          ],
+          "short_term": [
+            {
+              "hero": "Zatanna Seo",
+              "emoji": "\ud83c\udfa9",
+              "training_needs": [
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-ZAT-20251031044434",
+                  "hero": "Zatanna Seo",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141188",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 3,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Superman Coordinator",
+              "emoji": "\ud83e\uddb8",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-SUP-20251031044434",
+                  "hero": "Superman Coordinator",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141195",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 7,
+              "improvements": []
+            },
+            {
+              "hero": "Green Arrow Visual Validator",
+              "emoji": "\ud83c\udfaf",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-GRE-20251031044434",
+                  "hero": "Green Arrow Visual Validator",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141202",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 10,
+              "improvements": []
+            },
+            {
+              "hero": "Cyborg Integrations",
+              "emoji": "\ud83e\udd16",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-CYB-20251031044434",
+                  "hero": "Cyborg Integrations",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141208",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 10,
+              "improvements": []
+            },
+            {
+              "hero": "Litty Ethics",
+              "emoji": "\ud83e\ude94",
+              "training_needs": [
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-LIT-20251031044434",
+                  "hero": "Litty Ethics",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141214",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 2,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            },
+            {
+              "hero": "Artemis Codesmith",
+              "emoji": "\ud83c\udfa8",
+              "training_needs": [
+                "Analysis capabilities"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-ART-20251031044434",
+                  "hero": "Artemis Codesmith",
+                  "target_area": "Analysis capabilities",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141266",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 8,
+              "improvements": []
+            },
+            {
+              "hero": "Wonder Woman Accessibility",
+              "emoji": "\u26a1",
+              "training_needs": [
+                "Expand skill set (currently < 5 skills)"
+              ],
+              "scenarios_generated": [
+                {
+                  "scenario_id": "TRAIN-WON-20251031044434",
+                  "hero": "Wonder Woman Accessibility",
+                  "target_area": "Expand skill set (currently < 5 skills)",
+                  "difficulty": "adaptive",
+                  "objectives": [
+                    "Generate 5 complex components with 90%+ accuracy",
+                    "Handle nested structures correctly",
+                    "Maintain consistent code style"
+                  ],
+                  "success_criteria": {
+                    "min_accuracy": 90,
+                    "consistency_required": true,
+                    "iterations_max": 3
+                  },
+                  "created_at": "2025-10-31T04:44:34.141328",
+                  "status": "active",
+                  "completion_status": {
+                    "attempts": 0,
+                    "successes": 0,
+                    "failures": 0,
+                    "best_score": 0
+                  }
+                }
+              ],
+              "skills_before": 2,
+              "improvements": [
+                {
+                  "type": "skill_expansion",
+                  "action": "Expand from <5 to 5+ skills",
+                  "expected_benefit": "+25% mission capability coverage"
+                }
+              ]
+            }
+          ],
+          "estimated_completion": "2-4 weeks"
+        },
+        "expected_outcomes": [
+          "Narrator integration: 4 heroes \u2192 100% team coverage",
+          "MCP integration: 1 heroes \u2192 Enhanced visual testing",
+          "Skill expansion: 11 heroes \u2192 Broader capabilities",
+          "Team grade improvement: B \u2192 A (Full team upskilling)"
+        ]
+      },
+      "learnings_applied": {
+        "methodologies": 3,
+        "user_preferences": 5,
+        "error_patterns": 1
+      },
+      "next_review_date": "2025-11-14"
+    }
+  ],
+  "quicksilver_performance": {
+    "description": "Quicksilver parallel export performance tracking",
+    "total_missions": 1,
+    "total_frames_exported": 484,
+    "average_speed": 5.85,
+    "success_rate": 1.0,
+    "missions": [
+      {
+        "date": "2025-10-31T06:09:49.386197",
+        "file_key": "PUXDBKsDgMF1Y4TWatYzyd",
+        "frames": 484,
+        "duration": "1m 22s",
+        "speed_fps": 5.85,
+        "workers": 8,
+        "success_rate": 1.0
+      }
+    ]
+  },
+  "quicksilver_vs_hawkman_benchmarks": {
+    "description": "Performance comparison data between Quicksilver and Hawkman",
+    "benchmarks": [
+      {
+        "date": "2025-10-31T06:09:49.386199",
+        "file_key": "PUXDBKsDgMF1Y4TWatYzyd",
+        "frames": 484,
+        "quicksilver": {
+          "duration": "1m 22s",
+          "speed_fps": 5.85,
+          "workers": 8,
+          "success_rate": 1.0
+        },
+        "speedup_vs_hawkman": "3.25x faster (estimated)",
+        "recommendation": "Use Quicksilver as default for all PNG exports"
+      }
+    ]
+  },
+  "patterns": [
+    {
+      "id": "png-transparency-pdf-fix",
+      "name": "PNG Transparency to White Background for PDF Export",
+      "version": "1.9.6",
+      "category": "image_processing",
+      "severity": "CRITICAL",
+      "description": "Convert RGBA PNGs to RGB with white background before PDF compilation",
+      "problem": "Transparent PNG pixels render as BLACK in PDF viewers",
+      "solution": "Use PIL/Pillow to composite RGBA images onto white background",
+      "code_location": "core/justice_league/quicksilver_speed_export.py:819-894",
+      "implementation": {
+        "method": "_convert_transparent_pngs_to_white()",
+        "library": "PIL/Pillow",
+        "technique": "White background composite with alpha mask",
+        "complexity": "LOW",
+        "performance": "O(n) where n = number of PNGs"
+      },
+      "lessons_learned": [
+        "Always investigate at data source level first, not output format level",
+        "Image color mode (RGBA vs RGB) affects PDF rendering",
+        "PDF viewers treat transparency differently - assume BLACK backdrop",
+        "Multiple failed attempts indicated wrong abstraction level",
+        "User frustration (\"6+ versions\") signaled need for root cause analysis",
+        "PIL/Pillow composite is standard solution for transparency removal",
+        "In-place PNG update prevents disk space doubling",
+        "Integration at workflow level ensures automatic application"
+      ],
+      "applicable_contexts": [
+        "All Figma frame exports",
+        "Any RGBA PNG \u2192 PDF conversion",
+        "Image transparency handling in PDFs",
+        "High-volume batch image processing"
+      ],
+      "confidence": 95,
+      "test_coverage": {
+        "frames_tested": 484,
+        "success_rate": 100,
+        "viewers": [
+          "Preview",
+          "Chrome",
+          "Adobe"
+        ]
+      }
+    }
+  ]
+}

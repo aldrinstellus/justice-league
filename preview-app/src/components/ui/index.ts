@@ -1,0 +1,10 @@
+// Simplified shadcn/ui components for demo
+export { Button } from './button';
+export { Card } from './card';
+export { Input } from './input';
+export { Label } from './label';
+export { Badge } from './badge';
+export { Avatar } from './avatar';
+export { Tabs } from './tabs';
+export { Select } from './select';
+export { Table } from './table';

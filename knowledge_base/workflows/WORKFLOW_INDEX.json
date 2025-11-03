@@ -1,0 +1,240 @@
+{
+  "workflows": [
+    {
+      "id": "figma-mcp-claude-playwright-2025",
+      "title": "Figma MCP + Claude Code + Playwright MCP Workflow",
+      "file": "figma-mcp-claude-playwright-workflow.md",
+      "author": "Orhan Asım Arslan",
+      "date": "2025-10-13",
+      "source_url": "https://medium.com/javascript-in-plain-english/experience-story-figma-mcp-claude-code-playwright-68b20bb0f8ce",
+      "category": "design-to-code",
+      "tags": [
+        "figma-mcp",
+        "claude-code",
+        "playwright-mcp",
+        "responsive-design",
+        "component-library",
+        "tailwind-css",
+        "design-tokens",
+        "validation",
+        "automation"
+      ],
+      "use_cases": [
+        "building responsive component libraries at scale",
+        "figma-to-code conversion",
+        "design token extraction",
+        "responsive validation across breakpoints",
+        "computed CSS property testing",
+        "multi-breakpoint component development"
+      ],
+      "key_insights": [
+        {
+          "insight": "Figma as Database",
+          "description": "Treat Figma as a queryable database for design tokens, not just a visual design viewer",
+          "tools": ["figma-mcp"]
+        },
+        {
+          "insight": "AI as Responsive Interpreter",
+          "description": "Use Claude Code to synthesize multi-breakpoint specs into responsive Tailwind components",
+          "tools": ["claude-code"]
+        },
+        {
+          "insight": "Playwright as Validation Engine",
+          "description": "Validate computed CSS properties programmatically across all breakpoints",
+          "tools": ["playwright-mcp"]
+        }
+      ],
+      "workflow_steps": [
+        {
+          "step": 1,
+          "phase": "extraction",
+          "action": "Query all breakpoints first",
+          "description": "Get code for desktop (1920px), laptop (1440px), tablet (1024px), mobile (393px)",
+          "tool": "figma-mcp",
+          "output": "4 separate code outputs with exact CSS values per breakpoint"
+        },
+        {
+          "step": 2,
+          "phase": "analysis",
+          "action": "Build comparison tables",
+          "description": "Compare what changes between breakpoints (padding, font-size, layout, gap, etc.)",
+          "tool": "claude-code",
+          "output": "Comparison table documenting all design token changes"
+        },
+        {
+          "step": 3,
+          "phase": "implementation",
+          "action": "Implement with exact values",
+          "description": "Use Tailwind arbitrary values for exact Figma specs instead of approximations",
+          "tool": "claude-code",
+          "output": "Responsive component with mobile-first Tailwind classes"
+        },
+        {
+          "step": 4,
+          "phase": "validation",
+          "action": "Validate with Playwright",
+          "description": "Run 3 validation types: visual snapshots, computed style verification, console error check",
+          "tool": "playwright-mcp",
+          "output": "Validation report across all breakpoints"
+        },
+        {
+          "step": 5,
+          "phase": "remediation",
+          "action": "Fix bugs found",
+          "description": "Address any mismatches between specs and implementation",
+          "tool": "code-editor",
+          "output": "Bug fixes"
+        },
+        {
+          "step": 6,
+          "phase": "verification",
+          "action": "Re-validate",
+          "description": "Confirm all fixes pass validation",
+          "tool": "playwright-mcp",
+          "output": "Clean validation report"
+        },
+        {
+          "step": 7,
+          "phase": "deployment",
+          "action": "Ship with confidence",
+          "description": "Deploy validated components",
+          "tool": "deployment-pipeline",
+          "output": "Production-ready components"
+        }
+      ],
+      "metrics": {
+        "scale": "21 components × 4 breakpoints = 84 variations",
+        "bugs_caught": "12+ bugs before deployment",
+        "bug_categories": [
+          "1 mobile component mismatch",
+          "6 layout/spacing issues (flex-grow, padding, gaps)",
+          "2 responsive visibility bugs",
+          "3 typography scaling issues"
+        ],
+        "time_savings": "~45 min/component (screenshot approach) → ~25 min/component (workflow approach)",
+        "accuracy": "Very close to Figma specs at all 4 breakpoints"
+      },
+      "tools_required": [
+        {
+          "name": "Figma MCP",
+          "type": "subscription/api",
+          "purpose": "Design specification extraction",
+          "alternatives": "Open-source Figma API (limited)"
+        },
+        {
+          "name": "Claude Code",
+          "type": "ai-assistant",
+          "purpose": "Responsive code interpretation",
+          "alternatives": "Other AI assistants with MCP support"
+        },
+        {
+          "name": "Playwright MCP",
+          "type": "free",
+          "purpose": "Programmatic validation",
+          "alternatives": "Standalone Playwright"
+        }
+      ],
+      "best_practices": [
+        "Never assume mobile = shrunk desktop - always query all breakpoints",
+        "Build comparison tables BEFORE coding",
+        "Use Tailwind arbitrary values (px-[331px]) for exact specs, not approximations (px-8)",
+        "Validate computed CSS properties, not just visual output",
+        "Think mobile-first: establish base state before responsive overrides",
+        "Automate validation - manual checking doesn't scale beyond ~10 components",
+        "Document everything: component mappings, design tokens, validation checklists"
+      ],
+      "common_bugs_detected": [
+        {
+          "bug_type": "Mobile Component Mismatch",
+          "description": "Designer used completely different component on mobile, not just responsive variant",
+          "detection_method": "Query all breakpoints, compare node IDs",
+          "fix": "Conditional rendering based on breakpoint"
+        },
+        {
+          "bug_type": "Invisible Flex-Grow Issues",
+          "description": "Components look correct visually but have flex-grow: 0 instead of 1, leaving unwanted space",
+          "detection_method": "Playwright computed style validation",
+          "fix": "Add responsive flex-grow classes"
+        },
+        {
+          "bug_type": "Responsive Visibility Misunderstanding",
+          "description": "Tailwind responsive prefixes are additive, not replacements - missing base 'hidden' class",
+          "detection_method": "Playwright element counting at each breakpoint",
+          "fix": "Add base 'hidden' class before responsive show classes"
+        }
+      ],
+      "validation_types": [
+        {
+          "type": "Visual Snapshots",
+          "purpose": "Layout/alignment issues",
+          "method": "Programmatic browser resize + screenshot capture at each breakpoint",
+          "tool": "Playwright"
+        },
+        {
+          "type": "Computed Style Verification",
+          "purpose": "Invisible property bugs",
+          "method": "Playwright evaluate() to measure flex-grow, widths, gaps, padding, z-index",
+          "tool": "Playwright"
+        },
+        {
+          "type": "Console Error Check",
+          "purpose": "Runtime problems",
+          "method": "Automated console monitoring for React errors, missing deps, CSS warnings",
+          "tool": "Playwright"
+        }
+      ],
+      "design_token_categories": [
+        "padding (x/y)",
+        "font-size",
+        "layout direction (flex-row/flex-col)",
+        "gap",
+        "border width",
+        "width/max-width",
+        "colors",
+        "typography",
+        "spacing"
+      ],
+      "responsive_breakpoints": {
+        "mobile": "393px",
+        "tablet": "1024px",
+        "laptop": "1440px",
+        "desktop": "1920px"
+      },
+      "framework_requirements": {
+        "css_framework": "Tailwind CSS with arbitrary values support",
+        "component_library": "React/Next.js (or similar)",
+        "testing_framework": "Playwright",
+        "design_tool": "Figma with MCP server access"
+      },
+      "limitations": [
+        "Figma MCP is subscription-based (open-source alternatives have limited abilities)",
+        "Requires professionally structured Figma files with auto-layout and constraints",
+        "Screenshot pixel-by-pixel comparison requires standalone Playwright (not available in Playwright MCP)",
+        "Frontend developers still essential for architecture, accessibility, business logic",
+        "ROI mainly for large-scale projects (>5 components with multiple breakpoints)"
+      ],
+      "related_concepts": [
+        "design-tokens",
+        "design-systems",
+        "responsive-design-patterns",
+        "mobile-first-css",
+        "computed-css-properties",
+        "visual-regression-testing",
+        "component-library-development",
+        "figma-api-integration"
+      ],
+      "oracle_quick_reference": {
+        "when_to_use": "Building responsive component libraries with 3+ components and 2+ breakpoints",
+        "primary_benefit": "Catch computed CSS bugs that visual inspection misses",
+        "time_investment": "Initial setup ~2 hours, saves ~20 min per component at scale",
+        "success_criteria": "All breakpoints validated programmatically, computed styles match Figma specs"
+      }
+    }
+  ],
+  "metadata": {
+    "total_workflows": 1,
+    "last_updated": "2025-10-28",
+    "maintained_by": "Oracle (Justice League)",
+    "purpose": "Centralized workflow knowledge for design-to-code missions"
+  }
+}

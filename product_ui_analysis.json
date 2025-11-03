@@ -1,0 +1,1977 @@
+{
+  "product_info": {
+    "name": "3.00 - UI Master",
+    "last_modified": "2025-10-23T03:48:33Z",
+    "version": "2277950078557307458",
+    "product_type": "Web Application"
+  },
+  "pages_and_screens": {
+    "total_pages": 12,
+    "total_screens": 299,
+    "pages": [
+      {
+        "name": "Cover",
+        "screen_count": 1,
+        "screens": [
+          {
+            "name": "Cover",
+            "type": "FRAME",
+            "width": 1391.0,
+            "height": 806.0
+          }
+        ]
+      },
+      {
+        "name": "Components",
+        "screen_count": 14,
+        "screens": [
+          {
+            "name": "Component 20",
+            "type": "FRAME",
+            "width": 302.0,
+            "height": 487.0
+          },
+          {
+            "name": "Course Card3",
+            "type": "FRAME",
+            "width": 298.0,
+            "height": 304.0
+          },
+          {
+            "name": "Menu/.item/.Item",
+            "type": "FRAME",
+            "width": 242.0,
+            "height": 56.0
+          },
+          {
+            "name": "Menu/.item/Variant2",
+            "type": "FRAME",
+            "width": 242.0,
+            "height": 56.0
+          },
+          {
+            "name": "Menu/.item/Variant3",
+            "type": "FRAME",
+            "width": 242.0,
+            "height": 56.0
+          },
+          {
+            "name": "Menu/.item/Variant4",
+            "type": "FRAME",
+            "width": 242.0,
+            "height": 56.0
+          },
+          {
+            "name": "Menu/.item/Variant5",
+            "type": "FRAME",
+            "width": 242.0,
+            "height": 56.0
+          },
+          {
+            "name": "Menu/.item/Variant6",
+            "type": "FRAME",
+            "width": 242.0,
+            "height": 56.0
+          },
+          {
+            "name": "Menu/.item/Variant7",
+            "type": "FRAME",
+            "width": 242.0,
+            "height": 56.0
+          },
+          {
+            "name": "Frame 1410084762",
+            "type": "FRAME",
+            "width": 274.0,
+            "height": 2349.0
+          },
+          {
+            "name": "Sidebar/To-do/Card",
+            "type": "FRAME",
+            "width": 100.0,
+            "height": 100.0
+          },
+          {
+            "name": "] - [",
+            "type": "FRAME",
+            "width": 100.0,
+            "height": 100.0
+          },
+          {
+            "name": "\u25d1",
+            "type": "FRAME",
+            "width": 100.0,
+            "height": 100.0
+          },
+          {
+            "name": "Frame 1410084855",
+            "type": "FRAME",
+            "width": 1030.0,
+            "height": 36.0
+          }
+        ]
+      },
+      {
+        "name": "Student Workflow",
+        "screen_count": 3,
+        "screens": [
+          {
+            "name": "Student Dashboard",
+            "type": "SECTION",
+            "width": 16784.0,
+            "height": 6944.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard 10",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1280.0
+          }
+        ]
+      },
+      {
+        "name": "Parents Workflow (V1)",
+        "screen_count": 43,
+        "screens": [
+          {
+            "name": "Home/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1465.0
+          },
+          {
+            "name": "Pro/Home",
+            "type": "FRAME",
+            "width": 290.0,
+            "height": 1397.0
+          },
+          {
+            "name": "Home",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1465.0
+          },
+          {
+            "name": "Pro/Comps",
+            "type": "SECTION",
+            "width": 3410.0,
+            "height": 6687.0
+          },
+          {
+            "name": "Inbox/Compose",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 745.0
+          },
+          {
+            "name": "Inbox/Compose",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 745.0
+          },
+          {
+            "name": "Inbox/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1077.0
+          },
+          {
+            "name": "Calendar/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/THOMAS",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/PTM",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/Literature",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/Biology",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/History",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Create Event",
+            "type": "FRAME",
+            "width": 566.0,
+            "height": 621.0
+          },
+          {
+            "name": "Settings/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings1",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Calendar/Algebra",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Students page/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/badges",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Course Activity",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Student Activity",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Tasks",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Prototype link",
+            "type": "FRAME",
+            "width": 1321.0,
+            "height": 161.0
+          },
+          {
+            "name": "Settings2",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings3",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 2151.0
+          },
+          {
+            "name": "Tooltip",
+            "type": "FRAME",
+            "width": 424.0,
+            "height": 205.0
+          },
+          {
+            "name": "Course intro",
+            "type": "FRAME",
+            "width": 171.03060913085938,
+            "height": 92.0
+          },
+          {
+            "name": "Homework",
+            "type": "FRAME",
+            "width": 171.03060913085938,
+            "height": 92.0
+          }
+        ]
+      },
+      {
+        "name": "Counselors Workflow (V1)",
+        "screen_count": 50,
+        "screens": [
+          {
+            "name": "Home/Main/Card",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          },
+          {
+            "name": "Pro/Home",
+            "type": "FRAME",
+            "width": 290.0,
+            "height": 1397.0
+          },
+          {
+            "name": "Home/Main/List",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          },
+          {
+            "name": "Home/7/List",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          },
+          {
+            "name": "Home/7/List/Selected",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          },
+          {
+            "name": "Counselor/Pro/Counselor/Comps",
+            "type": "SECTION",
+            "width": 4625.0,
+            "height": 6687.0
+          },
+          {
+            "name": "Inbox/Compose",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 745.0
+          },
+          {
+            "name": "Inbox/Compose",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 745.0
+          },
+          {
+            "name": "Inbox/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1077.0
+          },
+          {
+            "name": "Calendar/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/THOMAS",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/Biology",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Calendar/History",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1369.0
+          },
+          {
+            "name": "Create Event",
+            "type": "FRAME",
+            "width": 566.0,
+            "height": 621.0
+          },
+          {
+            "name": "Settings/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Students page/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/badges",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Course Activity",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Student Activity",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Tasks",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Prototype link",
+            "type": "FRAME",
+            "width": 1321.0,
+            "height": 161.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1556.0
+          },
+          {
+            "name": "Students page/Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 2151.0
+          },
+          {
+            "name": "Tooltip",
+            "type": "FRAME",
+            "width": 424.0,
+            "height": 205.0
+          },
+          {
+            "name": "Course intro",
+            "type": "FRAME",
+            "width": 171.03060913085938,
+            "height": 92.0
+          },
+          {
+            "name": "Homework",
+            "type": "FRAME",
+            "width": 171.03060913085938,
+            "height": 92.0
+          },
+          {
+            "name": "unorg comp",
+            "type": "SECTION",
+            "width": 517.0,
+            "height": 478.0
+          },
+          {
+            "name": "Nav bar",
+            "type": "SECTION",
+            "width": 5216.0,
+            "height": 1568.0
+          },
+          {
+            "name": "Cards",
+            "type": "SECTION",
+            "width": 1095.0,
+            "height": 1542.0
+          },
+          {
+            "name": "Dropdown",
+            "type": "SECTION",
+            "width": 591.0,
+            "height": 300.0
+          },
+          {
+            "name": "Calendar",
+            "type": "SECTION",
+            "width": 684.0,
+            "height": 1422.0
+          },
+          {
+            "name": "Menu items/Courses",
+            "type": "SECTION",
+            "width": 4861.0,
+            "height": 1100.0
+          },
+          {
+            "name": "Counselor Comp",
+            "type": "SECTION",
+            "width": 4880.0,
+            "height": 3321.0
+          },
+          {
+            "name": "Home/7/Card",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          },
+          {
+            "name": "Students page/List/Toast",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          },
+          {
+            "name": "Students page/Main/Card",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          },
+          {
+            "name": "Students page/List",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1200.0
+          }
+        ]
+      },
+      {
+        "name": "Teacher Workflow",
+        "screen_count": 68,
+        "screens": [
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Calendar",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Container",
+            "type": "FRAME",
+            "width": 424.0,
+            "height": 228.0
+          },
+          {
+            "name": "Calendar",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Course - Edit",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Course - Edit - Updates",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Course - Edit - Updates",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Course - Edit - Modules",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Assignment ",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Modules",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Modules",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Modules",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "People",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Groups",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Student Profile",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Student Profile",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Discussions",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Discussions",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Menu",
+            "type": "FRAME",
+            "width": 290.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Add People",
+            "type": "FRAME",
+            "width": 380.0,
+            "height": 321.0
+          },
+          {
+            "name": "Comp/Schedule",
+            "type": "FRAME",
+            "width": 380.0,
+            "height": 369.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Live Session",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Tasks",
+            "type": "FRAME",
+            "width": 768.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Gradebook Settings",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Gradebook Settings",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/New Rubric",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 525.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Add People",
+            "type": "FRAME",
+            "width": 380.0,
+            "height": 533.0
+          },
+          {
+            "name": "Comp/Add People",
+            "type": "FRAME",
+            "width": 380.0,
+            "height": 533.0
+          },
+          {
+            "name": "New Assessment",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "New Assessment",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Assignment Grading",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Assignment Grading",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Tooltip",
+            "type": "FRAME",
+            "width": 192.0,
+            "height": 120.0
+          },
+          {
+            "name": "Comp/Student Analytics",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Student Analytics",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Student Analytics",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Inbox",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/New Group",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 625.0
+          },
+          {
+            "name": "Comp/New Badge",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 715.0
+          },
+          {
+            "name": "Comp/New Badge",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 715.0
+          },
+          {
+            "name": "Comp/Assign Badge",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 725.0
+          },
+          {
+            "name": "Comp/Assign Badge",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 725.0
+          },
+          {
+            "name": "Groups",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Badges",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dropdown",
+            "type": "FRAME",
+            "width": 140.0,
+            "height": 135.0
+          },
+          {
+            "name": "Dropdown",
+            "type": "FRAME",
+            "width": 332.0,
+            "height": 135.0
+          },
+          {
+            "name": "Dropdown",
+            "type": "FRAME",
+            "width": 200.0,
+            "height": 88.0
+          },
+          {
+            "name": "Dropdown",
+            "type": "FRAME",
+            "width": 168.0,
+            "height": 176.0
+          },
+          {
+            "name": "Create Event",
+            "type": "FRAME",
+            "width": 566.0,
+            "height": 685.0
+          },
+          {
+            "name": "Create Event",
+            "type": "FRAME",
+            "width": 566.0,
+            "height": 685.0
+          },
+          {
+            "name": "Asssesment - question creation",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Asssesment - question creation",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "New assessment - Filled title and description ",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "New assessment - Filled title and description ",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          }
+        ]
+      },
+      {
+        "name": "Admin Workflow",
+        "screen_count": 44,
+        "screens": [
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Menu",
+            "type": "FRAME",
+            "width": 290.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Question Bank",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Question Bank",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "People",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "People",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Settings",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Course - Edit",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Course - Edit",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Live Session",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Tasks",
+            "type": "FRAME",
+            "width": 768.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Upload Files",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "New Assessment",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/New-Question",
+            "type": "FRAME",
+            "width": 866.0,
+            "height": 433.0
+          },
+          {
+            "name": "Comp/New-Category",
+            "type": "FRAME",
+            "width": 632.0,
+            "height": 249.0
+          },
+          {
+            "name": "Comp/New-Category",
+            "type": "FRAME",
+            "width": 488.0,
+            "height": 257.0
+          },
+          {
+            "name": "Comp/New-Category",
+            "type": "FRAME",
+            "width": 488.0,
+            "height": 545.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Student Details",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Comp/Bulk-Import",
+            "type": "FRAME",
+            "width": 866.0,
+            "height": 470.0
+          },
+          {
+            "name": "Comp/New-Term",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 785.0
+          },
+          {
+            "name": "Comp/New-Grading-Set",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 449.0
+          },
+          {
+            "name": "Comp/New-Grading-Set",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 449.0
+          },
+          {
+            "name": "Comp/New-Role",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 453.0
+          },
+          {
+            "name": "Comp/New-Role",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 629.0
+          },
+          {
+            "name": "Comp/New-Role",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 637.0
+          },
+          {
+            "name": "Comp/New-Role",
+            "type": "FRAME",
+            "width": 640.0,
+            "height": 639.0
+          }
+        ]
+      },
+      {
+        "name": "\ud83d\udee0 Playground",
+        "screen_count": 43,
+        "screens": [
+          {
+            "name": "Desktop - 692",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 5962.0
+          },
+          {
+            "name": "Learner Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1073.0
+          },
+          {
+            "name": "Frame 1410083858",
+            "type": "FRAME",
+            "width": 176.0,
+            "height": 191.0
+          },
+          {
+            "name": "Learner Dashboard",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1073.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Courses",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard 1",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1494.0
+          },
+          {
+            "name": "Calendar_Page_V2",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 927.0
+          },
+          {
+            "name": "Dashboard 2",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard 4",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1286.0
+          },
+          {
+            "name": "Dashboard 5",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1178.0
+          },
+          {
+            "name": "Dashboard 6",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard 8",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Frame 1410084805",
+            "type": "FRAME",
+            "width": 150.0,
+            "height": 119.0
+          },
+          {
+            "name": "Frame 1410084819",
+            "type": "FRAME",
+            "width": 150.0,
+            "height": 90.0
+          },
+          {
+            "name": "Frame 1410084818",
+            "type": "FRAME",
+            "width": 150.0,
+            "height": 62.0
+          },
+          {
+            "name": "Frame 1410084820",
+            "type": "FRAME",
+            "width": 150.0,
+            "height": 58.0
+          },
+          {
+            "name": "Dashboard 7",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Dashboard 3",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Course Card2",
+            "type": "FRAME",
+            "width": 298.0,
+            "height": 304.0
+          },
+          {
+            "name": "Frame 1410084766",
+            "type": "FRAME",
+            "width": 970.0,
+            "height": 357.0
+          },
+          {
+            "name": "Frame 1410084772",
+            "type": "FRAME",
+            "width": 93.0,
+            "height": 34.0
+          },
+          {
+            "name": "Frame 1410084775",
+            "type": "FRAME",
+            "width": 105.0,
+            "height": 34.0
+          },
+          {
+            "name": "Frame 1410084777",
+            "type": "FRAME",
+            "width": 73.0,
+            "height": 34.0
+          },
+          {
+            "name": "Frame 1410084774",
+            "type": "FRAME",
+            "width": 88.0,
+            "height": 34.0
+          },
+          {
+            "name": "Frame 1410084773",
+            "type": "FRAME",
+            "width": 199.0,
+            "height": 34.0
+          },
+          {
+            "name": "Frame 1410084776",
+            "type": "FRAME",
+            "width": 199.0,
+            "height": 34.0
+          },
+          {
+            "name": "Frame 1410084778",
+            "type": "FRAME",
+            "width": 199.0,
+            "height": 34.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Attendance",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Attendance",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Attendance",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Frame 1410085194",
+            "type": "FRAME",
+            "width": 258.0,
+            "height": 404.0
+          },
+          {
+            "name": "Frame 1410085196",
+            "type": "FRAME",
+            "width": 365.0,
+            "height": 68.0
+          }
+        ]
+      },
+      {
+        "name": ">>>>>>>>>>>>>>>>>>>>>>",
+        "screen_count": 0,
+        "screens": []
+      },
+      {
+        "name": "Parents/Counselor Comp",
+        "screen_count": 9,
+        "screens": [
+          {
+            "name": "unorg comp",
+            "type": "SECTION",
+            "width": 517.0,
+            "height": 478.0
+          },
+          {
+            "name": "Nav bar",
+            "type": "SECTION",
+            "width": 5216.0,
+            "height": 1568.0
+          },
+          {
+            "name": "Cards",
+            "type": "SECTION",
+            "width": 1095.0,
+            "height": 1542.0
+          },
+          {
+            "name": "Dropdown",
+            "type": "SECTION",
+            "width": 591.0,
+            "height": 300.0
+          },
+          {
+            "name": "Calendar",
+            "type": "SECTION",
+            "width": 684.0,
+            "height": 1422.0
+          },
+          {
+            "name": "Menu items/Courses",
+            "type": "SECTION",
+            "width": 4861.0,
+            "height": 1100.0
+          },
+          {
+            "name": "Frame 1410085127",
+            "type": "FRAME",
+            "width": 1840.0,
+            "height": 1223.0
+          },
+          {
+            "name": "Home/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 2280.0
+          },
+          {
+            "name": "Home/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 2280.0
+          }
+        ]
+      },
+      {
+        "name": "Deprecated (Parents)",
+        "screen_count": 16,
+        "screens": [
+          {
+            "name": "Analytics/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1480.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1480.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1480.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1480.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1480.0
+          },
+          {
+            "name": "Analytics",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1480.0
+          },
+          {
+            "name": "Courses - Syllabus",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Updates",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Modules",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Resources",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Grades",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Discussions",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Introductions",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Groups",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses - Attendance",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          },
+          {
+            "name": "Courses/Main",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1450.0
+          }
+        ]
+      },
+      {
+        "name": "Grave",
+        "screen_count": 8,
+        "screens": [
+          {
+            "name": "With Filters closed",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1212.0
+          },
+          {
+            "name": "With Filters closed",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1401.0
+          },
+          {
+            "name": "Frame 1410084889",
+            "type": "FRAME",
+            "width": 880.0,
+            "height": 232.0
+          },
+          {
+            "name": "Comp/Student Analytics",
+            "type": "FRAME",
+            "width": 928.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Groups",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Groups",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Groups",
+            "type": "FRAME",
+            "width": 1440.0,
+            "height": 1024.0
+          },
+          {
+            "name": "Frame 1410084763",
+            "type": "FRAME",
+            "width": 320.0,
+            "height": 451.0
+          }
+        ]
+      }
+    ]
+  },
+  "user_roles": {
+    "detected_roles": [
+      "student",
+      "teacher",
+      "admin",
+      "parent",
+      "counselor"
+    ],
+    "role_screens": {
+      "student": 52,
+      "teacher": 1,
+      "admin": 1,
+      "parent": 3,
+      "counselor": 4
+    }
+  },
+  "feature_areas": {
+    "total_features": 14,
+    "features": {
+      "dashboard": 21,
+      "home": 13,
+      "courses": 48,
+      "calendar": 16,
+      "inbox": 7,
+      "grades": 10,
+      "attendance": 4,
+      "analytics": 15,
+      "settings": 19,
+      "profile": 2,
+      "discussions": 3,
+      "resources": 1,
+      "modules": 5,
+      "groups": 6
+    }
+  },
+  "navigation_structure": {
+    "nav_component_count": 27,
+    "nav_components": [
+      "Sidebar/Card",
+      "Sidebar/Button",
+      "Sidebar/To-do/CTA",
+      ".Old-Navbar",
+      "Menu",
+      "Sidebar/Schedules",
+      "Navbar",
+      "menu",
+      "Pro/Navbar/Default/Parent",
+      "Navbar/Default/Parent",
+      "Navbar/Expanded/Parent",
+      "Navbar/Expanded/Parent",
+      "Tab menu1",
+      "Tab menu1",
+      "Tab menu2",
+      "Tab menu analytics",
+      "Pro/Navbar/Default/Parent",
+      "Navbar/Default/Parent",
+      "Navbar/Expanded/Parent",
+      "Navbar/Expanded/Parent",
+      "Tab menu1",
+      "Tab menu1",
+      "Tab menu2",
+      "Tab menu analytics",
+      "Background=Grey, Type=Header",
+      "Components/Home/Navbar",
+      "Nav bar/Master"
+    ]
+  },
+  "user_flows": {
+    "detected_flows": {
+      "core_workflow": 45,
+      "settings": 21
+    }
+  },
+  "ui_patterns": {
+    "cards": 5,
+    "forms": 1,
+    "lists": 4,
+    "buttons": 8,
+    "dropdowns": 8,
+    "tabs": 21,
+    "badges": 6,
+    "avatars": 3
+  },
+  "completeness": {
+    "total_score": 93,
+    "grade": "A+",
+    "level": "\ud83c\udfc6 COMPREHENSIVE - Production-ready product",
+    "scores": {
+      "screen_coverage": 30,
+      "feature_completeness": 25,
+      "role_coverage": 20,
+      "user_flows": 8,
+      "navigation": 10
+    }
+  },
+  "recommendations": [
+    "\ud83d\udd04 Map out complete user flows - ensure authentication, onboarding, and core workflows are designed"
+  ]
+}

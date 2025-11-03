@@ -1,0 +1,176 @@
+{
+  "conversions": [
+    {
+      "id": "settings_001",
+      "timestamp": "2025-10-23T00:00:00.000Z",
+      "figma_url": "https://www.figma.com/design/6Pmf9gCcUccyqbCO9nN6Ts/poc-test?node-id=2-948&m=dev",
+      "component_name": "Settings",
+      "specs": {
+        "colors": {
+          "banner_background": "#000000",
+          "banner_cta": "#FFFFFF",
+          "page_background": "#F9FAFB",
+          "card_background": "#FFFFFF",
+          "text_primary": "#111827",
+          "text_secondary": "#6B7280",
+          "border": "#E5E7EB"
+        },
+        "spacing": {
+          "standard_gap": "24px",
+          "card_padding": "24px",
+          "section_gap": "24px",
+          "header_padding": "24px"
+        },
+        "layout": {
+          "max_width": "1400px",
+          "sidebar_width": "224px",
+          "full_width_dividers": true,
+          "constrained_content": true
+        },
+        "typography": {
+          "heading_xl": "text-3xl font-bold",
+          "heading_lg": "text-xl font-semibold",
+          "heading_md": "text-lg font-semibold",
+          "body": "text-sm",
+          "label": "text-sm font-medium"
+        }
+      },
+      "accuracy_final": 100,
+      "iterations": 8,
+      "issues_solved": [
+        {
+          "iteration": 1,
+          "problem": "Navigation items not right-aligned",
+          "pattern": "layout-constraint-issue",
+          "solution": "Added ml-auto to navigation container to push items right",
+          "confidence": 95
+        },
+        {
+          "iteration": 2,
+          "problem": "View plans button showing black instead of white",
+          "pattern": "component-style-conflict",
+          "solution": "Replaced Button component with native <button> element for full style control",
+          "confidence": 98,
+          "root_cause": "Button component has default bg-zinc-900 that overrides custom classes"
+        },
+        {
+          "iteration": 3,
+          "problem": "Free plan banner showing dark gray (#2B2B2B) instead of black (#000000)",
+          "pattern": "color-approximation",
+          "solution": "Changed from bg-[#2B2B2B] to bg-black for exact color match",
+          "confidence": 100,
+          "root_cause": "Used approximation instead of exact Figma hex value"
+        },
+        {
+          "iteration": 4,
+          "problem": "Card component blocking custom bg-black on banner",
+          "pattern": "component-style-conflict",
+          "solution": "Replaced Card with native <div> for banner to allow custom background",
+          "confidence": 98,
+          "root_cause": "Card component has hardcoded bg-white in base className"
+        },
+        {
+          "iteration": 5,
+          "problem": "Settings header not spanning full viewport width",
+          "pattern": "layout-constraint-issue",
+          "solution": "Restructured layout: separate full-width container from constrained content using border-b on outer div",
+          "confidence": 95,
+          "root_cause": "Header was nested inside content area with sidebar"
+        },
+        {
+          "iteration": 6,
+          "problem": "Next.js dev tools button visible in bottom left",
+          "pattern": "shadow-dom-element",
+          "solution": "Added JavaScript in layout.tsx to target nextjs-portal element and hide with display: none",
+          "confidence": 90,
+          "root_cause": "Dev tools rendered in shadow DOM, unreachable by CSS selectors"
+        },
+        {
+          "iteration": 7,
+          "problem": "Missing structural dividers and borders",
+          "pattern": "missing-divider",
+          "solution": "Added border-b to Settings header container and border-t to card footers",
+          "confidence": 92,
+          "root_cause": "Missed border/divider layers in Figma structure analysis"
+        },
+        {
+          "iteration": 8,
+          "problem": "Spacing inconsistencies (16px used instead of 24px standard)",
+          "pattern": "spacing-mismatch",
+          "solution": "Changed space-y-4 to space-y-6, py-4 to py-6 throughout for consistent 24px spacing",
+          "confidence": 98,
+          "root_cause": "Did not extract exact spacing values from Figma specs initially"
+        }
+      ],
+      "lessons_learned": {
+        "component_library": {
+          "insight": "Styled components with hardcoded defaults (Card bg-white, Button bg-zinc-900) prevent custom class overrides",
+          "solution": "Use native HTML elements (<div>, <button>) when custom styling is required",
+          "prevention": "Update component library to use cn() utility for proper class merging"
+        },
+        "color_accuracy": {
+          "insight": "Color approximations lead to visual mismatches",
+          "solution": "Always use exact hex values from Figma API, never approximate",
+          "prevention": "Auto-detect color mismatches in self-healing engine"
+        },
+        "spacing_precision": {
+          "insight": "Figma uses consistent spacing systems (often 24px for enterprise apps)",
+          "solution": "Extract exact pixel values and map to Tailwind classes (24px = 6, 16px = 4)",
+          "prevention": "Query Figma API for spacing values before code generation"
+        },
+        "layout_structure": {
+          "insight": "Full-width dividers require separate container from constrained content",
+          "solution": "Use border-b on full-width outer div, place constrained content inside",
+          "prevention": "Analyze Figma layer structure to identify full-width vs constrained elements"
+        },
+        "shadow_dom": {
+          "insight": "Shadow DOM elements cannot be targeted with standard CSS",
+          "solution": "Use JavaScript querySelector to target shadow host elements directly",
+          "prevention": "Document common shadow DOM patterns (Next.js dev tools, etc.)"
+        }
+      },
+      "reusable_patterns": [
+        "full-width-divider",
+        "sidebar-layout",
+        "24px-spacing",
+        "black-banner-white-cta",
+        "native-html-for-custom-styles",
+        "max-w-constrained-content",
+        "two-column-form-grid"
+      ],
+      "expert_rating": "S+ (Perfect After Learning)"
+    }
+  ],
+  "expert_insights": {
+    "component_style_conflicts": {
+      "description": "Styled components with hardcoded backgrounds/colors block custom Tailwind classes",
+      "frequency": "High - occurs with Card and Button components",
+      "solution": "Use native HTML or update component library with cn() utility",
+      "confidence": 98
+    },
+    "spacing_systems": {
+      "description": "Enterprise designs typically use 24px spacing system (1.5rem in Tailwind)",
+      "frequency": "Medium - common in dashboard/settings pages",
+      "solution": "Map 24px to py-6, space-y-6, gap-6, mb-6",
+      "confidence": 95
+    },
+    "color_precision": {
+      "description": "Pure black (#000000) vs dark grays (#2B2B2B, #1F1F1F) are visually distinct",
+      "frequency": "Medium - important for brand consistency",
+      "solution": "Always use exact Figma hex values, never approximate",
+      "confidence": 100
+    },
+    "layout_constraints": {
+      "description": "Full-width elements (dividers) mixed with constrained content (1400px) require nested containers",
+      "frequency": "High - common in dashboard layouts",
+      "solution": "Outer full-width container, inner max-w-[1400px] mx-auto",
+      "confidence": 95
+    }
+  },
+  "statistics": {
+    "total_conversions": 1,
+    "average_accuracy": 100,
+    "average_iterations": 8,
+    "total_patterns_identified": 7
+  }
+}
