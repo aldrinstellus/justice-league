@@ -7,7 +7,7 @@
 ## 📚 Available Resources
 
 ### 📖 [GLOBAL_BEST_PRACTICES.md](./GLOBAL_BEST_PRACTICES.md)
-**Comprehensive guide covering all 12 heroes' expertise**
+**Comprehensive guide covering all 13 heroes' expertise**
 
 Sections:
 1. 🪔 **Ethical Design** (Litty) - Dark patterns, user respect, transparency
@@ -22,6 +22,7 @@ Sections:
 10. 💚 **Visual Consistency** (Green Lantern) - Design tokens, spacing, colors
 11. 🏹 **Testing** (Green Arrow) - Unit, E2E, visual regression, accessibility
 12. 🤖 **Integrations** (Cyborg) - APIs, webhooks, third-party services
+13. 🔮 **Budget & Cost Management** (Oracle) - Cost estimation, budget tracking, optimization
 
 ---
 
@@ -50,6 +51,11 @@ Sections:
 - [Network Optimization](./GLOBAL_BEST_PRACTICES.md#network-optimization-aquaman)
 - [Security](./GLOBAL_BEST_PRACTICES.md#security-martian-manhunter)
 - [Integrations](./GLOBAL_BEST_PRACTICES.md#integrations-cyborg)
+
+**Budget & Cost Management**:
+- [Oracle Cost Tracking](../ORACLE_COST_TRACKING.md)
+- [Simple Tracking System](../SIMPLE-COST-TRACKING-GUIDE.md)
+- [Budget Decision Dashboard](../expenses-global/reports/decision-dashboard.md)
 
 ---
 
@@ -138,6 +144,12 @@ Sections:
   - [ ] APIs documented
   - [ ] Rate limiting
   - [ ] Error handling
+
+- [ ] **Budget** (Oracle)
+  - [ ] Budget checked before work
+  - [ ] Cost estimate created
+  - [ ] Invoice generated after work
+  - [ ] Budget within monthly limit
 
 ---
 
@@ -261,6 +273,7 @@ Found a best practice we missed?
 - Performance → Ask Flash
 - Security → Ask Martian Manhunter
 - Components → Ask Atom
+- Budget & Costs → Ask Oracle (auto-activates with "oracle" keyword)
 
 **General Questions**:
 - Ask Superman (coordinates all heroes)
@@ -271,13 +284,13 @@ Found a best practice we missed?
 ## 📊 Stats
 
 **Current Coverage**:
-- 12 specializations
+- 13 specializations
 - 200+ best practices
 - 100+ code examples
-- 12 comprehensive checklists
+- 13 comprehensive checklists
 
-**Last Updated**: 2025-10-20
-**Version**: 1.0.0
+**Last Updated**: 2025-11-03
+**Version**: 1.1.0
 
 ---
 

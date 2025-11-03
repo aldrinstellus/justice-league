@@ -10,6 +10,7 @@ This work was done **directly by Claude Code** in the main conversation without 
 1. **frontend-developer** - For UI/UX implementation and responsive design
 2. **expense-tracker-app-architect** - For full application architecture (if building complete app)
 3. **Explore** - For quickly finding files and understanding codebase structure
+4. **Oracle** - For budget checks, cost estimation, and optimization recommendations (auto-activates with "oracle" keyword)
 
 **For this specific task**: I worked directly in the main conversation because it was a focused component conversion task.
 
@@ -691,6 +692,135 @@ npm run dev
 **Time Saved**: 83-88% compared to manual development
 
 **Final Accuracy**: 99%+ (layout, components, styling, functionality)
+
+---
+
+## 🔮 When to Invoke Oracle
+
+**Oracle** is the Justice League's cost-tracking coordinator and auto-activates when you mention "oracle" in your message.
+
+### Auto-Activation
+Simply say "oracle" and Oracle automatically activates with full cost-tracking intelligence:
+
+```
+You: "oracle, check budget"
+Oracle: 🔮 **Oracle activated.**
+        💰 Budget: $87.66 remaining (87.7% healthy)
+```
+
+### Trigger Keywords
+- "oracle" (case-insensitive)
+- "oracle," "hey oracle", "oracle check"
+- "oracle analyze", "oracle estimate", "ask oracle"
+
+### Use Cases
+
+#### 1. Budget Check (Before Starting Work)
+```
+You: "oracle, check budget"
+
+Oracle responds with:
+- Monthly Budget: $100.00 (Claude Max plan)
+- Current Spent: $12.34 (12.3%)
+- Remaining: $87.66 (87.7%)
+- Status: ✅ HEALTHY or ⚠️ CAUTION or 🚨 CRITICAL
+- Recommendation: GO/NO-GO for new work
+```
+
+#### 2. Cost Estimation (Before Figma Export, Complex Tasks)
+```
+You: "oracle, estimate Phase 2 costs for 16,389 frames"
+
+Oracle provides:
+- Oracle Coordination: $5-10 (Claude API usage)
+- Agent Execution: $40.97 (Quicksilver PNG export)
+- Total: $45.97-$50.97
+- Budget Impact: Before ($87.66) → After ($36.69-$41.69)
+- Recommendation: Proceed or adjust scope
+```
+
+#### 3. Invoice Generation (After Completing Work)
+```
+You: "oracle, generate invoice for Phase 1"
+
+Oracle creates:
+- Actual costs vs estimated costs
+- Budget impact (before/after)
+- Deliverables summary
+- Variance analysis (within estimate or over)
+- Updates simple-budget.json automatically
+```
+
+#### 4. Optimization Recommendations
+```
+You: "oracle, how can I save costs?"
+
+Oracle recommends:
+1. **Model Selection** (73% savings): Use Haiku for simple tasks
+2. **Prompt Caching** (90% savings): Enable for repeated content
+3. **Batch API** (50% discount): Use for non-urgent work
+4. **Combined**: 60-70% total cost reduction
+```
+
+#### 5. GitHub Repository (Checking Repo URL)
+```
+You: "oracle, what's our repo?"
+
+Oracle responds:
+- Repository: https://github.com/aldrinstellus/justice-league
+- Remote: origin → https://github.com/aldrinstellus/justice-league.git
+- Quick git commands
+- Standing Instruction: Oracle never asks for repo URL again
+```
+
+#### 6. Simple Tracking System Guidance
+```
+You: "oracle, explain cost tracking"
+
+Oracle explains:
+- 3-Step Workflow: Estimate → Work → Invoice
+- No complex mid-work tracking
+- Clean invoice-style appearance
+- Templates: ESTIMATE-TEMPLATE.md, INVOICE-TEMPLATE.md
+```
+
+### Oracle's Standing Instructions (Always Follows)
+- ✅ Full absolute paths (never relative)
+- ✅ Cost-first structure (costs at top of summaries)
+- ✅ Budget-conscious approach ($100/month limit)
+- ✅ Simple tracking system (Estimate → Work → Invoice)
+- ✅ GitHub repo: https://github.com/aldrinstellus/justice-league (never ask)
+
+### Budget Thresholds
+- **<50% used**: ✅ HEALTHY - Continue normal operations
+- **50-75% used**: ⚠️ CAUTION - Monitor closely, prefer Haiku
+- **75-90% used**: ⚠️ WARNING - Small tasks only, apply caching
+- **90-100% used**: 🚨 CRITICAL - Complete current work only
+- **>100% used**: ❌ OVER - Wait for next month
+
+### Quick Budget Check Command
+```bash
+cd /Users/admin/Documents/claudecode/justice-league-missions
+python3 scripts/check-budget.py
+```
+
+### Oracle Integration with Justice League
+- **Before Superman deploys heroes**: Oracle checks budget
+- **During Figma exports (Hawkman)**: Oracle calculates PNG costs (frames × $0.0025)
+- **During code generation (Artemis)**: Oracle tracks token usage
+- **After work complete**: Oracle generates invoice and updates budget
+
+### Cost Optimization Pricing Reference
+**AI Models (2025)**:
+- Claude Sonnet 4.5: $3/1M input, $15/1M output
+- Claude Haiku 4.5: $1/1M input, $5/1M output (73% cheaper)
+- Prompt Caching: $0.03/1M read (90% savings)
+- Batch API: 50% discount
+
+**External Services**:
+- Quicksilver PNG Export: $0.0025 per frame
+- Quicksilver PDF Export: $0.0030 per frame
+- Figma API: FREE (rate limited)
 
 ---
 

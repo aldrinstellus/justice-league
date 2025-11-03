@@ -4,7 +4,7 @@ Complete Claude Skills documentation for Aldo Vision's superhero team.
 
 ## Overview
 
-The Justice League consists of 12 specialized heroes, each with their own Claude Skill definition. All heroes have had their weaknesses **OPTIMIZED TO ZERO** through systematic elimination of limitations.
+The Justice League consists of 13 specialized heroes, each with their own Claude Skill definition. All heroes have had their weaknesses **OPTIMIZED TO ZERO** through systematic elimination of limitations.
 
 ## Team Roster
 
@@ -108,6 +108,24 @@ The Justice League consists of 12 specialized heroes, each with their own Claude
 **Catchphrase**: "!atadatem tcefrepni tsac I" (I cast in perfect metadata!)
 **Strengths**: 10 SEO analysis capabilities (backwards magic spells)
 **Weaknesses**: 4 → **ELIMINATED**
+
+### 🔮 Oracle - The Cost-Tracking Coordinator & Meta-Agent ⭐ **NEW!**
+**File**: `oracle.md`
+**Role**: Budget management, cost estimation, expense tracking, and mission coordination
+**Catchphrase**: "Knowledge is power, and so is staying within budget!"
+**Strengths**: 10 cost-tracking capabilities (auto-activation, budget checks, invoices, optimization)
+**Weaknesses**: 4 → **ELIMINATED**
+**New Capabilities**:
+- ✅ Auto-activation via keyword detection ("oracle")
+- ✅ Budget health tracking ($100/month Claude Max)
+- ✅ Cost estimation before work (template-based)
+- ✅ Invoice generation after work (actual vs estimate)
+- ✅ Optimization recommendations (60-70% savings: Haiku, caching, batch API)
+- ✅ Simple tracking system (Estimate → Work → Invoice)
+- ✅ GitHub repository management (justice-league repo)
+- ✅ Full absolute path enforcement
+- ✅ Cost-first structure enforcement
+- ✅ Figma analysis mode coordination
 
 ## Skills Architecture
 
@@ -252,7 +270,10 @@ from core.justice_league import (
     green_arrow_test_league,            # QA validation
     martian_manhunter_security_scan,    # Security scanning
     plastic_man_responsive_test,        # Responsive design
-    zatanna_seo_analysis                # SEO magic
+    zatanna_seo_analysis,               # SEO magic
+    oracle_check_budget,                # Budget management
+    oracle_generate_estimate,           # Cost estimation
+    oracle_generate_invoice             # Invoice generation
 )
 ```
 
@@ -288,12 +309,14 @@ All heroes use consistent grading:
 ├── atom.md
 ├── green-arrow.md
 ├── plastic-man.md ⭐ NEW
-└── zatanna.md ⭐ NEW
+├── zatanna.md ⭐ NEW
+└── oracle.md ⭐ NEW
 ```
 
 ## Version History
 
-- **v1.3.0** (Current) - Added Plastic Man (Responsive Design) & Zatanna (SEO) ⭐⭐
+- **v1.4.0** (Current) - Added Oracle (Cost-Tracking & Budget Management) ⭐
+- **v1.3.0** - Added Plastic Man (Responsive Design) & Zatanna (SEO) ⭐⭐
 - **v1.2.0** - Added Martian Manhunter (Security Testing) ⭐
 - **v1.1.0** - Added Green Arrow (QA Testing)
 - **v1.0.0** - Initial Justice League with 8 heroes
@@ -312,13 +335,13 @@ When adding new heroes or capabilities:
 ## Summary
 
 The Justice League Claude Skills represent a **zero-weakness design analysis system** where:
-- **12 heroes** provide specialized expertise (now with Security, Responsive Design & SEO!)
-- **48 weaknesses** were systematically eliminated
-- **110+ strengths** deliver comprehensive coverage
+- **13 heroes** provide specialized expertise (now with Security, Responsive Design, SEO & Cost Tracking!)
+- **52 weaknesses** were systematically eliminated (13 heroes × 4 weaknesses each)
+- **130+ strengths** deliver comprehensive coverage (13 heroes × 10 strengths each)
 - **100% integration** ensures seamless coordination
-- **World-class tools** (axe-core, Lighthouse, Chrome DevTools, npm audit, responsive testing, SEO magic) power every hero
+- **World-class tools** (axe-core, Lighthouse, Chrome DevTools, npm audit, responsive testing, SEO magic, budget tracking) power every hero
 
-**Mission**: Provide unmatched design system analysis with no compromises - now with enterprise-grade security, responsive design validation, and SEO magic!
+**Mission**: Provide unmatched design system analysis with no compromises - now with enterprise-grade security, responsive design validation, SEO magic, and cost-conscious budget management!
 
 ---
 

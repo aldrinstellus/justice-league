@@ -40,40 +40,53 @@
 
 ---
 
-### 2. 🔮 Oracle - Meta Learning Agent
+### 2. 🔮 Oracle - Cost-Tracking Coordinator & Meta-Agent
 
-**Role**: Pattern learning, knowledge management, and continuous improvement
+**Role**: Budget management, cost estimation, expense tracking, and Justice League mission coordination
 **File**: `core/justice_league/oracle_meta_agent.py`
-**Narrator**: ✅ Yes
+**Narrator**: ✅ Yes (Cost-conscious personality)
 
 **Capabilities**:
+- Auto-activation via keyword detection ("oracle")
+- Budget health tracking ($100/month Claude Max limit)
+- Cost estimation before work (using estimate templates)
+- Invoice generation after work (using invoice templates)
+- Optimization recommendations (60-70% cost savings: Haiku, caching, batch API)
+- Simple tracking system (Estimate → Work → Invoice workflow)
+- GitHub repository management (justice-league repo)
+- Figma analysis mode coordination
 - Project pattern learning and storage
 - Methodology tracking and optimization
-- User preference management
-- Decision matrix for routing missions
-- Learning session management
-- Auto-updates documentation (including this file)
 
 **Key Methods**:
-- `get_project_context(file_key)` - Retrieve learned patterns for project
-- `update_patterns(file_key, new_patterns)` - Store new learnings
-- `start_learning_session()` - Begin structured learning
-- `complete_learning_session(session)` - Finalize and store learnings
-- `query_methodologies()` - Get available conversion methodologies
+- `check_budget()` - Real-time budget health check
+- `generate_estimate(task, scope)` - Cost estimation using templates
+- `generate_invoice(task, actual_costs)` - Invoice generation
+- `optimize_costs(strategy)` - Optimization recommendations
+- `get_project_context(file_key)` - Retrieve learned patterns
+- `update_patterns(file_key, new_patterns)` - Store learnings
 
 **When to Use**:
-- Before starting any conversion (get context)
-- After completing conversions (store learnings)
-- When choosing between methodologies
-- For preference management
+- Before starting any mission (budget check)
+- Before Figma export tasks (cost estimation)
+- After completing phases (invoice generation)
+- For cost optimization guidance
+- For GitHub repository operations
+- For simple tracking system guidance
 
 **Powers**:
-- Pattern recognition across projects
-- Methodology effectiveness tracking
-- User preference learning
-- Decision automation based on historical data
+- Auto-activation protocol (keyword triggered)
+- Budget adherence tracking (>95% accuracy)
+- Cost prediction (±10% variance)
+- Optimization mind (60-70% savings strategies)
+- Memory keeper (GitHub repo, preferences, standing instructions)
+- All-Seeing Eye (real-time budget monitoring)
+- Cost Vision (predict costs before work)
 
-**Data Storage**: `/data/oracle_project_patterns.json`
+**Data Storage**:
+- Budget: `/justice-league-missions/simple-budget.json`
+- Templates: `/justice-league-missions/_templates/simple-tracking/`
+- Patterns: `/data/oracle_project_patterns.json`
 
 ---
 
