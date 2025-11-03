@@ -1,0 +1,31 @@
+{
+  "monthlyBudget": 100.00,
+  "account": "aldrinstellus@gmail.com",
+  "plan": "Claude Max",
+  "lastUpdated": "2025-11-03",
+  "november2025": {
+    "spent": 12.34,
+    "remaining": 87.66,
+    "percentUsed": 12.3,
+    "status": "healthy",
+    "tasks": [
+      {
+        "id": "JL-003-phase1",
+        "mission": "JL-003",
+        "phase": "Phase 1 - Discovery & Cataloging",
+        "date": "2025-11-03",
+        "status": "complete",
+        "oracleCost": 12.34,
+        "agentCost": 0.00,
+        "total": 12.34,
+        "invoice": "missions/JL-003-auzmor-learn-web-mobile/JL-003-PHASE1-INVOICE.md",
+        "deliverables": [
+          "phase1-files-list.json (92KB)",
+          "detailed-analysis.json (52KB)",
+          "SUMMARY-FOR-ALDO.md (418 lines)",
+          "COST-ANALYSIS-ORACLE.md (304 lines)"
+        ]
+      }
+    ]
+  }
+}

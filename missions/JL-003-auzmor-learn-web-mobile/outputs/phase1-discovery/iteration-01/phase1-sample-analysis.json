@@ -1,0 +1,44 @@
+{
+  "sample_files": [
+    {
+      "name": "AUZMOR MASTER FILE 2021",
+      "key": "VgYbzCNroh3XVgpk5v40AV",
+      "category": "Master/Reference File",
+      "pages": 2,
+      "frames": 190,
+      "components": 26
+    },
+    {
+      "name": "2025 Q1 - Product Enhancements - Web",
+      "key": "q0I0sbaWSi5FaSvLNrKTt8",
+      "category": "Recent Product Work",
+      "pages": 11,
+      "frames": 5,
+      "components": 223
+    },
+    {
+      "name": "LXP Mobile",
+      "key": "7jbbHUNPnxPQb6AutQGehs",
+      "category": "Mobile Design",
+      "pages": 2,
+      "frames": 16,
+      "components": 91
+    }
+  ],
+  "averages": {
+    "pages": 5.0,
+    "frames": 70.33333333333333,
+    "components": 113.33333333333333
+  },
+  "project_estimates": {
+    "total_files": 182,
+    "total_pages": 910,
+    "total_frames": 12800,
+    "total_components": 20626
+  },
+  "cost_estimates": {
+    "png_export": 32.0,
+    "pdf_export": 38.4,
+    "combined": 70.4
+  }
+}

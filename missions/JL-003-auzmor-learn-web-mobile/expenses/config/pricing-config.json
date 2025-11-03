@@ -1,0 +1,114 @@
+{
+  "version": "2025.11.03",
+  "lastUpdated": "2025-11-03T00:00:00Z",
+  "currency": "USD",
+  "models": {
+    "claude-sonnet-4.5": {
+      "provider": "Anthropic",
+      "displayName": "Claude Sonnet 4.5",
+      "inputCostPerMillion": 3.00,
+      "outputCostPerMillion": 15.00,
+      "contextWindow": 200000,
+      "features": {
+        "batchApi": {
+          "enabled": true,
+          "discountPercent": 50,
+          "inputCostPerMillion": 1.50,
+          "outputCostPerMillion": 7.50
+        },
+        "promptCaching": {
+          "enabled": true,
+          "savingsPercent": 90,
+          "cacheCostPerMillion": 0.30,
+          "cacheReadCostPerMillion": 0.03
+        }
+      },
+      "notes": "Primary model for Justice League missions - balanced cost/performance"
+    },
+    "claude-sonnet-4": {
+      "provider": "Anthropic",
+      "displayName": "Claude Sonnet 4",
+      "inputCostPerMillion": 3.00,
+      "outputCostPerMillion": 15.00,
+      "contextWindow": 200000,
+      "notes": "Previous generation Sonnet"
+    },
+    "claude-haiku-4.5": {
+      "provider": "Anthropic",
+      "displayName": "Claude Haiku 4.5",
+      "inputCostPerMillion": 1.00,
+      "outputCostPerMillion": 5.00,
+      "contextWindow": 200000,
+      "features": {
+        "batchApi": {
+          "enabled": true,
+          "discountPercent": 50,
+          "inputCostPerMillion": 0.50,
+          "outputCostPerMillion": 2.50
+        },
+        "promptCaching": {
+          "enabled": true,
+          "savingsPercent": 90,
+          "cacheCostPerMillion": 0.10,
+          "cacheReadCostPerMillion": 0.01
+        }
+      },
+      "notes": "Cost-effective for high-volume tasks - 73% cheaper than Sonnet, 73% SWE-bench score"
+    },
+    "claude-haiku-3.5": {
+      "provider": "Anthropic",
+      "displayName": "Claude Haiku 3.5",
+      "inputCostPerMillion": 0.80,
+      "outputCostPerMillion": 4.00,
+      "contextWindow": 200000,
+      "notes": "Previous generation Haiku"
+    },
+    "claude-opus-4.1": {
+      "provider": "Anthropic",
+      "displayName": "Claude Opus 4.1",
+      "inputCostPerMillion": 15.00,
+      "outputCostPerMillion": 75.00,
+      "contextWindow": 200000,
+      "features": {
+        "batchApi": {
+          "enabled": true,
+          "discountPercent": 50,
+          "inputCostPerMillion": 7.50,
+          "outputCostPerMillion": 37.50
+        }
+      },
+      "notes": "Premium model for complex reasoning - 5x more expensive than Sonnet"
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "displayName": "GPT-4o",
+      "inputCostPerMillion": 5.00,
+      "outputCostPerMillion": 20.00,
+      "contextWindow": 128000,
+      "notes": "Multimodal with vision capabilities"
+    },
+    "gpt-4o-mini": {
+      "provider": "OpenAI",
+      "displayName": "GPT-4o Mini",
+      "inputCostPerMillion": 0.60,
+      "outputCostPerMillion": 2.40,
+      "contextWindow": 128000,
+      "notes": "Budget-friendly GPT-4o variant"
+    }
+  },
+  "calculationRules": {
+    "roundTo": 6,
+    "minimumCharge": 0.000001,
+    "tokenCountMethod": "actual",
+    "includeOverhead": true,
+    "overheadPercentage": 5
+  },
+  "recommendedModels": {
+    "research": "claude-sonnet-4.5",
+    "analysis": "claude-sonnet-4.5",
+    "coordination": "claude-haiku-4.5",
+    "synthesis": "claude-haiku-4.5",
+    "complexReasoning": "claude-opus-4.1",
+    "bulkProcessing": "claude-haiku-4.5-batch"
+  }
+}

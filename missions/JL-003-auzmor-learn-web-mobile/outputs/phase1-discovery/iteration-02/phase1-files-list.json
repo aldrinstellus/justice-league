@@ -1,0 +1,1100 @@
+{
+  "project_name": "Auzmor - Learn - Web&Mobile",
+  "project_id": "9863243",
+  "analysis_date": "2025-11-03T09:15:23.260130",
+  "total_files": 182,
+  "files": [
+    {
+      "key": "cuTXuQCQo5J5X0Xp9ifWUH",
+      "name": "(Firefight) 2023 Q4 - Homeward Bound || Unlock Assessments",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/a8fb3bf3-96fb-4b04-ab75-222d03b918e0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=32a40a3df34ad183b5d2ae3383b7241a0657c83ee335a6456fe5c1ca8d9b5328",
+      "last_modified": "2023-12-18T06:16:42Z"
+    },
+    {
+      "key": "U5lWJXinW5WzWx505q98UZ",
+      "name": "(Firefight) 2023 Q4 - LCBC Church || Completion Percentage",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b8cb5065-3cc6-4284-bfc3-093464d56414?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ca70cf8141e54f72d98a2fbf995fdcc6ea3ff59ae26f8eada391637370fc7bda",
+      "last_modified": "2024-02-12T11:06:31Z"
+    },
+    {
+      "key": "nIi3NTROdDSiegm4YLZcPn",
+      "name": "(Firefight) 2023 Q4 - TPCC || Help and Support",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/89aef32f-07a9-4504-bd2e-1c1da06416fc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b8b71934272b3780204fb5bc5f098ee227a622726f42a70e4d5c15770deaa9ab",
+      "last_modified": "2024-01-18T07:44:50Z"
+    },
+    {
+      "key": "4pUvxB22QBiWb2qcuolfMZ",
+      "name": "(Firefight) 2023 Q4 - URI || Event Enhancements",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/24c29996-86ec-4321-8397-04253422dada?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=89769d999503b49c5037792c4ea737f57d820742db84bcedf5854304e5d910ae",
+      "last_modified": "2023-11-08T06:42:53Z"
+    },
+    {
+      "key": "HssRE48kTdsxwLuNy8b6RP",
+      "name": "(QA) Mentorship - 2023 Q2",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/175fffc5-581b-4609-b96a-8c7be31deafd?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ee8cf1107f4f735cca1feb83640dd5d3d3e817cbc6e32221a91d3efc87b2454b",
+      "last_modified": "2024-06-04T03:34:47Z"
+    },
+    {
+      "key": "6OFGx1E5E9MVKLDEmHtz0H",
+      "name": "(Sales) Auzmor Webinar",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/ceb8fcfa-b2bb-4db1-9c00-634c0b4539ba?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e8a77d7525cb371bbcce9e40132bd641605c4191adfab76cf7772a69439de6f5",
+      "last_modified": "2024-11-06T08:46:42Z"
+    },
+    {
+      "key": "0mAj1keqRrUXrhcZ5g85XS",
+      "name": "(Sales) Blended Learning Prototype",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/ce7bd451-c4b9-4669-abee-eb0156bf6c30?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3e0019b03885c204607004e6d58b8863096273e35a0abf7151ab21bc5e4c9412",
+      "last_modified": "2024-05-10T01:59:56Z"
+    },
+    {
+      "key": "rsmeZucMD7czbqrKiZckJ0",
+      "name": "(Sales) Instructor Dashboard",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/611ded89-21df-4216-8c2b-f14a4810dde1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3aab932931bdb4edf60ca57d9efd2c947677f7628bb89e7602cec80d9aa4225b",
+      "last_modified": "2024-09-17T06:42:26Z"
+    },
+    {
+      "key": "jzhXB9XPgjilBIG2ISTCay",
+      "name": "(Sales) Mentorship Prototype",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/7228a72a-61bd-4a7e-9792-1798e48f84a0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a7daa6acb61b68c8f8abea08de4499d816803b354009af01bcb02b4dcdeae9e1",
+      "last_modified": "2025-06-10T09:07:46Z"
+    },
+    {
+      "key": "ozwleDjp8UE3w8vOTrHxcX",
+      "name": "(Sales) Mentorship Prototype (OLD)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/21e608df-b19b-42bc-b711-9131a2ce6141?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a80b4c7e3eba2e1ac82ddcbc2eb42d5e80b41c345f2a974d86f42a531c66dc80",
+      "last_modified": "2024-03-26T07:57:27Z"
+    },
+    {
+      "key": "GTpkMf88UGBtOnAcuytEuh",
+      "name": "00.00 - Table of Contents",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/08bdd750-5934-4547-8440-7b70f8e8b9a3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2ead6ba44eb1b1e4e0badfb18df47fd193e56891b6dd4c740b8977dd4f75c485",
+      "last_modified": "2022-09-19T03:53:10Z"
+    },
+    {
+      "key": "CzK3md2oe6u02w8aTkrogs",
+      "name": "00.01 LMS Main synced 23 Dec",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b6330a0b-54ae-409d-bff8-2c31c17efdd8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f90cfb009ab4f2ff56aefdd3a0c131c1ff96436d97db6b9e17eb91200bf784fb",
+      "last_modified": "2024-07-12T05:54:22Z"
+    },
+    {
+      "key": "DGCKEg9jJ1b9HPRfwFnU6m",
+      "name": "00.01 LMS Main synced 23 Dec (Copy)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/7a34bff8-0a09-4039-950b-886cfc3d43bb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=606fd5397b33a178291276b1e6ac2f0dc94b2a83450e9997fbd642ff0567251e",
+      "last_modified": "2022-12-01T03:29:25Z"
+    },
+    {
+      "key": "ebu2PCUPrApgJyAeEx0xCN",
+      "name": "00.02 Auzmor Old designs",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/47592dd5-1514-40ee-9d56-d301c26cfc96?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=9cde041531a69cfca3ed2370b41a0e703364e0a3b6d981d5d2e75620cf036209",
+      "last_modified": "2024-05-30T09:53:49Z"
+    },
+    {
+      "key": "7u01s1sKk39Q48cPbU1k4m",
+      "name": "00.03 Auzmor old designs",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b8284b49-706a-4c19-96a0-59fe522924c7?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=09579c8000e4aa42379083c3cfd8ebd81ccdcba086415a245cf3d5013da7e47a",
+      "last_modified": "2024-06-04T03:44:31Z"
+    },
+    {
+      "key": "i5bE2qhUQGcxTUbheNbwZK",
+      "name": "00.18 Sapiens Design System",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d8ecf11a-e8fb-41ca-8c84-b1e326717e74?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=04a29b69d7b2952aeb2a2585bb0158dbfa57294c7a3d706638192c2960948e17",
+      "last_modified": "2022-12-05T09:48:36Z"
+    },
+    {
+      "key": "yxKmMJh0T6AuKpSPuNhVtj",
+      "name": "19.Auzmor MobileWeb",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/44089eb1-7f41-4803-86ec-dd6fb417e80d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=85fb591852269f3851b6ad7e92142249827fcce393ee9b8c7b9c8d22b3f871b6",
+      "last_modified": "2023-02-17T00:17:15Z"
+    },
+    {
+      "key": "ziS7UCXzPyX2kwcPA6ZP2n",
+      "name": "2021 Q1 - Enrollments selected",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/a7439821-ceeb-4428-83da-d8fef7c93f44?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3fb925bf36ffc9d62573fdeb27880ca8ceb97f09affa3c95923342a15c576aeb",
+      "last_modified": "2022-09-09T05:59:00Z"
+    },
+    {
+      "key": "5U0p6M90rnk6QzOzLxSdp1",
+      "name": "2021 Q1 - Home UX, Lesson drag drop",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/8323dac3-4b87-4a6b-9a68-d09e7638d103?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=46dbdc4d2b507b5f7345dacef38cc5e58f9ef7af96df4f27031b882a3fdcdb93",
+      "last_modified": "2023-05-04T13:20:14Z"
+    },
+    {
+      "key": "ItNMwPfKQKQw6i1QTWw1fT",
+      "name": "2021 Q3 - Auzmor Deck",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/8c58d528-172b-4b6d-a1d2-5b5f4063c8b7?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=11fc8b4b862cca45d3301dcbe4030ead88badff1b390db7411579925f50cef0d",
+      "last_modified": "2022-08-27T21:25:52Z"
+    },
+    {
+      "key": "GtL8xmZ1504cFTwU1OzLaO",
+      "name": "2021 Q3 - Shipstation Integration",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/8b2634b2-27d3-4136-b025-5125ec101574?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=982cc44825f8171fe2eae7a1a04dd991f6df6f2ed822b44b4b93f01c2767a0ca",
+      "last_modified": "2022-09-22T08:19:08Z"
+    },
+    {
+      "key": "0xp1R2awLZXjEVhD2om2xe",
+      "name": "2021 Q3 - Social Learning Admin Proto",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0b26dd26-11bc-46b8-9957-c77d85d561e9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7158c4194097798bd85b68515a2ea926d34b0f5a3cdaf6d814c343e5614c7fc4",
+      "last_modified": "2022-08-27T21:25:41Z"
+    },
+    {
+      "key": "R2Fm4ZdkwoPKRETbbBXwxt",
+      "name": "2021 Q4 - ADP HRIS",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d1b063b6-d4b9-47c4-80de-7d4490faa8dd?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0ee7105753726671c46df9771acf0ec54cd4cc4d3b5003bc627889170360d571",
+      "last_modified": "2024-01-24T08:49:34Z"
+    },
+    {
+      "key": "k8l50QDXwE7jo1nOcps6IX",
+      "name": "2021 Q4 - Branding Setting",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0c12b617-2099-4b31-a8a0-2c4c7dd2c9b2?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=31e026ce7e0eda33aac3cf20ff5e045a80a86d51b82661f3dc682ab016c50c1c",
+      "last_modified": "2024-06-11T03:54:24Z"
+    },
+    {
+      "key": "FwDKbF1xOO0Z1bccv6W9ZD",
+      "name": "2021 Q4 - Coupons",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/49ad775f-ed9d-42ac-9934-c4c65eec0fbc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=71b5b884f919bca930819a9a8a685f55028f2f711c9ac4ecb6d9ad2cde5e606a",
+      "last_modified": "2022-12-19T15:19:21Z"
+    },
+    {
+      "key": "MKue70qAe32GS03PgIZMAw",
+      "name": "2021 Q4 - E-commerce",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/89258aec-1dda-435e-b6bb-e36e9a41b075?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b9825656085f543f72f2d4ae886c8c57b71e136840ddec35124bbbdc8df64ab1",
+      "last_modified": "2024-05-30T08:54:05Z"
+    },
+    {
+      "key": "UCy5VemgvyeJc85J5DNTxQ",
+      "name": "2021 Q4 - Evaluations & TImezone",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/81d3278f-7a75-4afe-9ab7-1abfea6fe3e8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2d301768b25a7202bc5e9b859a6e5596c218c2729b62d944b81e76097ab9ede6",
+      "last_modified": "2022-08-27T21:32:15Z"
+    },
+    {
+      "key": "dwVKebwwkVDjpMnT4n2T5U",
+      "name": "2021 Q4 - People_Individuals Active",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9d52c9c3-7bd1-4a51-ba60-968c4a2a60f6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dd7e25da59ae14b1014179abbc50c09877a48d5999619cc7b708d3994dcc4994",
+      "last_modified": "2022-12-01T03:26:22Z"
+    },
+    {
+      "key": "iRTheI3U7vQWWEuizWDoRj",
+      "name": "2021 Q4 - Permissions",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/3d604bcc-906e-46cb-b0da-bc7b5e49aa84?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d2b564b9f52c6304900b22ecbef9cdb50f05009aa3651976c8b77b72bb7c0599",
+      "last_modified": "2024-05-30T10:06:09Z"
+    },
+    {
+      "key": "2m4cSLit3vkMaY4EIf1eat",
+      "name": "2021 Q4 - Social Learning",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9b7bfa6c-3c9c-4b19-a885-bca5e6397cd8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1fd279d91028d1586b8d1b7bbb584a93b4d1b4c89cae600550219e7236830956",
+      "last_modified": "2024-05-30T05:16:51Z"
+    },
+    {
+      "key": "CC8dxWqX343zyZNTHt0umx",
+      "name": "2022 Q1 - Blended Learning",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/68c2f29c-bf32-4836-9d4d-66afc537ae85?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=128c3ffb96c50f46d20504c699424ca881123602e030c420eb6ff0e98b9a8278",
+      "last_modified": "2024-02-12T06:57:51Z"
+    },
+    {
+      "key": "2UW4esgy7CA82mrJPGfUG4",
+      "name": "2022 Q1 - Blended Learning (Clone)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/7779a633-291a-485c-811d-5e064b51749f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=79e4e6cf7818f063f6bc1a4391ce4c95c34cba006738432e91d6dafeb8833d57",
+      "last_modified": "2022-08-27T21:44:38Z"
+    },
+    {
+      "key": "gva89EXKUCTjxXQYtiSgie",
+      "name": "2022 Q1 - New Learner Home",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/8e2074ea-e699-420b-9211-4cc5391c7c97?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=00829ba9504e5fe008e7ff6d3e1020091bfd18d1ca1d9c2a4bc23c5e0d5bb2fa",
+      "last_modified": "2023-02-14T09:52:50Z"
+    },
+    {
+      "key": "qdIc3QfLulQOuItLFN0PN0",
+      "name": "2022 Q1 - Social Learning (Mobile App)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9f46e7da-59d6-4df0-9601-98e3b31460f4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=50522e7546a969abb9c04dae63f7d79022d2cb4867654b16fafe672a5907ce00",
+      "last_modified": "2024-07-15T09:20:31Z"
+    },
+    {
+      "key": "zVpkzzHKHsQCfgnG7StFRZ",
+      "name": "2022 Q1 - Social Learning Dev/Ops",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5abbb456-f39c-4077-a0c3-738b82e18d52?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c075f4a4bbea19f165ae5692228783d24bdcaf57bb54d6cc47ce411bce4a5e7c",
+      "last_modified": "2024-05-30T05:06:11Z"
+    },
+    {
+      "key": "fQKWFpqRvdOQ6pOdIstokF",
+      "name": "2022 Q1 - Social Learning Wireframe (Copy)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/62273162-e406-430c-83e6-d4349b0c0622?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=9e30b9b7a39fe052aa82c1547574b6d1bf9561f88690374732f989b7c9ba7bfe",
+      "last_modified": "2022-08-27T21:43:07Z"
+    },
+    {
+      "key": "RLXadOjR2q9STKc7FYiTlW",
+      "name": "2022 Q2 - Manual Re-Assignment",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/1c04a7a3-e17f-4c1f-a3ce-4499060377ff?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=81fbb68e5c4b6377dfc60045399b62864954cfa5b90bca53a408bedcc1cdecf9",
+      "last_modified": "2023-08-17T05:40:55Z"
+    },
+    {
+      "key": "TCD9RvahLA1EYuEY3hubPX",
+      "name": "2022 Q2 - Paths (Mobile App)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/624190cf-1b0a-414b-a3f0-d50e92cfe4dc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=73eeed5bdcabdc5e7f38b90a23371b6bc1335c0c8e62ddef65af90d445c2d044",
+      "last_modified": "2023-06-13T20:03:15Z"
+    },
+    {
+      "key": "Po61SjW4ZSpWeUbwBPT2w2",
+      "name": "2022 Q2 - Paths 2.0 (Mobile View)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/1eb01ddf-e6ec-41c3-bad1-b1c9539db92b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3a7b2eb90b7173518f4331086dc822b0e10ea5d5adb8de1e7dfbf6b4c6b31934",
+      "last_modified": "2023-01-24T20:16:07Z"
+    },
+    {
+      "key": "RKucdVVj19JyRTL9xg27rj",
+      "name": "2022 Q3 - Duplicate Enrollments",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/11443dd8-dbd4-48c8-8d4e-509fba824179?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6e17d473b3652e3c924a367ef639712616641b13f77b8abc2d6d7698cb56d342",
+      "last_modified": "2023-05-02T13:14:47Z"
+    },
+    {
+      "key": "pGjwwA0Hk36yGujknSW6C1",
+      "name": "2022 Q3 - E-Signatures and Failed State - v3.4.6",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b2c672df-ec37-43c4-b4c0-b8306e74533d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fd52567941a68c623be409aa124e8c06bedb572731c11d22f3329c38991638f4",
+      "last_modified": "2023-06-15T07:04:58Z"
+    },
+    {
+      "key": "aRgCMl2t5trp5o7JHHy1IZ",
+      "name": "2022 Q3 - Events on Mobile App",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/65006312-d25b-47e5-83d2-8a03c4c5471c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e8a851b5d0f45e18528823a9efd42e2a2bd737f4f0610198e20312921e71f877",
+      "last_modified": "2023-06-13T08:19:59Z"
+    },
+    {
+      "key": "hcc5Z92ztujuR5CdpNzUZy",
+      "name": "2022 Q3 - Managing Team Assignments",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/65fad86f-cf2c-4e60-a1c6-9e3bb22ac37c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c2089ef23b5f96c824f8975d0735fe02eedb65e454b0ffe0188985b0a0e9e8c9",
+      "last_modified": "2024-04-29T03:30:38Z"
+    },
+    {
+      "key": "bK5NmhfpAFiPd98tKMi3WN",
+      "name": "2022 Q3 - Selling events, Razorpay - v3.4.8",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/ad56c6fc-1f43-46c1-a5a9-6b18d9c30f4e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bcc298120d6c7a5b7dee52d96b2c8b9a65eb93028065f2c88901087ab1dcd831",
+      "last_modified": "2023-10-30T02:45:45Z"
+    },
+    {
+      "key": "F0q4QsYYJw2ThvFIkNKJ0s",
+      "name": "2022 Q3 - Skill Management",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/70438dcc-8307-4c96-b84b-cba70e9af60a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c9d64fa6e8bb8b455c2d9437df00dd50ae62cfec246d548e49ac60c9a00b0d84",
+      "last_modified": "2023-11-23T11:37:26Z"
+    },
+    {
+      "key": "xzxk8R4COBonKlOwDL8kSH",
+      "name": "2022 Q4 - Blended Learning - Assessments",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/deaebf27-4397-4add-9e94-2cfeaf593431?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f5e896856e4410c0c8de52e4da1e189498f5b6ec0dd6f4f491e0fb37722c4753",
+      "last_modified": "2022-10-21T08:11:44Z"
+    },
+    {
+      "key": "2cJ94RyPNtiRUkSShpfHCA",
+      "name": "2022 Q4 - Chats",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/71730553-cecf-40fc-89f6-dd86da3c17c5?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=748e8f9abc48836337e5b60dfacb3a4bf9cace4004a9a85fd7416a5ba8090524",
+      "last_modified": "2023-08-16T04:26:47Z"
+    },
+    {
+      "key": "6HEmfjMrZHwLHIkYmWr2TF",
+      "name": "2022 Q4 - Private Forums & Polls",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/a000ca07-38a9-4b4e-9d94-e0480a97b96d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=35e32945c321d8186688c8519c1f30e8ef2925d54842a0ee4b12c7273cf3ef1a",
+      "last_modified": "2024-05-30T06:57:56Z"
+    },
+    {
+      "key": "adKgkI75BR7gLxI7J5d2fq",
+      "name": "2022 Q4 - Tasks",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4b7535f2-fb6f-47b6-ab90-7aa0bc1e8e90?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=32ae38325939d4459c773a45465721fa66a691ba359e795277d175d8fca6f831",
+      "last_modified": "2025-05-07T14:07:46Z"
+    },
+    {
+      "key": "ZnPX8Syr0vG3K96LsPYgXt",
+      "name": "2022 Q4 - Timed Assesments",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d78db9ac-d2e4-421c-bbfd-982b7f3967ee?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b754b2df1fffc2f84e3a5cc8a65daebc9200e8187e9971124476a31230b3b285",
+      "last_modified": "2024-07-03T13:15:43Z"
+    },
+    {
+      "key": "ae6ZTTUYxSbd4kqk0dpA2d",
+      "name": "2022 Q4 - Training Feedback",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9e983f9b-f2c0-4b86-8822-a36087961419?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=aa6ac11dab06a5db88bb8baf8a937c11c3cbffb09ed6b4b94f4c272feb052cf7",
+      "last_modified": "2024-04-29T03:44:50Z"
+    },
+    {
+      "key": "SV7hZc1POvoBBsEny9P7tl",
+      "name": "2023 Q1 - RFP - Backup & Restore",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/cf13cb8c-69d7-4051-b1da-072a9dad2750?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8e49f038b2af918fd8b430bbdc7b93d85a17044c966df169bde9a752b6add27a",
+      "last_modified": "2023-12-13T05:37:31Z"
+    },
+    {
+      "key": "KhRp7VNV7ThAhx5DbBBCQE",
+      "name": "2023 Q1 - RFP - Gradebooks",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/507989ab-a197-47c4-bd2c-aec7b1411bee?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6da90a032cd824054fc96bd442c916d7df187d0a5ea424c3e4f5649f3a489ddc",
+      "last_modified": "2023-03-24T03:12:02Z"
+    },
+    {
+      "key": "JO8G2xFon2ZhTCgAEdFiZw",
+      "name": "2023 Q1 - RFP - Multi Sessions, Recurring Events",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/ab9089ad-9d07-4649-af5a-3bd30d62647d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=cfa1db2b66b17431849efdf15afbc5c3ef4f84348dfb96d84c6bd8dde0e42b8f",
+      "last_modified": "2024-08-21T18:16:35Z"
+    },
+    {
+      "key": "t2BAT0q2E1NrPaK6oDgUPo",
+      "name": "2023 Q1 - RFP - Notifications",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/19d3ce71-30bb-41cb-a905-26735b2130bb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f1d5b107ca400bb55865aeb045660db1b08f7c5225511f3e7829aa6f3749eb35",
+      "last_modified": "2025-06-03T10:24:31Z"
+    },
+    {
+      "key": "04Za2mNbZLjmuZJuV4dsoh",
+      "name": "2023 Q1 - RFP - Question Bank",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/597c9a7e-a5a6-4fc2-9c46-fb02b7328831?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d91473edbf53da284d5b7679eb0761ca807c1157042df8527334fead97f4f436",
+      "last_modified": "2025-04-29T10:23:37Z"
+    },
+    {
+      "key": "y5ErrAjzOiHeb9sTWA9zAt",
+      "name": "2023 Q1 - RFP - Terms",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9f23168e-70f6-4d3f-bda0-de2ab111229d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e5820c707b7462d3d8b3f6b744460acd71a2dc5753ac3440395ede28746b4dff",
+      "last_modified": "2023-02-15T06:56:57Z"
+    },
+    {
+      "key": "LOtrmxFz27y8FxN69hPEm6",
+      "name": "2023 Q1 -Batch Selection",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/6e10f343-0804-474d-9db9-0d715e2559c3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b263b9b9dab7f800801811346332bb6f4db653fe59b4e54b695af1c88f142229",
+      "last_modified": "2023-02-03T12:09:58Z"
+    },
+    {
+      "key": "4qU2wfp2hcyQ4gW3Ri0FwR",
+      "name": "2023 Q2 - Mentorship",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/f18f7246-b34e-4606-a351-ae4d725fe65b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=998d21883b2dd06251b6bfb711e4b0267bf8d7f0d411ff393c4ce0d125d1eed3",
+      "last_modified": "2025-06-22T20:23:03Z"
+    },
+    {
+      "key": "FWknuZvRw5Jw9ziR25LJHP",
+      "name": "2023 Q2 - Mentorship (Only Prototype)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/88ba001c-3815-404a-b0e1-f19ea623916d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=19822becfe8852000a4484bf33de122191e89425275d189662ce9dd414baed4d",
+      "last_modified": "2023-12-06T15:43:00Z"
+    },
+    {
+      "key": "JcBH93e3UGNHOUX9ZeUCZ8",
+      "name": "2023 Q2 - Reports V2",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/84dffc58-eb65-44b4-bde0-803f8e0e2c2f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=04bf5d0b18a34630d43bdaa767c878893cb29a8da8bf09fdbbfdb09304bdd7b1",
+      "last_modified": "2024-04-04T06:41:10Z"
+    },
+    {
+      "key": "UHjCOg9VoQphMkESqmUZn9",
+      "name": "2023 Q3 - About Us mobile Improvement",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/67c114d3-4287-45fb-bd89-90bdc97f3f01?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=69e2392754c0b0bd7bd34bb3eb23fa0815c3348c254e9cde9c45a3e0c38751f9",
+      "last_modified": "2023-09-01T11:27:21Z"
+    },
+    {
+      "key": "Vx6cbPfEuqIY8XqDVFD9ve",
+      "name": "2023 Q3 - Certificates Redesign",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0bd12868-8c34-4300-bd06-1a2b18a6a593?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3cb663c50a2bc4106aeb4c8307a3037d333ad6f12c9d409382a6819f606dea73",
+      "last_modified": "2023-08-30T15:54:20Z"
+    },
+    {
+      "key": "Rth4jh4ymsc27OlIJ74Zu2",
+      "name": "2023 Q3 - Hard Reassignment",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/c8d134f7-8fe1-4edd-a854-0aca1ddfc02b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e1a8790e2379f4adb79a3d5b1394c13f06f1e66d285f6a02bd03c4d77763893b",
+      "last_modified": "2025-05-22T03:48:23Z"
+    },
+    {
+      "key": "d2JwcxI47cEkVBmpGyrvsP",
+      "name": "2023 Q3 - Insights & Summary",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9faabaeb-4332-4c1c-82ae-c1332065277a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b0fc6fb5a6dbb13da20ebbed33cb3c3dad0da2a6fdbb6be8a8ff2bd20e8fac9b",
+      "last_modified": "2025-05-21T15:26:58Z"
+    },
+    {
+      "key": "Qid32Zkk2I74mB6cNMYn1C",
+      "name": "2023 Q3 - Path Survey",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/db6bd70c-9c4d-4d3f-9b98-aca5e38acf91?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=74aecae9aa32ed8108aa20b66ae0a607c008366759f7ffc055637bcee7c95535",
+      "last_modified": "2024-07-26T03:46:01Z"
+    },
+    {
+      "key": "MWA3ugwNEShdfhAjcjFQWl",
+      "name": "2023 Q3 - Reporting Manager",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/23c5a614-e2ed-431b-bb76-1afecce6d75c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d39f426e5d87861145636de2793afbbafae47ecf1f7523344bb7a9af153de0a0",
+      "last_modified": "2024-04-29T03:29:28Z"
+    },
+    {
+      "key": "xaVeXphiPvbGCcD1w0vN9H",
+      "name": "2023 Q3 - Rock RMS Integration",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b0f3de3a-62e0-4ae8-abb2-544909f16649?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8184c2b31e63330590c82c97351500c1ec7cb8e13296033e43fcc5f117220dba",
+      "last_modified": "2025-05-26T03:46:47Z"
+    },
+    {
+      "key": "r052ytzjmpkUXaXUM40I3a",
+      "name": "2023 Q3 - Surveys Module",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/f55afdb0-7314-4a8d-bc37-6d2fcf557aea?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1a24571cb3f2c1592c5a10ed780b3314d99368ee4d7e8521b3e588a55f992909",
+      "last_modified": "2023-12-27T06:31:04Z"
+    },
+    {
+      "key": "ubqJzJfWQ5ItyGxGrFZsFo",
+      "name": "2023 Q3 - Training Feedback Improvement",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/3db34100-bf34-49fd-a5d1-1ea537933cf6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7851ec4f8e7340db1163f95aad9efd03a9d493d90e73592e47104483ceb48c57",
+      "last_modified": "2023-11-07T10:43:56Z"
+    },
+    {
+      "key": "pHf8j42Nk6mau8V2CYCTwt",
+      "name": "2023 Q4 - HRIS Integration",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/04e967a1-5810-49c3-ab56-112d49576f0b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ea6533d3bf45debd255ca75dd43bf0e958e6f4b12bbb73cf94b0466c4c7e9734",
+      "last_modified": "2025-05-26T03:50:38Z"
+    },
+    {
+      "key": "Ey6Vr5FhgB1Ec3JAy7ZHFB",
+      "name": "2023 Q4 - Mobile Enhancements",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0624dad1-e25e-4ee9-9200-62029ae6587d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b45efcb4054100e0fa4b98ac65e44096407a61fdb907953b1d13051c00bd4b49",
+      "last_modified": "2023-12-28T10:18:13Z"
+    },
+    {
+      "key": "eRY2MKQHT0DZ43dAW18j4A",
+      "name": "2024 Q1 - LXP",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/fc45b636-897c-4118-a718-1d1023cafea8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5cd403711caec8b386c4cc413c70e69b399b29dc4cde13098a60777ac8657530",
+      "last_modified": "2025-09-23T08:51:59Z"
+    },
+    {
+      "key": "aw9F5PHRN3M3vOukkyh0P7",
+      "name": "2024 Q1 - LXP (QA)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9500d498-f307-4e37-928e-016a1c6a712a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=13e1cc8c6f9c54ec5cab09447cd44271bb0c4a067c82dd6cc9066fe37492635c",
+      "last_modified": "2025-10-29T08:20:16Z"
+    },
+    {
+      "key": "iuH4Dng0f5jTUzbPhPEFVB",
+      "name": "2024 Q1 - Multi sessions in events",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/aba3e2ea-089a-4792-815b-769d63738638?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2f19b95dc579abadd36e71f1c99d8e9589b25c39595696b26a721035977595f6",
+      "last_modified": "2025-10-07T08:02:12Z"
+    },
+    {
+      "key": "7FJK4VoPdUpYkjpmPJ4dNw",
+      "name": "2024 Q1 - Paths 2.0 (Events in Paths)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/99d84f54-d60a-40de-8e23-a59cf2729e65?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=16a0a28135e6ff785ed0c71434fc7467aebdf41a8db0aff7ccc76c1b0d7aa996",
+      "last_modified": "2025-05-29T20:17:25Z"
+    },
+    {
+      "key": "HMwmiEabGP2MbTl9R65mB7",
+      "name": "2024 Q1 - Product Enhancements - Web",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/c53a024c-6440-4f27-9046-f2bc3568fe9f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=62cc84607936f56723d8c41db654f4ac7f0df7ee93016aef2d65cdc1f24ab5e9",
+      "last_modified": "2025-05-26T03:44:13Z"
+    },
+    {
+      "key": "ZiKFVIbVse07S5jgpXzVpO",
+      "name": "2024 Q2 - ADP Compliance",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/6e65024e-b672-4378-ab3d-5872c78f3fc9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=94c9662ded3f075d8afcf2dd6b8c2773fd5a038e4fba609cd8e12275772ce965",
+      "last_modified": "2024-11-01T08:33:01Z"
+    },
+    {
+      "key": "jUI38ogmPXXkvABLEaGFA9",
+      "name": "2024 Q2 - Course Survey & Event Survey",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/69a57915-aa17-4f38-a9c1-67243a1f49fc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5cb72f92cb8e3639ee7cdae5789c0007b067f11f9716501695f4e33d3ad9b28d",
+      "last_modified": "2024-11-22T04:28:23Z"
+    },
+    {
+      "key": "HZZrYiAZVS5RCgjFuTGOTb",
+      "name": "2024 Q2 - Custom Reports",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/67766417-dabc-4747-8d95-f002dd0772b0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4d7903d0978b628028e2e613367ebcfbceb16bbde3c70924db47a6afb06b9822",
+      "last_modified": "2024-11-14T05:34:53Z"
+    },
+    {
+      "key": "yrcXSbTdLCJZ6kJnOWIwzS",
+      "name": "2024 Q2 - Tasks Enhancement (Observation Checklist & Re-Assignment)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/7495733a-8a92-4f88-a8b8-25326a0eaec1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a8666978a880689b403a65d4b5e5cdad3bf7883932d34b4b9b6ea75daf5e59a9",
+      "last_modified": "2024-09-18T10:27:22Z"
+    },
+    {
+      "key": "d0iKz6gpAXKQ84SP5oj3iB",
+      "name": "2024 Q3 - Editing Paths",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5cbe6ee5-7a52-4bc5-afa1-875e3810e3e8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=69fc00fe16bcb394c4ed28bdd76131d12851361d252f01b4a706358eafcccef3",
+      "last_modified": "2025-01-24T08:06:54Z"
+    },
+    {
+      "key": "XQW9Sp93gAih3YTXrRHmi0",
+      "name": "2024 Q3 - Editing Paths (Archived)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5217bed6-4ce4-4d64-92ae-2e9f48f3d715?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c8498752935c7b397e21e76bf382b2662b74561bd993b5e6826f00bf7cc7e21c",
+      "last_modified": "2024-09-17T04:54:21Z"
+    },
+    {
+      "key": "ArMSAi7I15TqUsgXgMExJU",
+      "name": "2024 Q3 - Listing UI Enhancements",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/685d3ec9-0419-45ac-91d7-798d608e9bfa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f909d957d1b7936f4ae7689105e5a5dc6ddbd165abe9cb59eb114b9d03e4d5a8",
+      "last_modified": "2024-10-03T03:58:35Z"
+    },
+    {
+      "key": "b1eBm9iGNJjr9EJ0gbbq2u",
+      "name": "2024 Q3 - Paths in Mobile App",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4baf4dc3-934c-41e3-b74f-18d3e042a5f9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=116644436e266ecba0651b077d4a4e76b374d1d6b8ed9d4dc852696b3b840ac7",
+      "last_modified": "2025-07-20T15:33:19Z"
+    },
+    {
+      "key": "xC8Aqjtf9em8T8AEOpNt4M",
+      "name": "2024 Q3 - SCIM Integration",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/208caf1a-adba-4321-a85c-5628590ecfbb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5b3296acb8cfaa04b22862b96d50491dd990a150a8504f26b91f0e86a3f2c13b",
+      "last_modified": "2024-09-26T08:38:57Z"
+    },
+    {
+      "key": "DQo8Jm6GpW6aTaStFGP22J",
+      "name": "2024 Q3 - Unsplash Usage Design",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5370d310-1554-4164-93fb-b215501cdeb1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e5099a28daf1f7c8f6ee666ee019c5e1e97cdcd390d7dd3b5ab38d0bc2c688be",
+      "last_modified": "2024-10-09T09:14:25Z"
+    },
+    {
+      "key": "C2ChYUnDUTnP4yCVuacJlb",
+      "name": "2024 Q4 - Certificate Builder",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/2deaf64c-dd0f-402e-9f45-d125f2040652?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a0f9fcaa4b17337996b2dca47a6836e0c772535c1b2f0967421cfb2e9ecf959c",
+      "last_modified": "2025-05-26T03:47:46Z"
+    },
+    {
+      "key": "cJi53XntYLmoK7RHAdhGEP",
+      "name": "2024 Q4 - Content Library",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0365f1ed-4354-454f-8c4d-d4501bfd28b0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fcd4034c901271858a417c86939c163bb1f34f9b5aa632461b07dfcba4f5693c",
+      "last_modified": "2025-02-24T06:06:10Z"
+    },
+    {
+      "key": "PyjnuPu7t5g9i3sBlLvecp",
+      "name": "2024 Q4 - Global Search (LXP)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/30071196-9851-475c-892b-2ac7e8ddba59?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2aa07dff3a8ed62e5e68a15d3947afbee37240627d325f3a532d9274049056e5",
+      "last_modified": "2025-02-06T10:46:30Z"
+    },
+    {
+      "key": "MgNKv1LQgecYVVPaaICgTU",
+      "name": "2024 Q4 - Impersonation",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/da7a7491-1c21-49c2-99a0-940fc2bf5ace?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=be0bb81fa8244a910078a2dcb5eaf41c9b32c4115dc58ba783edbf49ecc23c56",
+      "last_modified": "2025-05-26T04:03:59Z"
+    },
+    {
+      "key": "2NZ53vO7AV3G89Iy5cFf0Y",
+      "name": "2024 Q4 - Reports V3",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/34d97886-8a00-4709-80b4-f0e352dbf429?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fdcbdc85a599510429a663be5108724a1c1b5f62603c3b93a6b2c04f6c6a698d",
+      "last_modified": "2025-07-10T13:01:45Z"
+    },
+    {
+      "key": "lMrM7doDTEzejgXvJXgFNz",
+      "name": "2024 Q4 - Workflows Engine",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/f2daea0e-6393-4a89-9436-90c049b6a95e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bfa03c80fffa1407cf00620cc3853ff66c0030927ce0ccc402b2f1185549028e",
+      "last_modified": "2025-05-26T04:01:06Z"
+    },
+    {
+      "key": "aEnOm9VaKObMuFcGJD77Ut",
+      "name": "2025 Q1 - Enhancement",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/2dc14381-e68b-45ea-949c-1ad2f100bd98?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=995c7aa7c5352c494f5424ac0e6b5a68cbd1b646db68d26f8acbc7b5c27d5788",
+      "last_modified": "2025-05-22T03:43:55Z"
+    },
+    {
+      "key": "q0I0sbaWSi5FaSvLNrKTt8",
+      "name": "2025 Q1 - Product Enhancements - Web",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/77bb0e83-fa36-4617-9cfd-3d210fd3b67e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dbfee4e74b930a2d3464b2b50d7861eeaf3d01fda2d0d51a8b2282415bb8235f",
+      "last_modified": "2025-09-30T08:35:30Z"
+    },
+    {
+      "key": "ETJqoiFfM3GVp04kohse83",
+      "name": "2025 Q1 - Tasks Enhancement (Archiving)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b0e63c09-ee0f-4ce6-a570-5cc41b4eead1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d8ffd693d4fc13fe09a6143440f179be79100cff1a40c163afbab1136d29ed74",
+      "last_modified": "2025-01-16T16:16:18Z"
+    },
+    {
+      "key": "Y9jn2VR6iCvKGzQdFYksUF",
+      "name": "2025 Q2 - Custom Roles",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9ff6b9b7-dcd3-4d98-88d1-9187c5aec612?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d88f5fffa1a8a18e4d061deba77bcd49d1ec953f0276fba68e9be848fee96efc",
+      "last_modified": "2025-06-16T15:09:07Z"
+    },
+    {
+      "key": "aMnvS6xRdsf3DkjydBQMF9",
+      "name": "2025 Q2 - Product Enhancements - Web",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/940090b4-e52b-40de-9272-c17d5f89ce72?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=210b7c950c8d3a49ded06fe016a0dbb4ec1be32638181541a8120be6fc0d4db5",
+      "last_modified": "2025-11-03T05:05:52Z"
+    },
+    {
+      "key": "hLzrJdAxlPzUE3GQVwQXxt",
+      "name": "2025 Q2 - Report Builder",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/544a3ceb-1fa1-437a-aac6-4308fe8a3386?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1764723c4cc4448849acf2331392c72aeab082a434ae4ef021162df6ef943ef7",
+      "last_modified": "2025-09-25T05:04:58Z"
+    },
+    {
+      "key": "60BThSIvg2sMgxzLkgMX0t",
+      "name": "2025 Q3 - Product Enhancements - Web (Document Preview)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/3c36d65d-a9cd-4f33-b63b-bd0dbf4a7ee4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=327eeef7065a8ad1a0c028e8d15d67e9162824fc3bd20c3e54622983c6d7d400",
+      "last_modified": "2025-07-28T11:03:56Z"
+    },
+    {
+      "key": "cwkcNXnghaihhVPzuMn2Kt",
+      "name": "AI-Powered Course Generation",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/bbb98cf2-2d0c-46e9-9a87-9e8b26346190?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c00f2403647abbc7ec3a719eb0a15bd9720314c4dc5c07a33f554dbb5858cf0c",
+      "last_modified": "2025-10-16T05:09:48Z"
+    },
+    {
+      "key": "VgYbzCNroh3XVgpk5v40AV",
+      "name": "AUZMOR MASTER FILE 2021",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b9e3c800-c330-4120-9163-66921af7bcde?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c63d92ac23a8a6b86b2cb1e6b78777739381d2db1bd10f5c533dedd522579c72",
+      "last_modified": "2025-09-30T07:44:34Z"
+    },
+    {
+      "key": "FGIbORZQF5kizJ5SUzo54H",
+      "name": "AUZMOR MOBILE APP 2021",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/24f8c8a0-a5c9-4e44-b8a3-6a265db96a1c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=61a8f99d628ae139647a54cbdde587e17c3584e64b4be16dba79a9f2bcbd4f36",
+      "last_modified": "2023-02-01T09:22:49Z"
+    },
+    {
+      "key": "G17s1yVDKB536xOKHStmtn",
+      "name": "Assessment Summary",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4b2bd55e-2667-480a-b2d9-fb62492574aa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a9fbf51105ec6bc47451514a435d0c1d36659818b99b0efc9932df85d415e934",
+      "last_modified": "2025-10-29T07:37:39Z"
+    },
+    {
+      "key": "9CxWNyJcDPVZOIq43e6Y0V",
+      "name": "Auzmor AI",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/1c476b75-7d24-4589-b562-2de335997476?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=91c26c85ee264027011d8c76d3467ce09fced840fb4cbf1f7f999dfaf72c20f6",
+      "last_modified": "2025-08-11T15:18:16Z"
+    },
+    {
+      "key": "UXkXHTi1dxTw91lNzhHxu1",
+      "name": "Auzmor Android App Icons",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/41cb27d6-95a7-4b1b-9c15-e6d60876c891?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=322ee08299e45a4524155fc7383a436ddb4e1cae7f812d8ddee804177fa24fc2",
+      "last_modified": "2025-08-21T13:42:36Z"
+    },
+    {
+      "key": "89OR8VfWEK4EGK5NpBxmRV",
+      "name": "Auzmor Illustration Main File",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4b7ca4f5-f818-4fe3-b09f-dccd65bb20af?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=40480c7372cf3368081b88efe02021ecbcc141614fe6c6441a1e2bfc70542c30",
+      "last_modified": "2022-12-01T05:26:06Z"
+    },
+    {
+      "key": "leaNsoVKmrXRKncQYd2AqX",
+      "name": "Auzmor Illustration Main File",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/ebbefb0a-7658-4449-8c5d-4c727d6a69ef?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=99bfbf9744c4d95496950b167dcf9a996224d1251c2f3106ddb0ba690cd52e03",
+      "last_modified": "2022-12-05T09:52:59Z"
+    },
+    {
+      "key": "6T3ME9BkVXYi0l5lFzPIKa",
+      "name": "Auzmor Learn Mobile  Version pipe",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b6127cad-1c7e-45c4-9d1d-1f34d837c2c3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=89561da2a04a878630e030c078f791f24e5c93ddac1534232d335aea855f06df",
+      "last_modified": "2025-08-01T04:44:35Z"
+    },
+    {
+      "key": "gQgrSzIlVzy8ufNmLiZpdM",
+      "name": "BL - Training Creation",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b06d4604-4167-4aa3-b914-fba1804bfdbb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8f5db17947ad11fba6e9db4f6a405cd2043433a615d65c4067e0499a2e8e72c6",
+      "last_modified": "2025-07-08T11:14:01Z"
+    },
+    {
+      "key": "X8I6IFIdXdrNbmNNvBo4P0",
+      "name": "BL - Training Details",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/199b544c-b0cd-4b78-b4b8-56f9c958e724?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=438b3f7cb96b81e003d2ef5e2cca71df638c2ce6aebf6f2da3f4ea765110d9d7",
+      "last_modified": "2024-02-06T09:12:15Z"
+    },
+    {
+      "key": "6G9KnHOm3WEK31hb925S3l",
+      "name": "Blended Learning - Archived",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/18bf6fb0-142e-4372-b4c1-e3d94f402596?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a994027c7c44a391b64958c4cf18482738f216a2e75bcf0c1fafa8ce26c11602",
+      "last_modified": "2024-01-08T05:06:08Z"
+    },
+    {
+      "key": "bjpSf0zNxbjcu2M9mamWyN",
+      "name": "Blended Learning New",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/2db498e9-989b-4767-8ff2-8f9d894762c9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=882a7a790779aff74d1d13c38d84200bdb2bb3ba051825f12d6f7c3bef613d8a",
+      "last_modified": "2024-01-11T05:00:37Z"
+    },
+    {
+      "key": "BK0pFifzAjnPhWwsBGEk20",
+      "name": "Branch Enhancements",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/c847bf1e-e7cd-465e-b262-f29fb1c47586?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=edb979e7944482015baff06dd3d72dcf14325c391023e6154631c666f6be8e94",
+      "last_modified": "2024-12-06T06:52:05Z"
+    },
+    {
+      "key": "1OZmUp1TgLo0yUum8jRyvK",
+      "name": "Bulk Ops Improvement - Q4 2023",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5d5382fd-deff-4367-97cb-afcd913a0954?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a06219735fb8958c087707ee3af052e31295b44ad106fb5878f8c1e0c07ef45a",
+      "last_modified": "2023-12-29T07:51:24Z"
+    },
+    {
+      "key": "e4cLSZh0ZZUQjRdrrNB49j",
+      "name": "Checklist // survey",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/579335e7-7011-4abf-89b3-ccdf0417fe37?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=79de957ef4ecb7a002d5cc731525e11533cfa2f2b683c42c8c63e5034710da03",
+      "last_modified": "2023-01-24T05:24:24Z"
+    },
+    {
+      "key": "ufGA9Fg22UE7McpBwJcsLf",
+      "name": "Checklists- Archived",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/cf849a9b-92c7-4f51-8143-afd01d825d8b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=631bd6bec8493c8fc58dbd7554c0dd4dc3656b28f53f839f34a534d27e2a9903",
+      "last_modified": "2023-08-09T07:48:09Z"
+    },
+    {
+      "key": "gxoyl2MB9LcVVOyIJG8npJ",
+      "name": "Colorado Website - Update",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/65a5b87f-3d22-4d6b-a07f-f7fc80b6ea27?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=59d9aa5fb3fe2b6606785bd4b37fd4cda869f96ae4bc4865d1f4310733e6e4cb",
+      "last_modified": "2025-06-25T07:08:10Z"
+    },
+    {
+      "key": "IYsJg5Nsmz7Jqr2rwNHesb",
+      "name": "Coupons Workflow",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/faa0e95e-8d9a-475d-b178-c23e60332e66?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2003d2d78cc8741fb12f441d6f123cf352f00658ee5a06e5c7a05e82a832014c",
+      "last_modified": "2023-01-02T04:39:55Z"
+    },
+    {
+      "key": "7SKECgrwD9Hv1XhBPddxUX",
+      "name": "Customer Requests - Release 3.9",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/39f67e38-7a58-4c4f-9ff1-21d9b638f22d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f3eaddcc806610c3f5a51a6f6d2dc041febe5c5653045c006eb4d8d0e2b7f6a1",
+      "last_modified": "2024-07-30T08:20:43Z"
+    },
+    {
+      "key": "lm6WOIrbRSfV4SOLS8b9p4",
+      "name": "Customer Requests - Release 3.9.1",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0491f65a-741f-4199-880d-091d4adb1031?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=48451b29b8a69032b618658050ef089302a9c769028cabec2c3fe1fc0eea236c",
+      "last_modified": "2024-10-22T07:13:38Z"
+    },
+    {
+      "key": "Gn24JLNPUWLy92nrJatkwG",
+      "name": "Dashboard Illustrations",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/64a65fff-5d88-4d3d-bac6-46cb29a4b778?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a1f8e0cbe0734d1b7b13d18e733acbacca9cc94466336ab9619647ad15b9c082",
+      "last_modified": "2023-07-28T04:55:53Z"
+    },
+    {
+      "key": "BOop1jQAExfqH6ZoxsRqU6",
+      "name": "Drip-Feed For Courses & Paths",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d77a7fff-076d-406c-911e-f48330fe5a6c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f2000f86f5e76d38521f49504dfde9ff4d203bed360b448f3c617dd9cc41a460",
+      "last_modified": "2022-12-21T11:19:43Z"
+    },
+    {
+      "key": "nBFPnrdhiFszUgs914PSnr",
+      "name": "Duplicating Enrollments V2",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/cbf48928-710a-46b4-8d5c-73c21b7eb5e0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=139757a635df66d3fb980e5f2baae985c4bad48bac79589c2f2d681337c14853",
+      "last_modified": "2022-12-05T03:17:49Z"
+    },
+    {
+      "key": "SJ1jKYt9UaLF84gAtWRp96",
+      "name": "Forums Listing Improv",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4a4e4882-58f2-438f-b03e-3b3d790bfd78?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a2e0ec9af198c38d5e98dbc783005095687e5b0d775697e6c5d0bb764e2a38a2",
+      "last_modified": "2023-06-07T09:56:13Z"
+    },
+    {
+      "key": "OA9TzIaxG3XFmlHb0g2LMF",
+      "name": "Gamification - V3",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9a528275-db63-4970-8d29-1cc3be4587d6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=01ff5cd0b76d9ab922e3b90f1ee2a386026123f9953deafe2c653c005b71a7d3",
+      "last_modified": "2024-06-14T06:35:01Z"
+    },
+    {
+      "key": "saZpqYM1Ia48IXc3bD8NOP",
+      "name": "Gamification V2",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/f347d230-b5f4-4fb2-9447-63669ee0aeaf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2503bdd995243827137a233a6dc71193cafa7d175b50bf514ec624171187fcb9",
+      "last_modified": "2023-02-15T11:56:01Z"
+    },
+    {
+      "key": "BQMnb15hBXkewFQ4vEz4AU",
+      "name": "IA Learn",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/2e78bcc9-958c-4b7e-a3d0-95a4f90be904?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=51260c8e5532a81e4eb148b6db24ce0425e24d542f1407b69acafbb53f5106ca",
+      "last_modified": "2022-08-27T20:31:01Z"
+    },
+    {
+      "key": "Got33gVqKRWP3ouMLkRuXI",
+      "name": "LXP Grid View UI/UX Enhancements",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/f6580f06-7781-4e72-b740-7af0daeec7ee?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6a4c26106f0844eb56e453fbf7227e2a6ffcac79af552520391e2a7799d7590c",
+      "last_modified": "2025-07-02T11:42:14Z"
+    },
+    {
+      "key": "7jbbHUNPnxPQb6AutQGehs",
+      "name": "LXP Mobile",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/7a1d914d-f2fe-427b-9c56-abc633da76b8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=28a7cb4f3b337ab7488356a6172b7ff56ad5bbeeea08f0e1d42f451355400846",
+      "last_modified": "2025-07-17T06:15:44Z"
+    },
+    {
+      "key": "1A9lmcQoRqzYeKICbeWurB",
+      "name": "LXP Mobile - 2025",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/1cdb8dda-fdec-4970-aed5-16ca5a5f569c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=26e836ac930464f73afccf9b86c6fb38f4460673859d0e212c1bd79b68f8dd68",
+      "last_modified": "2025-11-03T04:45:09Z"
+    },
+    {
+      "key": "r6Q2nswuHfQ9zwSztYE46S",
+      "name": "Learn New UI",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0e254b80-0e4c-4fbf-bf1b-ec3f846bc335?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c173acda27ff7731bb00b8746378ca5fb54aa6b7dd62dbbe49a3cde1d9a5f94d",
+      "last_modified": "2023-01-25T05:07:40Z"
+    },
+    {
+      "key": "EZs0x6AZQ9NhrTFcF4Ppur",
+      "name": "MU Health Care - Product Demo",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9c2f1105-7e11-4b75-8dd1-88aba54f0b5b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a889b63f60d9648a201d56ca42e5de19029396cb93e6700aeee61fe5204b56f",
+      "last_modified": "2023-12-15T15:56:53Z"
+    },
+    {
+      "key": "5jLmOTmmqPUGMurv6YxrE8",
+      "name": "Mobile - Trial Expiry",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/0594ac32-8f36-42cd-8a56-928a87164d2b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3fbf9fec0f825b7be9ccde06f0f05e9d869eea4bac31a46f29420eb71b8db2f5",
+      "last_modified": "2023-10-18T05:19:37Z"
+    },
+    {
+      "key": "jLDnEM0yG34x0Y6uVeufya",
+      "name": "Network Delaware - Custom Sign-In Page",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/7a3eb749-4c59-4fd8-9310-2bdc87360b19?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0b58d261602f25e0882b837c7a3910428f76efec64243143c4637118a5bb33de",
+      "last_modified": "2025-05-08T09:34:12Z"
+    },
+    {
+      "key": "TryCZJAsDLNnapQAGp70hD",
+      "name": "OLD - 0.11 Extended Enterprise // Login-SS) // Branch switch",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/340c9f2f-83ea-4b8b-aaa2-c1f8ddced413?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8ebea37fea50a62d19f0f4e26655817ec5e0c4dfe4656533b70f57a7cbecd484",
+      "last_modified": "2025-07-01T18:00:53Z"
+    },
+    {
+      "key": "JDFW6QthwnqHhG8mvGgytv",
+      "name": "OLD - 00.05 Integrations| SSO| Oauth| Webhooks",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/50e7e989-1b24-471c-a954-474009864b58?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=eb00b55761ab1c36d70189aa317c8461bcc8273cd28c549dadea6511512f7fb7",
+      "last_modified": "2022-08-29T04:22:01Z"
+    },
+    {
+      "key": "sEDXgIECVo1OuvFkvzlrkM",
+      "name": "OLD - 00.06 Events/ILT main",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/e1274aac-ea4f-4eb0-9a9b-1486e7e09205?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e237adf66a062f2faa637a024d7d4984b09c7037dffcbf362bf129081ec72b29",
+      "last_modified": "2022-09-20T10:07:49Z"
+    },
+    {
+      "key": "v01Dk2OAG3USgz76iTSCFE",
+      "name": "OLD - 00.07 Events/ILT status",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/86785175-df1d-4f42-885e-7ec37b825296?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0ab4b6ada3a597171fc8b791a9fe90bb48488a050e24dec27af6407b13d3122a",
+      "last_modified": "2022-08-29T04:21:25Z"
+    },
+    {
+      "key": "YG1XlEX4jlepTIXxJBJDW3",
+      "name": "OLD - 00.10 Bulk Courses| Duplicate | assessment weight | path weight",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/ad9bc092-d537-44eb-9973-bf38b97afc79?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=acf820225e99f9710ab8367fe725194fc48c55afe2a3d7c125966a9255bf670e",
+      "last_modified": "2023-01-03T07:44:39Z"
+    },
+    {
+      "key": "Ni206Oi2aNkps9iXXkYTRk",
+      "name": "OLD - 00.12 Gradebook / assesment evaluvation / Insights",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/cb4fce75-65bb-4a2d-83c8-a6ccac0c9d69?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=54c8c63839923678314fc4438d6e990a05bbfff514c87980c807be93dc8c0062",
+      "last_modified": "2022-12-22T09:14:20Z"
+    },
+    {
+      "key": "5a5VRPknaDgc9JUEsCTVUm",
+      "name": "OLD - 00.13 Duplicate | Draft | report custom date | Homeward certificate",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/83deff16-2414-49a6-937a-b9768159de20?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4a2e7ac7c6cfa59a63f5f0d68918cc05a65ef2143f0150fa082c05186180eae8",
+      "last_modified": "2022-12-22T09:19:15Z"
+    },
+    {
+      "key": "QnIV5DYiH4UYzXeThzZQ6f",
+      "name": "OLD - 00.14 Assesment_Screens",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/bb67a7e5-7afa-425e-9f54-d655ed44a614?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=40dbe4af74360ceafa81348cc73247fb669d2fd4ab2e04f56650a8d2e5a42db8",
+      "last_modified": "2022-10-27T04:00:08Z"
+    },
+    {
+      "key": "1ekS6qVKlnZ3XpszKnpzbU",
+      "name": "OLD - 00.15 Scorm | Report fields | add team members",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5f731423-34bc-4258-9cc3-2226fac548fd?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=56ecff3d412ace0198ee9807d3411e260aeb5168074f880048f47e839c59e652",
+      "last_modified": "2022-12-22T09:17:42Z"
+    },
+    {
+      "key": "eVZ8wocwTwyKeIFhMtQKae",
+      "name": "OLD - 00.16 Social Learning",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/c173110f-dbe6-4c22-a085-01a14e2a9243?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e3883922d5706bd1db5bd7f57fec07a6fb43915a321293af8deb2333652d8c97",
+      "last_modified": "2022-09-21T09:47:16Z"
+    },
+    {
+      "key": "GQDRKhiU2sZlBMGjG0GKdA",
+      "name": "OLD - 00.17 SUPPORT",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/1763a81a-5552-4962-87a6-d15a28e10c9b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ebd7c5a1e648b361fe2202e749b08d16a228002ecbd7d3bf8372104d53777867",
+      "last_modified": "2022-08-29T04:20:39Z"
+    },
+    {
+      "key": "9TViyxf2ZkJXlfeuqxNPYy",
+      "name": "OLD - Access Org",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/a470bd68-f92e-4ff8-944c-3149c38ba499?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3ed535807d08ff9d41a6a1f07d27fb4bb8c817e39de7aca82b1f3725978589c6",
+      "last_modified": "2022-08-27T20:42:32Z"
+    },
+    {
+      "key": "Ei06bsYvdgNgHLhmBTaTnT",
+      "name": "OLD - Accessibility(Course settings)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/c5c9aea4-3d5b-426a-9f0c-c05bc3b056f4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=99c9e8a81e8f6e165e49e45d6cb14616912a91a43fcadfd14f3caa241df79237",
+      "last_modified": "2023-01-10T13:18:07Z"
+    },
+    {
+      "key": "R2ndxHV1acwtKZ3PQ81HZv",
+      "name": "OLD - Add Manager (Team)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/6a517255-c4a7-4a2f-8db6-891e8b25f729?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a0ce06412f0e4b617d46c657638487d428e4b9c72e9443644db24ddc7c37c33a",
+      "last_modified": "2024-06-04T04:00:24Z"
+    },
+    {
+      "key": "TJaQn1rMejrUDSauHZBCvL",
+      "name": "OLD - Assessment error design",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d51a107a-48f9-4626-9ef3-08950928d9de?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=42c3a435fc0c4b9f8c3a201decb18d9cbeba2fb57b9127195109eabcf9c120d4",
+      "last_modified": "2022-08-21T20:26:05Z"
+    },
+    {
+      "key": "SbwnlZxoumY8rKqBXXMR5a",
+      "name": "OLD - Auzmor WebAPP 2021",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4c86e5af-2827-411e-8f93-b69222b54239?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=cf1db67eaca5cf1e4df6ae6ad756ed93a930bc0fd17e7383204f40cefe620002",
+      "last_modified": "2022-08-27T21:11:14Z"
+    },
+    {
+      "key": "g0bueSh4Yrb0OI8zLdgp90",
+      "name": "OLD - Auzmor_ILT_ v1 Eventdetails_April2020",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/aadfd173-e61d-4067-b967-5f9306e7b3a0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=205bcc18764fb0b611a4250012cc49e94df55f817277eeead555ea5644d72f92",
+      "last_modified": "2022-08-21T20:39:25Z"
+    },
+    {
+      "key": "3tUCh7rpq4fuUF887J3sB1",
+      "name": "OLD - Certificates (Copy)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/bc1ef8dc-803b-4d4f-992b-e7ac714f4f0c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3572fd585a4ccd90952c9b1bd7b0c77a7e044013b1756f9f17e196c72d230a46",
+      "last_modified": "2024-05-23T05:29:35Z"
+    },
+    {
+      "key": "M8F1Nq5NtIm6GFBvXm1hor",
+      "name": "OLD - Course Doc Preview",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/793a267a-1f98-4c21-b41b-b6d56fa9b766?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=412ae45f5a5af5319fbccd3aa2f91381efbdc0168f0136a9fd269b8a396559c8",
+      "last_modified": "2022-08-21T20:33:23Z"
+    },
+    {
+      "key": "OUxpJj2JnyZ6ZhvWow0DHO",
+      "name": "OLD - DEV Handoff Admin Events",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/1c149a9b-5452-46dc-bf93-31374869bde8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=aaad8cd4fba2c6a95af8f0dc9a97e86d077efa79f680a8c5a489a2e2d2df89b3",
+      "last_modified": "2023-02-08T04:40:28Z"
+    },
+    {
+      "key": "2r1xUJ3jmcL3FLp2T43JVb",
+      "name": "OLD - Events",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4cafc894-6ad1-419e-a29d-dcf8068b7a5d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bf5866eb22d11f0f1b1033ebc73d1621cf15f515c64cc1ea8d278b6ad58c98ca",
+      "last_modified": "2023-01-03T13:14:00Z"
+    },
+    {
+      "key": "0zYWkVhqX28gbwAFZMj3ZU",
+      "name": "OLD - Events & Reports",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/98068442-611c-44cc-9989-5dfa2912ff04?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1da593104d1cd18c12662efe0efedee7795458c8f294cc87d0c25051c063ddc4",
+      "last_modified": "2022-12-22T06:11:36Z"
+    },
+    {
+      "key": "BbcffHXpeXlI92bqtbsp3H",
+      "name": "OLD - Events Final",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/18cf8eb0-9a83-4645-b827-b14d0c49f31e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0051f122f3bc10b3f587ea9033e6540cda8b948fb4c60741300f8e10b7ee83f5",
+      "last_modified": "2022-08-30T15:39:05Z"
+    },
+    {
+      "key": "kG0aFrFBpEUcC1QcdptyIT",
+      "name": "OLD - Events User Flow",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5216b761-2368-4096-a773-3c2f3cae770a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=79c2051c78cb4f08d177d986753c485180a4a60c28c597c0f93c34665c64cb90",
+      "last_modified": "2022-08-21T20:23:20Z"
+    },
+    {
+      "key": "sIniOuU4tynvBApGzovaP0",
+      "name": "OLD - Events designer board",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/8898cc24-ba60-4008-873e-9212fddc5152?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=9d03ce166e506f5fdeb4c11ad56dd0947fd263de0252c682a4bd4c704223b61a",
+      "last_modified": "2022-08-21T20:29:17Z"
+    },
+    {
+      "key": "lDV31s4jHAeL4dQ1Cc73KR",
+      "name": "OLD - ILT_2021",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/c4a5d4d9-5534-4768-af65-19c90459b6db?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2d6dff4c9215f1ef8c4182909843da1332caeaa405e433e8b1105f111926a266",
+      "last_modified": "2022-08-27T20:52:02Z"
+    },
+    {
+      "key": "0sjXdH4u9ZsIjPEdEByvY3",
+      "name": "OLD - LEARN_Report Changes",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/9cc10d64-c507-4c24-8765-d0efb3f056f2?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=89415a216cdfc3af16eb4f2d95bb4d803adc41898fe5aa57f9ed08b1356e29ef",
+      "last_modified": "2022-10-27T12:09:54Z"
+    },
+    {
+      "key": "tA5u20fSg9OPjSgFCZFj32",
+      "name": "OLD - Learn Mobile Wireframes - April 2021",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/a56d1fb9-17e2-47f5-bce6-c7b2bd7691bb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6833bac3097746a33458777f5809d21f6b349205676dcc9a757d75b01337faaf",
+      "last_modified": "2022-08-27T20:36:41Z"
+    },
+    {
+      "key": "ZPihVvy8AuGdVHpHBAwV5B",
+      "name": "OLD - Loader screen for GO1/openSesame",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/6169c74d-d946-4974-85d3-5a4dfc7c74c2?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ed915bd809c870a011ba4f8680fa15cf9562f23157523c3addbf22a06e16de50",
+      "last_modified": "2022-08-27T21:05:38Z"
+    },
+    {
+      "key": "8AXT9NC43yUZuy0RkicMGL",
+      "name": "OLD - Manager approval",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/4a7e9854-83d3-4a8e-9e42-7891aee2e78a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=19719f185049586ab3f68325748fd556c84d156ab868f9eb6f5807a6372453cf",
+      "last_modified": "2022-08-27T21:12:20Z"
+    },
+    {
+      "key": "8vjxtjjQrjqfcEgPl4agUe",
+      "name": "OLD - Onboarding",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/f33a54ec-8902-40b5-a1cc-28281aa3640c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a8b18240cdb283ba5d29f531d33db6f49bb829af52101bc55e1f9236023fa1ce",
+      "last_modified": "2022-09-29T14:21:44Z"
+    },
+    {
+      "key": "FnWWtoFWd8J0wF2omM0luc",
+      "name": "OLD - Reports",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d412820d-06f6-483e-a4b7-70174f4ee291?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4cc41f0cd69ea91795f51b788ab54004849fdc98a716774bcffe1064dd97ea68",
+      "last_modified": "2024-04-16T08:20:32Z"
+    },
+    {
+      "key": "ueRH3Uj5WkD3iOS8C09928",
+      "name": "OLD - Sapiens_D",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/6d16d69a-9c89-44a4-8c91-5f2285b56074?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=408732470b5f7f29f6836cdc563e5c86d269268c3a753d7e3711b0c57afe9dd6",
+      "last_modified": "2022-08-27T20:44:15Z"
+    },
+    {
+      "key": "2gqT5CAwlgUc8Oony4HEOJ",
+      "name": "OLD - Sapiens_D (Copy)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/f1e0d8fb-5385-4780-af01-bc933d6426d0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f6a47dd7583c253e1ce9479aa28ebd65da759e9c3e6dd6f8593bed850ea743e5",
+      "last_modified": "2022-08-27T20:46:06Z"
+    },
+    {
+      "key": "ZeiqsZMEcoo5UALkigWpWF",
+      "name": "OLD - TABSorCategories",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/5f7ea010-990c-4ba7-80ef-1f00c7833937?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ba23da6f7c032db2d4cf8b248fda2227bcd7c468660e8ca298009cf72e21d0da",
+      "last_modified": "2022-08-27T20:47:42Z"
+    },
+    {
+      "key": "bndabVR4Bu9845QPKzxZCW",
+      "name": "OLD - Webhooks and Oauth",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d72fad63-258e-4947-b312-e277d9e2191b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6a6a378528c16ba4c4ad0383477385053740fd92a8ecb401991df0aef6c60d79",
+      "last_modified": "2022-08-27T21:16:11Z"
+    },
+    {
+      "key": "Sv6vs88jPXOs4iTDhYjBaz",
+      "name": "OLD - auzmor learn Learner Revamp 2021",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/50f317de-4815-459d-998a-e4dfee3125cd?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1c2c43e2ea004bfc1f408fae5b71173574509dc8f0fd28b46631b7d2ef2b1969",
+      "last_modified": "2022-12-06T05:36:04Z"
+    },
+    {
+      "key": "TVdKjELkYVaTQotpIZkBUc",
+      "name": "OLD - question bank",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/10ba86f9-eefe-46fc-baa0-a363ec245f7d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d6168706dbe3ac8cb5501f5ebd70a764136f7f87b6e6f353e136b37bec2338bc",
+      "last_modified": "2022-08-27T20:38:47Z"
+    },
+    {
+      "key": "HWBxidDclnelXKZjv1k84k",
+      "name": "OLD -Learning Path",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/85ca36f5-59c2-430a-b484-538f88d36ac5?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8ab5774649551da9fa8ec90e097c913f8845ea4fcf01e1f17dd957bf83563716",
+      "last_modified": "2022-08-27T21:06:54Z"
+    },
+    {
+      "key": "nN4g7lxue0psNUzX65frZY",
+      "name": "Old - Gamification",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/6692c962-81d9-485f-9fd9-daa4dda526af?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1bd074547a0302fc8d2a7425338877db234af797adb2b54d9f2580406b686180",
+      "last_modified": "2022-08-21T20:35:11Z"
+    },
+    {
+      "key": "kxOEgPrTaugO7abeVnd5Qb",
+      "name": "Path & Mentorship Improvement",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/dfe641ed-0b72-4a34-9670-72f695a76af4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=05924050385ee992a578019e432b19640be8d20b34a3fccf7d5e7198909188ae",
+      "last_modified": "2025-03-03T15:28:31Z"
+    },
+    {
+      "key": "QZCiP1MnLaS7YLLKrZG2gq",
+      "name": "Product- wireframe",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/e9ff1414-a2d9-4f75-a6d2-08976c06911e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=073ee0edd37938642ba65ff89bbc62edfb71593f44f0944f79e7396cfa75b16a",
+      "last_modified": "2022-04-13T10:21:00Z"
+    },
+    {
+      "key": "VXrv2OUZtIHdZZ4E2LzMe6",
+      "name": "Skill Management - IA",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/d0ceec3a-f69d-493c-8bb2-818bb3c87d9a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=67a474ace547a31c31e4fb2139354ceb468e95ad07237a313dc62d1f67db2ed9",
+      "last_modified": "2022-05-16T09:31:39Z"
+    },
+    {
+      "key": "ffDXEijuXSXXfI5vTH4ffT",
+      "name": "Social Learning Wireframe (Copy)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/b00a33bf-fdb7-4c7c-8e6e-46fb1ceea280?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0ebd23ea8294adf9bb5235a703473c5793c7152e1b703a08ff3474fe20ecd09d",
+      "last_modified": "2022-08-27T21:43:21Z"
+    },
+    {
+      "key": "GTBaxv3kmdGr6E6u3umIRO",
+      "name": "Start Engine - Product Demo",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/fef258a6-543e-4446-a854-82170e9cfef2?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=edf889292ae4930fc182b6eb8999cf3a70de9d0c9f705535c4b4940078251c73",
+      "last_modified": "2024-12-04T13:03:58Z"
+    },
+    {
+      "key": "Hn2x0cETSvVj89S9l4hosO",
+      "name": "User Roles",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/a3603c92-ed88-4fd0-95b0-3bcd2f949c84?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d82252ddb13e1ca4df7d62551666923029443b03fecdbe16f4d86f892d43748",
+      "last_modified": "2025-06-10T13:35:41Z"
+    },
+    {
+      "key": "EEpgBkcUvqCFoyaI7TSjxw",
+      "name": "WorkplaceNL - (For Sales)",
+      "thumbnail_url": "https://s3-alpha.figma.com/thumbnails/bea5cb15-8498-4608-bba0-c3a7a71b7f2b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZDDNLKEH%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=47acef37f1fe82280de62e068852a12b603115b33ff841a046f5b672c04a002c",
+      "last_modified": "2024-09-16T14:02:48Z"
+    }
+  ]
+}

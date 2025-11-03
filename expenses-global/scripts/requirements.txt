@@ -1,0 +1,27 @@
+# Justice League Missions - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Anthropic API client
+anthropic>=0.25.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# HTTP requests
+requests>=2.31.0
+
+# JSON processing (built-in, but listed for reference)
+# json - standard library
+
+# Date/time handling (built-in, but listed for reference)
+# datetime - standard library
+
+# Path operations (built-in, but listed for reference)
+# pathlib - standard library
+
+# Type hints (built-in, but listed for reference)
+# typing - standard library
+
+# Optional: For advanced features
+# pandas>=2.0.0  # For data analysis and reporting
+# plotly>=5.0.0  # For visualizations (future use)

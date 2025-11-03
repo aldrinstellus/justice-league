@@ -1,0 +1,63 @@
+{
+  "missionId": "JL-003",
+  "missionName": "Auzmor-learn - Web&Mobile",
+  "startDate": "2025-11-03T00:00:00Z",
+  "endDate": null,
+  "status": "active",
+  "currency": "USD",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-03T00:00:00Z",
+
+  "summary": {
+    "totalCost": 0,
+    "totalInputTokens": 0,
+    "totalOutputTokens": 0,
+    "totalCachedTokens": 0,
+    "totalTokens": 0,
+    "totalActivities": 0,
+    "totalHours": 0,
+    "documentsCreated": 0,
+    "figmaFilesAnalyzed": 0,
+    "pagesAnalyzed": 0,
+    "componentsIdentified": 0
+  },
+
+  "budget": {
+    "allocated": 125.00,
+    "spent": 0,
+    "remaining": 125.00,
+    "percentUsed": 0
+  },
+
+  "breakdowns": {
+    "byAgent": {
+      "oracle": { "cost": 0, "inputTokens": 0, "outputTokens": 0, "activities": 0 },
+      "wonder-woman": { "cost": 0, "inputTokens": 0, "outputTokens": 0, "activities": 0 },
+      "aldrin": { "cost": 0, "inputTokens": 0, "outputTokens": 0, "activities": 0 }
+    },
+    "byPhase": {
+      "phase1-discovery": { "cost": 0, "budget": 15.00, "activities": 0 },
+      "phase2-audit": { "cost": 0, "budget": 20.00, "activities": 0 },
+      "phase3-components": { "cost": 0, "budget": 40.00, "activities": 0 },
+      "phase4-patterns": { "cost": 0, "budget": 20.00, "activities": 0 },
+      "phase5-implementation": { "cost": 0, "budget": 20.00, "activities": 0 },
+      "phase6-handoff": { "cost": 0, "budget": 10.00, "activities": 0 }
+    },
+    "byModel": {
+      "claude-sonnet-4.5": { "cost": 0, "inputTokens": 0, "outputTokens": 0 },
+      "claude-haiku-4.5": { "cost": 0, "inputTokens": 0, "outputTokens": 0 }
+    },
+    "byFile": {},
+    "byTask": {}
+  },
+
+  "activities": [],
+
+  "notes": [
+    "Mission created 2025-11-03",
+    "14-week design system consolidation: 100+ Figma files, 1000+ pages",
+    "Phase 1 (Discovery) not yet started",
+    "Activities will be logged here as mission progresses",
+    "Cost optimization enabled: Haiku for simple tasks, caching for file analysis"
+  ]
+}

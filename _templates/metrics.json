@@ -1,0 +1,59 @@
+{
+  "mission_id": "JL-XXX",
+  "mission_name": "[Mission Name]",
+  "start_date": "YYYY-MM-DD",
+  "end_date": null,
+  "status": "active",
+  "agents": [
+    {
+      "name": "[Agent Name]",
+      "role": "[Agent Role]"
+    }
+  ],
+  "time_tracking": {
+    "total_hours": 0,
+    "breakdown": {
+      "research": 0,
+      "planning": 0,
+      "execution": 0,
+      "documentation": 0,
+      "review": 0
+    }
+  },
+  "token_usage": {
+    "total_tokens": 0,
+    "breakdown": {
+      "research": 0,
+      "planning": 0,
+      "execution": 0,
+      "documentation": 0
+    }
+  },
+  "figma_processing": {
+    "files_total": 0,
+    "files_processed": 0,
+    "pages_total": 0,
+    "pages_processed": 0,
+    "components_identified": 0,
+    "components_converted": 0
+  },
+  "deliverables": {
+    "documents_created": 0,
+    "total_lines": 0,
+    "breakdown": {
+      "research": 0,
+      "prd": 0,
+      "architecture": 0,
+      "planning": 0,
+      "other": 0
+    }
+  },
+  "quality_metrics": {
+    "stakeholder_approval": false,
+    "peer_review_completed": false,
+    "implementation_ready": false
+  },
+  "notes": [
+    "[Add any notes about metrics tracking here]"
+  ]
+}

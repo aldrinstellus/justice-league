@@ -1,0 +1,127 @@
+{
+  "missionId": "JL-003",
+  "missionName": "Auzmor-learn - Web&Mobile",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-03T00:00:00Z",
+
+  "mission": {
+    "totalBudget": 125.00,
+    "softLimit": 100.00,
+    "hardLimit": 125.00,
+    "alertThresholds": [50, 75, 90, 100],
+    "autoStopAt": 100,
+    "notes": "14-week design system consolidation mission. Multi-month scope."
+  },
+
+  "perPhase": {
+    "phase1-discovery": {
+      "name": "Discovery & Cataloging",
+      "budget": 15.00,
+      "duration": "Week 1-2",
+      "alertAt": 90,
+      "tasks": ["File inventory", "Page counting", "Prioritization"]
+    },
+    "phase2-audit": {
+      "name": "Design System Audit",
+      "budget": 20.00,
+      "duration": "Week 3-4",
+      "alertAt": 90,
+      "tasks": ["Color extraction", "Typography", "Spacing", "Components"]
+    },
+    "phase3-components": {
+      "name": "Component Library Documentation",
+      "budget": 40.00,
+      "duration": "Week 5-8",
+      "alertAt": 90,
+      "tasks": ["Component catalog", "Documentation", "De-duplication"]
+    },
+    "phase4-patterns": {
+      "name": "Platform-Specific Patterns",
+      "budget": 20.00,
+      "duration": "Week 9-10",
+      "alertAt": 90,
+      "tasks": ["Web responsive", "Mobile native", "Accessibility"]
+    },
+    "phase5-implementation": {
+      "name": "Implementation Specifications",
+      "budget": 20.00,
+      "duration": "Week 11-12",
+      "alertAt": 90,
+      "tasks": ["Design tokens JSON", "Priority list", "Migration plan"]
+    },
+    "phase6-handoff": {
+      "name": "Documentation & Handoff",
+      "budget": 10.00,
+      "duration": "Week 13-14",
+      "alertAt": 90,
+      "tasks": ["Final docs", "Developer handoff", "Maintenance plan"]
+    }
+  },
+
+  "perAgent": {
+    "oracle": {
+      "role": "Coordinator",
+      "budget": 20.00,
+      "tasksAssigned": ["File organization", "Progress tracking", "Synthesis", "Reporting"],
+      "alertAt": 90,
+      "preferredModel": "claude-haiku-4.5",
+      "notes": "Uses Haiku for cost efficiency (73% cheaper)"
+    },
+    "wonder-woman": {
+      "role": "Product Manager",
+      "budget": 45.00,
+      "tasksAssigned": ["User flow analysis", "Component prioritization", "Feature validation", "Usage metrics"],
+      "alertAt": 90,
+      "preferredModel": "claude-sonnet-4.5"
+    },
+    "aldrin": {
+      "role": "Design Systems Master",
+      "budget": 60.00,
+      "tasksAssigned": ["Token extraction", "Component analysis", "Accessibility validation", "Design system architecture"],
+      "alertAt": 90,
+      "preferredModel": "claude-sonnet-4.5",
+      "notes": "Primary agent for Figma file analysis"
+    }
+  },
+
+  "perFile": {
+    "estimatedFileBudget": 1.25,
+    "totalFiles": 100,
+    "fileBudgetTotal": 125.00,
+    "notes": "~$1.25 per Figma file analyzed (based on JL-001 data: $3.20 for complex file, aim for simpler average)"
+  },
+
+  "alertRecipients": [
+    "aldrinstellus@gmail.com"
+  ],
+
+  "costOptimization": {
+    "targetSavings": 60,
+    "estimatedOptimizedCost": 50.00,
+    "strategies": [
+      {
+        "strategy": "Use Haiku for cataloging and simple analysis",
+        "potentialSavings": 25.00,
+        "savingsPercent": 20,
+        "implementation": "Oracle + Aldrin for simple file cataloging",
+        "status": "planned"
+      },
+      {
+        "strategy": "Enable prompt caching for design system docs",
+        "potentialSavings": 45.00,
+        "savingsPercent": 36,
+        "implementation": "Cache design system documentation, reuse across 100 files",
+        "status": "planned"
+      },
+      {
+        "strategy": "Use Batch API for synthesis and reporting",
+        "potentialSavings": 5.00,
+        "savingsPercent": 4,
+        "implementation": "Queue non-urgent documentation tasks",
+        "status": "planned"
+      }
+    ],
+    "totalEstimatedSavings": 75.00,
+    "notes": "With full optimization, mission cost: $125 → $50 (60% reduction)"
+  }
+}

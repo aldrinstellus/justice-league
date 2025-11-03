@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-03T00:00:00Z",
+  "account": {
+    "email": "aldrinstellus@gmail.com",
+    "plan": "Claude Max",
+    "planType": "pro",
+    "subscriptionCost": 20.00,
+    "currency": "USD",
+    "billingCycle": "monthly",
+    "startDate": "2024-01-01"
+  },
+  "limits": {
+    "monthly": {
+      "estimatedTokens": 7500000,
+      "estimatedCost": 100.00,
+      "note": "Actual Claude Max plan budget - $100/month"
+    },
+    "daily": {
+      "estimatedTokens": 250000,
+      "estimatedCost": 3.25,
+      "note": "Daily average based on monthly limit"
+    },
+    "perRequest": {
+      "maxTokens": 200000,
+      "note": "Claude Sonnet 4.5 context window"
+    }
+  },
+  "alerts": {
+    "monthlyThresholds": [50, 75, 90, 100],
+    "dailyThresholds": [75, 90, 100],
+    "alertEmail": "aldrinstellus@gmail.com",
+    "alertMethods": ["email", "dashboard"],
+    "autoStopAt": 100
+  },
+  "optimization": {
+    "enablePromptCaching": true,
+    "preferHaikuForSimpleTasks": true,
+    "useBatchAPIWhenPossible": true,
+    "targetSavings": 60
+  },
+  "notes": [
+    "Claude Max provides 5x higher usage than Free tier",
+    "Priority access during high traffic periods",
+    "Unlimited Projects feature included",
+    "Monthly budget of $100 based on actual plan allocation",
+    "Real-time expense tracking via Anthropic API",
+    "Multi-month missions possible for larger scopes"
+  ]
+}

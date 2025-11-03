@@ -1,0 +1,68 @@
+{
+  "missionId": "JL-XXX",
+  "missionName": "[Mission Name]",
+  "startDate": "YYYY-MM-DDTHH:MM:SSZ",
+  "endDate": null,
+  "status": "active",
+  "currency": "USD",
+  "version": "1.0.0",
+  "lastUpdated": "YYYY-MM-DDTHH:MM:SSZ",
+
+  "summary": {
+    "totalCost": 0,
+    "totalInputTokens": 0,
+    "totalOutputTokens": 0,
+    "totalCachedTokens": 0,
+    "totalTokens": 0,
+    "totalActivities": 0,
+    "totalHours": 0,
+    "documentsCreated": 0
+  },
+
+  "breakdowns": {
+    "byAgent": {},
+    "byPhase": {},
+    "byModel": {},
+    "byFile": {},
+    "byTask": {}
+  },
+
+  "activities": [],
+
+  "notes": [
+    "This file tracks ALL activities for this mission",
+    "Each activity includes: timestamp, agent, phase, task, model, token usage, cost",
+    "Activities are added in chronological order",
+    "Summary and breakdowns are updated after each activity"
+  ],
+
+  "activityTemplate": {
+    "id": "act-XXX",
+    "timestamp": "YYYY-MM-DDTHH:MM:SSZ",
+    "agent": "agent-name",
+    "phase": "phase-name",
+    "task": "Task description",
+    "description": "Detailed description of what was done",
+    "model": "claude-sonnet-4.5",
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "totalTokens": 0
+    },
+    "cost": {
+      "inputCost": 0,
+      "outputCost": 0,
+      "cacheCost": 0,
+      "totalCost": 0
+    },
+    "metadata": {
+      "tools": [],
+      "filesAnalyzed": [],
+      "deliverables": [],
+      "duration": "HH:MM:SS",
+      "confidence": "high/medium/low"
+    },
+    "tags": []
+  }
+}

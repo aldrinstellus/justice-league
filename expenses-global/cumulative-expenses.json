@@ -1,0 +1,291 @@
+{
+  "version": "1.0.0",
+  "account": "aldrinstellus@gmail.com",
+  "plan": "Claude Max",
+  "lastUpdated": "2025-11-03T00:00:00Z",
+
+  "totals": {
+    "allTime": {
+      "totalMissions": 3,
+      "completedMissions": 1,
+      "activeMissions": 1,
+      "exampleMissions": 1,
+      "totalCost": 45.23,
+      "totalInputTokens": 2500000,
+      "totalOutputTokens": 1800000,
+      "totalTokens": 4300000,
+      "totalHours": 8.5,
+      "totalDocuments": 30,
+      "startDate": "2025-11-03"
+    },
+
+    "thisMonth": {
+      "month": "2025-11",
+      "monthName": "November 2025",
+      "startDate": "2025-11-01",
+      "endDate": "2025-11-30",
+      "daysElapsed": 3,
+      "daysRemaining": 27,
+      "daysTotal": 30,
+
+      "spending": {
+        "completed": 45.23,
+        "committed": 50.00,
+        "totalAllocated": 95.23,
+        "monthlyLimit": 100.00,
+        "available": 4.77,
+        "percentUsed": 95.2,
+        "percentCommitted": 50.0,
+        "percentSpent": 45.2,
+        "note": "JL-003 split across 2 months: Nov $50 (Phases 1-2), Dec $75 (Phases 3-6)"
+      },
+
+      "usage": {
+        "totalInputTokens": 2500000,
+        "totalOutputTokens": 1800000,
+        "totalTokens": 4300000,
+        "monthlyTokenLimit": 7500000,
+        "percentUsed": 57.3
+      },
+
+      "projection": {
+        "dailyRunRate": 15.08,
+        "projectedMonthEnd": 452.40,
+        "status": "warning",
+        "note": "Projection based on day 1-3 spending. Will normalize as JL-003 completes."
+      },
+
+      "missionCount": {
+        "completed": 1,
+        "active": 1,
+        "planned": 0
+      }
+    }
+  },
+
+  "missions": [
+    {
+      "missionId": "JL-001",
+      "missionName": "TweakCN Research & Planning",
+      "status": "completed",
+      "startDate": "2025-11-03",
+      "endDate": "2025-11-03",
+      "month": "2025-11",
+
+      "budget": {
+        "estimated": 125.00,
+        "actual": 45.23,
+        "variance": -79.77,
+        "variancePercent": -63.8,
+        "status": "under-budget"
+      },
+
+      "usage": {
+        "inputTokens": 2500000,
+        "outputTokens": 1800000,
+        "totalTokens": 4300000,
+        "cachedTokens": 120000
+      },
+
+      "breakdown": {
+        "byAgent": {
+          "wonder-woman": { "cost": 25.50, "activities": 22 },
+          "aldrin": { "cost": 18.00, "activities": 20 },
+          "oracle": { "cost": 1.73, "activities": 5 }
+        },
+        "byPhase": {
+          "discovery": { "cost": 12.00 },
+          "analysis": { "cost": 28.23 },
+          "synthesis": { "cost": 5.00 }
+        }
+      },
+
+      "deliverables": {
+        "count": 30,
+        "linesOfCode": 35000,
+        "costPerDeliverable": 1.51
+      },
+
+      "efficiency": {
+        "costPerHour": 5.32,
+        "costPerDocument": 1.51,
+        "costPerThousandTokens": 0.0105,
+        "qualityScore": 9.4
+      },
+
+      "notes": "First Justice League mission. Excellent efficiency (64% under budget)."
+    },
+
+    {
+      "missionId": "JL-002",
+      "missionName": "Auzmor Learn Figma Consolidation",
+      "status": "example",
+      "startDate": "2025-11-03",
+      "endDate": null,
+      "month": "2025-11",
+
+      "budget": {
+        "estimated": 0,
+        "actual": 0,
+        "variance": 0,
+        "status": "example"
+      },
+
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+
+      "notes": "Example mission created during system setup. Not a real mission."
+    },
+
+    {
+      "missionId": "JL-003",
+      "missionName": "Auzmor-learn - Web&Mobile",
+      "status": "active",
+      "startDate": "2025-11-03",
+      "endDate": null,
+      "month": "2025-11 to 2025-12",
+      "estimatedDuration": "14 weeks",
+      "multiMonth": true,
+
+      "budget": {
+        "total": 125.00,
+        "november": 50.00,
+        "december": 75.00,
+        "spent": 0,
+        "remaining": 125.00,
+        "status": "not-started",
+        "note": "Split across 2 months to fit $100/month limit"
+      },
+
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0,
+        "estimatedTotalTokens": 12000000
+      },
+
+      "timeline": {
+        "totalWeeks": 14,
+        "phases": 6,
+        "currentPhase": "Phase 1: Discovery",
+        "phaseStatus": "pending"
+      },
+
+      "estimatedBreakdown": {
+        "byMonth": {
+          "november": {
+            "budget": 50.00,
+            "phases": ["phase1-discovery", "phase2-audit"],
+            "weeks": 4
+          },
+          "december": {
+            "budget": 75.00,
+            "phases": ["phase3-components", "phase4-patterns", "phase5-implementation", "phase6-handoff"],
+            "weeks": 10
+          }
+        },
+        "byPhase": {
+          "phase1-discovery": { "estimated": 15.00, "weeks": 2, "month": "November" },
+          "phase2-audit": { "estimated": 20.00, "weeks": 2, "month": "November" },
+          "phase2-buffer": { "estimated": 15.00, "weeks": 0, "month": "November", "note": "Reserve for Nov overage" },
+          "phase3-components": { "estimated": 40.00, "weeks": 4, "month": "December" },
+          "phase4-patterns": { "estimated": 20.00, "weeks": 2, "month": "December" },
+          "phase5-implementation": { "estimated": 10.00, "weeks": 2, "month": "December" },
+          "phase6-handoff": { "estimated": 5.00, "weeks": 2, "month": "December" }
+        }
+      },
+
+      "scope": {
+        "figmaFiles": 100,
+        "estimatedPages": 1000,
+        "estimatedComponents": 5000,
+        "targetsTokensExtracted": 200,
+        "targetDocumentsCreated": 200
+      },
+
+      "notes": "Large design system consolidation. Multi-month mission spanning Nov-Dec. Split to fit $100/month budget: Nov $50 (Phases 1-2), Dec $75 (Phases 3-6)."
+    }
+  ],
+
+  "budgetStatus": {
+    "currentMonth": "2025-11",
+    "monthlyBudget": 100.00,
+    "spent": 45.23,
+    "committed": 50.00,
+    "totalAllocated": 95.23,
+    "available": 4.77,
+    "status": "critical",
+    "canStartNewMission": false,
+    "maxNewMissionBudget": 4.77,
+    "recommendedAction": "Complete JL-003 November phases only. Wait until December for new missions.",
+    "alerts": [
+      {
+        "level": "critical",
+        "message": "95.2% of monthly budget allocated",
+        "threshold": 90,
+        "triggered": true
+      },
+      {
+        "level": "warning",
+        "message": "Only $4.77 available for additional work",
+        "triggered": true
+      },
+      {
+        "level": "info",
+        "message": "JL-003 multi-month: Dec budget $75 available starting 2025-12-01",
+        "triggered": true
+      }
+    ]
+  },
+
+  "optimization": {
+    "currentSavings": 3.60,
+    "potentialSavings": 75.00,
+    "optimizationOpportunities": [
+      {
+        "opportunity": "Enable prompt caching for JL-003 file analysis",
+        "estimatedSavings": 45.00,
+        "implementation": "Enable in JL-003 config"
+      },
+      {
+        "opportunity": "Use Haiku for simple coordination tasks",
+        "estimatedSavings": 20.00,
+        "implementation": "Already partially implemented (Oracle)"
+      },
+      {
+        "opportunity": "Use Batch API for non-urgent JL-003 tasks",
+        "estimatedSavings": 10.00,
+        "implementation": "Queue synthesis and reporting tasks"
+      }
+    ]
+  },
+
+  "history": {
+    "monthlyTotals": {
+      "2025-11": {
+        "budget": 100.00,
+        "spent": 45.23,
+        "committed": 50.00,
+        "missions": 2,
+        "status": "in-progress",
+        "note": "Corrected budget to actual $100/month Max plan. JL-003 split across Nov-Dec."
+      }
+    }
+  },
+
+  "apiIntegration": {
+    "enabled": true,
+    "apiProvider": "Anthropic",
+    "apiKey": "stored-in-env",
+    "updateFrequency": "after-each-activity",
+    "lastSync": null,
+    "nextSync": "after-first-activity",
+    "endpoints": {
+      "usage": "https://api.anthropic.com/v1/usage"
+    },
+    "note": "Real-time expense tracking via Anthropic API. API key stored in .env file (gitignored)."
+  }
+}

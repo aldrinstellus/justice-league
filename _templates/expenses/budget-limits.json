@@ -1,0 +1,95 @@
+{
+  "missionId": "JL-XXX",
+  "missionName": "[Mission Name]",
+  "version": "1.0.0",
+  "lastUpdated": "YYYY-MM-DDTHH:MM:SSZ",
+
+  "mission": {
+    "totalBudget": 125.00,
+    "softLimit": 100.00,
+    "hardLimit": 125.00,
+    "alertThresholds": [50, 75, 90, 100],
+    "autoStopAt": 100,
+    "notes": "Adjust total budget based on mission complexity"
+  },
+
+  "perPhase": {
+    "phase1-discovery": {
+      "name": "Discovery & Cataloging",
+      "budget": 15.00,
+      "duration": "2 weeks",
+      "alertAt": 90
+    },
+    "phase2-analysis": {
+      "name": "Design System Audit",
+      "budget": 20.00,
+      "duration": "2 weeks",
+      "alertAt": 90
+    },
+    "phase3-documentation": {
+      "name": "Component Documentation",
+      "budget": 40.00,
+      "duration": "4 weeks",
+      "alertAt": 90
+    },
+    "phase4-specification": {
+      "name": "Implementation Specs",
+      "budget": 30.00,
+      "duration": "4 weeks",
+      "alertAt": 90
+    },
+    "phase5-handoff": {
+      "name": "Documentation & Handoff",
+      "budget": 20.00,
+      "duration": "2 weeks",
+      "alertAt": 90
+    }
+  },
+
+  "perAgent": {
+    "wonder-woman": {
+      "role": "Product Manager",
+      "budget": 50.00,
+      "tasksAssigned": ["Research", "PRD", "User stories", "Metrics"],
+      "alertAt": 90
+    },
+    "aldrin": {
+      "role": "Design Systems Master",
+      "budget": 60.00,
+      "tasksAssigned": ["Architecture", "Token analysis", "Component specs"],
+      "alertAt": 90
+    },
+    "oracle": {
+      "role": "Coordinator",
+      "budget": 15.00,
+      "tasksAssigned": ["Synthesis", "Coordination", "Reporting"],
+      "alertAt": 90,
+      "notes": "Uses Haiku for cost efficiency"
+    }
+  },
+
+  "alertRecipients": [
+    "aldrinstellus@gmail.com"
+  ],
+
+  "costOptimization": {
+    "targetSavings": 60,
+    "strategies": [
+      {
+        "strategy": "Use Haiku for simple tasks",
+        "potentialSavings": 30,
+        "implementation": "Oracle coordination, cataloging, simple analysis"
+      },
+      {
+        "strategy": "Enable prompt caching",
+        "potentialSavings": 40,
+        "implementation": "File analysis, design system docs"
+      },
+      {
+        "strategy": "Use Batch API",
+        "potentialSavings": 20,
+        "implementation": "Synthesis, reporting, documentation"
+      }
+    ]
+  }
+}

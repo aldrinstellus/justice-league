@@ -1,0 +1,199 @@
+{
+  "version": "1.0.0",
+  "account": "aldrinstellus@gmail.com",
+  "lastUpdated": "2025-11-03T00:00:00Z",
+
+  "currentMonth": {
+    "month": "2025-11",
+    "monthName": "November 2025",
+    "budget": 200.00,
+    "spent": 45.23,
+    "committed": 125.00,
+    "totalAllocated": 170.23,
+    "available": 29.77,
+    "percentUsed": 85.1,
+    "daysRemaining": 27,
+    "status": "caution"
+  },
+
+  "activeMissions": [
+    {
+      "missionId": "JL-003",
+      "missionName": "Auzmor-learn - Web&Mobile",
+      "status": "active",
+      "phase": "Phase 1 (pending)",
+      "estimatedTotal": 125.00,
+      "spentToDate": 0,
+      "estimatedRemaining": 125.00,
+      "estimatedCompletion": "2025-02-07",
+      "risk": "medium",
+      "notes": "Multi-month mission. Will consume 62.5% of November budget."
+    }
+  ],
+
+  "proposedMissions": [
+    {
+      "missionId": "JL-004",
+      "missionName": "Component Migration (Proposed)",
+      "type": "code-migration",
+      "estimatedCost": 80.00,
+      "estimatedTokens": 8000000,
+      "estimatedDuration": "2 weeks",
+      "estimatedHours": 30,
+      "complexity": "medium",
+
+      "affordability": {
+        "thisMonth": {
+          "canAfford": false,
+          "available": 29.77,
+          "shortfall": 50.23,
+          "reason": "Would exceed monthly limit ($170.23 current + $80 = $250.23 > $200 limit)"
+        },
+        "nextMonth": {
+          "canAfford": true,
+          "available": 200.00,
+          "reason": "Full budget available in December"
+        }
+      },
+
+      "recommendations": [
+        {
+          "option": "Wait until December",
+          "pros": ["Full $200 budget available", "No risk of overage"],
+          "cons": ["2-month delay"],
+          "recommendation": "Best option"
+        },
+        {
+          "option": "Reduce scope to $25",
+          "pros": ["Can start in November", "Fits in available budget"],
+          "cons": ["Limited deliverables", "Incomplete migration"],
+          "recommendation": "Possible if urgent"
+        },
+        {
+          "option": "Optimize with Haiku + caching",
+          "pros": ["Could reduce cost to ~$30-40"],
+          "cons": ["Still over budget", "May impact quality"],
+          "recommendation": "Not recommended"
+        }
+      ],
+
+      "finalRecommendation": "Wait until December 2025 when full budget is available"
+    }
+  ],
+
+  "upcomingMonths": {
+    "2025-12": {
+      "month": "December 2025",
+      "availableBudget": 200.00,
+      "plannedMissions": [],
+      "canStartMission": true,
+      "recommendedMissions": ["JL-004 Component Migration", "JL-003 continuation"],
+      "notes": "Full budget available. Good time for large missions."
+    },
+    "2026-01": {
+      "month": "January 2026",
+      "availableBudget": 200.00,
+      "plannedMissions": [],
+      "canStartMission": true,
+      "notes": "Planning horizon - adjust based on December usage"
+    }
+  },
+
+  "budgetForecasting": {
+    "conservative": {
+      "monthlyBudget": 150.00,
+      "annualBudget": 1800.00,
+      "safetyMargin": 25
+    },
+    "moderate": {
+      "monthlyBudget": 200.00,
+      "annualBudget": 2400.00,
+      "safetyMargin": 0
+    },
+    "aggressive": {
+      "monthlyBudget": 250.00,
+      "annualBudget": 3000.00,
+      "safetyMargin": -25,
+      "note": "Exceeds estimated Claude Max limit - not recommended"
+    },
+    "recommended": "moderate"
+  },
+
+  "scenarioAnalysis": {
+    "scenario1": {
+      "name": "Continue current pace",
+      "description": "1 large mission per month",
+      "monthlyAverage": 125.00,
+      "annualCost": 1500.00,
+      "feasibility": "good",
+      "withinBudget": true
+    },
+    "scenario2": {
+      "name": "Accelerate (2 missions/month)",
+      "description": "2 medium missions per month",
+      "monthlyAverage": 180.00,
+      "annualCost": 2160.00,
+      "feasibility": "tight",
+      "withinBudget": true,
+      "notes": "Little margin for error"
+    },
+    "scenario3": {
+      "name": "High volume (3+ missions/month)",
+      "description": "Multiple small missions",
+      "monthlyAverage": 250.00,
+      "annualCost": 3000.00,
+      "feasibility": "risky",
+      "withinBudget": false,
+      "notes": "Would exceed Claude Max limits"
+    }
+  },
+
+  "decisionFramework": {
+    "beforeStartingMission": [
+      {
+        "step": 1,
+        "action": "Check available budget",
+        "check": "mission cost < available budget",
+        "ifTrue": "Proceed to step 2",
+        "ifFalse": "STOP - wait for next month or reduce scope"
+      },
+      {
+        "step": 2,
+        "action": "Check monthly projection",
+        "check": "(spent + committed + new mission) <= monthly limit",
+        "ifTrue": "Proceed to step 3",
+        "ifFalse": "STOP - would exceed monthly limit"
+      },
+      {
+        "step": 3,
+        "action": "Consider optimizations",
+        "options": ["Use Haiku instead of Sonnet", "Enable prompt caching", "Use batch API"],
+        "potentialSavings": "60-70%",
+        "ifOptimized": "May fit in budget"
+      },
+      {
+        "step": 4,
+        "action": "Make GO/NO-GO decision",
+        "GO": "Create mission folder, update cumulative expenses, start tracking",
+        "NO-GO": "Add to proposed missions, plan for next month"
+      }
+    ]
+  },
+
+  "alerts": [
+    {
+      "type": "budget-warning",
+      "severity": "medium",
+      "message": "85.1% of November budget allocated. New missions limited to <$30.",
+      "triggered": "2025-11-03",
+      "action": "Review JL-003 scope or wait until December"
+    },
+    {
+      "type": "optimization-opportunity",
+      "severity": "low",
+      "message": "JL-003 could save $45 with prompt caching enabled.",
+      "triggered": "2025-11-03",
+      "action": "Enable caching in JL-003/expenses/config/"
+    }
+  ]
+}
