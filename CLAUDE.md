@@ -52,6 +52,37 @@ git push  # (if tracking branch is set)
 
 ---
 
+## 🔮 Oracle Auto-Activation (NEW!)
+
+**Oracle is now keyword-activated in ALL Claude Code conversations!**
+
+**How It Works**: Simply type "oracle" in your message, and Oracle automatically activates with full cost-tracking intelligence.
+
+**Trigger Keywords**: `oracle`, `oracle,`, `hey oracle`, `oracle check`, `oracle analyze`, `oracle estimate`, `ask oracle`, `oracle do`, `oracle tell me`
+
+**Example Usage**:
+```
+You: "oracle, check budget"
+Oracle: 🔮 **Oracle activated.**
+        💰 Budget: $87.66 remaining (87.7% healthy)
+
+You: "oracle, estimate Phase 2"
+Oracle: 🔮 **Oracle activated.** Analyzing Phase 2 scope...
+        💰 Cost: $45.97-$50.97 (PNG export)
+```
+
+**Configuration**: `/Users/admin/.claude/CLAUDE.md` (global - works everywhere)
+
+**Oracle's Core Functions**:
+- Budget health checks and status
+- Cost estimation before work (using templates)
+- Invoice generation after work (using templates)
+- Optimization recommendations (60-70% savings possible)
+- Simple tracking system guidance
+- GitHub repository management
+
+---
+
 ## ⚠️ CRITICAL: Before Starting ANY Work
 
 ### Quick Budget Check (Simple System)
