@@ -19,7 +19,7 @@ This file provides guidance to Claude Code when working within the Justice Leagu
 - Per-activity cost tracking and budget management
 
 **Account**: aldrinstellus@gmail.com (Claude Max plan)
-**Monthly Budget**: $100.00 (Claude Max $20/month subscription)
+**Monthly Budget**: $100.00
 
 **Latest Savepoint**: `PROJECT-SAVEPOINT-2025-11-03-SIMPLE-TRACKING.md` (Simple Cost Tracking System Complete)
 
@@ -80,6 +80,112 @@ Oracle: 🔮 **Oracle activated.** Analyzing Phase 2 scope...
 - Optimization recommendations (60-70% savings possible)
 - Simple tracking system guidance
 - GitHub repository management
+
+---
+
+## 🦸 Justice League Claude Skills
+
+**Location**: `.claude/skills/` directory
+**Version**: 1.4.0 (13 heroes, Oracle KB integration complete)
+**System**: Zero-weakness design analysis system
+
+### Hero Roster (13 Specialized Heroes)
+
+The Justice League consists of 13 specialized heroes, each with their own Claude Skill definition:
+
+1. **🦸 Superman** - The Coordinator & Performance Profiler
+2. **🔮 Oracle** - The Cost-Tracking Coordinator & Meta-Agent (auto-activates on "oracle" keyword)
+3. **🧠 Martian Manhunter** - The Security Guardian (OWASP Top 10 specialist)
+4. **🦇 Batman** - The Testing Detective (interactive elements & UI validation)
+5. **💚 Green Lantern** - The Visual Guardian (visual regression testing)
+6. **⚡ Wonder Woman** - The Accessibility Champion (WCAG 2.2 Level AAA)
+7. **⚡ The Flash** - The Speed Analyzer (Core Web Vitals & performance)
+8. **🌊 Aquaman** - The Network Commander (network traffic analysis)
+9. **🤖 Cyborg** - The Integration Master (Figma, Penpot, GitHub, Jira, Slack)
+10. **🔬 The Atom** - The Component Analyzer (design system compliance)
+11. **🏹 Green Arrow** - The Precision Tester (quality assurance)
+12. **🤸 Plastic Man** - The Responsive Design Specialist (mobile/tablet/desktop testing)
+13. **🎩 Zatanna** - The SEO & Metadata Magician (SEO analysis & optimization)
+
+### Skill Architecture
+
+Each hero follows a comprehensive structure:
+- **Role & Identity**: Primary function and catchphrase
+- **Tools Available**: Function names, class names, MCP tools, specialized capabilities
+- **Strengths**: 10 specific, actionable capabilities per hero
+- **Weaknesses**: 4 per hero → **ALL ELIMINATED** (52 total weaknesses optimized to zero)
+- **Use Cases**: Real-world scenarios where each hero excels
+- **Example Usage**: Practical code snippets
+- **Success Metrics**: Quantifiable scoring criteria (0-100 score, S+ to D grade)
+- **Special Abilities**: Unique superpowers that make each hero exceptional
+
+### Quick Stats
+
+- **13 heroes** provide specialized expertise
+- **52 weaknesses** systematically eliminated (13 heroes × 4 each)
+- **130+ strengths** deliver comprehensive coverage (13 heroes × 10 each)
+- **100% integration** ensures seamless coordination
+- **World-class tools** power every hero (axe-core, Lighthouse, Chrome DevTools, npm audit)
+
+### How to Use Heroes
+
+Heroes can be invoked via:
+1. **Function calls**: `assemble_justice_league()`, `batman_test_interactive_elements()`, etc.
+2. **Superman coordination**: Superman assembles teams for complex missions
+3. **Oracle auto-activation**: Simply mention "oracle" in your message
+4. **Direct invocation**: Call specific hero functions as needed
+
+**Skill Files**: See `.claude/skills/README.md` for complete hero documentation
+
+---
+
+## 🧠 Knowledge Base System
+
+**Location**: `knowledge_base/` directory
+**Version**: 1.1.0
+**System**: Universal best practices for web design & development
+
+### Main Resource
+
+**GLOBAL_BEST_PRACTICES.md** - Comprehensive guide covering all 13 heroes' expertise:
+
+1. 🪔 **Ethical Design** (Litty) - Dark patterns, user respect, transparency
+2. ⚡ **Accessibility** (Wonder Woman) - WCAG 2.1, ARIA, keyboard nav, alt text
+3. ⚡ **Performance** (Flash) - Core Web Vitals, image optimization, code splitting
+4. 🦇 **Interactive Elements** (Batman) - Buttons, forms, touch targets
+5. 🔬 **Component Design** (Atom) - Design systems, tokens, naming conventions
+6. 🤸 **Responsive Design** (Plastic Man) - Mobile-first, breakpoints, fluid typography
+7. 🧠 **Security** (Martian Manhunter) - OWASP Top 10, XSS, CSRF, authentication
+8. 🎩 **SEO** (Zatanna) - Meta tags, Open Graph, structured data
+9. 🌊 **Network Optimization** (Aquaman) - Compression, caching, resource hints
+10. 💚 **Visual Consistency** (Green Lantern) - Design tokens, spacing, colors
+11. 🏹 **Testing** (Green Arrow) - Unit, E2E, visual regression, accessibility
+12. 🤖 **Integrations** (Cyborg) - APIs, webhooks, third-party services
+13. 🔮 **Budget & Cost Management** (Oracle) - Cost estimation, budget tracking, optimization
+
+### Quick Reference
+
+**Minimum Requirements** (Pass/Fail):
+- **Ethics**: No dark patterns
+- **Accessibility**: WCAG 2.1 Level AA
+- **Performance**: LCP < 2.5s, FID < 100ms, CLS < 0.1
+- **Font Size**: ≥16px body text
+- **Color Contrast**: 4.5:1 (normal text)
+- **Touch Targets**: ≥44x44px
+- **Security**: HTTPS, no known vulnerabilities
+- **SEO**: Title, meta description, H1
+
+### Master Checklist
+
+The knowledge base includes comprehensive pre-launch checklists for all 13 specializations. See `knowledge_base/README.md` for complete details.
+
+### Cost Tracking Resources
+
+- [Oracle Cost Tracking](ORACLE_COST_TRACKING.md)
+- [Simple Tracking System](SIMPLE-COST-TRACKING-GUIDE.md)
+- [Budget Decision Dashboard](expenses-global/reports/decision-dashboard.md)
+
+**Stats**: 13 specializations, 200+ best practices, 100+ code examples, 13 comprehensive checklists
 
 ---
 
@@ -821,16 +927,31 @@ FIGMA_API_BASE = 'https://api.figma.com/v1'
 
 ## Related Documentation
 
-- **Main repository CLAUDE.md**: `/Users/admin/Documents/claudecode/CLAUDE.md`
+### Justice League System
+- **Claude Skills**: `/Users/admin/Documents/claudecode/justice-league-missions/.claude/skills/README.md` (v1.4.0)
+- **Knowledge Base**: `/Users/admin/Documents/claudecode/justice-league-missions/knowledge_base/README.md` (v1.1.0)
+- **Agent definitions**: `/Users/admin/Documents/claudecode/justice-league-missions/justice-league-heroes.md`
+- **Workflow guide**: `/Users/admin/Documents/claudecode/justice-league-missions/AGENT_WORKFLOW_GUIDE.md`
+
+### Cost Tracking System
 - **Simple tracking guide**: `/Users/admin/Documents/claudecode/justice-league-missions/SIMPLE-COST-TRACKING-GUIDE.md`
 - **Complex tracking guide**: `/Users/admin/Documents/claudecode/justice-league-missions/expenses-global/EXPENSE-TRACKING-GUIDE.md`
-- **Latest savepoint**: `/Users/admin/Documents/claudecode/justice-league-missions/PROJECT-SAVEPOINT-2025-11-03-SIMPLE-TRACKING.md`
-- **Agent definitions**: `/Users/admin/Documents/claudecode/workspaces/auzmor/apps/unified-ds/docs/JUSTICE-LEAGUE-AGENTS.md`
+- **Oracle README**: `/Users/admin/Documents/claudecode/justice-league-missions/ORACLE_README.md`
+
+### Project Documentation
+- **Main repository CLAUDE.md**: `/Users/admin/Documents/claudecode/CLAUDE.md`
+- **Latest savepoint**: `/Users/admin/Documents/claudecode/justice-league-missions/PROJECT-SAVEPOINT-2025-11-03-ORACLE-KB-INTEGRATION.md`
+- **Agent definitions (Auzmor)**: `/Users/admin/Documents/claudecode/workspaces/auzmor/apps/unified-ds/docs/JUSTICE-LEAGUE-AGENTS.md`
 - **Auzmor Unified DS**: `/Users/admin/Documents/claudecode/workspaces/auzmor/apps/unified-ds/`
 
 ---
 
-**System Version**: 2.0.0 (Simple Cost Tracking)
+**System Version**: 2.1.0 (Oracle KB Integration + Skills v1.4.0 + KB v1.1.0)
 **Last Updated**: 2025-11-03
 **Maintained By**: Oracle (Justice League Coordinator)
 **Account**: aldrinstellus@gmail.com (Claude Max $100/month)
+
+**Component Versions**:
+- **Claude Skills**: v1.4.0 (13 heroes, 52 weaknesses eliminated)
+- **Knowledge Base**: v1.1.0 (13 specializations, 200+ best practices)
+- **Cost Tracking**: v2.1.0 (Simple system with Oracle coordination)
