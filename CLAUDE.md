@@ -91,11 +91,20 @@ cd /Users/admin/Documents/claudecode/justice-league-missions
 python3 scripts/check-budget.py
 ```
 
+**How It Works**: Script reads `simple-budget.json` and calculates budget health in real-time.
+
 **Output shows**:
 - Monthly budget: $100.00
 - Current spent: $XX.XX
 - Remaining: $XX.XX
 - Status: ✅ HEALTHY / ⚠️ CAUTION / 🚨 CRITICAL
+
+**Budget Decision Thresholds**:
+- **<50% used**: ✅ HEALTHY - Continue normal operations
+- **50-75% used**: ⚠️ CAUTION - Monitor closely, prefer Haiku
+- **75-90% used**: ⚠️ WARNING - Small tasks only, apply caching
+- **90-100% used**: 🚨 CRITICAL - Complete current work only
+- **>100% used**: ❌ OVER - Wait for next month (resets on 1st)
 
 ### Alternative: Decision Dashboard (Complex System)
 ```bash
@@ -106,6 +115,35 @@ cat /Users/admin/Documents/claudecode/justice-league-missions/expenses-global/re
 - ⏳ Wait for next month (budget resets on 1st)
 - ✂️ Reduce mission scope to fit available budget
 - 🎯 Apply cost optimizations (Haiku + caching + batch API)
+
+---
+
+## 🚀 Quick Commands Reference
+
+**Most Common Operations** (copy-paste ready):
+
+```bash
+# Budget Operations
+python3 /Users/admin/Documents/claudecode/justice-league-missions/scripts/check-budget.py
+cat /Users/admin/Documents/claudecode/justice-league-missions/simple-budget.json
+
+# Mission Navigation
+cat /Users/admin/Documents/claudecode/justice-league-missions/MISSIONS.md
+cd /Users/admin/Documents/claudecode/justice-league-missions/missions/JL-003-auzmor-learn-web-mobile
+
+# View Templates
+ls /Users/admin/Documents/claudecode/justice-league-missions/_templates/simple-tracking/
+
+# Git Operations
+git status
+git add .
+git commit -m "message"
+git push origin main
+
+# View Estimates/Invoices (Active Mission)
+cat /Users/admin/Documents/claudecode/justice-league-missions/missions/JL-003-auzmor-learn-web-mobile/JL-003-PHASE1-INVOICE.md
+cat /Users/admin/Documents/claudecode/justice-league-missions/missions/JL-003-auzmor-learn-web-mobile/JL-003-PHASE2-ESTIMATE.md
+```
 
 ---
 
@@ -469,30 +507,76 @@ cat missions/JL-003-auzmor-learn-web-mobile/detailed-analysis.json
 
 ---
 
+## 🎯 User Preferences (CRITICAL - Always Follow)
+
+### Standing Instructions from User
+
+**1. Full Absolute Paths ALWAYS** (Never Forget!):
+```
+✅ CORRECT: /Users/admin/Documents/claudecode/justice-league-missions/simple-budget.json
+❌ WRONG: simple-budget.json
+❌ WRONG: ./simple-budget.json
+❌ WRONG: ~/Documents/claudecode/justice-league-missions/simple-budget.json
+```
+User explicitly reminded Oracle when this was forgotten. It's a standing instruction.
+
+**2. Cost-First Structure** (All Estimates/Invoices):
+```
+💰 COST SUMMARY (PUT THIS FIRST - ALWAYS!)
+🎯 Executive Summary (second)
+📊 Detailed Analytics (following sections)
+```
+Never bury cost information. Users want quick answers first.
+
+**3. Simple Tracking System** (User Choice):
+- User explicitly chose Option A (Simple) over Option B (Complex)
+- Workflow: Estimate → Work → Invoice (no mid-work tracking)
+- No per-activity logging during execution
+- Only show estimates before work and invoices after
+
+**4. Invoice-Style Formatting**:
+- Clean, professional invoice appearance
+- Costs at top with clear totals
+- Budget impact analysis shown immediately
+- Variance from estimate if applicable
+
+**5. GitHub Repository** (Never Ask Again):
+- Repository: `https://github.com/aldrinstellus/justice-league`
+- Remote: origin → `https://github.com/aldrinstellus/justice-league.git`
+- User confirmed this multiple times - permanently stored
+
+**6. Budget-Conscious Approach**:
+- Monthly limit: $100 (Claude Max plan)
+- Always check budget BEFORE proposing work
+- Always show "before/after" budget impact
+- Recommend cost optimizations when relevant
+
 ## Best Practices
 
 ### DO ✅
 - **Always check budget before starting work** (run `check-budget.py`)
 - **Always show FULL PATH URLs** for all files (user standing instruction)
+- **Always put costs FIRST** in estimates/invoices (cost-first structure)
 - **Generate estimates before work** using estimate templates
 - **Generate invoices after work** with actual costs
 - **Update simple-budget.json** after completing tasks
-- **Use cost-first structure** in all summaries (cost at top, details below)
 - **Use Haiku for simple tasks** (73% cheaper than Sonnet)
 - **Enable prompt caching for repeated content** (90% savings)
 - **Update mission-log.md with progress**
+- **Respect 1.2s rate limiting** for Figma API calls
 
 ### DON'T ❌
 - **Don't skip budget checks** before starting missions
 - **Don't use relative paths** - ALWAYS use full absolute paths
 - **Don't bury cost information** - always put it first in summaries
-- **Don't ignore alert thresholds** (75%, 90%, 100%)
+- **Don't ignore alert thresholds** (50%, 75%, 90%, 100%)
 - **Don't start missions without available budget**
 - **Don't use Sonnet when Haiku will work**
-- **Don't skip mission ID numbers** (always sequential)
+- **Don't skip mission ID numbers** (always sequential: JL-001, JL-002, JL-003...)
 - **Don't forget to update MISSIONS.md**
 - **Don't use sampling for Figma analysis** - always use Analysis Mode
-- **Don't forget user preferences** (simple tracking, full paths, cost-first)
+- **Don't forget user preferences** (full paths, cost-first, simple tracking)
+- **Don't ask for GitHub repo URL** (it's permanently stored)
 
 ---
 
@@ -687,23 +771,50 @@ python3 scripts/check-budget.py
 ```
 Shows: Budget, spent, remaining, status, completed tasks
 
+**How It Works**: Reads `simple-budget.json` and calculates real-time budget health.
+
 ### Figma Analysis Scripts
 
-**Location**: `/Users/admin/Documents/claudecode/justice-league-missions/missions/JL-003-auzmor-learn-web-mobile/scripts/`
+**⚠️ IMPORTANT**: Scripts are in **mission folders**, not root `/scripts/`!
+
+**Pattern**: `/Users/admin/Documents/claudecode/justice-league-missions/missions/JL-XXX-mission-name/scripts/`
+
+**Current Active Mission (JL-003)**:
+`/Users/admin/Documents/claudecode/justice-league-missions/missions/JL-003-auzmor-learn-web-mobile/scripts/`
 
 **Phase 1 - Discovery**:
-- `analyze_with_progress.py` - Live progress file-by-file analysis
-- `detailed_file_analysis.py` - Comprehensive analysis with reporting
-- `figma_project_inventory.py` - Initial file inventory
+- `analyze_with_progress.py` - Live progress file-by-file analysis with progress bar
+- `detailed_file_analysis.py` - Comprehensive structure analysis with JSON output
+- `figma_project_inventory.py` - Initial file listing (quick scan)
 
 **Phase 2 - Export**:
 - `export_with_sections.py` - Quicksilver export with sections support
 
+**Script Characteristics** (All Figma Scripts):
+- **Hardcoded Figma Token**: `figd_aPXrH3Rqpm8sdez_nHmmXKHvZ9vcK3sOcJwvhE7s` (in script)
+- **Rate Limiting**: 1.2 second delay between Figma API calls (critical!)
+- **Cost Calculation**: Built-in ($0.0025/frame PNG, $0.0030/frame PDF)
+- **Progress Bars**: Live updates using `\r` carriage return pattern
+- **Error Handling**: HTTP 400/500 errors logged but script continues
+
+**Quicksilver Export Pricing** (Hardcoded in Scripts):
+```python
+COST_PER_FRAME_PNG = 0.0025  # $0.0025 per frame for PNG (2x scale)
+COST_PER_FRAME_PDF = 0.0030  # $0.0030 per frame for PDF
+COST_PER_FRAME_COMBINED = 0.0055  # PNG + PDF both formats
+```
+
 **Environment Setup**:
 ```bash
-export FIGMA_ACCESS_TOKEN='your_token_here'
+export FIGMA_ACCESS_TOKEN='figd_aPXrH3Rqpm8sdez_nHmmXKHvZ9vcK3sOcJwvhE7s'
 export QUICKSILVER_API_TIMEOUT=60
 export QUICKSILVER_CDN_TIMEOUT=120
+```
+
+**Figma API Endpoint**:
+```python
+FIGMA_API_BASE = 'https://api.figma.com/v1'
+# Authentication header: {'X-Figma-Token': FIGMA_TOKEN}
 ```
 
 ---
