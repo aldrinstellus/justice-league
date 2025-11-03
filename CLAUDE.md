@@ -7,6 +7,8 @@ This file provides guidance to Claude Code when working within the Justice Leagu
 ## System Overview
 
 **Location**: `/Users/admin/Documents/claudecode/justice-league-missions/`
+**GitHub Repository**: `https://github.com/aldrinstellus/justice-league`
+**Remote**: `origin` → `https://github.com/aldrinstellus/justice-league.git`
 
 **Purpose**: Centralized tracking system for multi-agent design analysis missions with comprehensive expense tracking.
 
@@ -20,6 +22,33 @@ This file provides guidance to Claude Code when working within the Justice Leagu
 **Monthly Budget**: $100.00 (Claude Max $20/month subscription)
 
 **Latest Savepoint**: `PROJECT-SAVEPOINT-2025-11-03-SIMPLE-TRACKING.md` (Simple Cost Tracking System Complete)
+
+---
+
+## 🔗 Git Workflow & Repository
+
+**Primary Repository**: https://github.com/aldrinstellus/justice-league
+
+**Standard Git Commands**:
+```bash
+# Always use this remote for push/pull
+git remote -v  # Verify: origin → https://github.com/aldrinstellus/justice-league.git
+
+# Commit changes
+git add .
+git commit -m "message"
+
+# Push to GitHub
+git push origin main
+# OR
+git push  # (if tracking branch is set)
+```
+
+**Oracle Standing Instructions**:
+1. **ALWAYS** remember this GitHub repository exists
+2. **NEVER** ask user for repository URL again
+3. **AUTOMATICALLY** use this repo for all Justice League git operations
+4. **DOCUMENT** all major changes with proper commit messages
 
 ---
 
