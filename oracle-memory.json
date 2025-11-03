@@ -1,0 +1,61 @@
+{
+  "version": "2.0",
+  "created_at": "2025-11-03T15:05:06.867068",
+  "last_updated": "2025-11-03T15:05:06.867119",
+  "user_preferences": {
+    "path_format": "absolute",
+    "summary_structure": "cost_first",
+    "tracking_system": "simple",
+    "github_repo": "https://github.com/aldrinstellus/justice-league",
+    "budget_conscious": true,
+    "test_preference": "test_value"
+  },
+  "project_patterns": {
+    "figma_analysis_mode": "individual",
+    "progress_display": "live",
+    "cost_calculation": "per_file",
+    "rate_limiting": 1.2,
+    "quicksilver_preferred": true,
+    "test_pattern": true
+  },
+  "optimization_history": {
+    "haiku_usage_rate": 0.3,
+    "sonnet_usage_rate": 0.7,
+    "caching_enabled": true,
+    "batch_api_usage": 0.0,
+    "savings_achieved": 0.6,
+    "quality_maintained": 0.94,
+    "test_stat": 0.95
+  },
+  "mission_history": {
+    "total_missions": 2,
+    "completed_missions": 2,
+    "active_missions": 1,
+    "success_rate": 1.0,
+    "average_cost_per_mission": 28.784999999999997
+  },
+  "learned_patterns": {
+    "corrections_given": [
+      {
+        "correction": "User reminded me to use full absolute paths",
+        "timestamp": "2025-11-03T15:05:06.867108"
+      }
+    ],
+    "successful_strategies": [
+      {
+        "strategy": "cost-first summary",
+        "context": "Figma analysis reports",
+        "timestamp": "2025-11-03T15:05:06.867112"
+      }
+    ],
+    "failed_strategies": []
+  },
+  "standing_instructions": [
+    "ALWAYS use full absolute paths (never relative)",
+    "ALWAYS put costs first in summaries (cost-first structure)",
+    "NEVER ask for GitHub repo URL (permanently stored)",
+    "ALWAYS check budget before starting work",
+    "ALWAYS generate estimate before work begins",
+    "ALWAYS generate invoice after work completes"
+  ]
+}
