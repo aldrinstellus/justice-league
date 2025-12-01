@@ -1,6 +1,6 @@
 # Justice League Documentation
 
-**Version**: 2.0.0
+**Version**: 3.0.0
 **Last Updated**: 2025-12-01
 **Status**: Production Ready (22 Heroes, 15,000+ LOC Autonomous Systems)
 
@@ -21,6 +21,10 @@ docs/
 │   ├── ROLLBACK-PROCEDURES.md
 │   ├── ERROR-HANDLING-PROCEDURES.md
 │   └── MISSION-ORGANIZATION-PROTOCOL.md
+├── workflows/                # Workflow documentation
+│   ├── NARRATOR-SYSTEM.md
+│   ├── HERO-AUTONOMY.md
+│   └── MISSION-COORDINATION.md
 ├── best-practices/           # Best practices and patterns
 │   └── FIGMA-EXPORT-BEST-PRACTICES.md
 └── heroes/                   # Hero skill documentation
@@ -49,6 +53,14 @@ docs/
 | [Rollback Procedures](./protocols/ROLLBACK-PROCEDURES.md) | Version rollback and recovery |
 | [Error Handling](./protocols/ERROR-HANDLING-PROCEDURES.md) | Error classification and handling |
 | [Mission Organization](./protocols/MISSION-ORGANIZATION-PROTOCOL.md) | Mission structure and lifecycle |
+
+### Workflows
+
+| Workflow | Description |
+|----------|-------------|
+| [Narrator System](./workflows/NARRATOR-SYSTEM.md) | Real-time progress reporting and mission storytelling |
+| [Hero Autonomy](./workflows/HERO-AUTONOMY.md) | Independent operation boundaries and decision-making |
+| [Mission Coordination](./workflows/MISSION-COORDINATION.md) | Multi-hero orchestration and handoff protocols |
 
 ### Best Practices
 
