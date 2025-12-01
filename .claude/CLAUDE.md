@@ -230,6 +230,17 @@ git commit -m "update: description"
 git push
 ```
 
+### Temp Folder Cleanup
+```bash
+# Preview what would be deleted (dry run)
+~/.claude/scripts/cleanup-temp-folders.sh
+
+# Actually delete temp folders
+~/.claude/scripts/cleanup-temp-folders.sh -f
+```
+
+**Note**: Temp folders (`/tmp/jl-*`) are safe to delete anytime. The script warns if any folder has uncommitted git work.
+
 ---
 
 ## 🤖 Chrome DevTools MCP Integration
