@@ -283,4 +283,45 @@ find . -maxdepth 2 -type d -name "*[A-Z]*" -not -path "./.git/*"
 
 ---
 
+## External Staging Folders (Temporary)
+
+These folders exist outside the main claudecode directory for specific purposes:
+
+### `/private/tmp/justice-league-update/`
+**Purpose**: GitHub staging area for Justice League repository
+
+```
+/private/tmp/justice-league-update/
+└── jl-push/                    # Git clone of github.com/aldrinstellus/justice-league
+    ├── .claude/                # Skills mirror (synced from ~/.claude/)
+    ├── core/                   # JL implementation code (2.2 MB)
+    ├── docs/                   # Documentation (500 KB)
+    ├── examples/               # Demo scripts and examples
+    ├── missions/               # Mission archives
+    ├── archive/                # Historical docs
+    └── best-practices/         # Case studies
+```
+
+**Workflow**:
+1. Make changes in production (`~/.claude/`)
+2. Sync to staging (`jl-push/`)
+3. Commit and push to GitHub
+
+### `/private/tmp/jl-sync/`
+**Purpose**: Temporary sync workspace (can be cleaned)
+
+**Status**: Contains 300+ files from previous operations. Safe to archive or delete.
+
+### Temp Folder Rules
+
+| Folder | Persistence | Clean Policy |
+|--------|-------------|--------------|
+| `justice-league-update/jl-push/` | **Keep** | GitHub staging |
+| `jl-sync/` | Temporary | Archive or delete |
+| `jl-narrator-demo/` | Moved | → `jl-push/examples/` |
+
+**Best Practice**: Always move useful temp content to proper locations before session ends.
+
+---
+
 **Maintainer**: Justice League Team
