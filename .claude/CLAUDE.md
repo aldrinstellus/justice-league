@@ -5,7 +5,7 @@
 
 ## 🦸 Justice League Roster Protocol
 
-**CRITICAL REQUIREMENT**: When the user asks for "roster", "heroes", "team", "agents list", or "who's on the team", display the official roster from `~/.claude/justice-league-roster.md`.
+**CRITICAL REQUIREMENT**: When the user asks for "roster", "heroes", "team", "agents list", or "who's on the team", display the official roster from `~/.claude/justice-league-roster.md` WITH the ASCII art banner.
 
 **Trigger Keywords** (case-insensitive):
 - "roster"
@@ -17,20 +17,19 @@
 - "who's on the team"
 - "list heroes"
 - "all heroes"
+- "justice-league roster"
 
 **Official Roster Location**: `/Users/admin/.claude/justice-league-roster.md`
 
-**18 Heroes Total**:
+**21 Heroes Total**:
 | Category | Heroes |
 |----------|--------|
-| Command | Superman 🦸, Oracle 🔮 |
+| Command & Coordination | Superman 🦸, Oracle 🔮, The Architect 🏗️, Aldrin 🎖️, Product Manager 📋 |
 | Design/Code | Artemis 🎨, Quicksilver 💨, Hawkman 🦅, Vision Analyst 👁️ |
 | Validation | Green Arrow 🎯, Green Lantern 💚, Batman 🦇, The Atom 🔬 |
 | Performance | Flash ⚡, Aquaman 🌊, Cyborg 🤖 |
 | Security/A11y | Wonder Woman ⚡, Martian Manhunter 🧠 |
 | UX/SEO | Plastic Man 🤸, Zatanna 🎩, Litty 🪔 |
-
-**Team**: Aldrin (Commander)
 
 **Source**: `/Users/admin/Documents/claudecode/missions/data/justice_league_hero_capabilities.json`
 
@@ -58,6 +57,7 @@
      ╦╦ ╦╔═╗╔╦╗╦╔═╗╔═╗  ╦  ╔═╗╔═╗╔═╗╦ ╦╔═╗
      ║║ ║╚═╗ ║ ║║  ║╣   ║  ║╣ ╠═╣║ ╦║ ║║╣
     ╚╝╚═╝╚═╝ ╩ ╩╚═╝╚═╝  ╩═╝╚═╝╩ ╩╚═╝╚═╝╚═╝
+              ⚡ FULL ROSTER ⚡
 ══════════════════════════════════════════════════════════════════════════════
 ```
 
@@ -256,6 +256,6 @@ Oracle uses Chrome DevTools MCP for automated browser testing and verification:
 
 ---
 
-**Last Updated**: 2025-11-24
-**Size**: ~18k characters (56% under 40k limit)
+**Last Updated**: 2025-12-01
+**Size**: ~19k characters (52% under 40k limit)
 **Structure**: Essential behavior only, detailed references in separate files
