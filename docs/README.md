@@ -142,6 +142,21 @@ See [Incident Response Plan](./protocols/INCIDENT-RESPONSE-PLAN.md)
 
 ---
 
+## Archive
+
+Historical documentation organized by category:
+
+```
+archive/
+├── guides/           # 40 archived guides and READMEs
+├── implementations/  # 38 implementation docs
+├── oracle/           # 27 Oracle-specific docs
+├── reports/          # 29 audit reports and summaries
+└── savepoints/       # 28 version savepoints
+```
+
+---
+
 ## Contributing
 
 1. Follow existing document format
