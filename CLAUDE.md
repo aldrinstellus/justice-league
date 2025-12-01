@@ -21,7 +21,11 @@ This file provides guidance to Claude Code when working within the Justice Leagu
 **Account**: aldrinstellus@gmail.com (Claude Max plan)
 **Monthly Budget**: $100.00
 
-**Latest Savepoint**: `PROJECT-SAVEPOINT-2025-11-03-ORACLE-V2-COMPLETE.md` (Oracle v2.0 Complete)
+**Latest Savepoint**: `best-practices/SESSION-SAVEPOINT-2025-12-01.md` (Cyborg Vercel Training)
+
+**Recent Updates**:
+- 2025-12-01: Cyborg trained on Vercel deployment troubleshooting
+- 2025-11-03: Oracle v2.0 Complete
 
 ---
 
@@ -743,6 +747,28 @@ Update `expenses-global/cumulative-expenses.json` with new mission
 **Phase 1 Results**: 182 files analyzed, 16,389 frames, 1,243 pages, 20,447 components
 **Duration**: 14 weeks (Nov 2025 - Feb 2026)
 **Summary**: `missions/JL-003-auzmor-learn-web-mobile/SUMMARY-FOR-ALDO.md`
+
+---
+
+## Cyborg DevOps Training
+
+### Vercel Deployment Troubleshooting (2025-12-01)
+
+Cyborg has been trained on Vercel deployment troubleshooting. Reference:
+- **Full Guide**: `best-practices/vercel/VERCEL-DEPLOYMENT-TROUBLESHOOTING.md`
+- **Agent File**: `.claude/agents/devops-engineer.md`
+
+**Quick Fix Reference**:
+| Error | Fix |
+|-------|-----|
+| `/vercel/path0/vercel/path0/` duplicate path | Remove `outputFileTracingRoot` from next.config.ts |
+| "should NOT have nodeVersion" | Remove `nodeVersion` from vercel.json |
+| Invalid Node version | Use 18.x, 20.x, or 22.x only |
+
+**Pre-deployment check**:
+```bash
+grep -r "outputFileTracingRoot" next.config.*
+```
 
 ---
 
