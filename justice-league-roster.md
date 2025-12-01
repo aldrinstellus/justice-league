@@ -19,11 +19,12 @@
 | **Aldrin** | 🎖️ | Project Commander & Mission Owner |
 | **Product Manager** | 📋 | Product Strategy & Requirements |
 
-## Design & Code Generation (4)
+## Design & Code Generation (5)
 
 | Hero | Emoji | Role |
 |------|-------|------|
-| **Artemis Codesmith** | 🎨 | Figma-to-React Expert |
+| **Artemis Codesmith** | 🎨 | Figma-to-React Expert (Design → Code) |
+| **Hephaestus** | 🔨 | Code-to-Design Forger (Code → Design) |
 | **Quicksilver** | 💨 | High-Speed Parallel Export |
 | **Hawkman** | 🦅 | Structural Parser & Frame Export |
 | **Vision Analyst** | 👁️ | Visual Measurement Extraction |
@@ -67,12 +68,12 @@
 | Category | Count |
 |----------|-------|
 | Command & Coordination | 5 |
-| Design & Code Generation | 4 |
+| Design & Code Generation | 5 |
 | Validation & Testing | 4 |
 | Performance & Network | 3 |
 | Security & Accessibility | 2 |
 | UX & SEO | 3 |
-| **TOTAL** | **21** |
+| **TOTAL** | **22** |
 
 ---
 
@@ -100,6 +101,7 @@ All heroes have complete skill documentation at:
 | Aldrin | aldrin.md |
 | Product Manager | product-manager.md |
 | Artemis | artemis.md |
+| Hephaestus | hephaestus.md |
 | Quicksilver | quicksilver.md |
 | Hawkman | hawkman.md |
 | Vision Analyst | vision-analyst.md |
@@ -120,4 +122,4 @@ All heroes have complete skill documentation at:
 
 **Source**: `/Users/admin/Documents/claudecode/missions/data/justice_league_hero_capabilities.json`
 **Last Updated**: 2025-12-01
-**Version**: 2.0.0
+**Version**: 3.0.0 (22 Heroes - Added Hephaestus)
