@@ -10,7 +10,7 @@ from datetime import datetime
 
 # Configuration
 BUDGET_FILE = "../simple-budget.json"
-MONTHLY_BUDGET = 100.00
+MONTHLY_BUDGET = 200.00  # Claude Max ($200/month)
 
 
 def load_budget():
