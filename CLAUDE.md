@@ -24,8 +24,144 @@ This file provides guidance to Claude Code when working within the Justice Leagu
 **Latest Savepoint**: `best-practices/SESSION-SAVEPOINT-2025-12-01.md` (Cyborg Vercel Training)
 
 **Recent Updates**:
+- 2025-12-02: Added MANDATORY Best-Practices-First Protocol
 - 2025-12-01: Cyborg trained on Vercel deployment troubleshooting
 - 2025-11-03: Oracle v2.0 Complete
+
+---
+
+## 📚 MANDATORY: Check Best-Practices First Protocol
+
+**CRITICAL REQUIREMENT**: Before ANY deployment, export, or complex operation, you MUST check the `best-practices/` folder for existing guides.
+
+### Why This Protocol Exists
+On 2025-12-02, during a Vercel deployment of the Customer Support Portal, the Justice League navigated the Vercel UI manually when a troubleshooting guide already existed at `best-practices/vercel/VERCEL-DEPLOYMENT-TROUBLESHOOTING.md`. This was a failure. We now require checking best-practices FIRST.
+
+### Best-Practices Lookup Table
+
+| Task Type | Check This File FIRST |
+|-----------|----------------------|
+| **Vercel Deployment** | `best-practices/vercel/VERCEL-DEPLOYMENT-TROUBLESHOOTING.md` |
+| **Figma Export** | `best-practices/case-studies/figma-export/README.md` |
+| **Website Clone** | `best-practices/case-studies/tweakcn-clone/README.md` |
+| **Cost Estimation** | `best-practices/case-studies/figma-export/COST-OPTIMIZATION-GUIDE.md` |
+| **Parallel Execution** | `best-practices/case-studies/figma-export/PARALLEL-EXECUTION-GUIDE.md` |
+| **MCP Workflows** | `best-practices/MCP-WORKFLOWS-GUIDE.md` |
+| **Claude Skills** | `best-practices/CLAUDE-SKILLS-SYSTEM.md` |
+| **Agent Development** | `best-practices/AGENT-DEVELOPMENT-GUIDE.md` |
+
+### Protocol Steps
+
+1. **BEFORE starting any major operation**: Run `ls best-practices/` to check available guides
+2. **IF a relevant guide exists**: READ it completely before proceeding
+3. **FOLLOW the pre-operation checklist** in the guide
+4. **FOLLOW the diagnostic commands** in the guide
+5. **THEN proceed** with the operation
+
+### Quick Check Command
+```bash
+# Check what best-practices guides exist
+ls -la /Users/admin/Documents/claudecode/justice-league-github/best-practices/
+
+# Read Vercel guide before deployment
+cat /Users/admin/Documents/claudecode/justice-league-github/best-practices/vercel/VERCEL-DEPLOYMENT-TROUBLESHOOTING.md
+```
+
+### Consequences of Skipping This Protocol
+- ❌ Wasted time navigating UI when CLI/guide exists
+- ❌ Missed pre-operation checklists that prevent errors
+- ❌ Repeated mistakes that guides were created to prevent
+- ❌ User frustration (explicit feedback: "this is a failure")
+
+**Status**: MANDATORY for all Justice League operations
+
+---
+
+## 💰 MANDATORY: Cost Tracking Protocol
+
+**CRITICAL REQUIREMENT**: Every Justice League project/session MUST include cost tracking with real $ dollar implications.
+
+### Why This Protocol Exists
+On 2025-12-02, during the Customer Support Portal demo, the presentation guide was created WITHOUT cost tracking. User explicitly said: "I need cost/tokens usage in the presentation... I need real $ dollar implications for every project". This was a protocol failure. We now require cost tracking in ALL deliverables.
+
+### Cost Tracking Checklist (For EVERY Project)
+
+| Phase | Action | Required |
+|-------|--------|----------|
+| **BEFORE Work** | Check budget with `python3 scripts/check-budget.py` | ✅ MANDATORY |
+| **DURING Work** | Track major operations (code gen, testing, deployment) | ✅ MANDATORY |
+| **AFTER Work** | Add "Cost Analysis" section to all presentations/docs | ✅ MANDATORY |
+| **AFTER Work** | Update `simple-budget.json` with session costs | ✅ MANDATORY |
+| **AFTER Work** | Create invoice/cost summary | ✅ MANDATORY |
+
+### What MUST Be Included in Cost Analysis Section
+
+```markdown
+## Cost Analysis (Oracle's Invoice)
+
+### Session Cost Summary
+| Category | Cost | Details |
+|----------|------|---------|
+| Oracle Coordination | $X.XX | ~XXK input, ~XXK output tokens |
+| External Services | $X.XX | (Gamma, Vercel, etc.) |
+| Total Session Cost | $X.XX | |
+
+### Cost Per Phase
+| Phase | Cost | % of Total |
+|-------|------|------------|
+| Requirements | $X.XX | X% |
+| Code Generation | $X.XX | X% |
+| Testing | $X.XX | X% |
+| Deployment | $X.XX | X% |
+
+### ROI Analysis
+| Metric | AI Agents | Traditional Dev | Savings |
+|--------|-----------|-----------------|---------|
+| Time | X hours | XX+ hours | XX% |
+| Cost | $X.XX | $X,XXX+ | XX% |
+
+### Budget Status
+| Metric | Value |
+|--------|-------|
+| December 2025 Spent | $X.XX |
+| December 2025 Remaining | $X.XX |
+| Budget Status | ✅ Healthy / ⚠️ Caution |
+```
+
+### Cost Estimation Formulas
+
+**Claude API Pricing (Sonnet 4.5)**:
+- Input tokens: $3 per 1M tokens
+- Output tokens: $15 per 1M tokens
+- Typical session: 50K-150K tokens = $0.50-$5.00
+
+**Session Cost Calculation**:
+```
+Oracle Cost = (Input Tokens / 1M × $3) + (Output Tokens / 1M × $15)
+Agent Cost = External services (Gamma credits, etc.)
+Total = Oracle Cost + Agent Cost
+```
+
+### Quick Commands
+
+```bash
+# Check budget BEFORE starting
+python3 /Users/admin/Documents/claudecode/justice-league-missions/scripts/check-budget.py
+
+# View budget tracker
+cat /Users/admin/Documents/claudecode/justice-league-missions/simple-budget.json
+
+# After completing work, update simple-budget.json with new task entry
+```
+
+### Consequences of Skipping This Protocol
+- ❌ User frustration (explicit feedback: "why is this missing")
+- ❌ No visibility into project costs
+- ❌ No ROI data for presentations
+- ❌ Budget tracking becomes inaccurate
+- ❌ Cannot demonstrate value to stakeholders
+
+**Status**: MANDATORY for all Justice League deliverables
 
 ---
 
