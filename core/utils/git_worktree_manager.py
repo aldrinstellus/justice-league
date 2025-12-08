@@ -68,19 +68,35 @@ class GitWorktreeManager:
         self,
         task_name: str,
         branch: Optional[str] = None,
-        base_dir: Optional[Path] = None
+        base_dir: Optional[Path] = None,
+        auto_prune: bool = True,
+        create_branch: bool = True
     ) -> Dict[str, Any]:
         """
-        Create a new worktree for a task
+        Create a new worktree for a task (BEST PRACTICES ENFORCED)
+
+        CRITICAL WORKFLOW (from GIT-WORKTREE-BEST-PRACTICES.md):
+        1. Auto-prunes stale worktrees before creation (if auto_prune=True)
+        2. Creates feature branch if not exists (if create_branch=True)
+        3. Creates worktree linked to branch (NOT detached HEAD)
+        4. Verifies branch is checked out correctly
+        5. Returns verification data for post-creation checks
 
         Args:
             task_name: Name of the task (e.g., "artemis-component-conversion")
-            branch: Git branch to check out (default: current branch)
+            branch: Git branch name (default: feat/{task_name})
             base_dir: Base directory for worktrees (default: temp directory)
+            auto_prune: Automatically prune stale worktrees before creating (recommended)
+            create_branch: Create branch if it doesn't exist (recommended)
 
         Returns:
-            Worktree information dict with path, branch, task_name
+            Worktree information dict with path, branch, task_name, and verification data
         """
+        # STEP 1: Auto-prune stale worktrees (Best Practice)
+        if auto_prune:
+            logger.info("🧹 Auto-pruning stale worktrees before creation...")
+            self.prune_orphaned()
+
         # Generate worktree path
         if base_dir is None:
             base_dir = Path(tempfile.gettempdir()) / "justice-league-worktrees"
@@ -93,39 +109,45 @@ class GitWorktreeManager:
         worktree_name = f"{safe_task_name}-{timestamp}"
         worktree_path = base_dir / worktree_name
 
-        # Determine branch/commit
+        # STEP 2: Determine branch (create feat/ branch if not specified)
         if branch is None:
-            # Get current commit SHA (works even if branch is checked out elsewhere)
-            result = subprocess.run(
-                ['git', 'rev-parse', 'HEAD'],
-                cwd=self.repo_root,
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            commit_sha = result.stdout.strip()
+            branch = f"feat/{safe_task_name}"
+            logger.info(f"🌿 Auto-generating branch name: {branch}")
 
-            # Get branch name for tracking
-            branch_result = subprocess.run(
-                ['git', 'branch', '--show-current'],
+        # STEP 3: Create branch if needed and requested
+        base_branch = 'main'
+        if create_branch:
+            # Check if branch exists
+            branch_check = subprocess.run(
+                ['git', 'show-ref', '--verify', '--quiet', f'refs/heads/{branch}'],
                 cwd=self.repo_root,
-                capture_output=True,
-                text=True
+                capture_output=True
             )
-            branch = branch_result.stdout.strip() or 'detached'
-        else:
-            commit_sha = branch  # Use branch name if explicitly provided
+
+            if branch_check.returncode != 0:
+                # Branch doesn't exist - create it from main
+                logger.info(f"🌿 Creating new branch: {branch} from {base_branch}")
+                subprocess.run(
+                    ['git', 'branch', branch, base_branch],
+                    cwd=self.repo_root,
+                    check=True,
+                    capture_output=True,
+                    text=True
+                )
 
         try:
-            # Create worktree using commit SHA (allows creation even if branch is checked out)
-            logger.info(f"🌳 Creating worktree: {worktree_path}")
+            # STEP 4: Create worktree WITH branch (NOT detached HEAD)
+            logger.info(f"🌳 Creating worktree: {worktree_path} on branch: {branch}")
             subprocess.run(
-                ['git', 'worktree', 'add', '--detach', str(worktree_path), commit_sha],
+                ['git', 'worktree', 'add', str(worktree_path), branch],
                 cwd=self.repo_root,
                 check=True,
                 capture_output=True,
                 text=True
             )
+
+            # STEP 5: VERIFY branch is checked out (CRITICAL!)
+            verification = self._verify_worktree_branch(worktree_path, branch)
 
             # Track worktree
             worktree_info = {
@@ -133,12 +155,19 @@ class GitWorktreeManager:
                 'branch': branch,
                 'task_name': task_name,
                 'created_at': datetime.now().isoformat(),
-                'status': 'active'
+                'status': 'active',
+                'verification': verification,
+                'base_branch': base_branch
             }
 
             self.active_worktrees[str(worktree_path)] = worktree_info
 
-            logger.info(f"✅ Worktree created successfully: {worktree_path}")
+            # Log verification results
+            if verification['branch_correct']:
+                logger.info(f"✅ Worktree created and verified: {worktree_path} on {branch}")
+            else:
+                logger.warning(f"⚠️ Worktree created but verification FAILED: {verification}")
+
             return worktree_info
 
         except subprocess.CalledProcessError as e:
@@ -319,6 +348,173 @@ class GitWorktreeManager:
         except subprocess.CalledProcessError as e:
             logger.error(f"❌ Failed to prune worktrees: {e}")
             return 0
+
+    def _verify_worktree_branch(self, worktree_path: Path, expected_branch: str) -> Dict[str, Any]:
+        """
+        Verify that worktree is on the correct branch (BEST PRACTICE CHECK)
+
+        This is CRITICAL - detects the common issue where work ends up on main
+        instead of the feature branch.
+
+        Args:
+            worktree_path: Path to worktree
+            expected_branch: Expected branch name
+
+        Returns:
+            Verification results dict
+        """
+        try:
+            # Check current branch
+            branch_result = subprocess.run(
+                ['git', 'branch', '--show-current'],
+                cwd=worktree_path,
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            current_branch = branch_result.stdout.strip()
+
+            # Check commits ahead of main
+            commits_result = subprocess.run(
+                ['git', 'log', 'main..HEAD', '--oneline'],
+                cwd=worktree_path,
+                capture_output=True,
+                text=True
+            )
+            commits_ahead = len([line for line in commits_result.stdout.split('\n') if line.strip()])
+
+            # Check for detached HEAD
+            is_detached = not bool(current_branch)
+
+            verification = {
+                'current_branch': current_branch,
+                'expected_branch': expected_branch,
+                'branch_correct': current_branch == expected_branch,
+                'is_detached': is_detached,
+                'commits_ahead_of_main': commits_ahead,
+                'status': 'VERIFIED' if (current_branch == expected_branch and not is_detached) else 'FAILED'
+            }
+
+            return verification
+
+        except subprocess.CalledProcessError as e:
+            logger.error(f"❌ Failed to verify worktree branch: {e}")
+            return {
+                'status': 'ERROR',
+                'error': str(e)
+            }
+
+    def verify_commits(self, base_branch: str = 'main') -> Dict[str, Any]:
+        """
+        Verify all active worktrees have commits ahead of base branch
+
+        This is the CRITICAL check that prevents the "work on main" issue.
+        Run this BEFORE merging to ensure work is actually on feature branches.
+
+        Args:
+            base_branch: Base branch to compare against (default: 'main')
+
+        Returns:
+            Verification summary with list of worktrees and their status
+        """
+        logger.info(f"🔍 Verifying all worktrees have commits ahead of {base_branch}...")
+
+        results = []
+        failed_worktrees = []
+
+        for worktree_path, info in self.active_worktrees.items():
+            path = Path(worktree_path)
+
+            if not path.exists():
+                results.append({
+                    'path': worktree_path,
+                    'status': 'MISSING',
+                    'error': 'Worktree directory not found'
+                })
+                failed_worktrees.append(worktree_path)
+                continue
+
+            try:
+                # Get current branch
+                branch_result = subprocess.run(
+                    ['git', 'branch', '--show-current'],
+                    cwd=path,
+                    capture_output=True,
+                    text=True,
+                    check=True
+                )
+                current_branch = branch_result.stdout.strip()
+
+                # Count commits ahead
+                commits_result = subprocess.run(
+                    ['git', 'log', f'{base_branch}..HEAD', '--oneline'],
+                    cwd=path,
+                    capture_output=True,
+                    text=True
+                )
+                commits_ahead = len([line for line in commits_result.stdout.split('\n') if line.strip()])
+
+                # Get latest commit
+                latest_result = subprocess.run(
+                    ['git', 'log', '--oneline', '-1'],
+                    cwd=path,
+                    capture_output=True,
+                    text=True
+                )
+                latest_commit = latest_result.stdout.strip()
+
+                # Check for uncommitted changes
+                status_result = subprocess.run(
+                    ['git', 'status', '--porcelain'],
+                    cwd=path,
+                    capture_output=True,
+                    text=True
+                )
+                uncommitted_changes = len([line for line in status_result.stdout.split('\n') if line.strip()])
+
+                # Determine status
+                if commits_ahead == 0:
+                    status = 'NO_COMMITS'
+                    failed_worktrees.append(worktree_path)
+                elif uncommitted_changes > 0:
+                    status = 'UNCOMMITTED_CHANGES'
+                    failed_worktrees.append(worktree_path)
+                else:
+                    status = 'READY_TO_MERGE'
+
+                results.append({
+                    'path': worktree_path,
+                    'task_name': info.get('task_name', 'unknown'),
+                    'branch': current_branch,
+                    'commits_ahead': commits_ahead,
+                    'uncommitted_changes': uncommitted_changes,
+                    'latest_commit': latest_commit,
+                    'status': status
+                })
+
+            except subprocess.CalledProcessError as e:
+                results.append({
+                    'path': worktree_path,
+                    'status': 'ERROR',
+                    'error': str(e)
+                })
+                failed_worktrees.append(worktree_path)
+
+        summary = {
+            'total_worktrees': len(self.active_worktrees),
+            'ready_to_merge': sum(1 for r in results if r.get('status') == 'READY_TO_MERGE'),
+            'failed': len(failed_worktrees),
+            'worktrees': results,
+            'failed_worktrees': failed_worktrees,
+            'all_verified': len(failed_worktrees) == 0
+        }
+
+        if summary['all_verified']:
+            logger.info(f"✅ All {summary['total_worktrees']} worktrees verified - ready to merge")
+        else:
+            logger.warning(f"⚠️ {summary['failed']} worktrees FAILED verification!")
+
+        return summary
 
 
 class HeroWorktreeContext:

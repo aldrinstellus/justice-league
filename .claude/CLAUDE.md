@@ -69,6 +69,94 @@
 
 ---
 
+## 🌳 Git Worktree Best Practices (MANDATORY)
+
+**Training Date**: 2025-12-08
+**Status**: MANDATORY for ALL parallel development operations
+**Trainer**: Superman (Mission Coordinator)
+
+### Critical Issue Diagnosed
+
+On 2025-12-08, ATCK! parallel development session revealed recurring git worktree issues:
+- ✗ Work committed directly to `main` instead of feature branches
+- ✗ Stale worktrees blocking new worktree creation
+- ✗ Feature branches not diverging from base
+- ✗ No commits on feature branches despite work being done
+
+### MANDATORY Workflow for ALL Agents
+
+**Task Agents** (Artemis, Hephaestus, etc.) MUST:
+```bash
+# 1. BEFORE creating worktree
+git worktree prune
+
+# 2. CREATE worktree WITH branch (ONE command)
+git worktree add -b feat/{feature-name} /tmp/{project}-worktrees/{feature-name} main
+
+# 3. VERIFY branch immediately
+cd /tmp/{project}-worktrees/{feature-name}
+git branch --show-current  # MUST show feat/{feature-name}
+
+# 4. COMMIT work
+git add .
+git commit -m "feat: description"
+
+# 5. VERIFY commits before reporting
+git log main..HEAD --oneline  # MUST show commits!
+```
+
+**Coordinator Agents** (Superman, Oracle) MUST:
+```bash
+# AFTER all parallel agents complete, VERIFY ALL worktrees:
+for wt in /tmp/*-worktrees/*/; do
+  commits=$(git -C "$wt" log main..HEAD --oneline | wc -l)
+  if [ "$commits" -eq 0 ]; then
+    echo "❌ ERROR: No commits on $(basename $wt)"
+  fi
+done
+
+# ONLY merge if ALL worktrees have commits > 0
+```
+
+### DO NOT
+- ❌ Create worktree without `-b` flag
+- ❌ Skip `git worktree prune` before creating
+- ❌ Skip branch verification after creation
+- ❌ Report success if `git log main..HEAD` shows nothing
+- ❌ Merge without verifying commits exist
+
+### Resources
+- **Full Guide**: `best-practices/git/GIT-WORKTREE-BEST-PRACTICES.md`
+- **Training Summary**: `best-practices/git/TEAM-TRAINING-SUMMARY.md`
+- **Agent Prompts**: `best-practices/git/AGENT-WORKTREE-PROMPT.md`
+- **GitWorktreeManager**: `core/utils/git_worktree_manager.py` (updated with verification)
+
+### GitWorktreeManager (Python)
+
+```python
+from core.utils.git_worktree_manager import GitWorktreeManager
+
+manager = GitWorktreeManager()
+
+# Creates worktree with automatic best practices
+worktree_info = manager.create_worktree(
+    task_name="my-feature",
+    auto_prune=True,  # Automatically prunes stale worktrees
+    create_branch=True  # Creates branch if doesn't exist
+)
+
+# Verify immediately
+if not worktree_info['verification']['branch_correct']:
+    raise Exception("Branch verification FAILED")
+
+# Before merging, verify ALL worktrees
+verification = manager.verify_commits()
+if not verification['all_verified']:
+    raise Exception(f"Worktrees failed: {verification['failed_worktrees']}")
+```
+
+---
+
 ## 🔮 Oracle Auto-Activation Protocol
 
 **CRITICAL REQUIREMENT**: When you detect "oracle" keyword in the user's message, you MUST activate Oracle mode and respond with Oracle's cost-tracking intelligence.

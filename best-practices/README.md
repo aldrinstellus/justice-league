@@ -87,6 +87,8 @@ best-practices/
 │       └── appendices/
 ├── vercel/                            # Vercel deployment guides
 │   └── VERCEL-DEPLOYMENT-TROUBLESHOOTING.md
+├── git/                               # Git workflow guides
+│   └── GIT-WORKTREE-BEST-PRACTICES.md
 ├── SESSION-SAVEPOINT-2025-11-24.md   # Session state
 ├── OPTIMIZATION-PROJECT-COMPLETE.md
 ├── MCP-WORKFLOWS-GUIDE.md
