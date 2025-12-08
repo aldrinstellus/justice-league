@@ -21,12 +21,12 @@
 
 **Official Roster Location**: `/Users/admin/.claude/justice-league-roster.md`
 
-**21 Heroes Total**:
+**23 Heroes Total**:
 | Category | Heroes |
 |----------|--------|
 | Command & Coordination | Superman 🦸, Oracle 🔮, The Architect 🏗️, Aldrin 🎖️, Product Manager 📋 |
-| Design/Code | Artemis 🎨, Quicksilver 💨, Hawkman 🦅, Vision Analyst 👁️ |
-| Validation | Green Arrow 🎯, Green Lantern 💚, Batman 🦇, The Atom 🔬 |
+| Design/Code | Artemis 🎨, Hephaestus 🔨, Quicksilver 💨, Hawkman 🦅, Vision Analyst 👁️ |
+| Validation | Green Arrow 🎯, Green Lantern 💚, Batman 🦇, The Atom 🔬, Bug-Bot 🐛 |
 | Performance | Flash ⚡, Aquaman 🌊, Cyborg 🤖 |
 | Security/A11y | Wonder Woman ⚡, Martian Manhunter 🧠 |
 | UX/SEO | Plastic Man 🤸, Zatanna 🎩, Litty 🪔 |
@@ -241,11 +241,45 @@ When Oracle is triggered, you MUST:
 
 **Installed Skills**:
 - ✅ `frontend-design`: Bold, production-grade frontend aesthetics (official Anthropic skill)
+- ✅ `bug-bot`: Automatic bug detection and code analysis (custom, added 2025-12-08)
+- ✅ `tool-search`: Dynamic tool discovery for on-demand tool loading
 
 **How Skills Work**:
 - Auto-activate when relevant keywords detected ("build", "create", "design" + UI)
 - Provide just-in-time aesthetic guidance without permanent context overhead
 - Work seamlessly with agents (e.g., `frontend-developer` via Task tool)
+
+---
+
+## 🐛 Bug-Bot Protocol (NEW - 2025-12-08)
+
+**Role**: Proactive bug hunter that catches issues before they reach production (Cursor BugBot-style)
+
+**Trigger Keywords**: `find bugs`, `bug check`, `code review`, `scan for bugs`, `debug this`, `any issues`, `bug-bot`, `what's wrong`
+
+**Commands**:
+| Command | Scope |
+|---------|-------|
+| `/bug-bot` or trigger keywords | Changed files only (fast) |
+| `/bug-bot --full` | Entire codebase (thorough) |
+| `/bug-bot src/lib/` | Specific directory |
+
+**Bug Categories**:
+| Priority | Category | Examples |
+|----------|----------|----------|
+| 1 (Critical) | Logic Errors | Off-by-one, wrong conditions, unreachable code |
+| 1 (Critical) | Type Issues | Implicit `any`, missing null checks, type coercion |
+| 1 (Critical) | Runtime Risks | Undefined access, async/await issues, race conditions |
+| 2 (High) | React/Next.js | Hook rules, server/client mismatches, hydration |
+| 3 (Medium) | Code Smells | Dead code, duplicates, complexity |
+
+**Integration**: Bug-Bot hands off complex issues to specialized heroes:
+- Security issues → Martian Manhunter 🧠
+- Interactive bugs → Batman 🦇
+- Performance issues → Flash ⚡
+- Accessibility issues → Wonder Woman ⚡
+
+**Location**: `.claude/skills/bug-bot/SKILL.md`, `.claude/commands/bug-bot.md`
 
 ---
 
@@ -355,6 +389,87 @@ Oracle uses Chrome DevTools MCP for automated browser testing and verification:
 
 ---
 
-**Last Updated**: 2025-12-01
-**Size**: ~19k characters (52% under 40k limit)
+---
+
+## 💰 MANDATORY: Cost Tracking Protocol (DEFACTO)
+
+**CRITICAL REQUIREMENT**: Every Justice League project/session MUST include cost tracking with real $ dollar implications. This is NON-NEGOTIABLE.
+
+### Cost Tracking Checklist (EVERY PROJECT)
+
+| Phase | Action | Required |
+|-------|--------|----------|
+| **BEFORE Work** | Run `python3 scripts/check-budget.py` | ✅ MANDATORY |
+| **AFTER Work** | Add "Cost Analysis" section to ALL docs/presentations | ✅ MANDATORY |
+| **AFTER Work** | Update `simple-budget.json` with session costs | ✅ MANDATORY |
+
+### Cost Estimation Formula
+```
+Oracle Cost = (Input Tokens / 1M × $3) + (Output Tokens / 1M × $15)
+Typical session: 50K-150K tokens = $0.50-$5.00
+```
+
+**Status**: DEFACTO - Applies to ALL Justice League operations, NO EXCEPTIONS
+
+---
+
+## 🚫 Next.js Dev Indicators - AUTO DISABLE (MANDATORY)
+
+**CRITICAL RULE**: When creating or modifying ANY Next.js project, you MUST disable dev indicators.
+
+**Step 1: next.config.ts**
+```typescript
+const nextConfig: NextConfig = {
+  devIndicators: {
+    position: "bottom-left",
+    buildActivity: false,
+  },
+};
+```
+
+**Step 2: globals.css** (add at TOP)
+```css
+/* Hide Next.js dev indicator badge */
+[data-nextjs-build-indicator], [data-nextjs-static-indicator],
+nextjs-portal, [data-nextjs-toast], [data-nextjs-dev-indicator] {
+  display: none !important;
+  visibility: hidden !important;
+}
+```
+
+---
+
+## 🔑 Global API Keys Protocol
+
+**Location**: `/Users/admin/Documents/claudecode/api/`
+
+| Service | Environment Variable | Status |
+|---------|---------------------|--------|
+| Gamma.app | `GAMMA_API_KEY` | ✅ Active |
+| Figma | `FIGMA_ACCESS_TOKEN` | ✅ Active (6 tokens) |
+
+**Standard Usage Pattern** (ALL scripts):
+```python
+from dotenv import load_dotenv
+load_dotenv("/Users/admin/Documents/claudecode/api/.env")
+api_key = os.getenv("GAMMA_API_KEY")
+```
+
+**Standing Instruction**: ALWAYS check global folder first for API keys. Never ask user for keys already there.
+
+---
+
+## 🎨 Gamma Presentation Converter
+
+**Script**: `scripts/convert-to-gamma.py`
+
+**Usage**:
+```bash
+python3 scripts/convert-to-gamma.py --dir /path/to/presentation --title "My Presentation"
+```
+
+---
+
+**Last Updated**: 2025-12-08
+**Version**: 3.1.0 (23 Heroes + Bug-Bot + Full Protocol Sync)
 **Structure**: Essential behavior only, detailed references in separate files

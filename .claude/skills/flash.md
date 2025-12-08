@@ -148,3 +148,6 @@ try:
 except ImportError:
     result = self.flash.profile_performance(...)  # Fallback to standard
 ```
+
+### 2025-12-03
+- **Husky + lint-staged auto-healing**: Pre-commit hooks that automatically run validation before commits
