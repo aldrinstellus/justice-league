@@ -2,6 +2,8 @@
 
 > **For Superman & Oracle**: This guide captures real deployment failures and solutions from the ATCK project (2025-12-01). Use these patterns to diagnose Vercel deployment issues quickly.
 
+**Related Guide**: [VERCEL-PUBLIC-ACCESS-GUIDE.md](./VERCEL-PUBLIC-ACCESS-GUIDE.md) - For "Access Required" / 401 errors when sharing URLs
+
 ---
 
 ## Quick Reference - Common Errors
