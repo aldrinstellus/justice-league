@@ -56,9 +56,9 @@ function doPost(e) {
         return jsonResponse_({ success: false, message: 'Unknown action: ' + action }, 400);
     }
 
-  } catch (e) {
-    Logger.log('doPost error: ' + e.message);
-    return jsonResponse_({ success: false, message: 'Internal error: ' + e.message }, 500);
+  } catch (err) {
+    Logger.log('doPost error: ' + err.message);
+    return jsonResponse_({ success: false, message: 'Internal error: ' + err.message }, 500);
   }
 }
 
